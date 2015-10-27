@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
         let response = LoginHelper.getAuthToken(username: usernameField.text!, password: passwordField.text!)
        
         if response.success || response.tokenORerror == "Log in failed. Please try again. Error 401" {
-            self.performSegueWithIdentifier("successLoginSegue", sender: nil)
+           self.performSegueWithIdentifier("successLoginSegue", sender: nil)
         }
         
         else {
