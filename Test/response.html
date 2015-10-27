@@ -1,0 +1,47 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="description" content="Zuul OAuth 2.0 Authorization Server" />
+    <meta name="author" content="Jakub Jirutka" />
+
+    <title>Authorization Server of CTU :: Login</title>
+
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+
+    <!-- This is used only for prototyping, will be removed by Thymeleaf. -->
+    
+    
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <h1>Authorization Server of CTU in Prague</h1>
+      </div>
+    </header>
+
+    <section id="main" class="container">
+      <div class="alert alert-danger">
+
+        Username or password is wrong.
+      </div>
+
+      
+
+      <form method="post" class="form-login" action="/login.do">
+        <input name="j_username" type="text" autofocus="autofocus" class="form-control input-lg" placeholder="Username" />
+
+        <input name="j_password" type="password" class="form-control input-lg" placeholder="CTU Password" />
+
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2013–2015&nbsp; CTU in Prague</p>
+    </footer>
+  </body>
+</html>
