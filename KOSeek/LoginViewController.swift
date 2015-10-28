@@ -30,15 +30,15 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButton(sender: UIButton) {
-        let response = LoginHelper.getAuthToken(username: usernameField.text!, password: passwordField.text!)
+        //let response = LoginHelper.getAuthToken(username: usernameField.text!, password: passwordField.text!)
        
-        if response.success || response.tokenORerror == "Log in failed. Please try again. Error 401" {
+        //if response.success || response.tokenORerror == "Log in failed. Please try again. Error 401" {
            self.performSegueWithIdentifier("successLoginSegue", sender: nil)
-        }
+        //}
         
-        else {
-            loginFailedMessage(response.tokenORerror)
-        }
+        //else {
+        //    loginFailedMessage(response.tokenORerror)
+        //}
     }
 
     override func didReceiveMemoryWarning() {

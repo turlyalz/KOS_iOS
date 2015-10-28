@@ -11,7 +11,9 @@ import UIKit
 class SideMenuController: UITableViewController {
     
     private let menus = ["Timetable", "Semester", "Exams", "Results", "Search People", "LogOut"]
-
+    
+    private let BGHeaderColor = UIColor(red: 80/255.0, green: 85/255.0, blue: 90/255.0, alpha: 1)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -45,8 +47,17 @@ class SideMenuController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "KOS ČVUT"
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view: UIView = UIView(frame: CGRect(x: 10, y: -10, width: 100, height: 50))
+        let label: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: 100, height: 50))
+        view.backgroundColor = BGHeaderColor
+        
+        label.text = "KOS ČVUT"
+        label.textColor = .whiteColor()
+        
+        view.addSubview(label)
+        
+        return view
     }
 
     /*
