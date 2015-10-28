@@ -1,19 +1,31 @@
 //
-//  SideMenuController.swift
+//  ExamsViewController.swift
 //  KOSeek
 //
-//  Created by Alzhan on 27.10.15.
+//  Created by Alzhan on 28.10.15.
 //  Copyright © 2015 Alzhan Turlybekov. All rights reserved.
 //
 
 import UIKit
 
-class SideMenuController: UITableViewController {
-    
-    private let menus = ["Timetable", "Semester", "Exams", "Results", "Search People", "LogOut"]
+class ExamsViewController: UITableViewController {
 
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,30 +36,24 @@ class SideMenuController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menus.count
+        // #warning Incomplete implementation, return the number of rows
+        return 0
     }
 
-    
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(menus[indexPath.row], forIndexPath: indexPath)
-        
-        if indexPath.row == 0 {
-            cell.frame.size.height -= 120
-        }
-        
-        cell.separatorInset = UIEdgeInsetsZero
-        cell.layoutMargins = UIEdgeInsetsZero
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+
+        // Configure the cell...
 
         return cell
     }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "KOS ČVUT"
-    }
+    */
 
     /*
     // Override to support conditional editing of the table view.
