@@ -26,6 +26,10 @@ class SearchViewController: UITableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        SavedVariables.sideMenuViewController?.view.userInteractionEnabled = true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

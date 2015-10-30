@@ -16,6 +16,7 @@ class SideMenuController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SavedVariables.sideMenuViewController = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,12 +98,36 @@ class SideMenuController: UITableViewController {
 
     /*
     // MARK: - Navigation
-
+*/
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        view.userInteractionEnabled = false
     }
-    */
+    
+    func logOutMessage(indexPath: NSIndexPath) {
+        let alertLogOut = UIAlertController(title: "", message: "Are you sure you want to log out?", preferredStyle: UIAlertControllerStyle.Alert)
+        alertLogOut.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default,
+            handler: {
+                action in
+                self.performSegueWithIdentifier("logOut", sender: self)
+            }
+        ))
+        alertLogOut.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default,
+            handler: {
+                action in
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            }
+        ))
+        self.presentViewController(alertLogOut, animated: true, completion: nil)
 
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == menus.count-1 {
+            logOutMessage(indexPath)
+        }
+    }
+    
 }

@@ -18,6 +18,10 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        SavedVariables.sideMenuViewController?.view.userInteractionEnabled = true
+    }
+    
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true);
@@ -30,15 +34,17 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButton(sender: UIButton) {
-        //let response = LoginHelper.getAuthToken(username: usernameField.text!, password: passwordField.text!)
+        SavedVariables.username = usernameField.text!
+        let response = LoginHelper.getAuthToken(username: SavedVariables.username!, password: passwordField.text!)
+
        
-        //if response.success || response.tokenORerror == "Log in failed. Please try again. Error 401" {
+        if response.success || response.tokenORerror == "Log in failed. Please try again. Error 401" {
            self.performSegueWithIdentifier("successLoginSegue", sender: nil)
-        //}
+        }
         
-        //else {
-        //    loginFailedMessage(response.tokenORerror)
-        //}
+        else {
+            loginFailedMessage(response.tokenORerror)
+        }
     }
 
     override func didReceiveMemoryWarning() {

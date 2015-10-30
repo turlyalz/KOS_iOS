@@ -190,7 +190,7 @@
         <!--Side Menu Controller-->
         <scene sceneID="oFp-zf-wyF">
             <objects>
-                <tableViewController id="7qh-bp-hUF" customClass="SideMenuController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="slideController" id="7qh-bp-hUF" customClass="SideMenuController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="46" sectionHeaderHeight="44" sectionFooterHeight="28" id="IYy-hN-YNT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,7 +217,7 @@
                                     <color key="backgroundColor" red="0.47058823529411764" green="0.63529411764705879" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="yB6-Yz-cgN" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="DYU-8V-Yjc"/>
+                                    <segue destination="yB6-Yz-cgN" kind="custom" identifier="slideMenuToTimetable" customClass="SWRevealViewControllerSeguePushController" id="DYU-8V-Yjc"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Semester" id="8Cx-Dm-VxM">
@@ -331,9 +331,6 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.47058823529411764" green="0.63529411764705879" blue="0.71204255756578949" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="mi4-W5-E3n"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -343,6 +340,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="pyO-2A-I1m"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="logOut" id="uIv-US-8Aj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7eV-oX-EI7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -573,9 +573,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gqg-lU-my3"/>
+        <segue reference="PeF-pM-b66"/>
+        <segue reference="DYU-8V-Yjc"/>
         <segue reference="Q2c-SP-SKF"/>
         <segue reference="oQ7-TJ-uoE"/>
-        <segue reference="DYU-8V-Yjc"/>
-        <segue reference="PeF-pM-b66"/>
     </inferredMetricsTieBreakers>
 </document>

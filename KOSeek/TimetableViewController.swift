@@ -12,6 +12,8 @@ class TimetableViewController: UITableViewController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    var sideMenuVC: SideMenuController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +28,10 @@ class TimetableViewController: UITableViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        SavedVariables.sideMenuViewController?.view.userInteractionEnabled = true
     }
 
     
