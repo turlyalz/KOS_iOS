@@ -77,12 +77,21 @@
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="275" id="uaH-VW-D6b"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wg-Yi-rRl">
+                                <rect key="frame" x="261" y="385" width="79" height="30"/>
+                                <state key="normal" title="Test Button"/>
+                                <connections>
+                                    <segue destination="gCh-tP-J81" kind="show" id="stE-Hr-0qw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.47058823529999999" green="0.63529411759999999" blue="0.71204255760000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="j5z-pv-5Zd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-30" id="GYl-DK-z7R"/>
                             <constraint firstItem="j5z-pv-5Zd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OtO-aB-32b"/>
+                            <constraint firstItem="3wg-Yi-rRl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ffv-6H-tVt"/>
+                            <constraint firstItem="3wg-Yi-rRl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="gTu-t8-iih"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="KOS iOS" id="C8j-Ar-DPW"/>
@@ -573,6 +582,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gqg-lU-my3"/>
+        <segue reference="ymw-i0-yts"/>
         <segue reference="PeF-pM-b66"/>
         <segue reference="DYU-8V-Yjc"/>
         <segue reference="Q2c-SP-SKF"/>

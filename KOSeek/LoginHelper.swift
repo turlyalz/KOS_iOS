@@ -13,13 +13,14 @@ class LoginHelper {
     private static let baseURL = "https://auth.fit.cvut.cz"
     private static let login = "/login.do?"
     private static let authorize = "/oauth/authorize"
-    //private static let token = "/oauth/token";
+    private static let token = "/oauth/token";
     
-    private static let appID = "33830907-8eb1-4bf4-9e92-0d149ccb8dee"
+    private static let appID = "54a10db9-e1c5-4536-8fde-13ed7caf755a"
     
-    //private static let appSecret = "QZIGl69NMif1l5GTy1TuuBWm8UiBXNxz"
+    private static let appSecret = "QZIGl69NMif1l5GTy1TuuBWm8UiBXNxz"
     
-    private static let redirectURI = "http://client.kosios.cz/response"
+    private static let redirectURI = "http://client.kosandroid.cz/auth/response"
+//    private static let redirectURI = "http://client.kosios.cz/response"
     
     private init(){ }
     
@@ -49,6 +50,8 @@ class LoginHelper {
             return (false, "Password cannot be empty!")
         }
         
+        
+        /// User credentials auth
         print("Try to log in with username: '\(username)', password: '\(password)'")
         
         let loginRequest = NSMutableURLRequest(URL: NSURL(string: baseURL + login)!)
@@ -88,6 +91,9 @@ class LoginHelper {
             return (false, "Log in failed. Please try again.")
         }
         
+        /// ----------------------------
+        
+        /// Auth app
         var authRunning = false
         
         let authRequest = NSMutableURLRequest(URL: NSURL(string: baseURL + authorize + "?response_type=code&client_id=" + appID + "&redirect_uri=" + redirectURI)!)
@@ -119,12 +125,21 @@ class LoginHelper {
         }
         
         if loginFailed || errorOcurredIn(authTask.response){
-            return (false, "Log in failed. Please try again. Error 401")
+            return (false, "Log in failed. Please try again.")
         }
         
+        /// -----------------------------------------------
+        
+        var code: String = ""
+        
         authRunning = false
-        let auth2Request = NSMutableURLRequest(URL: NSURL(string: baseURL + authorize + "?response_type=code&client_id=" + appID + "&redirect_uri=" + redirectURI + "user_oauth_approval=true")!)
+        let auth2Request = NSMutableURLRequest(URL: NSURL(string: baseURL + authorize + "?response_type=code&client_id=" + appID + "&redirect_uri=" + redirectURI)!)
         auth2Request.HTTPMethod = "POST"
+        
+        let postStr = "user_oauth_approval=true"
+        
+        auth2Request.HTTPBody = postStr.dataUsingEncoding(NSUTF8StringEncoding)
+        
         print("Auth 2 request = \(auth2Request)")
    
         let auth2Task = NSURLSession.sharedSession().dataTaskWithRequest(auth2Request) {
@@ -136,10 +151,10 @@ class LoginHelper {
                 return
             }
             
-            print("Login response = \(response)")
-            
+            print("Auth 2 response = \(response)")
+            //code = "" + String(response?.URL)
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("Login response string = \(responseString)")
+            print("Auth 2 response string = \(responseString)")
             authRunning = false
         }
         authRunning = true
@@ -149,10 +164,45 @@ class LoginHelper {
             //print("waiting for auth 2 response...")
             //sleep(1)
         }
-        
+       /*
         if loginFailed || errorOcurredIn(auth2Task.response){
-            return (false, "Log in failed. Please try again.")
+            return (false, "Log in failed. Please try again. X")
+        }*/
+        
+        var accessTokenReqRunning = false
+        code = "SX6bI4"
+        let accessTokenRequest = NSMutableURLRequest(URL: NSURL(string: baseURL + token)!)
+        accessTokenRequest.HTTPMethod = "POST"
+        accessTokenRequest.addValue("Basic NTRhMTBkYjktZTFjNS00NTM2LThmZGUtMTNlZDdjYWY3NTVhOlZKemVvOHlZUU9qTEc0akhpQnFzdGtEdkhmbFdLanVB", forHTTPHeaderField: "Authorization")
+
+        
+        let postStr2 = "code=" + code + "&grant_type=authorization_code&client_id=" + appID + "&client_secret=" + appSecret + "&redirect_uri" + redirectURI
+        
+        accessTokenRequest.HTTPBody = postStr2.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        let accessTokenTask = NSURLSession.sharedSession().dataTaskWithRequest(accessTokenRequest) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                loginFailed = true
+                return
+            }
+            
+            print("accessToken response = \(response)")
+            code = "" + String(response?.URL)
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("accessToken response string = \(responseString)")
+            accessTokenReqRunning = false
         }
+        accessTokenReqRunning = true
+        accessTokenTask.resume()
+        
+        while accessTokenReqRunning && !loginFailed {
+            //print("waiting for auth 2 response...")
+            //sleep(1)
+        }
+        
         
         return (false, "authToken")
     }
