@@ -36,10 +36,9 @@ class LoginViewController: UIViewController {
     @IBAction func loginButton(sender: UIButton) {
         SavedVariables.username = usernameField.text!
         let response = LoginHelper.getAuthToken(username: SavedVariables.username!, password: passwordField.text!)
-
        
-        if response.success || response.tokenORerror == "Log in failed. Please try again. Error 401" {
-           self.performSegueWithIdentifier("successLoginSegue", sender: nil)
+        if response.success {
+            self.performSegueWithIdentifier("successLoginSegue", sender: nil)
         }
         
         else {
