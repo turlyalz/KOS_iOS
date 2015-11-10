@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class LoginHelper {
     
@@ -22,6 +23,9 @@ class LoginHelper {
     
     private static let redirectURI = "http://client.kosandroid.cz/auth/response"
     //private static let redirectURI = "http://client.kosios.cz/response"
+    
+    
+    static var accessToken = ""
     
     private init(){ }
     
@@ -92,10 +96,11 @@ class LoginHelper {
         return (true, "200 OK")
     }
     
-    private class func authRequest() -> (success: Bool, error: String) {
-        
+    private class func authRequest() -> (success: Bool, codeORerror: String) {
         var running = false
         var failed = false
+        var code: String = ""
+        var codeObtained = false
         
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + authorize + "?response_type=code&client_id=" + appID + "&redirect_uri=" + redirectURI)!)
         request.HTTPMethod = "GET"
@@ -105,34 +110,47 @@ class LoginHelper {
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
             
-            if error != nil {
+            if error != nil && error?.code != -1003 {
                 print("error=\(error)")
                 failed = true
                 return
             }
+                
+            else if error?.code == -1003 {
+                //print("error=\(error)")
+                var range = error?.description.rangeOfString("code=")
+                range?.startIndex = (range?.startIndex.advancedBy(5))!
+                range?.endIndex = (range?.startIndex.advancedBy(6))!
+                code = (error?.description.substringWithRange(range!))!
+                print("Code: \(code)")
+                codeObtained = true
+            }
             
             print("Auth response = \(response)")
-            
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("Auth response string = \(responseString)")
             running = false
         }
         running = true
         task.resume()
         
-        while running && !failed {
+        while running && !failed && !codeObtained {
             //print("waiting for auth response...")
             //sleep(1)
         }
         
-        if failed || errorOcurredIn(task.response){
-            return (false, "Log in failed. Please try again.")
+        if !codeObtained {
+            if failed || errorOcurredIn(task.response){
+                return (false, "Log in failed. Please try again.")
+            }
+        }
+        
+        else {
+            return (true, code)
         }
         
         return (true, "200 OK")
     }
     
-    private class func authPostRequest() -> (success: Bool, codeORerror: String) {
+    private class func codeRequest() -> (success: Bool, codeORerror: String) {
         var code: String = ""
         
         var running = false
@@ -145,7 +163,53 @@ class LoginHelper {
         
         request.HTTPBody = postStr.dataUsingEncoding(NSUTF8StringEncoding)
         
-        print("Auth 2 request = \(request)")
+        print("Code request = \(request)")
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil && error?.code != -1003 {
+                print("error=\(error)")
+                failed = true
+                return
+            }
+            
+            else if error?.code == -1003 {
+                //print("error=\(error)")
+                var range = error?.description.rangeOfString("code=")
+                range?.startIndex = (range?.startIndex.advancedBy(5))!
+                range?.endIndex = (range?.startIndex.advancedBy(6))!
+                code = (error?.description.substringWithRange(range!))!
+                print("Code: \(code)")
+            }
+            
+            //print("Auth 2 response = \(response)")
+            
+            running = false
+        }
+        running = true
+        task.resume()
+        
+        while running && !failed {
+            //print("waiting for auth 2 response...")
+            //sleep(1)
+        }
+        
+        if failed || errorOcurredIn(task.response){
+            return (false, "Log in failed. Please try again.")
+        }
+    
+        return (true, code)
+    }
+    
+    private class func tokenRequest(code: String) -> (success: Bool, error: String) {
+        var running = false
+        var failed = false
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: baseURL + token + "?grant_type=authorization_code&client_id=" + appID + "&client_secret=" + appSecret + "&redirect_uri=" + redirectURI + "&code=" + code)!)
+        
+        request.addValue("Basic NTRhMTBkYjktZTFjNS00NTM2LThmZGUtMTNlZDdjYWY3NTVhOlZKemVvOHlZUU9qTEc0akhpQnFzdGtEdkhmbFdLanVB", forHTTPHeaderField: "Authorization")
+        request.HTTPMethod = "POST"
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
@@ -156,10 +220,16 @@ class LoginHelper {
                 return
             }
             
-            print("Auth 2 response = \(response)")
-            //code = "" + String(response?.URL)
+            print("Token response = \(response)")
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("Auth 2 response string = \(responseString)")
+            print("Token response string = \(responseString)")
+            
+            let json = JSON(data: data!)
+            if let AT = json["access_token"].string {
+                print("Access token: \(AT)")
+                accessToken = AT
+            }
+            
             running = false
         }
         running = true
@@ -174,54 +244,11 @@ class LoginHelper {
             return (false, "Log in failed. Please try again.")
         }
         
-        //TODO: Get there a code
-        code = "xxxx"
-    
-        return (true, code)
-    }
-    
-    private class func getToken(code: String) -> (success: Bool, tokenORerror: String) {
-        var running = false
-        var failed = false
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: baseURL + token)!)
-        request.HTTPMethod = "POST"
-        request.addValue("Basic NTRhMTBkYjktZTFjNS00NTM2LThmZGUtMTNlZDdjYWY3NTVhOlZKemVvOHlZUU9qTEc0akhpQnFzdGtEdkhmbFdLanVB", forHTTPHeaderField: "Authorization")
-        
-        
-        let postStr = "code=" + code + "&grant_type=authorization_code&client_id=" + appID + "&client_secret=" + appSecret + "&redirect_uri" + redirectURI
-        
-        request.HTTPBody = postStr.dataUsingEncoding(NSUTF8StringEncoding)
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
-            
-            if error != nil {
-                print("error=\(error)")
-                failed = true
-                return
-            }
-            
-            print("accessToken response = \(response)")
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("accessToken response string = \(responseString)")
-            running = false
-        }
-        running = true
-        task.resume()
-        
-        while running && !failed {
-            //print("waiting for auth 2 response...")
-            //sleep(1)
-        }
-        
-        // TODO: Get access token
-        
-        return (true, "Access token")
+        return (true, "200 OK")
     }
     
     class func getAuthToken(username username: String, password: String) -> (success: Bool, tokenORerror: String) {
-       
+
         let loginResponse = loginRequest(username, password: password)
         if !loginResponse.success {
             return (false, loginResponse.error)
@@ -229,20 +256,26 @@ class LoginHelper {
         
         let authResponse = authRequest()
         if !authResponse.success {
-            return (false, authResponse.error)
+            return (false, authResponse.codeORerror)
         }
         
-        let authPostResponse = authPostRequest()
-        if !authPostResponse.success {
-            return (false, authPostResponse.codeORerror)
+        var codeResponse: (success: Bool, codeORerror: String)
+        if authResponse.codeORerror == "200 OK" {
+            codeResponse = codeRequest()
+            if !codeResponse.success {
+                return (false, codeResponse.codeORerror)
+            }
+        }
+        else {
+            codeResponse = authResponse
         }
         
-        let tokenResponse = getToken(authPostResponse.codeORerror)
+        let tokenResponse = tokenRequest(codeResponse.codeORerror)
         if !tokenResponse.success {
-            return (false, tokenResponse.tokenORerror)
+            return (false, tokenResponse.error)
         }
-        
-        return (true, tokenResponse.tokenORerror)
+
+        return (true, accessToken)
     }
 
 }
