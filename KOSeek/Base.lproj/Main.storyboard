@@ -16,6 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wg-Yi-rRl">
+                                <rect key="frame" x="261" y="385" width="79" height="30"/>
+                                <state key="normal" title="Test Button"/>
+                                <connections>
+                                    <segue destination="gCh-tP-J81" kind="show" id="stE-Hr-0qw"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5z-pv-5Zd">
                                 <rect key="frame" x="172" y="213" width="257" height="114"/>
                                 <subviews>
@@ -74,16 +81,9 @@
                                     <constraint firstItem="DhN-hH-WAM" firstAttribute="top" secondItem="qFj-w4-kLb" secondAttribute="bottom" constant="8" id="qDB-9O-K2e"/>
                                     <constraint firstItem="M35-tz-wLO" firstAttribute="top" secondItem="j5z-pv-5Zd" secondAttribute="top" constant="8" id="rFF-dx-hNR"/>
                                     <constraint firstItem="SWd-E6-LLy" firstAttribute="top" secondItem="7LC-Y6-5qj" secondAttribute="bottom" constant="23" id="tos-fc-Aqt"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="275" id="uaH-VW-D6b"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="uaH-VW-D6b"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wg-Yi-rRl">
-                                <rect key="frame" x="261" y="385" width="79" height="30"/>
-                                <state key="normal" title="Test Button"/>
-                                <connections>
-                                    <segue destination="gCh-tP-J81" kind="show" id="stE-Hr-0qw"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.47058823529999999" green="0.63529411759999999" blue="0.71204255760000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -98,12 +98,51 @@
                     <connections>
                         <outlet property="passwordField" destination="qFj-w4-kLb" id="ACS-AM-hDV"/>
                         <outlet property="usernameField" destination="M35-tz-wLO" id="nsZ-Aw-c1o"/>
-                        <segue destination="gCh-tP-J81" kind="show" identifier="successLoginSegue" id="ymw-i0-yts"/>
+                        <segue destination="Bzh-4d-5Or" kind="show" identifier="successLoginSegue" action="showDetailViewController:sender:" id="Esd-oP-sgf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1275" y="-542"/>
+        </scene>
+        <!--Waiting View Controller-->
+        <scene sceneID="Mwz-BP-oaF">
+            <objects>
+                <viewController id="Bzh-4d-5Or" customClass="WaitingViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cac-sA-4xp"/>
+                        <viewControllerLayoutGuide type="bottom" id="I66-oR-GjE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7H9-6I-hvM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="I0L-Jz-CJg">
+                                <rect key="frame" x="290" y="255" width="20" height="20"/>
+                                <color key="color" red="0.47058823529999999" green="0.63529411759999999" blue="0.71204255760000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait. Downloading data." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2d-8j-Pki">
+                                <rect key="frame" x="181" y="284" width="238" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.22352941179999999" green="0.23921568630000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="I0L-Jz-CJg" firstAttribute="centerY" secondItem="7H9-6I-hvM" secondAttribute="centerY" constant="-35" id="Sur-dG-xBx"/>
+                            <constraint firstItem="v2d-8j-Pki" firstAttribute="centerX" secondItem="7H9-6I-hvM" secondAttribute="centerX" id="ZII-pI-WpP"/>
+                            <constraint firstItem="v2d-8j-Pki" firstAttribute="centerY" secondItem="7H9-6I-hvM" secondAttribute="centerY" constant="-6" id="ve3-rm-ZHO"/>
+                            <constraint firstItem="I0L-Jz-CJg" firstAttribute="centerX" secondItem="7H9-6I-hvM" secondAttribute="centerX" id="zfk-Rz-7Zn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="I0L-Jz-CJg" id="y3M-Fw-Zlu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EYi-5J-87B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1996" y="-542"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="7v9-iI-EB7">
@@ -582,10 +621,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gqg-lU-my3"/>
-        <segue reference="ymw-i0-yts"/>
+        <segue reference="oQ7-TJ-uoE"/>
         <segue reference="PeF-pM-b66"/>
         <segue reference="DYU-8V-Yjc"/>
         <segue reference="Q2c-SP-SKF"/>
-        <segue reference="oQ7-TJ-uoE"/>
     </inferredMetricsTieBreakers>
 </document>
