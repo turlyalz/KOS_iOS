@@ -138,6 +138,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="I0L-Jz-CJg" id="y3M-Fw-Zlu"/>
+                        <segue destination="gCh-tP-J81" kind="show" identifier="downloadCompleteSegue" id="9gN-ve-Bh1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EYi-5J-87B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -620,10 +621,11 @@
         <image name="timetable" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gqg-lU-my3"/>
-        <segue reference="oQ7-TJ-uoE"/>
-        <segue reference="PeF-pM-b66"/>
-        <segue reference="DYU-8V-Yjc"/>
-        <segue reference="Q2c-SP-SKF"/>
+        <segue reference="FBU-Bn-6l6"/>
+        <segue reference="9gN-ve-Bh1"/>
+        <segue reference="9HU-us-G6V"/>
+        <segue reference="9cO-8Q-G0I"/>
+        <segue reference="IJA-97-2dF"/>
+        <segue reference="5X7-8d-YpJ"/>
     </inferredMetricsTieBreakers>
 </document>

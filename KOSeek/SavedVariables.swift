@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class SavedVariables {
     static var sideMenuViewController: SideMenuController?
     static var username: String?

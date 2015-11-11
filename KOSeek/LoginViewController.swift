@@ -21,7 +21,6 @@ class LoginViewController: UIViewController {
         SavedVariables.sideMenuViewController?.view.userInteractionEnabled = true
     }
     
-    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true);
     }
@@ -39,7 +38,6 @@ class LoginViewController: UIViewController {
         if response.success {
             self.performSegueWithIdentifier("successLoginSegue", sender: nil)
         }
-        
         else {
             loginFailedMessage(response.error)
         }

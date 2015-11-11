@@ -7,9 +7,22 @@
 //
 
 import Foundation
+import UIKit
 
 
 class KOSAPI {
     
+    static var onComplete: (() -> Void)!
+    
     private init(){ }
+    
+    class func downloadAllData() {
+        downloadPersonInfo()
+        onComplete()
+    }
+    
+    class func downloadPersonInfo() {
+       //let xml = SWXMLHash.parse(xmlToParse)
+    }
+    
 }

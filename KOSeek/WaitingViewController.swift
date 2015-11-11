@@ -15,6 +15,17 @@ class WaitingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.startAnimating()
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        KOSAPI.onComplete = {
+            self.performSegueWithIdentifier("downloadCompleteSegue", sender: nil)
+        }
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
+            KOSAPI.downloadAllData()
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
