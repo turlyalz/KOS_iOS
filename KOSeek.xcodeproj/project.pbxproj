@@ -20,6 +20,9 @@
 		9C2D98781BDFA06700CF5A11 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D98771BDFA06700CF5A11 /* TimetableViewController.swift */; };
 		9C2D987D1BDFA37A00CF5A11 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D987C1BDFA37A00CF5A11 /* SWRevealViewController.m */; };
 		9C31E5951BDE4B7C004FF6CB /* LoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C31E5941BDE4B7C004FF6CB /* LoginHelper.swift */; };
+		9C86AE3B1BF3B1F60096C72E /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */; };
+		9C86AE431BF3B2BA0096C72E /* KOSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE421BF3B2BA0096C72E /* KOSAPI.swift */; };
+		9C86AE841BF3B7870096C72E /* KOSModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE821BF3B7870096C72E /* KOSModel.xcdatamodeld */; };
 		9C8A49B51BE011C7009ECFCA /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8A49B41BE011C7009ECFCA /* SideMenuController.swift */; };
 		9C8ED07A1BE3D5A200611CBF /* SavedVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED0791BE3D5A200611CBF /* SavedVariables.swift */; };
 		9C9E50211BE12C2E009B6CB1 /* ExamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50201BE12C2E009B6CB1 /* ExamsViewController.swift */; };
@@ -136,6 +139,9 @@
 		9C2D987C1BDFA37A00CF5A11 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		9C2D987F1BDFA3D300CF5A11 /* KOSeek-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KOSeek-Bridging-Header.h"; sourceTree = "<group>"; };
 		9C31E5941BDE4B7C004FF6CB /* LoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginHelper.swift; sourceTree = "<group>"; };
+		9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
+		9C86AE421BF3B2BA0096C72E /* KOSAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOSAPI.swift; sourceTree = "<group>"; };
+		9C86AE831BF3B7870096C72E /* KOSModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KOSModel.xcdatamodel; sourceTree = "<group>"; };
 		9C8A49B41BE011C7009ECFCA /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
 		9C8ED0791BE3D5A200611CBF /* SavedVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedVariables.swift; sourceTree = "<group>"; };
 		9C9E50201BE12C2E009B6CB1 /* ExamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamsViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				9C31E5971BDE7712004FF6CB /* ApplicationLayer */,
+				9C86AE441BF3B2EB0096C72E /* DataLayer */,
 				9C31E5961BDE76F0004FF6CB /* PresentationLayer */,
 				9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */,
 				9C2272911BD6517B00DE7F15 /* Main.storyboard */,
@@ -267,6 +274,7 @@
 				9CDCD85F1BDCEE0C0040A59A /* MainViewController.swift */,
 				9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */,
 				9C8A49B41BE011C7009ECFCA /* SideMenuController.swift */,
+				9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */,
 			);
 			name = PresentationLayer;
 			sourceTree = "<group>";
@@ -276,8 +284,17 @@
 			children = (
 				9C31E5941BDE4B7C004FF6CB /* LoginHelper.swift */,
 				9C8ED0791BE3D5A200611CBF /* SavedVariables.swift */,
+				9C86AE421BF3B2BA0096C72E /* KOSAPI.swift */,
 			);
 			name = ApplicationLayer;
+			sourceTree = "<group>";
+		};
+		9C86AE441BF3B2EB0096C72E /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				9C86AE821BF3B7870096C72E /* KOSModel.xcdatamodeld */,
+			);
+			name = DataLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -478,11 +495,14 @@
 				9C8A49B51BE011C7009ECFCA /* SideMenuController.swift in Sources */,
 				9C9E50231BE12C50009B6CB1 /* ResultsViewController.swift in Sources */,
 				9C2D98781BDFA06700CF5A11 /* TimetableViewController.swift in Sources */,
+				9C86AE3B1BF3B1F60096C72E /* WaitingViewController.swift in Sources */,
+				9C86AE841BF3B7870096C72E /* KOSModel.xcdatamodeld in Sources */,
 				9C2272901BD6517B00DE7F15 /* LoginViewController.swift in Sources */,
 				9C8ED07A1BE3D5A200611CBF /* SavedVariables.swift in Sources */,
 				9C31E5951BDE4B7C004FF6CB /* LoginHelper.swift in Sources */,
 				9CDCD8601BDCEE0C0040A59A /* MainViewController.swift in Sources */,
 				9C28FEAB1BDFA51600D7DE04 /* SemesterViewController.swift in Sources */,
+				9C86AE431BF3B2BA0096C72E /* KOSAPI.swift in Sources */,
 				9C22728E1BD6517B00DE7F15 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -751,6 +771,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9C86AE821BF3B7870096C72E /* KOSModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9C86AE831BF3B7870096C72E /* KOSModel.xcdatamodel */,
+			);
+			currentVersion = 9C86AE831BF3B7870096C72E /* KOSModel.xcdatamodel */;
+			path = KOSModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9C2272821BD6517B00DE7F15 /* Project object */;
 }

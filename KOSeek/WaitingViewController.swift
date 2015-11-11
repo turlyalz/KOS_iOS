@@ -1,21 +1,24 @@
 //
-//  MainView.swift
+//  WaitingViewController.swift
 //  KOSeek
 //
-//  Created by Alzhan on 25.10.15.
+//  Created by Alzhan on 11.11.15.
 //  Copyright © 2015 Alzhan Turlybekov. All rights reserved.
 //
 
 import UIKit
 
-class MainViewController: UIViewController {
-
+class WaitingViewController: UIViewController {
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.startAnimating()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
 }
