@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "93B9B283D0D44382D6DA44F2C93D2F43BE3DAB2B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "93B9B283D0D44382D6DA44F2C93D2F43BE3DAB2B" : 0,
+    "67620B5EFA902936DF04070AF595B76AB0333747" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B0FCF6A9-A421-4E7F-A914-9110BB7B047F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "93B9B283D0D44382D6DA44F2C93D2F43BE3DAB2B" : "KOSeek\/",
+    "67620B5EFA902936DF04070AF595B76AB0333747" : "KOSeek\/Alamofire\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "KOSeek",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "KOSeek.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Alamofire\/Alamofire.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67620B5EFA902936DF04070AF595B76AB0333747"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/turlyalz\/KOS_iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "93B9B283D0D44382D6DA44F2C93D2F43BE3DAB2B"
+    }
+  ]
+}

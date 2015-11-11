@@ -1,0 +1,60 @@
+
+/* Class = "UILabel"; text = "Welcome to KOS iOS"; ObjectID = "102-DD-6Yy"; */
+"102-DD-6Yy.text" = "Welcome to KOS iOS";
+
+/* Class = "UILabel"; text = "Exams"; ObjectID = "2pb-Ua-NL8"; */
+"2pb-Ua-NL8.text" = "Exams";
+
+/* Class = "UILabel"; text = "There will be your actual semester"; ObjectID = "2sw-Kz-YsV"; */
+"2sw-Kz-YsV.text" = "There will be your actual semester";
+
+/* Class = "UILabel"; text = "Username:"; ObjectID = "7LC-Y6-5qj"; */
+"7LC-Y6-5qj.text" = "Username:";
+
+/* Class = "UINavigationItem"; title = "Timetable"; ObjectID = "8M9-o8-npt"; */
+"8M9-o8-npt.title" = "Timetable";
+
+/* Class = "UILabel"; text = "There will be your results"; ObjectID = "Bfd-dz-1jR"; */
+"Bfd-dz-1jR.text" = "There will be your results";
+
+/* Class = "UINavigationItem"; title = "KOS iOS"; ObjectID = "C8j-Ar-DPW"; */
+"C8j-Ar-DPW.title" = "KOS iOS";
+
+/* Class = "UIButton"; normalTitle = "Log In"; ObjectID = "DhN-hH-WAM"; */
+"DhN-hH-WAM.normalTitle" = "Log In";
+
+/* Class = "UISearchBar"; placeholder = "touch to start..."; ObjectID = "FcF-Ma-4hU"; */
+"FcF-Ma-4hU.placeholder" = "touch to start...";
+
+/* Class = "UILabel"; text = "Timetable"; ObjectID = "HVY-p5-Dxd"; */
+"HVY-p5-Dxd.text" = "Timetable";
+
+/* Class = "UILabel"; text = "People Search"; ObjectID = "ICl-K0-qLS"; */
+"ICl-K0-qLS.text" = "People Search";
+
+/* Class = "UINavigationItem"; title = "Semester"; ObjectID = "Lqe-U6-R7q"; */
+"Lqe-U6-R7q.title" = "Semester";
+
+/* Class = "UILabel"; text = "There will be your timetable"; ObjectID = "Rtd-Iv-EFQ"; */
+"Rtd-Iv-EFQ.text" = "There will be your timetable";
+
+/* Class = "UILabel"; text = "Password:"; ObjectID = "SWd-E6-LLy"; */
+"SWd-E6-LLy.text" = "Password:";
+
+/* Class = "UINavigationItem"; title = "Search"; ObjectID = "TqC-Hf-uP8"; */
+"TqC-Hf-uP8.title" = "Search";
+
+/* Class = "UILabel"; text = "Log out"; ObjectID = "XZt-NZ-tdQ"; */
+"XZt-NZ-tdQ.text" = "Log out";
+
+/* Class = "UILabel"; text = "Semester"; ObjectID = "v93-K3-Cxy"; */
+"v93-K3-Cxy.text" = "Semester";
+
+/* Class = "UINavigationItem"; title = "Results"; ObjectID = "w9R-UN-KPn"; */
+"w9R-UN-KPn.title" = "Results";
+
+/* Class = "UINavigationItem"; title = "Exams"; ObjectID = "xWm-eo-gtU"; */
+"xWm-eo-gtU.title" = "Exams";
+
+/* Class = "UILabel"; text = "Results"; ObjectID = "xyl-Me-mtC"; */
+"xyl-Me-mtC.text" = "Results";
