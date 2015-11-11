@@ -13,6 +13,7 @@ import UIKit
 class KOSAPI {
     
     static var onComplete: (() -> Void)!
+    private static let baseURL = "https://kosapi.fit.cvut.cz/api/3"
     
     private init(){ }
     
@@ -22,7 +23,41 @@ class KOSAPI {
     }
     
     class func downloadPersonInfo() {
-       //let xml = SWXMLHash.parse(xmlToParse)
+        let extensionURL = "/students/" + SavedVariables.username! + "?access_token=" + LoginHelper.accessToken + "&lang=cs"
+        let request = NSMutableURLRequest(URL: NSURL(string: baseURL + extensionURL)!)
+        request.HTTPMethod = "GET"
+        print("Request = \(request)")
+       
+        var failed = false
+        var running = false
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, _, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                failed = true
+                return
+            }
+            
+            if let uData = data {
+                let xml = SWXMLHash.parse(uData)
+                print(xml["atom:entry"]["atom:content"]["firstName"].element?.text)
+            }
+            
+            
+            running = false
+        }
+        running = true
+        task.resume()
+        
+        while running && !failed {
+            //print("waiting for response...")
+        }
+        
+        if failed || LoginHelper.errorOcurredIn(task.response) {
+            print("Unable to download")
+        }
     }
     
 }

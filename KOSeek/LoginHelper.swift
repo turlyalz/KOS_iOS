@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class LoginHelper {
     
-    private static let MAX_WAIT_FOR_RESPONSE = 10
+    static let MAX_WAIT_FOR_RESPONSE = 10
     
     private static let baseURL = "https://auth.fit.cvut.cz"
     private static let login = "/login.do?"
@@ -31,7 +31,7 @@ class LoginHelper {
     
     private init(){ }
     
-    private class func errorOcurredIn(response: NSURLResponse?) -> Bool {
+    class func errorOcurredIn(response: NSURLResponse?) -> Bool {
         if let httpResponse = response as? NSHTTPURLResponse {
             if let resp = httpResponse.URL {
                 let respStr = String(resp)
