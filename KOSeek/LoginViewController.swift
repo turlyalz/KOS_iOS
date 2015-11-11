@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
         }
         
         else {
-            loginFailedMessage(response.tokenORerror)
+            loginFailedMessage(response.error)
         }
     }
 

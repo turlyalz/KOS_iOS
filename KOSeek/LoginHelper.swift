@@ -11,6 +11,8 @@ import SwiftyJSON
 
 class LoginHelper {
     
+    private static let MAX_WAIT_FOR_RESPONSE = 10
+    
     private static let baseURL = "https://auth.fit.cvut.cz"
     private static let login = "/login.do?"
     private static let authorize = "/oauth/authorize"
@@ -58,7 +60,7 @@ class LoginHelper {
         
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + login)!)
         request.HTTPMethod = "POST"
-        print("Login request = \(loginRequest)")
+        print("Login request = \(request)")
         
         let postString = "j_username=" + username + "&j_password=" + password
         
@@ -84,12 +86,14 @@ class LoginHelper {
         running = true
         task.resume()
         
-        while running && !failed {
-            //print("waiting for login response...")
-            //sleep(1)
+        var count = 0
+        while running && !failed && count < MAX_WAIT_FOR_RESPONSE {
+            print("waiting for login response...")
+            sleep(1)
+            count++
         }
         
-        if failed || errorOcurredIn(task.response) {
+        if failed || errorOcurredIn(task.response) || count >= MAX_WAIT_FOR_RESPONSE{
             return (false, "Log in failed. Please try again.")
         }
         
@@ -105,7 +109,7 @@ class LoginHelper {
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + authorize + "?response_type=code&client_id=" + appID + "&redirect_uri=" + redirectURI)!)
         request.HTTPMethod = "GET"
         
-        print("Auth request = \(authRequest)")
+        print("Auth request = \(request)")
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
@@ -132,13 +136,15 @@ class LoginHelper {
         running = true
         task.resume()
         
-        while running && !failed && !codeObtained {
-            //print("waiting for auth response...")
-            //sleep(1)
+        var count = 0
+        while running && !failed && count < MAX_WAIT_FOR_RESPONSE {
+            print("waiting for auth response...")
+            sleep(1)
+            count++
         }
         
         if !codeObtained {
-            if failed || errorOcurredIn(task.response){
+            if failed || errorOcurredIn(task.response) || count >= MAX_WAIT_FOR_RESPONSE {
                 return (false, "Log in failed. Please try again.")
             }
         }
@@ -183,19 +189,19 @@ class LoginHelper {
                 print("Code: \(code)")
             }
             
-            //print("Auth 2 response = \(response)")
-            
             running = false
         }
         running = true
         task.resume()
         
-        while running && !failed {
-            //print("waiting for auth 2 response...")
-            //sleep(1)
+        var count = 0
+        while running && !failed && count < MAX_WAIT_FOR_RESPONSE {
+            print("waiting for code response...")
+            sleep(1)
+            count++
         }
         
-        if failed || errorOcurredIn(task.response){
+        if failed || errorOcurredIn(task.response) || count >= MAX_WAIT_FOR_RESPONSE{
             return (false, "Log in failed. Please try again.")
         }
     
@@ -235,19 +241,21 @@ class LoginHelper {
         running = true
         task.resume()
         
-        while running && !failed {
-            //print("waiting for auth 2 response...")
-            //sleep(1)
+        var count = 0
+        while running && !failed && count < MAX_WAIT_FOR_RESPONSE {
+            print("waiting for token response...")
+            sleep(1)
+            count++
         }
         
-        if failed || errorOcurredIn(task.response){
+        if failed || errorOcurredIn(task.response) || count >= MAX_WAIT_FOR_RESPONSE{
             return (false, "Log in failed. Please try again.")
         }
         
         return (true, "200 OK")
     }
     
-    class func getAuthToken(username username: String, password: String) -> (success: Bool, tokenORerror: String) {
+    class func getAuthToken(username username: String, password: String) -> (success: Bool, error: String) {
 
         let loginResponse = loginRequest(username, password: password)
         if !loginResponse.success {
@@ -275,7 +283,6 @@ class LoginHelper {
             return (false, tokenResponse.error)
         }
 
-        return (true, accessToken)
+        return (true, "200 OK")
     }
-
 }
