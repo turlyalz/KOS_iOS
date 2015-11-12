@@ -10,7 +10,7 @@ import UIKit
 
 class SideMenuController: UITableViewController {
     
-    private let menus = ["Timetable", "Semester", "Exams", "Results", "Search People", "LogOut"]
+    private let menus = ["Username", "Timetable", "Semester", "Exams", "Results", "Search People", "LogOut"]
     
     private let BGHeaderColor = UIColor(red: 80/255.0, green: 85/255.0, blue: 90/255.0, alpha: 1)
     
@@ -31,17 +31,20 @@ class SideMenuController: UITableViewController {
         return menus.count
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(menus[indexPath.row], forIndexPath: indexPath)
         
         if indexPath.row == 0 {
-            cell.frame.size.height -= 120
+            let label: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 50))
+            let fullName = KOSAPI.getFullName()
+            label.text = fullName.firstName + " " + fullName.lastName
+            label.textColor = .whiteColor()
+            
+            cell.addSubview(label)
         }
         
         cell.separatorInset = UIEdgeInsetsZero
         cell.layoutMargins = UIEdgeInsetsZero
-
         return cell
     }
     
@@ -62,14 +65,14 @@ class SideMenuController: UITableViewController {
         view.userInteractionEnabled = false
     }
     
+    func logOutHandler(action: UIAlertAction) -> Void {
+        self.performSegueWithIdentifier("logOut", sender: self)
+        KOSAPI.deletePerson()
+    }
+    
     func logOutMessage(indexPath: NSIndexPath) {
         let alertLogOut = UIAlertController(title: "", message: "Are you sure you want to log out?", preferredStyle: UIAlertControllerStyle.Alert)
-        alertLogOut.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default,
-            handler: {
-                action in
-                self.performSegueWithIdentifier("logOut", sender: self)
-            }
-        ))
+        alertLogOut.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: logOutHandler))
         alertLogOut.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default,
             handler: {
                 action in

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftyJSON
+//import SwiftyJSON
 
 class LoginHelper {
     
@@ -16,17 +16,11 @@ class LoginHelper {
     private static let baseURL = "https://auth.fit.cvut.cz"
     private static let login = "/oauth/login.do?"
     private static let authorize = "/oauth/oauth/authorize"
-    private static let token = "/oauth/oauth/token";
-    
-    private static let appID = "659b7e1d-e8c2-4781-aefa-a8d6fff099db"
-    //private static let appID = "54a10db9-e1c5-4536-8fde-13ed7caf755a"
-    
-    private static let appSecret = "QZIGl69NMif1l5GTy1TuuBWm8UiBXNxz"
-    //private static let appSecret = "VJzeo8yYQOjLG4jHiBqstkDvHflWKjuA"
-    
-    //private static let redirectURI = "http://client.kosandroid.cz/auth/response"
+    private static let token = "/oauth/oauth/token"
     private static let redirectURI = "http://client.kosios.cz/auth/response"
     
+    private static let appID = "659b7e1d-e8c2-4781-aefa-a8d6fff099db"
+    private static let appSecret = "QZIGl69NMif1l5GTy1TuuBWm8UiBXNxz"
     
     static var accessToken = ""
     

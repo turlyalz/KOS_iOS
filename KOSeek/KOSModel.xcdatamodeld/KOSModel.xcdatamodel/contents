@@ -9,6 +9,6 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Person" positionX="-1305" positionY="-684" width="128" height="135"/>
+        <element name="Person" positionX="-1305" positionY="-648" width="128" height="133"/>
     </elements>
 </model>
