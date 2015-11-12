@@ -14,17 +14,18 @@ class LoginHelper {
     static let MAX_WAIT_FOR_RESPONSE = 10
     
     private static let baseURL = "https://auth.fit.cvut.cz"
-    private static let login = "/login.do?"
-    private static let authorize = "/oauth/authorize"
-    private static let token = "/oauth/token";
+    private static let login = "/oauth/login.do?"
+    private static let authorize = "/oauth/oauth/authorize"
+    private static let token = "/oauth/oauth/token";
     
-    //private static let appID = "33830907-8eb1-4bf4-9e92-0d149ccb8dee"
-    private static let appID = "54a10db9-e1c5-4536-8fde-13ed7caf755a"
+    private static let appID = "659b7e1d-e8c2-4781-aefa-a8d6fff099db"
+    //private static let appID = "54a10db9-e1c5-4536-8fde-13ed7caf755a"
     
     private static let appSecret = "QZIGl69NMif1l5GTy1TuuBWm8UiBXNxz"
+    //private static let appSecret = "VJzeo8yYQOjLG4jHiBqstkDvHflWKjuA"
     
-    private static let redirectURI = "http://client.kosandroid.cz/auth/response"
-    //private static let redirectURI = "http://client.kosios.cz/response"
+    //private static let redirectURI = "http://client.kosandroid.cz/auth/response"
+    private static let redirectURI = "http://client.kosios.cz/auth/response"
     
     
     static var accessToken = ""
@@ -189,19 +190,21 @@ class LoginHelper {
                 print("Code: \(code)")
             }
             
+            print("Response = \(response)")
+            print("Change run")
             running = false
         }
         running = true
         task.resume()
         
-        var count = 0
-        while running && !failed && count < MAX_WAIT_FOR_RESPONSE {
+        //var count = 0
+        while running && !failed {// && count < MAX_WAIT_FOR_RESPONSE {
             print("waiting for code response...")
             sleep(1)
-            count++
+            //count++
         }
         
-        if failed || errorOcurredIn(task.response) || count >= MAX_WAIT_FOR_RESPONSE{
+        if failed || errorOcurredIn(task.response) {//|| count >= MAX_WAIT_FOR_RESPONSE{
             return (false, "Log in failed. Please try again.")
         }
     
@@ -212,9 +215,9 @@ class LoginHelper {
         var running = false
         var failed = false
         
-        let request = NSMutableURLRequest(URL: NSURL(string: baseURL + token + "?grant_type=authorization_code&client_id=" + appID + "&client_secret=" + appSecret + "&redirect_uri=" + redirectURI + "&code=" + code)!)
+        let request = NSMutableURLRequest(URL: NSURL(string: baseURL + token + "?code=" + code + "&grant_type=authorization_code&client_id=" + appID + "&client_secret=" + appSecret + "&redirect_uri=" + redirectURI)!)
         
-        request.addValue("Basic NTRhMTBkYjktZTFjNS00NTM2LThmZGUtMTNlZDdjYWY3NTVhOlZKemVvOHlZUU9qTEc0akhpQnFzdGtEdkhmbFdLanVB", forHTTPHeaderField: "Authorization")
+        request.addValue("Basic NjU5YjdlMWQtZThjMi00NzgxLWFlZmEtYThkNmZmZjA5OWRiOlFaSUdsNjlOTWlmMWw1R1R5MVR1dUJXbThVaUJYTnh6", forHTTPHeaderField: "Authorization")
         request.HTTPMethod = "POST"
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
