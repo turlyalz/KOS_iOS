@@ -10,6 +10,8 @@ import UIKit
 
 class ProfileViewController: UITableViewController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    var profileInfo: (names: [String], values: [String]) = ([],[])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +25,13 @@ class ProfileViewController: UITableViewController {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        
+        if let username = SavedVariables.username {
+            profileInfo = DatabaseHelper.getProfileContent(username)
+            if profileInfo.values.count >= 2 {
+                self.title = profileInfo.values[0] + " " + profileInfo.values[1]
+            }
         }
     }
     
@@ -39,23 +48,31 @@ class ProfileViewController: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return profileInfo.values.count-2
     }
     
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-    
-    // Configure the cell...
-    
-    return cell
+        let cell = UITableViewCell()
+        
+        let label: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 50))
+        label.text = profileInfo.names[indexPath.row+2] + ": " + profileInfo.values[indexPath.row+2]
+        
+        label.textColor = .blackColor()
+        
+        cell.addSubview(label)
+        
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsetsZero
+
+        return cell
     }
-    */
+    
     
     /*
     // Override to support conditional editing of the table view.

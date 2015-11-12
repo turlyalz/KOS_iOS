@@ -36,8 +36,12 @@ class SideMenuController: UITableViewController {
         
         if indexPath.row == 0 {
             let label: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 50))
-            let fullName = KOSAPI.getFullName()
-            label.text = fullName.firstName + " " + fullName.lastName
+            
+            if let username = SavedVariables.username {
+                let dbrequest = DatabaseHelper.getProfileContent(username)
+                label.text = dbrequest.values[0] + " " + dbrequest.values[1]
+            }
+
             label.textColor = .whiteColor()
             
             cell.addSubview(label)
@@ -67,7 +71,8 @@ class SideMenuController: UITableViewController {
     
     func logOutHandler(action: UIAlertAction) -> Void {
         self.performSegueWithIdentifier("logOut", sender: self)
-        KOSAPI.deletePerson()
+        DatabaseHelper.deletePerson()
+        SavedVariables.username = nil
     }
     
     func logOutMessage(indexPath: NSIndexPath) {

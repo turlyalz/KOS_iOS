@@ -185,21 +185,14 @@
             </objects>
             <point key="canvasLocation" x="1275" y="266"/>
         </scene>
-        <!--Timetable-->
+        <!--Profile-->
         <scene sceneID="UrG-As-TLC">
             <objects>
-                <tableViewController id="iMi-Rf-4hl" customClass="TimetableViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wbB-bC-lL8">
+                <tableViewController id="iMi-Rf-4hl" customClass="ProfileViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wbB-bC-lL8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96600323135343269" green="1" blue="0.98118197717177402" alpha="1" colorSpace="calibratedRGB"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There will be your timetable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rtd-Iv-EFQ">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="iMi-Rf-4hl" id="zgz-PC-XHx"/>
@@ -207,7 +200,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Timetable" id="8M9-o8-npt">
+                    <navigationItem key="navigationItem" title="Profile" id="8M9-o8-npt">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="XIA-Cg-j3G">
                             <color key="tintColor" red="0.22352941179999999" green="0.23921568630000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -219,7 +212,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JjQ-Kr-oDL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1996" y="2188"/>
+            <point key="canvasLocation" x="1275" y="2188"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DKi-1O-Q2L">
@@ -230,7 +223,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="iMi-Rf-4hl" kind="relationship" relationship="rootViewController" id="Qwg-Zi-kDy"/>
+                        <segue destination="odL-05-Xpn" kind="relationship" relationship="rootViewController" id="HXq-Iv-bJe"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fff-7D-NOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -418,13 +411,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There will be your actual semester" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2sw-Kz-YsV">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="7Gy-57-lMz" id="D4l-ol-nwA"/>
@@ -623,15 +609,15 @@
             </objects>
             <point key="canvasLocation" x="2717" y="1355"/>
         </scene>
-        <!--Profile-->
+        <!--Timetable-->
         <scene sceneID="E5K-cP-kps">
             <objects>
-                <tableViewController id="odL-05-Xpn" customClass="ProfileViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="odL-05-Xpn" customClass="TimetableViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="AGV-v7-CuE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.9660032314" green="1" blue="0.9811819772" alpha="1" colorSpace="calibratedRGB"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There will be your profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="stt-iK-1iC">
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There will be your timetable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="stt-iK-1iC">
                             <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -645,7 +631,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Profile" id="lgY-Ey-9nm">
+                    <navigationItem key="navigationItem" title="Timetable" id="lgY-Ey-9nm">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="PFP-Xr-cqV">
                             <color key="tintColor" red="0.22352941179999999" green="0.23921568630000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -657,7 +643,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wVt-zq-Uar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1275" y="2188"/>
+            <point key="canvasLocation" x="1996" y="2188"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AOu-IR-KSk">
@@ -668,7 +654,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="odL-05-Xpn" kind="relationship" relationship="rootViewController" id="jwW-uq-8du"/>
+                        <segue destination="iMi-Rf-4hl" kind="relationship" relationship="rootViewController" id="twj-Rh-vXz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Db-n9-SUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -687,11 +673,11 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9gN-ve-Bh1"/>
-        <segue reference="gqg-lU-my3"/>
+        <segue reference="IJA-97-2dF"/>
+        <segue reference="5X7-8d-YpJ"/>
+        <segue reference="9HU-us-G6V"/>
+        <segue reference="FBU-Bn-6l6"/>
+        <segue reference="vwg-3F-iqu"/>
         <segue reference="DYU-8V-Yjc"/>
-        <segue reference="oQ7-TJ-uoE"/>
-        <segue reference="pn5-gg-Cwc"/>
-        <segue reference="Q2c-SP-SKF"/>
-        <segue reference="PeF-pM-b66"/>
     </inferredMetricsTieBreakers>
 </document>
