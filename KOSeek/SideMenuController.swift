@@ -38,8 +38,10 @@ class SideMenuController: UITableViewController {
             let label: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 50))
             
             if let username = SavedVariables.username {
-                let dbrequest = DatabaseHelper.getProfileContent(username)
-                label.text = dbrequest.values[0] + " " + dbrequest.values[1]
+                let response = DatabaseHelper.getProfileContent(username)
+                if response.values.count >= 2 {
+                    label.text = response.values[0] + " " + response.values[1]
+                }
             }
 
             label.textColor = .whiteColor()
@@ -71,7 +73,7 @@ class SideMenuController: UITableViewController {
     
     func logOutHandler(action: UIAlertAction) -> Void {
         self.performSegueWithIdentifier("logOut", sender: self)
-        DatabaseHelper.deletePerson()
+        DatabaseHelper.delete()
         SavedVariables.username = nil
     }
     

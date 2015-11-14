@@ -8,7 +8,11 @@
         <attribute name="personalNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="SavedVariables" syncable="YES">
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Person" positionX="-1305" positionY="-648" width="128" height="133"/>
+        <element name="SavedVariables" positionX="-1512" positionY="-549" width="128" height="58"/>
     </elements>
 </model>

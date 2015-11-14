@@ -16,7 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        if let username = DatabaseHelper.getSavedVariables() {
+            SavedVariables.username = username
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let exampleViewController: SWRevealViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SWRevealViewController") as! SWRevealViewController
+            
+            self.window?.rootViewController = exampleViewController
+            
+            self.window?.makeKeyAndVisible()
+
+        }
+        
         return true
     }
     

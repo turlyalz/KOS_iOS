@@ -25,13 +25,12 @@ class DatabaseHelper {
             user.setValue(un, forKey: "username")
             user.setValue(em, forKey: "email")
             user.setValue(pn, forKey: "personalNumber")
-        }
-        
-        do {
-            try context.save()
-        }
-        catch let error as NSError {
-            debugPrint(error)
+            do {
+                try context.save()
+            }
+            catch let error as NSError {
+                debugPrint(error)
+            }
         }
     }
     
@@ -57,7 +56,12 @@ class DatabaseHelper {
         return ([], [])
     }
     
-    class func deletePerson() {
+    class func delete() {
+        deletePerson()
+        deleteSavedVariables()
+    }
+    
+    private class func deletePerson() {
         let coord = appDel.persistentStoreCoordinator
         
         let fetchRequest = NSFetchRequest(entityName: "Person")
@@ -66,6 +70,48 @@ class DatabaseHelper {
         do {
             try coord.executeRequest(deleteRequest, withContext: context)
         } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
+    
+    private class func deleteSavedVariables() {
+        let coord = appDel.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: "SavedVariables")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
+    
+    class func getSavedVariables() -> String? {
+        let request = NSFetchRequest(entityName: "SavedVariables")
+        request.returnsObjectsAsFaults = false
+        do {
+            let results = try context.executeFetchRequest(request)
+            if results.count > 0 {
+                let res = results[0] as! NSManagedObject
+                let username = res.valueForKey("username") as! String
+                return username
+            }
+        }
+        catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        return nil
+    }
+    
+    class func setSavedVariables(username: String) {
+        let SV = NSEntityDescription.insertNewObjectForEntityForName("SavedVariables", inManagedObjectContext: context)
+        SV.setValue(username, forKey: "username")
+        do {
+            try context.save()
+        }
+        catch let error as NSError {
             debugPrint(error)
         }
     }
