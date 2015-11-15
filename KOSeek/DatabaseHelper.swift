@@ -57,29 +57,15 @@ class DatabaseHelper {
     }
     
     class func delete() {
-        deletePerson()
-        deleteSavedVariables()
+        delete("Person")
+        delete("Semester")
+        delete("SavedVariables")
     }
     
-    private class func deletePerson() {
+    private class func delete(entity: String) {
         let coord = appDel.persistentStoreCoordinator
-        
-        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchRequest = NSFetchRequest(entityName: entity)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-    }
-    
-    private class func deleteSavedVariables() {
-        let coord = appDel.persistentStoreCoordinator
-        
-        let fetchRequest = NSFetchRequest(entityName: "SavedVariables")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
         do {
             try coord.executeRequest(deleteRequest, withContext: context)
         } catch let error as NSError {
@@ -116,22 +102,23 @@ class DatabaseHelper {
         }
     }
     
-    class func setSemesterContent(id: String?, name: String?) {
-        if let _ = id, _ = name {
-            let semester = NSEntityDescription.insertNewObjectForEntityForName("Semester", inManagedObjectContext: context)
+    class func setSemesterContent(id: String?, name: String?, subjectNumber: NSNumber?, subjects: NSSet?) {
+        if let _ = id, _ = name, _ = subjectNumber, _ = subjects {
+            let semester = NSEntityDescription.insertNewObjectForEntityForName("Semester", inManagedObjectContext: context) as! Semester
+            semester.subjects = subjects
             semester.setValue(id, forKey: "id")
             semester.setValue(name, forKey: "name")
+            semester.setValue(subjectNumber, forKey: "subjectNumber")
             do {
                 try context.save()
             }
             catch let error as NSError {
                 debugPrint(error)
             }
-
         }
     }
     
-    class func getSemesterContent(id: String) -> String?  {
+    class func getSemesterContent(id: String) -> SemesterContent  {
         let request = NSFetchRequest(entityName: "Semester")
         request.returnsObjectsAsFaults = false
         request.predicate = NSPredicate(format: "id == %@", id)
@@ -139,15 +126,17 @@ class DatabaseHelper {
             let results = try context.executeFetchRequest(request)
             if results.count > 0 {
                 let res = results[0] as! NSManagedObject
-                let name = res.valueForKey("name") as! String
-                return name
+                let name = res.valueForKey("name") as! String?
+                let subjectNumber = res.valueForKey("subjectNumber") as! NSNumber?
+                let subjects = res.valueForKey("subjects") as! NSSet?
+                return (name: name, subjectNumber: subjectNumber, subjects: subjects)
             }
         }
         catch let error as NSError {
             debugPrint(error)
         }
         
-        return nil
+        return (name: nil, subjectNumber: 0, subjects: nil)
     }
     
     

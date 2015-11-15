@@ -93,10 +93,40 @@ class KOSAPI {
             
             if let uData = data {
                 let xml = SWXMLHash.parse(uData)
-                let id = xml["atom:feed"]["atom:entry"][0]["atom:content"]["semester"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("semesters/", withString: "")
+                let id = String(xml["atom:feed"]["atom:entry"][0]["atom:content"]["semester"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("semesters/", withString: "").characters.dropLast())
                 SavedVariables.currentSemester = id
                 let name = xml["atom:feed"]["atom:entry"][0]["atom:content"]["semester"].element?.text
-                DatabaseHelper.setSemesterContent(id, name: name)
+                let subjectNumberStr = xml["atom:feed"]["osearch:totalResults"].element?.text
+                var subjectsArray: [Subject] = []
+                var subjects: NSSet = NSSet()
+                var subjectNumber: NSNumber = NSNumber(integer: 0)
+                if let subN = subjectNumberStr {
+                    if let intSN = Int(subN){
+                        subjectNumber = NSNumber(integer: intSN)
+                        for index in 0...intSN-1 {
+                            let completed = xml["atom:feed"]["atom:entry"][index]["atom:content"]["completed"].element?.text
+                            let subjectName = xml["atom:feed"]["atom:entry"][index]["atom:content"]["course"].element?.text
+                            let code = String(xml["atom:feed"]["atom:entry"][index]["atom:content"]["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").characters.dropLast())
+                            let entityDescription = NSEntityDescription.entityForName("Subject", inManagedObjectContext: context)
+                            let subject = Subject(entity: entityDescription!, insertIntoManagedObjectContext: context)
+                            if completed == "true" {
+                                subject.completed = 1
+                            }
+                            else {
+                                subject.completed = 0
+                            }
+                            subject.name = subjectName
+                            subject.code = code
+                            //subject.semester = id
+                            print("Subject: \(subject)")
+                            subjectsArray.append(subject)
+                        }
+                        subjects = subjects.setByAddingObjectsFromArray(subjectsArray)
+                        //print("subjects: \(subjects)")
+                    }
+                }
+                
+                DatabaseHelper.setSemesterContent(id, name: name, subjectNumber: subjectNumber, subjects: subjects)
             }
             running = false
         }

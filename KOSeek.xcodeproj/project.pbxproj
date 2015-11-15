@@ -32,6 +32,10 @@
 		9C9E50231BE12C50009B6CB1 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */; };
 		9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */; };
 		9CDCD8601BDCEE0C0040A59A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDCD85F1BDCEE0C0040A59A /* MainViewController.swift */; };
+		9CE171651BF8A48900C56D2F /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */; };
+		9CE171661BF8A48900C56D2F /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171621BF8A48900C56D2F /* Subject.swift */; };
+		9CE171671BF8A48900C56D2F /* Semester+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171631BF8A48900C56D2F /* Semester+CoreDataProperties.swift */; };
+		9CE171681BF8A48900C56D2F /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171641BF8A48900C56D2F /* Semester.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +102,10 @@
 		9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9CDCD85F1BDCEE0C0040A59A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9CE171621BF8A48900C56D2F /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		9CE171631BF8A48900C56D2F /* Semester+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Semester+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9CE171641BF8A48900C56D2F /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +240,10 @@
 			isa = PBXGroup;
 			children = (
 				9C86AE821BF3B7870096C72E /* KOSModel.xcdatamodeld */,
+				9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */,
+				9CE171621BF8A48900C56D2F /* Subject.swift */,
+				9CE171631BF8A48900C56D2F /* Semester+CoreDataProperties.swift */,
+				9CE171641BF8A48900C56D2F /* Semester.swift */,
 			);
 			name = DataLayer;
 			sourceTree = "<group>";
@@ -370,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C9E50211BE12C2E009B6CB1 /* ExamsViewController.swift in Sources */,
+				9CE171681BF8A48900C56D2F /* Semester.swift in Sources */,
 				9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */,
 				9C2D987D1BDFA37A00CF5A11 /* SWRevealViewController.m in Sources */,
 				9C8A49B51BE011C7009ECFCA /* SideMenuController.swift in Sources */,
@@ -381,9 +394,12 @@
 				9C86AE841BF3B7870096C72E /* KOSModel.xcdatamodeld in Sources */,
 				9C2272901BD6517B00DE7F15 /* LoginViewController.swift in Sources */,
 				9C8ED07A1BE3D5A200611CBF /* SavedVariables.swift in Sources */,
+				9CE171661BF8A48900C56D2F /* Subject.swift in Sources */,
 				9C31E5951BDE4B7C004FF6CB /* LoginHelper.swift in Sources */,
 				9C86AE891BF3F37C0096C72E /* SwiftyJSON.swift in Sources */,
+				9CE171671BF8A48900C56D2F /* Semester+CoreDataProperties.swift in Sources */,
 				9CDCD8601BDCEE0C0040A59A /* MainViewController.swift in Sources */,
+				9CE171651BF8A48900C56D2F /* Subject+CoreDataProperties.swift in Sources */,
 				9C43A1041BF7F67A0018ABB0 /* Constants.swift in Sources */,
 				9C28FEAB1BDFA51600D7DE04 /* SemesterViewController.swift in Sources */,
 				9C86AE8B1BF3F3CC0096C72E /* SWXMLHash.swift in Sources */,

@@ -11,6 +11,7 @@ import UIKit
 class SemesterViewController: UITableViewController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    var semesterContent: SemesterContent
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,9 @@ class SemesterViewController: UITableViewController {
         }
         
         if let currentSemester = SavedVariables.currentSemester {
-            let name = DatabaseHelper.getSemesterContent(currentSemester)
-            self.title = name
+            semesterContent = DatabaseHelper.getSemesterContent(currentSemester)
+            self.title = semesterContent.name
+            print("response: \(semesterContent)")
         }
     }
     
@@ -37,7 +39,7 @@ class SemesterViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-/*
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
@@ -47,7 +49,7 @@ class SemesterViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
-*/
+
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
