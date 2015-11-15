@@ -9,6 +9,7 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="SavedVariables" syncable="YES">
+        <attribute name="currentSemester" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Semester" representedClassName=".Semester" syncable="YES">
@@ -25,7 +26,7 @@
     </entity>
     <elements>
         <element name="Person" positionX="-1323" positionY="-648" width="128" height="133"/>
-        <element name="SavedVariables" positionX="-1611" positionY="-549" width="128" height="58"/>
+        <element name="SavedVariables" positionX="-1611" positionY="-549" width="128" height="75"/>
         <element name="Semester" positionX="-1125" positionY="-648" width="128" height="103"/>
         <element name="Subject" positionX="-929" positionY="-648" width="128" height="103"/>
     </elements>

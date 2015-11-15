@@ -16,9 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        if let username = DatabaseHelper.getSavedVariables() {
+        let response = DatabaseHelper.getSavedVariables()
+        if let username = response.username, currentSemester = response.currentSemester {
             SavedVariables.username = username
+            SavedVariables.currentSemester = currentSemester
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let exampleViewController: SWRevealViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SWRevealViewController") as! SWRevealViewController

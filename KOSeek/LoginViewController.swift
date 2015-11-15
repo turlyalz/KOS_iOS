@@ -33,7 +33,6 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(sender: UIButton) {
         SavedVariables.username = usernameField.text!
-        DatabaseHelper.setSavedVariables(SavedVariables.username!)
         let response = LoginHelper.getAuthToken(username: SavedVariables.username!, password: passwordField.text!)
        
         if response.success {

@@ -95,6 +95,9 @@ class KOSAPI {
                 let xml = SWXMLHash.parse(uData)
                 let id = String(xml["atom:feed"]["atom:entry"][0]["atom:content"]["semester"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("semesters/", withString: "").characters.dropLast())
                 SavedVariables.currentSemester = id
+                if let username = SavedVariables.username, currentSemester = SavedVariables.currentSemester {
+                    DatabaseHelper.setSavedVariables(username, currentSemester: currentSemester)
+                }
                 let name = xml["atom:feed"]["atom:entry"][0]["atom:content"]["semester"].element?.text
                 let subjectNumberStr = xml["atom:feed"]["osearch:totalResults"].element?.text
                 var subjectsArray: [Subject] = []
@@ -106,7 +109,7 @@ class KOSAPI {
                         for index in 0...intSN-1 {
                             let completed = xml["atom:feed"]["atom:entry"][index]["atom:content"]["completed"].element?.text
                             let subjectName = xml["atom:feed"]["atom:entry"][index]["atom:content"]["course"].element?.text
-                            let code = String(xml["atom:feed"]["atom:entry"][index]["atom:content"]["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").characters.dropLast())
+                            let code = xml["atom:feed"]["atom:entry"][index]["atom:content"]["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
                             let entityDescription = NSEntityDescription.entityForName("Subject", inManagedObjectContext: context)
                             let subject = Subject(entity: entityDescription!, insertIntoManagedObjectContext: context)
                             if completed == "true" {

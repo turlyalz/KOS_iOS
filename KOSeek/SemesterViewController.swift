@@ -12,6 +12,7 @@ class SemesterViewController: UITableViewController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     var semesterContent: SemesterContent
+    var array: Array<Subject> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,8 @@ class SemesterViewController: UITableViewController {
             semesterContent = DatabaseHelper.getSemesterContent(currentSemester)
             self.title = semesterContent.name
             print("response: \(semesterContent)")
+            array = (semesterContent.subjects?.allObjects)! as! Array<Subject>
+            array.sortInPlace({ $0.0.code < $0.1.code })
         }
     }
     
@@ -42,23 +45,36 @@ class SemesterViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        if let subjectNumber = semesterContent.subjectNumber {
+            return Int(subjectNumber)
+        }
         return 0
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
+        let cell = UITableViewCell()
+        let subject = array[indexPath.row]
+        
+        let subjectCodeLabel: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 60, height: 50))
+        subjectCodeLabel.text = subject.code
+        subjectCodeLabel.textColor = .blackColor()
+        cell.addSubview(subjectCodeLabel)
+        
+        let subjectNameLabel: UILabel = UILabel(frame: CGRect(x: 95, y: 0, width: 250, height: 50))
+        subjectNameLabel.text = subject.name
+        subjectNameLabel.textColor = .blackColor()
+        cell.addSubview(subjectNameLabel)
+        
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.layoutMargins = UIEdgeInsetsZero
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

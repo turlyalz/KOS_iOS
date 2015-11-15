@@ -73,7 +73,7 @@ class DatabaseHelper {
         }
     }
     
-    class func getSavedVariables() -> String? {
+    class func getSavedVariables() -> SavedVariablesContent {
         let request = NSFetchRequest(entityName: "SavedVariables")
         request.returnsObjectsAsFaults = false
         do {
@@ -81,19 +81,21 @@ class DatabaseHelper {
             if results.count > 0 {
                 let res = results[0] as! NSManagedObject
                 let username = res.valueForKey("username") as! String
-                return username
+                let currentSemester = res.valueForKey("currentSemester") as! String
+                return (username, currentSemester: currentSemester)
             }
         }
         catch let error as NSError {
             debugPrint(error)
         }
         
-        return nil
+        return (nil, nil)
     }
     
-    class func setSavedVariables(username: String) {
+    class func setSavedVariables(username: String, currentSemester: String) {
         let SV = NSEntityDescription.insertNewObjectForEntityForName("SavedVariables", inManagedObjectContext: context)
         SV.setValue(username, forKey: "username")
+        SV.setValue(currentSemester, forKey: "currentSemester")
         do {
             try context.save()
         }

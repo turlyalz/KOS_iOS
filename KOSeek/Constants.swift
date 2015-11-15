@@ -12,6 +12,7 @@ let MAX_WAIT_FOR_RESPONSE = 10
 
 typealias ProfileContent = (names: [String], values: [String])
 typealias SemesterContent = (name: String?, subjectNumber: NSNumber?, subjects: NSSet?)
+typealias SavedVariablesContent = (username: String?, currentSemester: String?)
 
 func errorOcurredIn(response: NSURLResponse?) -> Bool {
     if let httpResponse = response as? NSHTTPURLResponse {
