@@ -11,13 +11,22 @@
     <entity name="SavedVariables" syncable="YES">
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Semester" syncable="YES">
+    <entity name="Semester" representedClassName=".Semester" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subjectNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="subjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" inverseName="semester" inverseEntity="Subject" syncable="YES"/>
+    </entity>
+    <entity name="Subject" representedClassName=".Subject" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="completed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="semester" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Semester" inverseName="subjects" inverseEntity="Semester" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Person" positionX="-1305" positionY="-648" width="128" height="133"/>
-        <element name="SavedVariables" positionX="-1512" positionY="-549" width="128" height="58"/>
-        <element name="Semester" positionX="-1116" positionY="-648" width="128" height="73"/>
+        <element name="Person" positionX="-1323" positionY="-648" width="128" height="133"/>
+        <element name="SavedVariables" positionX="-1611" positionY="-549" width="128" height="58"/>
+        <element name="Semester" positionX="-1125" positionY="-648" width="128" height="103"/>
+        <element name="Subject" positionX="-929" positionY="-648" width="128" height="103"/>
     </elements>
 </model>
