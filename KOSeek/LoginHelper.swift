@@ -10,9 +10,7 @@ import UIKit
 //import SwiftyJSON
 
 class LoginHelper {
-    
-    static let MAX_WAIT_FOR_RESPONSE = 10
-    
+        
     private static let baseURL = "https://auth.fit.cvut.cz"
     private static let login = "/oauth/login.do?"
     private static let authorize = "/oauth/oauth/authorize"
@@ -25,22 +23,6 @@ class LoginHelper {
     static var accessToken = ""
     
     private init(){ }
-    
-    class func errorOcurredIn(response: NSURLResponse?) -> Bool {
-        if let httpResponse = response as? NSHTTPURLResponse {
-            if let resp = httpResponse.URL {
-                let respStr = String(resp)
-                if respStr.rangeOfString("authentication_error=true") != nil {
-                    return true
-                }
-            }
-            if httpResponse.statusCode != 200 {
-                print("Unexpected status code: \(httpResponse.statusCode)")
-                return true
-            }
-        }
-        return false
-    }
     
     private class func loginRequest(username: String, password: String) -> (success: Bool, error: String) {
         if username == "" {
@@ -191,14 +173,14 @@ class LoginHelper {
         running = true
         task.resume()
         
-        //var count = 0
-        while running && !failed {// && count < MAX_WAIT_FOR_RESPONSE {
+        var count = 0
+        while running && !failed && count < MAX_WAIT_FOR_RESPONSE {
             print("waiting for code response...")
             sleep(1)
-            //count++
+            count++
         }
         
-        if failed || errorOcurredIn(task.response) {//|| count >= MAX_WAIT_FOR_RESPONSE{
+        if failed || errorOcurredIn(task.response) || count >= MAX_WAIT_FOR_RESPONSE{
             return (false, "Log in failed. Please try again.")
         }
     

@@ -19,12 +19,12 @@ class DatabaseHelper {
 
     class func setProfileContent(firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?) {
         let user = NSEntityDescription.insertNewObjectForEntityForName("Person", inManagedObjectContext: context)
-        if let fn = firstName, ln = lastName, un = username, em = email, pn = personalNumber {
-            user.setValue(fn, forKey: "firstName")
-            user.setValue(ln, forKey: "lastName")
-            user.setValue(un, forKey: "username")
-            user.setValue(em, forKey: "email")
-            user.setValue(pn, forKey: "personalNumber")
+        if let _ = firstName, _ = lastName, _ = username, _ = email, _ = personalNumber {
+            user.setValue(firstName, forKey: "firstName")
+            user.setValue(lastName, forKey: "lastName")
+            user.setValue(username, forKey: "username")
+            user.setValue(email, forKey: "email")
+            user.setValue(personalNumber, forKey: "personalNumber")
             do {
                 try context.save()
             }
@@ -34,7 +34,7 @@ class DatabaseHelper {
         }
     }
     
-    class func getProfileContent(username: String) -> (names: [String], values: [String]) {
+    class func getProfileContent(username: String) -> ProfileContent {
         let request = NSFetchRequest(entityName: "Person")
         request.returnsObjectsAsFaults = false
         request.predicate = NSPredicate(format: "username == %@", username)
@@ -115,6 +115,41 @@ class DatabaseHelper {
             debugPrint(error)
         }
     }
+    
+    class func setSemesterContent(id: String?, name: String?) {
+        if let _ = id, _ = name {
+            let semester = NSEntityDescription.insertNewObjectForEntityForName("Semester", inManagedObjectContext: context)
+            semester.setValue(id, forKey: "id")
+            semester.setValue(name, forKey: "name")
+            do {
+                try context.save()
+            }
+            catch let error as NSError {
+                debugPrint(error)
+            }
+
+        }
+    }
+    
+    class func getSemesterContent(id: String) -> String?  {
+        let request = NSFetchRequest(entityName: "Semester")
+        request.returnsObjectsAsFaults = false
+        request.predicate = NSPredicate(format: "id == %@", id)
+        do {
+            let results = try context.executeFetchRequest(request)
+            if results.count > 0 {
+                let res = results[0] as! NSManagedObject
+                let name = res.valueForKey("name") as! String
+                return name
+            }
+        }
+        catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        return nil
+    }
+    
     
 }
 

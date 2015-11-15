@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileViewController: UITableViewController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    var profileInfo: (names: [String], values: [String]) = ([],[])
+    var profileInfo: ProfileContent = ([],[])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,10 @@ class ProfileViewController: UITableViewController {
         let cell = UITableViewCell()
         
         let label: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 50))
-        label.text = profileInfo.names[indexPath.row+2] + ": " + profileInfo.values[indexPath.row+2]
+        
+        if profileInfo.values.count >= 4 {
+            label.text = profileInfo.names[indexPath.row+2] + ": " + profileInfo.values[indexPath.row+2]
+        }
         
         label.textColor = .blackColor()
         

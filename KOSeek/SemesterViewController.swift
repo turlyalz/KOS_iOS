@@ -20,6 +20,11 @@ class SemesterViewController: UITableViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        if let currentSemester = SavedVariables.currentSemester {
+            let name = DatabaseHelper.getSemesterContent(currentSemester)
+            self.title = name
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
