@@ -14,6 +14,12 @@ typealias ProfileContent = (names: [String], values: [String])
 typealias SemesterContent = (name: String?, subjectNumber: NSNumber?, subjects: NSSet?)
 typealias SavedVariablesContent = (username: String?, currentSemester: String?)
 
+let screenSize: CGRect = UIScreen.mainScreen().bounds
+
+let SemesterScreen: (subjectNameWidth: CGFloat, subjectCodeWidth: CGFloat, subjectCreditWidth: CGFloat, height: CGFloat) =
+(subjectNameWidth: screenSize.width*19/30, subjectCodeWidth: screenSize.width/5, subjectCreditWidth: screenSize.width/6, height: 50)
+
+
 func errorOcurredIn(response: NSURLResponse?) -> Bool {
     if let httpResponse = response as? NSHTTPURLResponse {
         if let resp = httpResponse.URL {

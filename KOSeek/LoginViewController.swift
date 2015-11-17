@@ -32,15 +32,17 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButton(sender: UIButton) {
+        if usernameField.text == "" {
+            loginFailedMessage("Username cannot be empty!")
+            return
+        }
+        if passwordField.text == "" {
+            loginFailedMessage("Password cannot be empty!")
+            return
+        }
         SavedVariables.username = usernameField.text!
-        let response = LoginHelper.getAuthToken(username: SavedVariables.username!, password: passwordField.text!)
-       
-        if response.success {
-            self.performSegueWithIdentifier("successLoginSegue", sender: nil)
-        }
-        else {
-            loginFailedMessage(response.error)
-        }
+        SavedVariables.password = passwordField.text!
+        self.performSegueWithIdentifier("logInButtonSegue", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -21,7 +21,7 @@ class KOSAPI {
     
     class func downloadAllData() {
         downloadPersonInfo()
-        downloadSemester()
+        downloadCurrentSemester()
         onComplete()
     }
     
@@ -71,9 +71,9 @@ class KOSAPI {
         }
     }
     
-    private class func downloadSemester() {
+    private class func downloadCurrentSemester() {
         let extURL = "/students/" + SavedVariables.username!
-        let extensionURL =  extURL + "/enrolledCourses" + "?access_token=" + LoginHelper.accessToken + "&lang=cs"
+        let extensionURL =  extURL + "/enrolledCourses?access_token=" + LoginHelper.accessToken + "&lang=cs"
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + extensionURL)!)
         request.HTTPMethod = "GET"
         print("Request = \(request)")

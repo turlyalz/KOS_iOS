@@ -98,7 +98,7 @@
                     <connections>
                         <outlet property="passwordField" destination="qFj-w4-kLb" id="ACS-AM-hDV"/>
                         <outlet property="usernameField" destination="M35-tz-wLO" id="nsZ-Aw-c1o"/>
-                        <segue destination="Bzh-4d-5Or" kind="show" identifier="successLoginSegue" action="showDetailViewController:sender:" id="Esd-oP-sgf"/>
+                        <segue destination="Bzh-4d-5Or" kind="show" identifier="logInButtonSegue" action="showDetailViewController:sender:" id="Esd-oP-sgf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -138,7 +138,9 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="I0L-Jz-CJg" id="y3M-Fw-Zlu"/>
+                        <outlet property="statusLabel" destination="v2d-8j-Pki" id="mSq-44-BFm"/>
                         <segue destination="gCh-tP-J81" kind="show" identifier="downloadCompleteSegue" id="9gN-ve-Bh1"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="failedLoginSegue" id="tw2-9q-5dk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EYi-5J-87B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -672,12 +674,13 @@
         <image name="timetable" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="pn5-gg-Cwc"/>
         <segue reference="9gN-ve-Bh1"/>
-        <segue reference="IJA-97-2dF"/>
-        <segue reference="FBU-Bn-6l6"/>
-        <segue reference="vwg-3F-iqu"/>
-        <segue reference="9cO-8Q-G0I"/>
-        <segue reference="9HU-us-G6V"/>
-        <segue reference="5X7-8d-YpJ"/>
+        <segue reference="tw2-9q-5dk"/>
+        <segue reference="oQ7-TJ-uoE"/>
+        <segue reference="Q2c-SP-SKF"/>
+        <segue reference="gqg-lU-my3"/>
+        <segue reference="DYU-8V-Yjc"/>
+        <segue reference="PeF-pM-b66"/>
     </inferredMetricsTieBreakers>
 </document>

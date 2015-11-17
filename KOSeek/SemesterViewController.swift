@@ -38,13 +38,11 @@ class SemesterViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -59,14 +57,19 @@ class SemesterViewController: UITableViewController {
         let cell = UITableViewCell()
         let subject = array[indexPath.row]
         
-        let subjectCodeLabel: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 60, height: 50))
+        let subjectCodeLabel: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: SemesterScreen.subjectCodeWidth, height: 50))
         subjectCodeLabel.text = subject.code
+        subjectCodeLabel.numberOfLines = 2
+        subjectCodeLabel.font = .systemFontOfSize(14)
         subjectCodeLabel.textColor = .blackColor()
         cell.addSubview(subjectCodeLabel)
         
-        let subjectNameLabel: UILabel = UILabel(frame: CGRect(x: 95, y: 0, width: 250, height: 50))
+        let subjectNameLabel: UILabel = UILabel(frame: CGRect(x: SemesterScreen.subjectCodeWidth+10, y: 0, width: SemesterScreen.subjectNameWidth, height: 50))
         subjectNameLabel.text = subject.name
+        subjectNameLabel.numberOfLines = 2
+        subjectNameLabel.font = .systemFontOfSize(15)
         subjectNameLabel.textColor = .blackColor()
+        subjectNameLabel.textAlignment = NSTextAlignment.Center
         cell.addSubview(subjectNameLabel)
         
         cell.separatorInset = UIEdgeInsetsZero
@@ -75,14 +78,16 @@ class SemesterViewController: UITableViewController {
         return cell
     }
     
-
-    /*
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 55
+    }
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+
 
     /*
     // Override to support editing the table view.

@@ -11,6 +11,7 @@ import Foundation
 class SavedVariables {
     static var sideMenuViewController: SideMenuController?
     static var username: String?
+    static var password: String?
     static var currentSemester: String?
     
     private init(){ }
