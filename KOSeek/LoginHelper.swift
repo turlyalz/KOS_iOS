@@ -11,10 +11,10 @@ import UIKit
 
 class LoginHelper {
         
-    private static let baseURL = "https://auth.fit.cvut.cz"
-    private static let login = "/oauth/login.do?"
-    private static let authorize = "/oauth/oauth/authorize"
-    private static let token = "/oauth/oauth/token"
+    private static let baseURL = "https://auth.fit.cvut.cz/oauth/"
+    private static let login = "login.do?"
+    private static let authorize = "oauth/authorize"
+    private static let token = "oauth/token"
     private static let redirectURI = "http://client.kosios.cz/auth/response"
     
     private static let appID = "659b7e1d-e8c2-4781-aefa-a8d6fff099db"

@@ -12,7 +12,7 @@ class SemesterViewController: UITableViewController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     var semesterContent: SemesterContent
-    var array: Array<Subject> = []
+    var subjects: Array<Subject> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,8 @@ class SemesterViewController: UITableViewController {
             semesterContent = DatabaseHelper.getSemesterContent(currentSemester)
             self.title = semesterContent.name
             print("response: \(semesterContent)")
-            array = (semesterContent.subjects?.allObjects)! as! Array<Subject>
-            array.sortInPlace({ $0.0.code < $0.1.code })
+            subjects = (semesterContent.subjects?.allObjects)! as! Array<Subject>
+            subjects.sortInPlace({ $0.0.code < $0.1.code })
         }
     }
     
@@ -55,16 +55,16 @@ class SemesterViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let subject = array[indexPath.row]
+        let subject = subjects[indexPath.row]
         
-        let subjectCodeLabel: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: SemesterScreen.subjectCodeWidth, height: 50))
+        let subjectCodeLabel: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: SubjectCell.subjectCodeWidth, height: SubjectCell.height))
         subjectCodeLabel.text = subject.code
         subjectCodeLabel.numberOfLines = 2
         subjectCodeLabel.font = .systemFontOfSize(14)
         subjectCodeLabel.textColor = .blackColor()
         cell.addSubview(subjectCodeLabel)
         
-        let subjectNameLabel: UILabel = UILabel(frame: CGRect(x: SemesterScreen.subjectCodeWidth+10, y: 0, width: SemesterScreen.subjectNameWidth, height: 50))
+        let subjectNameLabel: UILabel = UILabel(frame: CGRect(x: SubjectCell.subjectCodeWidth+12, y: 0, width: SubjectCell.subjectNameWidth, height: SubjectCell.height))
         subjectNameLabel.text = subject.name
         subjectNameLabel.numberOfLines = 2
         subjectNameLabel.font = .systemFontOfSize(15)
@@ -72,21 +72,32 @@ class SemesterViewController: UITableViewController {
         subjectNameLabel.textAlignment = NSTextAlignment.Center
         cell.addSubview(subjectNameLabel)
         
-        cell.separatorInset = UIEdgeInsetsZero
-        cell.layoutMargins = UIEdgeInsetsZero
+        let subjectCreditsLabel: UILabel = UILabel(frame: CGRect(x: SubjectCell.subjectCodeWidth+SubjectCell.subjectNameWidth+12, y: 0, width: SubjectCell.subjectCreditWidth, height: SubjectCell.height))
+        subjectCreditsLabel.text = subject.credits
+        subjectCreditsLabel.font = .systemFontOfSize(15)
+        subjectCreditsLabel.textColor = .blackColor()
+        subjectCreditsLabel.textAlignment = NSTextAlignment.Center
+        cell.addSubview(subjectCreditsLabel)
 
         return cell
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 55
+        return SubjectCell.height
     }
     
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        updateValues()
+        self.tableView.reloadData()
+    }
+    
+    /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
+    */
 
 
     /*

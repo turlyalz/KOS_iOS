@@ -25,11 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let exampleViewController: SWRevealViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SWRevealViewController") as! SWRevealViewController
             
             self.window?.rootViewController = exampleViewController
-            
             self.window?.makeKeyAndVisible()
-
-        }
-        
+        }        
         return true
     }
     

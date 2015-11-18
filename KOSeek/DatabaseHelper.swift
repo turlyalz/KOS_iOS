@@ -19,18 +19,16 @@ class DatabaseHelper {
 
     class func setProfileContent(firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?) {
         let user = NSEntityDescription.insertNewObjectForEntityForName("Person", inManagedObjectContext: context)
-        if let _ = firstName, _ = lastName, _ = username, _ = email, _ = personalNumber {
-            user.setValue(firstName, forKey: "firstName")
-            user.setValue(lastName, forKey: "lastName")
-            user.setValue(username, forKey: "username")
-            user.setValue(email, forKey: "email")
-            user.setValue(personalNumber, forKey: "personalNumber")
-            do {
-                try context.save()
-            }
-            catch let error as NSError {
-                debugPrint(error)
-            }
+        user.setValue(firstName, forKey: "firstName")
+        user.setValue(lastName, forKey: "lastName")
+        user.setValue(username, forKey: "username")
+        user.setValue(email, forKey: "email")
+        user.setValue(personalNumber, forKey: "personalNumber")
+        do {
+            try context.save()
+        }
+        catch let error as NSError {
+            debugPrint(error)
         }
     }
     
@@ -59,6 +57,7 @@ class DatabaseHelper {
     class func delete() {
         delete("Person")
         delete("Semester")
+        delete("Subject")
         delete("SavedVariables")
     }
     
@@ -104,19 +103,17 @@ class DatabaseHelper {
         }
     }
     
-    class func setSemesterContent(id: String?, name: String?, subjectNumber: NSNumber?, subjects: NSSet?) {
-        if let _ = id, _ = name, _ = subjectNumber, _ = subjects {
-            let semester = NSEntityDescription.insertNewObjectForEntityForName("Semester", inManagedObjectContext: context) as! Semester
-            semester.subjects = subjects
-            semester.setValue(id, forKey: "id")
-            semester.setValue(name, forKey: "name")
-            semester.setValue(subjectNumber, forKey: "subjectNumber")
-            do {
-                try context.save()
-            }
-            catch let error as NSError {
-                debugPrint(error)
-            }
+    class func addNewSemesterWithContent(id: String?, name: String?, subjectNumber: NSNumber?, subjects: NSSet?) {
+        let semester = NSEntityDescription.insertNewObjectForEntityForName("Semester", inManagedObjectContext: context) as! Semester
+        semester.subjects = subjects
+        semester.setValue(id, forKey: "id")
+        semester.setValue(name, forKey: "name")
+        semester.setValue(subjectNumber, forKey: "subjectNumber")
+        do {
+            try context.save()
+        }
+        catch let error as NSError {
+            debugPrint(error)
         }
     }
     
@@ -141,7 +138,60 @@ class DatabaseHelper {
         return (name: nil, subjectNumber: 0, subjects: nil)
     }
     
+    class func getSubjectContent(code: String) -> Subject? {
+        let request = NSFetchRequest(entityName: "Subject")
+        request.returnsObjectsAsFaults = false
+        request.predicate = NSPredicate(format: "code == %@", code)
+        do {
+            let results = try context.executeFetchRequest(request)
+            if results.count > 0 {
+                let res = results[0] as! Subject
+                return res
+            }
+        }
+        catch let error as NSError {
+            debugPrint(error)
+        }
+        
+        return nil
+    }
+    
+    class func addNewSubjectWithContent(code: String?, name: String?, completed: NSNumber?, credits: String?) {
+        let subject = NSEntityDescription.insertNewObjectForEntityForName("Subject", inManagedObjectContext: context) as! Subject
+        subject.code = code
+        subject.name = name
+        subject.completed = completed
+        subject.credits = credits
+        do {
+            try context.save()
+        }
+        catch let error as NSError {
+            debugPrint(error)
+        }
+    }
+    
+    class func changeSubjectContentByCode(code: String?, name: String?, completed: NSNumber?, credits: String?) {
+        if let _ = code {
+            let subject = getSubjectContent(code!)
+            if let subj = subject {
+                if let _ = name {
+                    subj.name = name
+                }
+                if let _ = completed {
+                    subj.completed = completed
+                }
+                if let _ = credits {
+                    subj.credits = credits
+                }
+                do {
+                    try context.save()
+                }
+                catch let error as NSError {
+                    debugPrint(error)
+                }
+            }
+        }
+    }
     
 }
-
 

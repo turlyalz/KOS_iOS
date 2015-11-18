@@ -18,5 +18,6 @@ extension Subject {
     @NSManaged var completed: NSNumber?
     @NSManaged var name: String?
     @NSManaged var semester: Semester?
+    @NSManaged var credits: String?
 
 }

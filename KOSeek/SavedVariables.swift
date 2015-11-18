@@ -13,6 +13,7 @@ class SavedVariables {
     static var username: String?
     static var password: String?
     static var currentSemester: String?
+    static var subjectCodes: [String] = []
     
     private init(){ }
 }
