@@ -14,8 +14,6 @@ class KOSAPI {
     
     static var onComplete: (() -> Void)!
     private static let baseURL = "https://kosapi.fit.cvut.cz/api/3"
-    private static let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-    private static let context = appDel.managedObjectContext
     
     private init(){ }
     
@@ -34,7 +32,7 @@ class KOSAPI {
             }
         }
         download("Subjects Info", extensionURL: subjectExtensionURL, parser: subjectsDetailsParser)
-        
+
         onComplete()
     }
 
@@ -65,6 +63,8 @@ class KOSAPI {
                         if SavedVariables.semesterIDNameDict[semID] == nil {
                             let semesterName = xml["atom:feed"]["atom:entry"][index]["atom:content"]["semester"].element?.text
                             SavedVariables.semesterIDNameDict[semID] = semesterName
+                            Database.addNewSemester(semesterName, id: semID)
+                            //print(SavedVariables.semesterIDNameDict[semID])
                         }
                     }
                     

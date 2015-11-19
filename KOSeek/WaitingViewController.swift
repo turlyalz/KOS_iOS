@@ -37,7 +37,9 @@ class WaitingViewController: UIViewController {
         SavedVariables.password = nil
         if response.success {
             statusLabel.text = "Downloading data, please wait."
-            KOSAPI.downloadAllData()
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
+                KOSAPI.downloadAllData()
+            })
         }
         else {
             loginFailedMessage(response.error)
@@ -47,5 +49,4 @@ class WaitingViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
 }

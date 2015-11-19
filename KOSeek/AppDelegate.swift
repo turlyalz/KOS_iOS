@@ -14,20 +14,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        setSavedVariables()
+        return true
+    }
+    
+    func setSavedVariables() {
         let response = Database.getSavedVariables()
         if let username = response.username, currentSemester = response.currentSemester {
             SavedVariables.username = username
             SavedVariables.currentSemester = currentSemester
+            if let semesters = Database.getSemesters() {
+                for semester in semesters {
+                    if let id = semester.id, name = semester.name {
+                        SavedVariables.semesterIDNameDict[id] = name
+                    }
+                }
+            }
+            
             self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let exampleViewController: SWRevealViewController = mainStoryboard.instantiateViewControllerWithIdentifier("SWRevealViewController") as! SWRevealViewController
             
             self.window?.rootViewController = exampleViewController
             self.window?.makeKeyAndVisible()
-        }        
-        return true
+        }
+
     }
     
     func applicationWillResignActive(application: UIApplication) {

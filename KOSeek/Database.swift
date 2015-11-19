@@ -57,6 +57,7 @@ class Database {
     class func delete() {
         delete("Person")
         delete("Subject")
+        delete("Semester")
         delete("SavedVariables")
     }
     
@@ -100,6 +101,35 @@ class Database {
         catch let error as NSError {
             debugPrint(error)
         }
+    }
+    
+    class func addNewSemester(name: String?, id: String?) {
+        if let _ = name, _ = id {
+            let semester = NSEntityDescription.insertNewObjectForEntityForName("Semester", inManagedObjectContext: context)
+            semester.setValue(name, forKey: "name")
+            semester.setValue(id, forKey: "id")
+            do {
+                try context.save()
+            }
+            catch let error as NSError {
+                debugPrint(error)
+            }
+        }
+    }
+    
+    class func getSemesters() -> [Semester]? {
+        let request = NSFetchRequest(entityName: "Semester")
+        request.returnsObjectsAsFaults = false
+        do {
+            let results = try context.executeFetchRequest(request)
+            if results.count > 0 {
+                return results as? [Semester]
+            }
+        }
+        catch let error as NSError {
+            debugPrint(error)
+        }
+        return nil
     }
     
     class func getSubjectsBy(semester semester: String) -> [Subject]? {
