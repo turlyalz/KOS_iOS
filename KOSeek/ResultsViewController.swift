@@ -31,6 +31,23 @@ class ResultsViewController: UITableViewController, UIPickerViewDataSource, UIPi
         pickerView.dataSource = self
         pickerData = SavedVariables.semesterIDNameDict.sort({$0.0 < $1.0})
         subjectsTableViewDelegate?.updateActualSubjects(pickerData[0].0)
+        
+        let items = Array(SavedVariables.semesterIDNameDict.values)
+        let menuView = BTNavigationDropdownMenu(title: items.first!, items: items, navController: self.navigationController)
+        
+        menuView.cellHeight = 35
+        menuView.cellBackgroundColor =  UIColor(red: 120/255, green: 162/255, blue: 182/255, alpha: 1.0)
+        menuView.cellSelectionColor = UIColor(red: 110/255, green: 115/255, blue: 120/255, alpha: 1.0)
+        menuView.cellTextLabelColor = .whiteColor()
+        menuView.arrowPadding = 15
+        menuView.animationDuration = 0.4
+        menuView.maskBackgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.0)
+        menuView.maskBackgroundOpacity = 0.3
+        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
+            print("Did select item at index: \(indexPath)")
+            //self.selectedCellLabel.text = items[indexPath]
+        }
+        self.navigationItem.titleView = menuView
     }
     
     override func viewDidAppear(animated: Bool) {

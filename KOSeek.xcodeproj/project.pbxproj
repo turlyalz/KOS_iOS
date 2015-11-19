@@ -24,6 +24,8 @@
 		9C6FB4D21BFE2E2700C682C4 /* Semester+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FB4D01BFE2E2700C682C4 /* Semester+CoreDataProperties.swift */; };
 		9C6FB4D31BFE2E2700C682C4 /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FB4D11BFE2E2700C682C4 /* Semester.swift */; };
 		9C6FB4D91BFE475900C682C4 /* SubjectsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FB4D81BFE475900C682C4 /* SubjectsTableViewDelegate.swift */; };
+		9C6FB4DB1BFE811100C682C4 /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FB4DA1BFE811100C682C4 /* BTNavigationDropdownMenu.swift */; };
+		9C6FB4E11BFE86F700C682C4 /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C6FB4E01BFE86F700C682C4 /* BTNavigationDropdownMenu.bundle */; };
 		9C86AE3B1BF3B1F60096C72E /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */; };
 		9C86AE431BF3B2BA0096C72E /* KOSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE421BF3B2BA0096C72E /* KOSAPI.swift */; };
 		9C86AE841BF3B7870096C72E /* KOSModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE821BF3B7870096C72E /* KOSModel.xcdatamodeld */; };
@@ -94,6 +96,8 @@
 		9C6FB4D01BFE2E2700C682C4 /* Semester+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Semester+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9C6FB4D11BFE2E2700C682C4 /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
 		9C6FB4D81BFE475900C682C4 /* SubjectsTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectsTableViewDelegate.swift; sourceTree = "<group>"; };
+		9C6FB4DA1BFE811100C682C4 /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
+		9C6FB4E01BFE86F700C682C4 /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
 		9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
 		9C86AE421BF3B2BA0096C72E /* KOSAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOSAPI.swift; sourceTree = "<group>"; };
 		9C86AE831BF3B7870096C72E /* KOSModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KOSModel.xcdatamodel; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 		9C31E5961BDE76F0004FF6CB /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				9C6FB4E21BFE909400C682C4 /* DropdownMenu */,
 				9C2D987E1BDFA38E00CF5A11 /* SWRevealViewController */,
 				9C2D98761BDFA04A00CF5A11 /* SideMenuViewControllers */,
 				9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */,
@@ -234,6 +239,15 @@
 				9C43A1031BF7F67A0018ABB0 /* Constants.swift */,
 			);
 			name = ApplicationLayer;
+			sourceTree = "<group>";
+		};
+		9C6FB4E21BFE909400C682C4 /* DropdownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				9C6FB4E01BFE86F700C682C4 /* BTNavigationDropdownMenu.bundle */,
+				9C6FB4DA1BFE811100C682C4 /* BTNavigationDropdownMenu.swift */,
+			);
+			name = DropdownMenu;
 			sourceTree = "<group>";
 		};
 		9C86AE441BF3B2EB0096C72E /* DataLayer */ = {
@@ -357,6 +371,7 @@
 				9C2272981BD6517B00DE7F15 /* LaunchScreen.storyboard in Resources */,
 				9C2272951BD6517B00DE7F15 /* Assets.xcassets in Resources */,
 				9C2272931BD6517B00DE7F15 /* Main.storyboard in Resources */,
+				9C6FB4E11BFE86F700C682C4 /* BTNavigationDropdownMenu.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +398,7 @@
 			files = (
 				9C9E50211BE12C2E009B6CB1 /* ExamsViewController.swift in Sources */,
 				9C6FB4D31BFE2E2700C682C4 /* Semester.swift in Sources */,
+				9C6FB4DB1BFE811100C682C4 /* BTNavigationDropdownMenu.swift in Sources */,
 				9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */,
 				9C2D987D1BDFA37A00CF5A11 /* SWRevealViewController.m in Sources */,
 				9C8A49B51BE011C7009ECFCA /* SideMenuController.swift in Sources */,
