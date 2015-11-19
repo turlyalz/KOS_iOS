@@ -85,7 +85,7 @@ class KOSAPI {
                     Database.addNewSubject(code, name: subjectName, completed: completed, credits: nil, semester: semesterID)
                 }
             }
-        }
+        }        
     }
 
     private class func subjectsDetailsParser(xml: XMLIndexer) {

@@ -33,7 +33,10 @@ class TimetableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         SavedVariables.sideMenuViewController?.view.userInteractionEnabled = true
     }
-
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        updateValues()
+    }
     
     /*
     override func didReceiveMemoryWarning() {

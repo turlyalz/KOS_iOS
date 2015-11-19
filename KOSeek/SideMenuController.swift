@@ -87,13 +87,16 @@ class SideMenuController: UITableViewController {
             }
         ))
         self.presentViewController(alertLogOut, animated: true, completion: nil)
-
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == menus.count-1 {
             logOutMessage(indexPath)
         }
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        updateValues()
     }
     
 }

@@ -500,23 +500,24 @@
         <scene sceneID="6AQ-hG-vvY">
             <objects>
                 <tableViewController id="fOe-z9-Lr4" customClass="ResultsViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="yA2-f1-GvS">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="yA2-f1-GvS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.47058823529999999" green="0.63529411759999999" blue="0.71204255760000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexTrackingBackgroundColor" red="0.71204255760000001" green="0.66001977868029427" blue="0.55404340114469675" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="mxK-Np-aDx">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rws-zo-mho">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="64" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rws-zo-mho" id="JFW-za-BhY">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RjU-wc-jSd">
-                                                    <rect key="frame" x="140" y="-79" width="320" height="217"/>
+                                                <pickerView contentMode="scaleToFill" showsSelectionIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjU-wc-jSd">
+                                                    <rect key="frame" x="140" y="-69" width="320" height="217"/>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
@@ -526,14 +527,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="423" id="EZi-aQ-Y9E">
-                                        <rect key="frame" x="0.0" y="124" width="600" height="423"/>
+                                        <rect key="frame" x="0.0" y="144" width="600" height="423"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EZi-aQ-Y9E" id="ihW-67-4U5">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WbC-g6-edP" customClass="SubjectsTableViewDelegate" customModule="KOSeek" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="584" height="406"/>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WbC-g6-edP" customClass="SubjectsTableViewDelegate" customModule="KOSeek" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="16" width="584" height="398"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="pTo-3W-i9b"/>
@@ -542,7 +543,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="WbC-g6-edP" secondAttribute="trailing" id="GpC-w9-gqe"/>
-                                                <constraint firstItem="WbC-g6-edP" firstAttribute="top" secondItem="ihW-67-4U5" secondAttribute="topMargin" id="OM0-dh-GmB"/>
+                                                <constraint firstItem="WbC-g6-edP" firstAttribute="top" secondItem="ihW-67-4U5" secondAttribute="topMargin" constant="8" id="OM0-dh-GmB"/>
                                                 <constraint firstItem="WbC-g6-edP" firstAttribute="leading" secondItem="ihW-67-4U5" secondAttribute="leadingMargin" id="h1g-p6-F9A"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="WbC-g6-edP" secondAttribute="bottom" id="l7T-VD-dMP"/>
                                             </constraints>

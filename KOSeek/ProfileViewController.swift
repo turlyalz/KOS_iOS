@@ -56,6 +56,9 @@ class ProfileViewController: UITableViewController {
         return profileInfo.values.count-2
     }
     
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        updateValues()
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()

@@ -47,6 +47,10 @@ class SearchViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        updateValues()
+    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

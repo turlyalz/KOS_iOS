@@ -14,6 +14,7 @@ class SubjectsTableViewDelegate: UITableView, UITableViewDelegate, UITableViewDa
     
     func updateActualSubjects(semester: String) {
         if let subj = Database.getSubjectsBy(semester: semester) {
+            //print(subj)
             actualSubjects = subj
             actualSubjects.sortInPlace({ $0.0.code < $0.1.code })
             reloadData()
@@ -53,6 +54,10 @@ class SubjectsTableViewDelegate: UITableView, UITableViewDelegate, UITableViewDa
         subjectCreditsLabel.textColor = .blackColor()
         subjectCreditsLabel.textAlignment = NSTextAlignment.Center
         cell.addSubview(subjectCreditsLabel)
+        
+        if subject.completed == 1 {
+            cell.backgroundColor = UIColor(red: 155/255, green: 200/255, blue: 201/255, alpha: 1)
+        }
         
         return cell
     }

@@ -104,16 +104,15 @@ class Database {
     }
     
     class func addNewSemester(name: String?, id: String?) {
-        if let _ = name, _ = id {
-            let semester = NSEntityDescription.insertNewObjectForEntityForName("Semester", inManagedObjectContext: context)
-            semester.setValue(name, forKey: "name")
-            semester.setValue(id, forKey: "id")
-            do {
-                try context.save()
-            }
-            catch let error as NSError {
-                debugPrint(error)
-            }
+        let entityDescription = NSEntityDescription.entityForName("Semester", inManagedObjectContext: context)
+        let semester = Semester(entity: entityDescription!, insertIntoManagedObjectContext: context)
+        semester.name = name
+        semester.id = id
+        do {
+            try context.save()
+        }
+        catch let error as NSError {
+            debugPrint(error)
         }
     }
     
@@ -148,15 +147,14 @@ class Database {
         return nil
     }
     
-    class func getSubjectBy(code code: String) -> Subject? {
+    class func getSubjectsBy(code code: String) -> [Subject]? {
         let request = NSFetchRequest(entityName: "Subject")
         request.returnsObjectsAsFaults = false
         request.predicate = NSPredicate(format: "code == %@", code)
         do {
             let results = try context.executeFetchRequest(request)
             if results.count > 0 {
-                let res = results[0] as! Subject
-                return res
+                return results as? [Subject]
             }
         }
         catch let error as NSError {
@@ -183,19 +181,22 @@ class Database {
     
     class func changeSubjectByCode(code: String?, name: String?, completed: NSNumber?, credits: String?, semester: String?) {
         if let _ = code {
-            let subject = getSubjectBy(code: code!)
-            if let subj = subject {
-                if let _ = name {
-                    subj.name = name
-                }
-                if let _ = completed {
-                    subj.completed = completed
-                }
-                if let _ = credits {
-                    subj.credits = credits
-                }
-                if let _ = semester {
-                    subj.semester = semester
+            let subjects = getSubjectsBy(code: code!)
+            print(subjects)
+            if let subjs = subjects {
+                for subject in subjs {
+                    if let _ = name {
+                        subject.name = name
+                    }
+                    if let _ = completed {
+                        subject.completed = completed
+                    }
+                    if let _ = credits {
+                        subject.credits = credits
+                    }
+                    if let _ = semester {
+                        subject.semester = semester
+                    }
                 }
                 do {
                     try context.save()
