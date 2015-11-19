@@ -56,7 +56,6 @@ class DatabaseHelper {
     
     class func delete() {
         delete("Person")
-        delete("Semester")
         delete("Subject")
         delete("SavedVariables")
     }
@@ -103,42 +102,23 @@ class DatabaseHelper {
         }
     }
     
-    class func addNewSemesterWithContent(id: String?, name: String?, subjectNumber: NSNumber?, subjects: NSSet?) {
-        let semester = NSEntityDescription.insertNewObjectForEntityForName("Semester", inManagedObjectContext: context) as! Semester
-        semester.subjects = subjects
-        semester.setValue(id, forKey: "id")
-        semester.setValue(name, forKey: "name")
-        semester.setValue(subjectNumber, forKey: "subjectNumber")
-        do {
-            try context.save()
-        }
-        catch let error as NSError {
-            debugPrint(error)
-        }
-    }
-    
-    class func getSemesterContent(id: String) -> SemesterContent  {
-        let request = NSFetchRequest(entityName: "Semester")
+    class func getSubjectsBy(semester semester: String) -> [Subject]? {
+        let request = NSFetchRequest(entityName: "Subject")
         request.returnsObjectsAsFaults = false
-        request.predicate = NSPredicate(format: "id == %@", id)
+        request.predicate = NSPredicate(format: "semester == %@", semester)
         do {
             let results = try context.executeFetchRequest(request)
             if results.count > 0 {
-                let res = results[0] as! NSManagedObject
-                let name = res.valueForKey("name") as! String?
-                let subjectNumber = res.valueForKey("subjectNumber") as! NSNumber?
-                let subjects = res.valueForKey("subjects") as! NSSet?
-                return (name: name, subjectNumber: subjectNumber, subjects: subjects)
+                return results as? [Subject]
             }
         }
         catch let error as NSError {
             debugPrint(error)
         }
-        
-        return (name: nil, subjectNumber: 0, subjects: nil)
+        return nil
     }
     
-    class func getSubjectContent(code: String) -> Subject? {
+    class func getSubjectBy(code code: String) -> Subject? {
         let request = NSFetchRequest(entityName: "Subject")
         request.returnsObjectsAsFaults = false
         request.predicate = NSPredicate(format: "code == %@", code)
@@ -152,16 +132,17 @@ class DatabaseHelper {
         catch let error as NSError {
             debugPrint(error)
         }
-        
         return nil
     }
     
-    class func addNewSubjectWithContent(code: String?, name: String?, completed: NSNumber?, credits: String?) {
-        let subject = NSEntityDescription.insertNewObjectForEntityForName("Subject", inManagedObjectContext: context) as! Subject
+    class func addNewSubject(code: String?, name: String?, completed: NSNumber?, credits: String?, semester: String?) {
+        let entityDescription = NSEntityDescription.entityForName("Subject", inManagedObjectContext: context)
+        let subject = Subject(entity: entityDescription!, insertIntoManagedObjectContext: context)
         subject.code = code
         subject.name = name
         subject.completed = completed
         subject.credits = credits
+        subject.semester = semester
         do {
             try context.save()
         }
@@ -170,9 +151,9 @@ class DatabaseHelper {
         }
     }
     
-    class func changeSubjectContentByCode(code: String?, name: String?, completed: NSNumber?, credits: String?) {
+    class func changeSubjectByCode(code: String?, name: String?, completed: NSNumber?, credits: String?, semester: String?) {
         if let _ = code {
-            let subject = getSubjectContent(code!)
+            let subject = getSubjectBy(code: code!)
             if let subj = subject {
                 if let _ = name {
                     subj.name = name
@@ -182,6 +163,9 @@ class DatabaseHelper {
                 }
                 if let _ = credits {
                     subj.credits = credits
+                }
+                if let _ = semester {
+                    subj.semester = semester
                 }
                 do {
                     try context.save()

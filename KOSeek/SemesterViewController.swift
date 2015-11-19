@@ -11,8 +11,7 @@ import UIKit
 class SemesterViewController: UITableViewController {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    var semesterContent: SemesterContent
-    var subjects: Array<Subject> = []
+    var subjects: [Subject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +23,11 @@ class SemesterViewController: UITableViewController {
         }
         
         if let currentSemester = SavedVariables.currentSemester {
-            semesterContent = DatabaseHelper.getSemesterContent(currentSemester)
-            self.title = semesterContent.name
-            print("response: \(semesterContent)")
-            subjects = (semesterContent.subjects?.allObjects)! as! Array<Subject>
-            subjects.sortInPlace({ $0.0.code < $0.1.code })
+            if let subj = DatabaseHelper.getSubjectsBy(semester: currentSemester) {
+                subjects = subj
+                self.title = SavedVariables.semesterIDNameDict[currentSemester]
+                subjects.sortInPlace({ $0.0.code < $0.1.code })
+            }
         }
     }
     
@@ -47,10 +46,7 @@ class SemesterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let subjectNumber = semesterContent.subjectNumber {
-            return Int(subjectNumber)
-        }
-        return 0
+        return subjects.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
