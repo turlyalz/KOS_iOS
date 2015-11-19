@@ -42,7 +42,7 @@ class KOSAPI {
         SavedVariables.currentSemester = xml["atom:feed"]["atom:entry"][0]["atom:content"]["semester"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("semesters/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
         print("Current semester: \(SavedVariables.currentSemester)")
         if let currentSemester = SavedVariables.currentSemester {
-            DatabaseHelper.setSavedVariables(SavedVariables.username!, currentSemester: currentSemester)
+            Database.setSavedVariables(SavedVariables.username!, currentSemester: currentSemester)
         }
     }
     
@@ -52,7 +52,7 @@ class KOSAPI {
         let username = xml["atom:entry"]["atom:content"]["username"].element?.text
         let email = xml["atom:entry"]["atom:content"]["email"].element?.text
         let personalNumber = xml["atom:entry"]["atom:content"]["personalNumber"].element?.text
-        DatabaseHelper.setProfileContent(firstName, lastName: lastName, username: username, email: email, personalNumber: personalNumber)
+        Database.setProfileContent(firstName, lastName: lastName, username: username, email: email, personalNumber: personalNumber)
     }
 
     private class func semesterParser(xml: XMLIndexer) {
@@ -82,7 +82,7 @@ class KOSAPI {
                         SavedVariables.subjectCodes.append(uCode)
                     }
                     //print("Code: \(code), name: \(subjectName), semester: \(semesterID)")
-                    DatabaseHelper.addNewSubject(code, name: subjectName, completed: completed, credits: nil, semester: semesterID)
+                    Database.addNewSubject(code, name: subjectName, completed: completed, credits: nil, semester: semesterID)
                 }
             }
         }
@@ -98,7 +98,7 @@ class KOSAPI {
         for index in 0...number-1 {
             let code = xml["atom:feed"]["atom:entry"][index]["atom:content"]["code"].element?.text
             let credits = xml["atom:feed"]["atom:entry"][index]["atom:content"]["credits"].element?.text
-            DatabaseHelper.changeSubjectByCode(code, name: nil, completed: nil, credits: credits, semester: nil)
+            Database.changeSubjectByCode(code, name: nil, completed: nil, credits: credits, semester: nil)
         }
     }
     

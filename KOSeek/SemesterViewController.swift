@@ -23,7 +23,7 @@ class SemesterViewController: UITableViewController {
         }
         
         if let currentSemester = SavedVariables.currentSemester {
-            if let subj = DatabaseHelper.getSubjectsBy(semester: currentSemester) {
+            if let subj = Database.getSubjectsBy(semester: currentSemester) {
                 subjects = subj
                 self.title = SavedVariables.semesterIDNameDict[currentSemester]
                 subjects.sortInPlace({ $0.0.code < $0.1.code })

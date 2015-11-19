@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let response = DatabaseHelper.getSavedVariables()
+        let response = Database.getSavedVariables()
         if let username = response.username, currentSemester = response.currentSemester {
             SavedVariables.username = username
             SavedVariables.currentSemester = currentSemester

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import SwiftyJSON
 
 class LoginHelper {
         
@@ -16,10 +15,8 @@ class LoginHelper {
     private static let authorize = "oauth/authorize"
     private static let token = "oauth/token"
     private static let redirectURI = "http://client.kosios.cz/auth/response"
-    
     private static let appID = "659b7e1d-e8c2-4781-aefa-a8d6fff099db"
     private static let appSecret = "QZIGl69NMif1l5GTy1TuuBWm8UiBXNxz"
-    
     static var accessToken = ""
     
     private init(){ }

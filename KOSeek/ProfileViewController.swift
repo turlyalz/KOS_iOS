@@ -28,7 +28,7 @@ class ProfileViewController: UITableViewController {
         }
         
         if let username = SavedVariables.username {
-            profileInfo = DatabaseHelper.getProfileContent(username)
+            profileInfo = Database.getProfileContent(username)
             if profileInfo.values.count >= 2 {
                 self.title = profileInfo.values[0] + " " + profileInfo.values[1]
             }
