@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
+    <entity name="Exam" syncable="YES">
+        <attribute name="capacity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="occupied" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="room" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Person" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,7 +35,8 @@
     <elements>
         <element name="Person" positionX="-1323" positionY="-648" width="128" height="133"/>
         <element name="SavedVariables" positionX="-1478" positionY="-363" width="128" height="75"/>
-        <element name="Subject" positionX="-1118" positionY="-642" width="128" height="120"/>
         <element name="Semester" positionX="-920" positionY="-639" width="128" height="73"/>
+        <element name="Subject" positionX="-1118" positionY="-642" width="128" height="120"/>
+        <element name="Exam" positionX="-1136" positionY="-457" width="128" height="148"/>
     </elements>
 </model>
