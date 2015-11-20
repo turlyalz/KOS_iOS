@@ -174,6 +174,14 @@ public class BTNavigationDropdownMenu: UIView {
     private var isShown: Bool!
     private var menuWrapper: UIView!
     
+    func setShown(show: Bool) {
+        self.isShown = show
+    }
+    
+    func getShown() -> Bool {
+        return self.isShown
+    }
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

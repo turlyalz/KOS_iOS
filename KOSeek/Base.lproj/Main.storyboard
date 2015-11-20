@@ -670,13 +670,13 @@
         <image name="timetable" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tw2-9q-5dk"/>
+        <segue reference="IJA-97-2dF"/>
         <segue reference="9gN-ve-Bh1"/>
+        <segue reference="uIv-US-8Aj"/>
         <segue reference="FBU-Bn-6l6"/>
         <segue reference="vwg-3F-iqu"/>
-        <segue reference="9HU-us-G6V"/>
         <segue reference="9cO-8Q-G0I"/>
-        <segue reference="IJA-97-2dF"/>
+        <segue reference="9HU-us-G6V"/>
         <segue reference="5X7-8d-YpJ"/>
     </inferredMetricsTieBreakers>
 </document>

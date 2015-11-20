@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: LoginHelper
 class LoginHelper {
         
     private static let baseURL = "https://auth.fit.cvut.cz/oauth/"
@@ -231,6 +232,7 @@ class LoginHelper {
         return (true, "200 OK")
     }
     
+    // Get an authorization token for comunication with KOS API
     class func getAuthToken(username username: String, password: String) -> (success: Bool, error: String) {
 
         let loginResponse = loginRequest(username, password: password)

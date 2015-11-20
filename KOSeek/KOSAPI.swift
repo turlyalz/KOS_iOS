@@ -10,13 +10,16 @@ import Foundation
 import UIKit
 import CoreData
 
+// MARK: KOSAPI
 class KOSAPI {
     
+    // Function that calls when all downloads are completed
     static var onComplete: (() -> Void)!
     private static let baseURL = "https://kosapi.fit.cvut.cz/api/3"
     
     private init(){ }
     
+    // Download all data
     class func downloadAllData() {
         download("Person Info", extensionURL: "/students/" + SavedVariables.username! + "?access_token=" + LoginHelper.accessToken + "&lang=cs", parser: personParser)
         download("Current Semester", extensionURL: "/students/" + SavedVariables.username! + "/enrolledCourses?access_token=" + LoginHelper.accessToken + "&lang=cs", parser: currentSemesterParser)

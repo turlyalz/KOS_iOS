@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
+// MARK: Database
 class Database {
 
     private static let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -54,6 +55,7 @@ class Database {
         return ([], [])
     }
     
+    // Delete all data from database.
     class func delete() {
         delete("Person")
         delete("Subject")
