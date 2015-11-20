@@ -23,7 +23,6 @@
 		9C43A1041BF7F67A0018ABB0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C43A1031BF7F67A0018ABB0 /* Constants.swift */; };
 		9C6FB4D21BFE2E2700C682C4 /* Semester+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FB4D01BFE2E2700C682C4 /* Semester+CoreDataProperties.swift */; };
 		9C6FB4D31BFE2E2700C682C4 /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FB4D11BFE2E2700C682C4 /* Semester.swift */; };
-		9C6FB4D91BFE475900C682C4 /* SubjectsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FB4D81BFE475900C682C4 /* SubjectsTableViewDelegate.swift */; };
 		9C6FB4DB1BFE811100C682C4 /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FB4DA1BFE811100C682C4 /* BTNavigationDropdownMenu.swift */; };
 		9C6FB4E11BFE86F700C682C4 /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C6FB4E01BFE86F700C682C4 /* BTNavigationDropdownMenu.bundle */; };
 		9C86AE3B1BF3B1F60096C72E /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */; };
@@ -95,7 +94,6 @@
 		9C43A1031BF7F67A0018ABB0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9C6FB4D01BFE2E2700C682C4 /* Semester+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Semester+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9C6FB4D11BFE2E2700C682C4 /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
-		9C6FB4D81BFE475900C682C4 /* SubjectsTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectsTableViewDelegate.swift; sourceTree = "<group>"; };
 		9C6FB4DA1BFE811100C682C4 /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
 		9C6FB4E01BFE86F700C682C4 /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
 		9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 				9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */,
 				9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */,
 				9C2BFD271BF51B0200744E85 /* ProfileViewController.swift */,
-				9C6FB4D81BFE475900C682C4 /* SubjectsTableViewDelegate.swift */,
 			);
 			name = SideMenuViewControllers;
 			sourceTree = "<group>";
@@ -415,7 +412,6 @@
 				9C86AE891BF3F37C0096C72E /* SwiftyJSON.swift in Sources */,
 				9C6FB4D21BFE2E2700C682C4 /* Semester+CoreDataProperties.swift in Sources */,
 				9CE171651BF8A48900C56D2F /* Subject+CoreDataProperties.swift in Sources */,
-				9C6FB4D91BFE475900C682C4 /* SubjectsTableViewDelegate.swift in Sources */,
 				9C43A1041BF7F67A0018ABB0 /* Constants.swift in Sources */,
 				9C28FEAB1BDFA51600D7DE04 /* SemesterViewController.swift in Sources */,
 				9C86AE8B1BF3F3CC0096C72E /* SWXMLHash.swift in Sources */,
