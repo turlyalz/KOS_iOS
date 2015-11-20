@@ -223,6 +223,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SXC-ZJ-S32">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.43137254899999999" green="0.45098039220000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="odL-05-Xpn" kind="relationship" relationship="rootViewController" id="HXq-Iv-bJe"/>
@@ -441,6 +442,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2ix-9W-ySI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.43137254899999999" green="0.45098039220000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="7Gy-57-lMz" kind="relationship" relationship="rootViewController" id="s1m-hU-Fsz"/>
@@ -486,6 +488,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pao-en-yzS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.43137254899999999" green="0.45098039220000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="mO3-1Q-nmT" kind="relationship" relationship="rootViewController" id="FMH-hr-uUE"/>
@@ -598,6 +601,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bHt-5T-PFF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.43137254899999999" green="0.45098039220000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="AQu-SG-JJH" kind="relationship" relationship="rootViewController" id="cLp-di-Ulg"/>
@@ -650,6 +654,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ko1-HP-cVr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.43137254899999999" green="0.45098039220000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="iMi-Rf-4hl" kind="relationship" relationship="rootViewController" id="twj-Rh-vXz"/>
@@ -670,13 +675,13 @@
         <image name="timetable" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IJA-97-2dF"/>
+        <segue reference="DYU-8V-Yjc"/>
         <segue reference="9gN-ve-Bh1"/>
         <segue reference="uIv-US-8Aj"/>
-        <segue reference="FBU-Bn-6l6"/>
-        <segue reference="vwg-3F-iqu"/>
-        <segue reference="9cO-8Q-G0I"/>
-        <segue reference="9HU-us-G6V"/>
-        <segue reference="5X7-8d-YpJ"/>
+        <segue reference="gqg-lU-my3"/>
+        <segue reference="pn5-gg-Cwc"/>
+        <segue reference="PeF-pM-b66"/>
+        <segue reference="Q2c-SP-SKF"/>
+        <segue reference="oQ7-TJ-uoE"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,20 +14,20 @@ class ResultsViewController: UITableViewController {
     var semesterIDNameDict: [(String, String)] = []
     var semesters: [String] = []
     var dropdownMenuView: BTNavigationDropdownMenu?
+    var sideMenuShown: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.revealViewController() != nil {
             menuButton.target = self
             menuButton.action = "menuButtonPressed"
-            let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("menuButtonPressed"))
-            let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("menuButtonPressed"))
+            let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("rightSwipeRecognized"))
+            let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("leftSwipeRecognized"))
             rightSwipe.direction = .Right
             leftSwipe.direction = .Left
             self.view.addGestureRecognizer(rightSwipe)
             self.view.addGestureRecognizer(leftSwipe)
         }
-        
         semesterIDNameDict = SavedVariables.semesterIDNameDict.sort({$0.0 < $1.0})
         for (_, semester) in semesterIDNameDict {
             semesters.append(semester)
@@ -35,11 +35,25 @@ class ResultsViewController: UITableViewController {
         updateSemesterNumber(semesters.count)
         
         setupDropdownMenu()
-        let firstSemester = semesterIDNameDict.first!
-        updateActualSubjects(firstSemester.0)
+        if let firstSemester = semesterIDNameDict.first {
+            updateActualSubjects(firstSemester.0)
+        }
+    }
+    
+    func leftSwipeRecognized() {
+        if sideMenuShown == true {
+            menuButtonPressed()
+        }
+    }
+    
+    func rightSwipeRecognized() {
+        if sideMenuShown == false {
+            menuButtonPressed()
+        }
     }
     
     func menuButtonPressed() {
+        sideMenuShown = !sideMenuShown
         if dropdownMenuView?.getShown() == true {
             dropdownMenuView?.hideMenu()
             dropdownMenuView?.setShown(false)
@@ -48,21 +62,24 @@ class ResultsViewController: UITableViewController {
     }
     
     func setupDropdownMenu() {
-        dropdownMenuView = BTNavigationDropdownMenu(title: semesters.first!, items: semesters, navController: self.navigationController)
-        dropdownMenuView?.cellHeight = DropdownMenuView.cellHeight
-        dropdownMenuView?.cellBackgroundColor =  DropdownMenuView.cellBackgroundColor
-        dropdownMenuView?.cellSelectionColor = DropdownMenuView.cellSelectionColor
-        dropdownMenuView?.cellTextLabelColor = DropdownMenuView.cellTextLabelColor
-        dropdownMenuView?.arrowPadding = DropdownMenuView.arrowPadding
-        dropdownMenuView?.animationDuration = DropdownMenuView.animationDuration
-        dropdownMenuView?.maskBackgroundColor = DropdownMenuView.maskBackgroundColor
-        dropdownMenuView?.maskBackgroundOpacity = DropdownMenuView.maskBackgroundOpacity
-        dropdownMenuView?.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-            print("Did select item at index: \(indexPath)")
-            let semester = self.semesterIDNameDict[indexPath].0
-            self.updateActualSubjects(semester)
+        if let _ = semesters.first {
+            dropdownMenuView = BTNavigationDropdownMenu(title: semesters.first!, items: semesters, navController: self.navigationController)
+            dropdownMenuView?.cellHeight = DropdownMenuViewCellHeight
+            dropdownMenuView?.cellBackgroundColor =  DropdownMenuView.cellBackgroundColor
+            dropdownMenuView?.cellSelectionColor = DropdownMenuView.cellSelectionColor
+            dropdownMenuView?.cellTextLabelColor = DropdownMenuView.cellTextLabelColor
+            dropdownMenuView?.cellSeparatorColor = DropdownMenuView.cellSeparatorColor
+            dropdownMenuView?.arrowPadding = DropdownMenuView.arrowPadding
+            dropdownMenuView?.animationDuration = DropdownMenuView.animationDuration
+            dropdownMenuView?.maskBackgroundColor = DropdownMenuView.maskBackgroundColor
+            dropdownMenuView?.maskBackgroundOpacity = DropdownMenuView.maskBackgroundOpacity
+            dropdownMenuView?.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
+                print("Did select item at index: \(indexPath)")
+                let semester = self.semesterIDNameDict[indexPath].0
+                self.updateActualSubjects(semester)
+            }
+            self.navigationItem.titleView = dropdownMenuView
         }
-        self.navigationItem.titleView = dropdownMenuView
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -128,7 +145,7 @@ class ResultsViewController: UITableViewController {
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         updateValues()
-        dropdownMenuView?.cellHeight = DropdownMenuView.cellHeight
+        dropdownMenuView?.cellHeight = DropdownMenuViewCellHeight
         if dropdownMenuView?.getShown() == true {
             dropdownMenuView?.hideMenu()
             dropdownMenuView?.setShown(false)
