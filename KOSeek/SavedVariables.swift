@@ -17,4 +17,12 @@ class SavedVariables {
     static var subjectCodes: [String] = []
     
     private init(){ }
+
+    class func resetAll() {
+        username = nil
+        password = nil
+        semesterIDNameDict = [:]
+        currentSemester = nil
+        subjectCodes = []
+    }
 }

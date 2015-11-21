@@ -184,7 +184,6 @@ class Database {
     class func changeSubjectByCode(code: String?, name: String?, completed: NSNumber?, credits: String?, semester: String?) {
         if let _ = code {
             let subjects = getSubjectsBy(code: code!)
-            print(subjects)
             if let subjs = subjects {
                 for subject in subjs {
                     if let _ = name {

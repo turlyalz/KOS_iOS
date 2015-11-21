@@ -15,6 +15,10 @@ class ResultsViewController: UITableViewController {
     var semesters: [String] = []
     var dropdownMenuView: BTNavigationDropdownMenu?
     var sideMenuShown: Bool = false
+    var semesterCreditsEnrolled: Int = 0
+    var semesterCreditsObtained: Int = 0
+    var totalCreditsEnrolled: Int = 0
+    var totalCreditsObtained: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +40,9 @@ class ResultsViewController: UITableViewController {
         
         setupDropdownMenu()
         if let firstSemester = semesterIDNameDict.first {
-            updateActualSubjects(firstSemester.0)
+            updateSubjects(firstSemester.0)
         }
+        setTotalCreditsValues()
     }
     
     func leftSwipeRecognized() {
@@ -76,7 +81,7 @@ class ResultsViewController: UITableViewController {
             dropdownMenuView?.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
                 print("Did select item at index: \(indexPath)")
                 let semester = self.semesterIDNameDict[indexPath].0
-                self.updateActualSubjects(semester)
+                self.updateSubjects(semester)
             }
             self.navigationItem.titleView = dropdownMenuView
         }
@@ -91,13 +96,45 @@ class ResultsViewController: UITableViewController {
     }
 
     
-    var actualSubjects: [Subject] = []
+    var subjects: [Subject] = []
     
-    func updateActualSubjects(semester: String) {
+    func setTotalCreditsValues() {
+        if let semesters = Database.getSemesters() {
+            for semester in semesters {
+                if let id = semester.id {
+                    if let subj = Database.getSubjectsBy(semester: id) {
+                        for subject in subj {
+                            if let credits = subject.credits {
+                                if let creditsInt = Int(credits) {
+                                    totalCreditsEnrolled += creditsInt
+                                    if subject.completed == 1 {
+                                        totalCreditsObtained += creditsInt
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func updateSubjects(semester: String) {
         if let subj = Database.getSubjectsBy(semester: semester) {
-            //print(subj)
-            actualSubjects = subj
-            actualSubjects.sortInPlace({ $0.0.code < $0.1.code })
+            subjects = subj
+            semesterCreditsEnrolled = 0
+            semesterCreditsObtained = 0
+            for subject in subjects {
+                if let credits = subject.credits {
+                    if let creditsInt = Int(credits) {
+                        semesterCreditsEnrolled += creditsInt
+                        if subject.completed == 1 {
+                            semesterCreditsObtained += creditsInt
+                        }
+                    }
+                }
+            }
+            subjects.sortInPlace({ $0.0.code < $0.1.code })
             tableView.reloadData()
         }
     }
@@ -106,13 +143,39 @@ class ResultsViewController: UITableViewController {
         return 1
     }
     
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width-30, height: 60))
+        let labelLeft: UILabel = UILabel(frame: CGRect(x: 10, y: -5, width: screenSize.width/2-20, height: 60))
+        let labelRight: UILabel = UILabel(frame: CGRect(x: screenSize.width/2+10, y: -5, width: screenSize.width/2, height: 60))
+        view.backgroundColor = UIColor.darkGrayColor()
+        
+        labelLeft.numberOfLines = 0
+        labelLeft.text = "Credits enrolled: " + String(semesterCreditsEnrolled) + "\nCredits obtained: " + String(semesterCreditsObtained)
+        labelLeft.textColor = .whiteColor()
+        labelLeft.font = UIFont.systemFontOfSize(14)
+        
+        labelRight.numberOfLines = 0
+        labelRight.text = "Total enrolled: " + String(totalCreditsEnrolled) + "\nTotal obtained: " + String(totalCreditsObtained)
+        labelRight.textColor = .whiteColor()
+        labelRight.font = UIFont.systemFontOfSize(14)
+        
+        view.addSubview(labelLeft)
+        view.addSubview(labelRight)
+        
+        return view
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return actualSubjects.count
+        return subjects.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let subject = actualSubjects[indexPath.row]
+        let subject = subjects[indexPath.row]
         
         let subjectCodeLabel: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: SubjectCell.subjectCodeWidth, height: SubjectCell.height))
         subjectCodeLabel.text = subject.code
