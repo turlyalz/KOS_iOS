@@ -13,8 +13,6 @@ class SideMenuController: UITableViewController {
     
     private let menus = ["Username", "Timetable", "Semester", "Exams", "Results", "Search People", "LogOut"]
     
-    private let BGHeaderColor = UIColor(red: 80/255.0, green: 85/255.0, blue: 90/255.0, alpha: 1)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         SavedVariables.sideMenuViewController = self

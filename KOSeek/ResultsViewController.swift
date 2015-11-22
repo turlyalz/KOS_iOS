@@ -14,7 +14,6 @@ class ResultsViewController: UITableViewController {
     var semesterIDNameDict: [(String, String)] = []
     var semesters: [String] = []
     var dropdownMenuView: BTNavigationDropdownMenu?
-    var sideMenuShown: Bool = false
     var semesterCreditsEnrolled: Int = 0
     var semesterCreditsObtained: Int = 0
     var totalCreditsEnrolled: Int = 0
@@ -25,12 +24,7 @@ class ResultsViewController: UITableViewController {
         if self.revealViewController() != nil {
             menuButton.target = self
             menuButton.action = "menuButtonPressed"
-            let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("rightSwipeRecognized"))
-            let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("leftSwipeRecognized"))
-            rightSwipe.direction = .Right
-            leftSwipe.direction = .Left
-            self.view.addGestureRecognizer(rightSwipe)
-            self.view.addGestureRecognizer(leftSwipe)
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         semesterIDNameDict = SavedVariables.semesterIDNameDict.sort({$0.0 < $1.0})
         for (_, semester) in semesterIDNameDict {
@@ -45,20 +39,7 @@ class ResultsViewController: UITableViewController {
         setTotalCreditsValues()
     }
     
-    func leftSwipeRecognized() {
-        if sideMenuShown == true {
-            menuButtonPressed()
-        }
-    }
-    
-    func rightSwipeRecognized() {
-        if sideMenuShown == false {
-            menuButtonPressed()
-        }
-    }
-    
     func menuButtonPressed() {
-        sideMenuShown = !sideMenuShown
         if dropdownMenuView?.getShown() == true {
             dropdownMenuView?.hideMenu()
             dropdownMenuView?.setShown(false)
@@ -79,7 +60,6 @@ class ResultsViewController: UITableViewController {
             dropdownMenuView?.maskBackgroundColor = DropdownMenuView.maskBackgroundColor
             dropdownMenuView?.maskBackgroundOpacity = DropdownMenuView.maskBackgroundOpacity
             dropdownMenuView?.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-                print("Did select item at index: \(indexPath)")
                 let semester = self.semesterIDNameDict[indexPath].0
                 self.updateSubjects(semester)
             }
@@ -151,7 +131,7 @@ class ResultsViewController: UITableViewController {
         let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width-30, height: 60))
         let labelLeft: UILabel = UILabel(frame: CGRect(x: 10, y: -5, width: screenSize.width/2-20, height: 60))
         let labelRight: UILabel = UILabel(frame: CGRect(x: screenSize.width/2+10, y: -5, width: screenSize.width/2, height: 60))
-        view.backgroundColor = UIColor.darkGrayColor()
+        view.backgroundColor = BGHeaderColor
         
         labelLeft.numberOfLines = 0
         labelLeft.text = "Credits enrolled: " + String(semesterCreditsEnrolled) + "\nCredits obtained: " + String(semesterCreditsObtained)

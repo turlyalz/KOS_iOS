@@ -9,6 +9,7 @@
 import Foundation
 
 let MAX_WAIT_FOR_RESPONSE = 10
+let BGHeaderColor = UIColor(red: 80/255.0, green: 85/255.0, blue: 90/255.0, alpha: 1)
 
 typealias ProfileContent = (names: [String], values: [String])
 typealias SemesterContent = (name: String?, subjectNumber: NSNumber?, subjects: NSSet?)
@@ -19,6 +20,8 @@ var screenSize: CGRect = UIScreen.mainScreen().bounds
 var SubjectCell: (subjectNameWidth: CGFloat, subjectCodeWidth: CGFloat, subjectCreditWidth: CGFloat, height: CGFloat) =
 (subjectNameWidth: screenSize.width*19/30, subjectCodeWidth: screenSize.width/5, subjectCreditWidth: screenSize.width/6, height: 50)
 
+
+// Dropdown menu constants
 var SemesterNumber: CGFloat = 8
 var DropdownMenuViewCellHeight: CGFloat = screenSize.height/(SemesterNumber+2)
 
@@ -28,6 +31,7 @@ let DropdownMenuView: (cellBackgroundColor: UIColor, cellSelectionColor: UIColor
     arrowPadding: 15, animationDuration: 0.4, maskBackgroundColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0), maskBackgroundOpacity: 0.3)
 
 
+// Updates values if orientation was changed
 func updateValues() {
     screenSize = UIScreen.mainScreen().bounds
     SubjectCell = (subjectNameWidth: screenSize.width*19/30, subjectCodeWidth: screenSize.width/5, subjectCreditWidth: screenSize.width/6, height: 50)
@@ -39,6 +43,7 @@ func updateSemesterNumber(number: Int) {
     updateValues()
 }
 
+// Check if comunication error
 func errorOcurredIn(response: NSURLResponse?) -> Bool {
     if let httpResponse = response as? NSHTTPURLResponse {
         if let resp = httpResponse.URL {
