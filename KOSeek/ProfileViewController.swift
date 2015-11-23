@@ -55,8 +55,15 @@ class ProfileViewController: UITableViewController {
         
         let label: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 50))
         
-        if let _ = profileInfo?.email, _ = profileInfo?.personalNumber {
-            label.text = (profileInfo?.email)! + ": " + (profileInfo?.personalNumber)!
+        if indexPath.row == 1 {
+            if let _ = profileInfo?.email, _ = profileInfo?.personalNumber {
+                label.text = "Email: " + (profileInfo?.email)!
+            }
+        }
+        else {
+            if let _ = profileInfo?.email, _ = profileInfo?.personalNumber {
+                label.text = "Personal number: " + (profileInfo?.personalNumber)!
+            }
         }
         
         label.textColor = .blackColor()

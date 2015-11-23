@@ -16,6 +16,10 @@ class SavedVariables {
     static var currentSemester: String?
     static var subjectCodes: [String] = []
     
+    static let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+    static let context = appDel.managedObjectContext
+
+    
     private init(){ }
 
     class func resetAll() {

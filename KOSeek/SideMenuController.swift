@@ -39,7 +39,7 @@ class SideMenuController: UITableViewController {
             if let username = SavedVariables.username {
                 let profileInfo = Database.getPersonBy(username: username)
                 if let _ = profileInfo?.firstName, _ = profileInfo?.lastName {
-                    self.title = (profileInfo?.firstName)! + " " + (profileInfo?.lastName)!
+                    label.text = (profileInfo?.firstName)! + " " + (profileInfo?.lastName)!
                 }
             }
 
