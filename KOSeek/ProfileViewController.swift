@@ -10,16 +10,10 @@ import UIKit
 
 class ProfileViewController: UITableViewController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    var profileInfo: ProfileContent = ([],[])
+    var profileInfo: Person?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -28,9 +22,9 @@ class ProfileViewController: UITableViewController {
         }
         
         if let username = SavedVariables.username {
-            profileInfo = Database.getProfileContent(username)
-            if profileInfo.values.count >= 2 {
-                self.title = profileInfo.values[0] + " " + profileInfo.values[1]
+            profileInfo = Database.getPersonBy(username: username)
+            if let _ = profileInfo?.firstName, _ = profileInfo?.lastName {
+                self.title = (profileInfo?.firstName)! + " " + (profileInfo?.lastName)!
             }
         }
     }
@@ -41,19 +35,15 @@ class ProfileViewController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return profileInfo.values.count-2
+        return 2
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -65,8 +55,8 @@ class ProfileViewController: UITableViewController {
         
         let label: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 50))
         
-        if profileInfo.values.count >= 4 {
-            label.text = profileInfo.names[indexPath.row+2] + ": " + profileInfo.values[indexPath.row+2]
+        if let _ = profileInfo?.email, _ = profileInfo?.personalNumber {
+            label.text = (profileInfo?.email)! + ": " + (profileInfo?.personalNumber)!
         }
         
         label.textColor = .blackColor()
@@ -78,50 +68,4 @@ class ProfileViewController: UITableViewController {
 
         return cell
     }
-    
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the specified item to be editable.
-    return true
-    }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
 }

@@ -18,13 +18,14 @@ class Database {
     
     private init(){ }
 
-    class func setProfileContent(firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?) {
-        let user = NSEntityDescription.insertNewObjectForEntityForName("Person", inManagedObjectContext: context)
-        user.setValue(firstName, forKey: "firstName")
-        user.setValue(lastName, forKey: "lastName")
-        user.setValue(username, forKey: "username")
-        user.setValue(email, forKey: "email")
-        user.setValue(personalNumber, forKey: "personalNumber")
+    class func addNewPerson(firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?) {
+        let entityDescription = NSEntityDescription.entityForName("Person", inManagedObjectContext: context)
+        let user = Person(entity: entityDescription!, insertIntoManagedObjectContext: context)
+        user.firstName = firstName
+        user.lastName = lastName
+        user.username = username
+        user.email = email
+        user.personalNumber = personalNumber
         do {
             try context.save()
         }
@@ -33,26 +34,20 @@ class Database {
         }
     }
     
-    class func getProfileContent(username: String) -> ProfileContent {
+    class func getPersonBy(username username: String) -> Person? {
         let request = NSFetchRequest(entityName: "Person")
         request.returnsObjectsAsFaults = false
         request.predicate = NSPredicate(format: "username == %@", username)
         do {
             let results = try context.executeFetchRequest(request)
             if results.count > 0 {
-                let res = results[0] as! NSManagedObject
-                let firstName = res.valueForKey("firstName") as! String
-                let lastName = res.valueForKey("lastName") as! String
-                let email = res.valueForKey("email") as! String
-                let personalNumber = res.valueForKey("personalNumber") as! String
-                return (["First name", "Last name", "Email", "Personal number"], [firstName, lastName, email, personalNumber])
+                return results[0] as? Person
             }
         }
         catch let error as NSError {
             debugPrint(error)
         }
-        
-        return ([], [])
+        return nil
     }
     
     // Delete all data from database.

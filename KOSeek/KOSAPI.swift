@@ -63,7 +63,7 @@ class KOSAPI {
         let username = xml["atom:entry"]["atom:content"]["username"].element?.text
         let email = xml["atom:entry"]["atom:content"]["email"].element?.text
         let personalNumber = xml["atom:entry"]["atom:content"]["personalNumber"].element?.text
-        Database.setProfileContent(firstName, lastName: lastName, username: username, email: email, personalNumber: personalNumber)
+        Database.addNewPerson(firstName, lastName: lastName, username: username, email: email, personalNumber: personalNumber)
     }
 
     private class func semesterParser(xml: XMLIndexer) {
