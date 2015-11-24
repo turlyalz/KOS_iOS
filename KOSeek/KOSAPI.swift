@@ -25,11 +25,11 @@ class KOSAPI {
         download("Current Semester", extensionURL: "/students/" + SavedVariables.username! + "/enrolledCourses?access_token=" + LoginHelper.accessToken + "&lang=cs", parser: currentSemesterParser)
         download("Enrolled Courses", extensionURL: "/students/" + SavedVariables.username! + "/enrolledCourses?access_token=" + LoginHelper.accessToken + "&sem=none&limit=1000&lang=cs", parser: semesterParser)
         
-        if let _ = SavedVariables.currentSemester {
+        /*if let _ = SavedVariables.currentSemester {
             var examsExtensionURL =  "/exams/?access_token=" + LoginHelper.accessToken + "&query=semester='" + SavedVariables.currentSemester!
             examsExtensionURL += "';course='" + "&limit=1000"
             download("Exams", extensionURL: examsExtensionURL, parser: examsParser)
-        }
+        }*/
         
         var subjectExtensionURL = "/courses?access_token=" + LoginHelper.accessToken + "&limit=1000&lang=cs&query="
         for code in SavedVariables.subjectCodes {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class SavedVariables {
     static var sideMenuViewController: SideMenuController?
@@ -15,10 +16,7 @@ class SavedVariables {
     static var semesterIDNameDict: [String:String] = [:]
     static var currentSemester: String?
     static var subjectCodes: [String] = []
-    
-    static let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-    static let context = appDel.managedObjectContext
-
+    static var coreDataStack: CoreDataStack?
     
     private init(){ }
 

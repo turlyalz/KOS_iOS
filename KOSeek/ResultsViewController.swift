@@ -79,21 +79,26 @@ class ResultsViewController: UITableViewController {
     var subjects: [Subject] = []
     
     func setTotalCreditsValues() {
-        if let semesters = Database.getSemesters() {
-            for semester in semesters {
-                if let id = semester.id {
-                    if let subj = Database.getSubjectsBy(semester: id) {
-                        for subject in subj {
-                            if let credits = subject.credits {
-                                if let creditsInt = Int(credits) {
-                                    totalCreditsEnrolled += creditsInt
-                                    if subject.completed == 1 {
-                                        totalCreditsObtained += creditsInt
-                                    }
-                                }
-                            }
-                        }
-                    }
+        guard let semesters = Database.getSemesters() else {
+            return
+        }
+        for semester in semesters {
+            guard let id = semester.id else {
+                return
+            }
+            guard let subj = Database.getSubjectsBy(semester: id) else {
+                return
+            }
+            for subject in subj {
+                guard let credits = subject.credits else {
+                    return
+                }
+                guard let creditsInt = Int(credits) else {
+                    return
+                }
+                totalCreditsEnrolled += creditsInt
+                if subject.completed == 1 {
+                    totalCreditsObtained += creditsInt
                 }
             }
         }
