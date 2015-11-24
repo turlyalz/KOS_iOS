@@ -68,37 +68,36 @@ class KOSAPI {
 
     private class func semesterParser(xml: XMLIndexer) {
         let subjectNumberStr = xml["atom:feed"]["osearch:totalResults"].element?.text
-        if let uSubjectNumberStr = subjectNumberStr {
-            if let subjectNumber = Int(uSubjectNumberStr) {
-                for index in 0...subjectNumber-1 {
-                    let semesterID = xml["atom:feed"]["atom:entry"][index]["atom:content"]["semester"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("semesters/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
-                    if let semID = semesterID {
-                        if SavedVariables.semesterIDNameDict[semID] == nil {
-                            let semesterName = xml["atom:feed"]["atom:entry"][index]["atom:content"]["semester"].element?.text
-                            SavedVariables.semesterIDNameDict[semID] = semesterName
-                            Database.addNewSemester(semesterName, id: semID)
-                            //print(SavedVariables.semesterIDNameDict[semID])
-                        }
-                    }
-                    
-                    let completedStr = xml["atom:feed"]["atom:entry"][index]["atom:content"]["completed"].element?.text
-                    let subjectName = xml["atom:feed"]["atom:entry"][index]["atom:content"]["course"].element?.text
-                    let code = xml["atom:feed"]["atom:entry"][index]["atom:content"]["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
-                    var completed = 0
-                    if completedStr == "true" {
-                        completed = 1
-                    }
-                    else {
-                        completed = 0
-                    }
-                    if let uCode = code {
-                        SavedVariables.subjectCodes.append(uCode)
-                    }
-                    //print("Code: \(code), name: \(subjectName), semester: \(semesterID)")
-                    Database.addNewSubject(code, name: subjectName, completed: completed, credits: nil, semester: semesterID)
+        guard let uSubjectNumberStr = subjectNumberStr, subjectNumber = Int(uSubjectNumberStr) else {
+            return
+        }
+        for index in 0...subjectNumber-1 {
+            let semesterID = xml["atom:feed"]["atom:entry"][index]["atom:content"]["semester"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("semesters/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
+            if let semID = semesterID {
+                if SavedVariables.semesterIDNameDict[semID] == nil {
+                    let semesterName = xml["atom:feed"]["atom:entry"][index]["atom:content"]["semester"].element?.text
+                    SavedVariables.semesterIDNameDict[semID] = semesterName
+                    Database.addNewSemester(semesterName, id: semID)
+                    //print(SavedVariables.semesterIDNameDict[semID])
                 }
             }
-        }        
+            
+            let completedStr = xml["atom:feed"]["atom:entry"][index]["atom:content"]["completed"].element?.text
+            let subjectName = xml["atom:feed"]["atom:entry"][index]["atom:content"]["course"].element?.text
+            let code = xml["atom:feed"]["atom:entry"][index]["atom:content"]["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
+            var completed = 0
+            if completedStr == "true" {
+                completed = 1
+            }
+            else {
+                completed = 0
+            }
+            if let uCode = code {
+                SavedVariables.subjectCodes.append(uCode)
+            }
+            //print("Code: \(code), name: \(subjectName), semester: \(semesterID)")
+            Database.addNewSubject(code, name: subjectName, completed: completed, credits: nil, semester: semesterID)
+        }
     }
 
     private class func subjectsDetailsParser(xml: XMLIndexer) {

@@ -75,7 +75,6 @@ class ResultsViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-    
     var subjects: [Subject] = []
     
     func setTotalCreditsValues() {
@@ -83,17 +82,11 @@ class ResultsViewController: UITableViewController {
             return
         }
         for semester in semesters {
-            guard let id = semester.id else {
-                return
-            }
-            guard let subj = Database.getSubjectsBy(semester: id) else {
+            guard let id = semester.id, subj = Database.getSubjectsBy(semester: id) else {
                 return
             }
             for subject in subj {
-                guard let credits = subject.credits else {
-                    return
-                }
-                guard let creditsInt = Int(credits) else {
+                guard let credits = subject.credits, creditsInt = Int(credits) else {
                     return
                 }
                 totalCreditsEnrolled += creditsInt
@@ -110,13 +103,12 @@ class ResultsViewController: UITableViewController {
             semesterCreditsEnrolled = 0
             semesterCreditsObtained = 0
             for subject in subjects {
-                if let credits = subject.credits {
-                    if let creditsInt = Int(credits) {
-                        semesterCreditsEnrolled += creditsInt
-                        if subject.completed == 1 {
-                            semesterCreditsObtained += creditsInt
-                        }
-                    }
+                guard let credits = subject.credits, creditsInt = Int(credits) else {
+                    return
+                }
+                semesterCreditsEnrolled += creditsInt
+                if subject.completed == 1 {
+                    semesterCreditsObtained += creditsInt
                 }
             }
             subjects.sortInPlace({ $0.0.code < $0.1.code })
