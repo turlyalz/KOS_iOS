@@ -62,13 +62,13 @@ class LoginHelper {
         task.resume()
         
         var count = 0
-        while running && !failed && count < MAX_WAIT_FOR_RESPONSE {
+        while running && !failed && count < MaxWaitForResponse {
             print("waiting for login response...")
             sleep(1)
             count++
         }
         
-        if failed || errorOcurredIn(task.response) || count >= MAX_WAIT_FOR_RESPONSE{
+        if failed || errorOcurredIn(task.response) || count >= MaxWaitForResponse{
             return (false, "Log in failed. Please try again.")
         }
         
@@ -112,14 +112,14 @@ class LoginHelper {
         task.resume()
         
         var count = 0
-        while running && !failed && count < MAX_WAIT_FOR_RESPONSE {
+        while running && !failed && count < MaxWaitForResponse {
             print("waiting for auth response...")
             sleep(1)
             count++
         }
         
         if !codeObtained {
-            if failed || errorOcurredIn(task.response) || count >= MAX_WAIT_FOR_RESPONSE {
+            if failed || errorOcurredIn(task.response) || count >= MaxWaitForResponse {
                 return (false, "Log in failed. Please try again.")
             }
         }
@@ -172,13 +172,13 @@ class LoginHelper {
         task.resume()
         
         var count = 0
-        while running && !failed && count < MAX_WAIT_FOR_RESPONSE {
+        while running && !failed && count < MaxWaitForResponse {
             print("waiting for code response...")
             sleep(1)
             count++
         }
         
-        if failed || errorOcurredIn(task.response) || count >= MAX_WAIT_FOR_RESPONSE{
+        if failed || errorOcurredIn(task.response) || count >= MaxWaitForResponse{
             return (false, "Log in failed. Please try again.")
         }
     
@@ -219,13 +219,13 @@ class LoginHelper {
         task.resume()
         
         var count = 0
-        while running && !failed && count < MAX_WAIT_FOR_RESPONSE {
+        while running && !failed && count < MaxWaitForResponse {
             print("waiting for token response...")
             sleep(1)
             count++
         }
         
-        if failed || errorOcurredIn(task.response) || count >= MAX_WAIT_FOR_RESPONSE{
+        if failed || errorOcurredIn(task.response) || count >= MaxWaitForResponse{
             return (false, "Log in failed. Please try again.")
         }
         

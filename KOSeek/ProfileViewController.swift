@@ -22,7 +22,7 @@ class ProfileViewController: UITableViewController {
         }
         
         if let username = SavedVariables.username {
-            profileInfo = Database.getPersonBy(username: username)
+            profileInfo = Database.getPersonBy(username: username, context: SavedVariables.cdh!.managedObjectContext)
             if let _ = profileInfo?.firstName, _ = profileInfo?.lastName {
                 self.title = (profileInfo?.firstName)! + " " + (profileInfo?.lastName)!
             }

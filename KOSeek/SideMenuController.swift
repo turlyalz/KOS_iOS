@@ -37,7 +37,7 @@ class SideMenuController: UITableViewController {
             let label: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 50))
             
             if let username = SavedVariables.username {
-                let profileInfo = Database.getPersonBy(username: username)
+                let profileInfo = Database.getPersonBy(username: username, context: SavedVariables.cdh!.managedObjectContext)
                 if let _ = profileInfo?.firstName, _ = profileInfo?.lastName {
                     label.text = (profileInfo?.firstName)! + " " + (profileInfo?.lastName)!
                 }
@@ -72,7 +72,7 @@ class SideMenuController: UITableViewController {
     
     func logOutHandler(action: UIAlertAction) -> Void {
         self.performSegueWithIdentifier("logOut", sender: self)
-        Database.delete()
+        Database.delete(context: SavedVariables.cdh!.managedObjectContext)
         SavedVariables.resetAll()
     }
     

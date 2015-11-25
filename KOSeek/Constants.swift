@@ -8,7 +8,7 @@
 
 import Foundation
 
-let MAX_WAIT_FOR_RESPONSE = 10
+let MaxWaitForResponse = 10
 let BGHeaderColor = UIColor(red: 80/255.0, green: 85/255.0, blue: 90/255.0, alpha: 1)
 
 typealias SavedVariablesContent = (username: String?, currentSemester: String?)
@@ -30,7 +30,7 @@ let DropdownMenuView: (cellBackgroundColor: UIColor, cellSelectionColor: UIColor
     arrowPadding: 15, animationDuration: 0.4, maskBackgroundColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0), maskBackgroundOpacity: 0.3)
 
 
-// Updates values if orientation was changed
+// Updates values if orientation did changed
 func updateValues() {
     screenSize = UIScreen.mainScreen().bounds
     SubjectCell = (subjectNameWidth: screenSize.width*19/30, subjectCodeWidth: screenSize.width/5, subjectCreditWidth: screenSize.width/6, height: 50)

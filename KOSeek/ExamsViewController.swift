@@ -22,7 +22,7 @@ class ExamsViewController: UITableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        guard let semester = SavedVariables.currentSemester, subjects = Database.getSubjectsBy(semester: semester) else {
+        guard let semester = SavedVariables.currentSemester, subjects = Database.getSubjectsBy(semester: semester, context: SavedVariables.cdh!.managedObjectContext) else {
             return
         }
         

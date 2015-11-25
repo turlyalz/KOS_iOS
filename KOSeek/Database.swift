@@ -15,9 +15,7 @@ class Database {
     
     private init(){ }
 
-    private static let context = (SavedVariables.coreDataStack?.managedObjectContext)!
-
-    class func addNewPerson(firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?) {
+    class func addNewPersonTo(context context: NSManagedObjectContext, firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?) {
         let entityDescription = NSEntityDescription.entityForName("Person", inManagedObjectContext: context)
         let user = Person(entity: entityDescription!, insertIntoManagedObjectContext: context)
         user.firstName = firstName
@@ -25,10 +23,10 @@ class Database {
         user.username = username
         user.email = email
         user.personalNumber = personalNumber
-        saveContext()
+        saveContext(context)
     }
     
-    class func getPersonBy(username username: String) -> Person? {
+    class func getPersonBy(username username: String, context: NSManagedObjectContext) -> Person? {
         let request = NSFetchRequest(entityName: "Person")
         request.returnsObjectsAsFaults = false
         request.predicate = NSPredicate(format: "username == %@", username)
@@ -45,14 +43,14 @@ class Database {
     }
     
     // Delete all data from database.
-    class func delete() {
-        delete("Person")
-        delete("Subject")
-        delete("Semester")
-        delete("SavedVariables")
+    class func delete(context context: NSManagedObjectContext) {
+        delete("Person", context: context)
+        delete("Subject", context: context)
+        delete("Semester", context: context)
+        delete("SavedVariables", context: context)
     }
     
-    private class func delete(entity: String) {
+    private class func delete(entity: String, context: NSManagedObjectContext) {
         let coord = SavedVariables.coreDataStack?.persistentStoreCoordinator
         let fetchRequest = NSFetchRequest(entityName: entity)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -63,7 +61,7 @@ class Database {
         }
     }
     
-    class func getSavedVariables() -> SavedVariablesContent {
+    class func getSavedVariablesFrom(context context: NSManagedObjectContext) -> SavedVariablesContent {
         let request = NSFetchRequest(entityName: "SavedVariables")
         request.returnsObjectsAsFaults = false
         do {
@@ -82,22 +80,22 @@ class Database {
         return (nil, nil)
     }
     
-    class func setSavedVariables(username: String, currentSemester: String) {
+    class func setSavedVariables(context: NSManagedObjectContext, username: String, currentSemester: String) {
         let SV = NSEntityDescription.insertNewObjectForEntityForName("SavedVariables", inManagedObjectContext: context)
         SV.setValue(username, forKey: "username")
         SV.setValue(currentSemester, forKey: "currentSemester")
-        saveContext()
+        saveContext(context)
     }
     
-    class func addNewSemester(name: String?, id: String?) {
+    class func addNewSemesterTo(context context: NSManagedObjectContext, name: String?, id: String?) {
         let entityDescription = NSEntityDescription.entityForName("Semester", inManagedObjectContext: context)
         let semester = Semester(entity: entityDescription!, insertIntoManagedObjectContext: context)
         semester.name = name
         semester.id = id
-        saveContext()
+        saveContext(context)
     }
     
-    class func getSemesters() -> [Semester]? {
+    class func getSemestersFrom(context context: NSManagedObjectContext) -> [Semester]? {
         let request = NSFetchRequest(entityName: "Semester")
         request.returnsObjectsAsFaults = false
         do {
@@ -112,7 +110,7 @@ class Database {
         return nil
     }
     
-    class func getSubjectsBy(semester semester: String) -> [Subject]? {
+    class func getSubjectsBy(semester semester: String, context: NSManagedObjectContext) -> [Subject]? {
         let request = NSFetchRequest(entityName: "Subject")
         request.returnsObjectsAsFaults = false
         request.predicate = NSPredicate(format: "semester == %@", semester)
@@ -128,7 +126,7 @@ class Database {
         return nil
     }
     
-    class func getSubjectsBy(code code: String) -> [Subject]? {
+    class func getSubjectsBy(code code: String, context: NSManagedObjectContext) -> [Subject]? {
         let request = NSFetchRequest(entityName: "Subject")
         request.returnsObjectsAsFaults = false
         request.predicate = NSPredicate(format: "code == %@", code)
@@ -144,7 +142,7 @@ class Database {
         return nil
     }
     
-    class func addNewSubject(code: String?, name: String?, completed: NSNumber?, credits: String?, semester: String?) {
+    class func addNewSubjectTo(context context: NSManagedObjectContext, code: String?, name: String?, completed: NSNumber?, credits: String?, semester: String?) {
         let entityDescription = NSEntityDescription.entityForName("Subject", inManagedObjectContext: context)
         let subject = Subject(entity: entityDescription!, insertIntoManagedObjectContext: context)
         subject.code = code
@@ -152,12 +150,12 @@ class Database {
         subject.completed = completed
         subject.credits = credits
         subject.semester = semester
-        saveContext()
+        saveContext(context)
     }
     
-    class func changeSubjectByCode(code: String?, name: String?, completed: NSNumber?, credits: String?, semester: String?) {
+    class func changeSubjectBy(code code: String?, name: String?, completed: NSNumber?, credits: String?, semester: String?, context: NSManagedObjectContext) {
         if let _ = code {
-            let subjects = getSubjectsBy(code: code!)
+            let subjects = getSubjectsBy(code: code!, context: context)
             if let subjs = subjects {
                 for subject in subjs {
                     if let _ = name {
@@ -173,20 +171,13 @@ class Database {
                         subject.semester = semester
                     }
                 }
-                saveContext()
+                saveContext(context)
             }
         }
     }
     
-    private class func saveContext() {
-       // privateContext.performBlock {
-            do {
-                try context.save()
-            }
-            catch let error as NSError {
-                debugPrint(error)
-            }
-        //}
+    private class func saveContext(context: NSManagedObjectContext) {
+        SavedVariables.cdh?.saveContext(context)
     }
     
 }

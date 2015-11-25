@@ -13,20 +13,20 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    lazy var coreDataStack = CoreDataStack()
+    //lazy var coreDataStack = CoreDataStack()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        SavedVariables.coreDataStack = self.coreDataStack
+        SavedVariables.cdh = self.cdh
         setSavedVariables()
         return true
     }
     
     func setSavedVariables() {
-        let response = Database.getSavedVariables()
+        let response = Database.getSavedVariablesFrom(context: self.cdh.managedObjectContext)
         if let username = response.username, currentSemester = response.currentSemester {
             SavedVariables.username = username
             SavedVariables.currentSemester = currentSemester
-            if let semesters = Database.getSemesters() {
+            if let semesters = Database.getSemestersFrom(context: self.cdh.managedObjectContext) {
                 for semester in semesters {
                     if let id = semester.id, name = semester.name {
                         SavedVariables.semesterIDNameDict[id] = name
@@ -43,6 +43,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
     }
+    
+    // #pragma mark - Core Data Helper
+    
+    lazy var cdstore: CoreDataStore = {
+        let cdstore = CoreDataStore()
+        return cdstore
+    }()
+    
+    lazy var cdh: CoreDataHelper = {
+        let cdh = CoreDataHelper()
+        return cdh
+    }()
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -63,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(application: UIApplication) {
-        coreDataStack.saveContext()
+        self.cdh.saveContext()
     }
     
 }

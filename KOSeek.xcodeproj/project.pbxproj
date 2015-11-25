@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C015DD81C05FE8A0074B6F6 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C015DD71C05FE8A0074B6F6 /* CoreDataStore.swift */; };
+		9C015DDA1C05FF410074B6F6 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C015DD91C05FF410074B6F6 /* CoreDataHelper.swift */; };
 		9C22728E1BD6517B00DE7F15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */; };
 		9C2272901BD6517B00DE7F15 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */; };
 		9C2272931BD6517B00DE7F15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2272911BD6517B00DE7F15 /* Main.storyboard */; };
@@ -73,6 +75,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9C015DD71C05FE8A0074B6F6 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		9C015DD91C05FF410074B6F6 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		9C22728A1BD6517B00DE7F15 /* KOSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +245,8 @@
 				9C2BFD291BF5420E00744E85 /* Database.swift */,
 				9C43A1031BF7F67A0018ABB0 /* Constants.swift */,
 				9CAA421C1C04F03200691820 /* CoreDataStack.swift */,
+				9C015DD71C05FE8A0074B6F6 /* CoreDataStore.swift */,
+				9C015DD91C05FF410074B6F6 /* CoreDataHelper.swift */,
 			);
 			name = ApplicationLayer;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 			files = (
 				9C9E50211BE12C2E009B6CB1 /* ExamsViewController.swift in Sources */,
 				9C6FB4D31BFE2E2700C682C4 /* Semester.swift in Sources */,
+				9C015DDA1C05FF410074B6F6 /* CoreDataHelper.swift in Sources */,
 				9C6FB4DB1BFE811100C682C4 /* BTNavigationDropdownMenu.swift in Sources */,
 				9CAA421D1C04F03200691820 /* CoreDataStack.swift in Sources */,
 				9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */,
@@ -416,6 +423,7 @@
 				9C5523D61C03B6CD00DC6A04 /* Person.swift in Sources */,
 				9C2BFD2A1BF5420E00744E85 /* Database.swift in Sources */,
 				9C86AE841BF3B7870096C72E /* KOSModel.xcdatamodeld in Sources */,
+				9C015DD81C05FE8A0074B6F6 /* CoreDataStore.swift in Sources */,
 				9C2272901BD6517B00DE7F15 /* LoginViewController.swift in Sources */,
 				9C8ED07A1BE3D5A200611CBF /* SavedVariables.swift in Sources */,
 				9CE171661BF8A48900C56D2F /* Subject.swift in Sources */,

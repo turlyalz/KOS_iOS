@@ -17,6 +17,7 @@ class SavedVariables {
     static var currentSemester: String?
     static var subjectCodes: [String] = []
     static var coreDataStack: CoreDataStack?
+    static var cdh: CoreDataHelper?
     
     private init(){ }
 

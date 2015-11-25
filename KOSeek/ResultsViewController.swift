@@ -78,11 +78,11 @@ class ResultsViewController: UITableViewController {
     var subjects: [Subject] = []
     
     func setTotalCreditsValues() {
-        guard let semesters = Database.getSemesters() else {
+        guard let semesters = Database.getSemestersFrom(context: SavedVariables.cdh!.managedObjectContext) else {
             return
         }
         for semester in semesters {
-            guard let id = semester.id, subj = Database.getSubjectsBy(semester: id) else {
+            guard let id = semester.id, subj = Database.getSubjectsBy(semester: id, context: SavedVariables.cdh!.managedObjectContext) else {
                 return
             }
             for subject in subj {
@@ -98,7 +98,7 @@ class ResultsViewController: UITableViewController {
     }
     
     func updateSubjects(semester: String) {
-        if let subj = Database.getSubjectsBy(semester: semester) {
+        if let subj = Database.getSubjectsBy(semester: semester, context: SavedVariables.cdh!.managedObjectContext) {
             subjects = subj
             semesterCreditsEnrolled = 0
             semesterCreditsObtained = 0
