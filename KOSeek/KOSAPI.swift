@@ -121,7 +121,7 @@ class KOSAPI {
     
     private class func download(name: String, extensionURL: String, parser: (XMLIndexer) -> Void) {
         dispatch_async(dispatch_get_main_queue(), {
-            SavedVariables.waitingViewController?.counter += 20
+            SavedVariables.waitingViewController?.counter += 10
             return
         })
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + extensionURL)!)
@@ -140,6 +140,10 @@ class KOSAPI {
                 parser(xml)
             }
             running = false
+            dispatch_async(dispatch_get_main_queue(), {
+                SavedVariables.waitingViewController?.counter += 10
+                return
+            })
         }
         running = true
         task.resume()

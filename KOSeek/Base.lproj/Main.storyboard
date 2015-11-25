@@ -16,13 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wg-Yi-rRl">
-                                <rect key="frame" x="261" y="385" width="79" height="30"/>
-                                <state key="normal" title="Test Button"/>
-                                <connections>
-                                    <segue destination="gCh-tP-J81" kind="show" id="stE-Hr-0qw"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5z-pv-5Zd">
                                 <rect key="frame" x="172" y="213" width="257" height="114"/>
                                 <subviews>
@@ -90,8 +83,6 @@
                         <constraints>
                             <constraint firstItem="j5z-pv-5Zd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-30" id="GYl-DK-z7R"/>
                             <constraint firstItem="j5z-pv-5Zd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OtO-aB-32b"/>
-                            <constraint firstItem="3wg-Yi-rRl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ffv-6H-tVt"/>
-                            <constraint firstItem="3wg-Yi-rRl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="gTu-t8-iih"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="KOS iOS" id="C8j-Ar-DPW"/>
@@ -686,7 +677,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Q2c-SP-SKF"/>
-        <segue reference="9gN-ve-Bh1"/>
         <segue reference="tw2-9q-5dk"/>
         <segue reference="gqg-lU-my3"/>
         <segue reference="pn5-gg-Cwc"/>
