@@ -51,7 +51,7 @@ class Database {
     }
     
     private class func delete(entity: String, context: NSManagedObjectContext) {
-        let coord = SavedVariables.coreDataStack?.persistentStoreCoordinator
+        let coord = SavedVariables.cdh?.store.persistentStoreCoordinator
         let fetchRequest = NSFetchRequest(entityName: entity)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
@@ -154,25 +154,22 @@ class Database {
     }
     
     class func changeSubjectBy(code code: String?, name: String?, completed: NSNumber?, credits: String?, semester: String?, context: NSManagedObjectContext) {
-        if let _ = code {
-            let subjects = getSubjectsBy(code: code!, context: context)
-            if let subjs = subjects {
-                for subject in subjs {
-                    if let _ = name {
-                        subject.name = name
-                    }
-                    if let _ = completed {
-                        subject.completed = completed
-                    }
-                    if let _ = credits {
-                        subject.credits = credits
-                    }
-                    if let _ = semester {
-                        subject.semester = semester
-                    }
+        if let uCode = code, subjects = getSubjectsBy(code: uCode, context: context) {
+            for subject in subjects {
+                if let _ = name {
+                    subject.name = name
                 }
-                saveContext(context)
+                if let _ = completed {
+                    subject.completed = completed
+                }
+                if let _ = credits {
+                    subject.credits = credits
+                }
+                if let _ = semester {
+                    subject.semester = semester
+                }
             }
+            saveContext(context)
         }
     }
     

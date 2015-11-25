@@ -44,17 +44,17 @@ func updateSemesterNumber(number: Int) {
 
 // Check if comunication error
 func errorOcurredIn(response: NSURLResponse?) -> Bool {
-    if let httpResponse = response as? NSHTTPURLResponse {
-        if let resp = httpResponse.URL {
-            let respStr = String(resp)
-            if respStr.rangeOfString("authentication_error=true") != nil {
-                return true
-            }
-        }
-        if httpResponse.statusCode != 200 {
-            print("Unexpected status code: \(httpResponse.statusCode)")
-            return true
-        }
+    guard let httpResponse = response as? NSHTTPURLResponse, resp = httpResponse.URL else  {
+        return true
+    }
+    let respStr = String(resp)
+    if respStr.rangeOfString("authentication_error=true") != nil {
+        return true
+    }
+    
+    if httpResponse.statusCode != 200 {
+        print("Unexpected status code: \(httpResponse.statusCode)")
+        return true
     }
     return false
 }

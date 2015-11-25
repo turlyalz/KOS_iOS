@@ -41,6 +41,11 @@ class KOSAPI {
             }
         }
         download("Subjects Info", extensionURL: subjectExtensionURL, parser: subjectsDetailsParser)
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            SavedVariables.waitingViewController?.counter = 100
+            return
+        })
 
         onComplete()
     }
@@ -115,6 +120,10 @@ class KOSAPI {
     }
     
     private class func download(name: String, extensionURL: String, parser: (XMLIndexer) -> Void) {
+        dispatch_async(dispatch_get_main_queue(), {
+            SavedVariables.waitingViewController?.counter += 20
+            return
+        })
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + extensionURL)!)
         request.HTTPMethod = "GET"
         print("Request = \(request)")

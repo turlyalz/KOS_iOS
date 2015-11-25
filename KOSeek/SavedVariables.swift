@@ -11,12 +11,12 @@ import CoreData
 
 class SavedVariables {
     static var sideMenuViewController: SideMenuController?
+    static var waitingViewController: WaitingViewController?
     static var username: String?
     static var password: String?
     static var semesterIDNameDict: [String:String] = [:]
     static var currentSemester: String?
     static var subjectCodes: [String] = []
-    static var coreDataStack: CoreDataStack?
     static var cdh: CoreDataHelper?
     
     private init(){ }

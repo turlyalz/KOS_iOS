@@ -127,9 +127,18 @@
                                 <color key="textColor" red="0.22352941179999999" green="0.23921568630000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uMh-T4-qHx">
+                                <rect key="frame" x="225" y="319" width="150" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="2bU-ju-rdX"/>
+                                    <constraint firstAttribute="height" constant="2" id="osS-H7-qbM"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uMh-T4-qHx" firstAttribute="centerX" secondItem="7H9-6I-hvM" secondAttribute="centerX" id="45X-Ak-jka"/>
+                            <constraint firstItem="uMh-T4-qHx" firstAttribute="centerY" secondItem="7H9-6I-hvM" secondAttribute="centerY" constant="20" id="9Uj-hS-g7a"/>
                             <constraint firstItem="I0L-Jz-CJg" firstAttribute="centerY" secondItem="7H9-6I-hvM" secondAttribute="centerY" constant="-35" id="Sur-dG-xBx"/>
                             <constraint firstItem="v2d-8j-Pki" firstAttribute="centerX" secondItem="7H9-6I-hvM" secondAttribute="centerX" id="ZII-pI-WpP"/>
                             <constraint firstItem="v2d-8j-Pki" firstAttribute="centerY" secondItem="7H9-6I-hvM" secondAttribute="centerY" constant="-6" id="ve3-rm-ZHO"/>
@@ -138,6 +147,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="I0L-Jz-CJg" id="y3M-Fw-Zlu"/>
+                        <outlet property="progressView" destination="uMh-T4-qHx" id="ns8-AQ-ooh"/>
                         <outlet property="statusLabel" destination="v2d-8j-Pki" id="mSq-44-BFm"/>
                         <segue destination="gCh-tP-J81" kind="show" identifier="downloadCompleteSegue" id="9gN-ve-Bh1"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="failedLoginSegue" id="tw2-9q-5dk"/>
@@ -675,13 +685,13 @@
         <image name="timetable" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DYU-8V-Yjc"/>
+        <segue reference="Q2c-SP-SKF"/>
         <segue reference="9gN-ve-Bh1"/>
-        <segue reference="uIv-US-8Aj"/>
+        <segue reference="tw2-9q-5dk"/>
         <segue reference="gqg-lU-my3"/>
         <segue reference="pn5-gg-Cwc"/>
-        <segue reference="PeF-pM-b66"/>
-        <segue reference="Q2c-SP-SKF"/>
+        <segue reference="DYU-8V-Yjc"/>
         <segue reference="oQ7-TJ-uoE"/>
+        <segue reference="PeF-pM-b66"/>
     </inferredMetricsTieBreakers>
 </document>
