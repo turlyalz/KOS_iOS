@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9C015DD81C05FE8A0074B6F6 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C015DD71C05FE8A0074B6F6 /* CoreDataStore.swift */; };
 		9C015DDA1C05FF410074B6F6 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C015DD91C05FF410074B6F6 /* CoreDataHelper.swift */; };
+		9C1A1B271C086A590050E03E /* TimetableSlot+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B251C086A590050E03E /* TimetableSlot+CoreDataProperties.swift */; };
+		9C1A1B281C086A590050E03E /* TimetableSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B261C086A590050E03E /* TimetableSlot.swift */; };
 		9C22728E1BD6517B00DE7F15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */; };
 		9C2272901BD6517B00DE7F15 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */; };
 		9C2272931BD6517B00DE7F15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2272911BD6517B00DE7F15 /* Main.storyboard */; };
@@ -76,6 +78,8 @@
 /* Begin PBXFileReference section */
 		9C015DD71C05FE8A0074B6F6 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		9C015DD91C05FF410074B6F6 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		9C1A1B251C086A590050E03E /* TimetableSlot+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimetableSlot+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9C1A1B261C086A590050E03E /* TimetableSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableSlot.swift; sourceTree = "<group>"; };
 		9C22728A1BD6517B00DE7F15 /* KOSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +271,8 @@
 				9C6FB4D11BFE2E2700C682C4 /* Semester.swift */,
 				9C5523D31C03B6CD00DC6A04 /* Person+CoreDataProperties.swift */,
 				9C5523D41C03B6CD00DC6A04 /* Person.swift */,
+				9C1A1B251C086A590050E03E /* TimetableSlot+CoreDataProperties.swift */,
+				9C1A1B261C086A590050E03E /* TimetableSlot.swift */,
 			);
 			name = DataLayer;
 			sourceTree = "<group>";
@@ -411,6 +417,8 @@
 				9C6FB4DB1BFE811100C682C4 /* BTNavigationDropdownMenu.swift in Sources */,
 				9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */,
 				9C2D987D1BDFA37A00CF5A11 /* SWRevealViewController.m in Sources */,
+				9C1A1B271C086A590050E03E /* TimetableSlot+CoreDataProperties.swift in Sources */,
+				9C1A1B281C086A590050E03E /* TimetableSlot.swift in Sources */,
 				9C8A49B51BE011C7009ECFCA /* SideMenuController.swift in Sources */,
 				9C9E50231BE12C50009B6CB1 /* ResultsViewController.swift in Sources */,
 				9C2D98781BDFA06700CF5A11 /* TimetableViewController.swift in Sources */,

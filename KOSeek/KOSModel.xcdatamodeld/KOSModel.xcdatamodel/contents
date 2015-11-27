@@ -16,6 +16,7 @@
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="personalNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="timetableSlots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimetableSlot" inverseName="person" inverseEntity="TimetableSlot" syncable="YES"/>
     </entity>
     <entity name="SavedVariables" syncable="YES">
         <attribute name="currentSemester" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,11 +33,24 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="TimetableSlot" representedClassName=".TimetableSlot" syncable="YES">
+        <attribute name="day" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="firstHour" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="parity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="room" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subjectName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teacher" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="timetableSlots" inverseEntity="Person" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Exam" positionX="-1136" positionY="-457" width="128" height="148"/>
-        <element name="Person" positionX="-1323" positionY="-648" width="128" height="135"/>
-        <element name="SavedVariables" positionX="-1478" positionY="-363" width="128" height="75"/>
-        <element name="Semester" positionX="-920" positionY="-639" width="128" height="73"/>
-        <element name="Subject" positionX="-1118" positionY="-642" width="128" height="120"/>
+        <element name="Exam" positionX="-1323" positionY="-369" width="128" height="148"/>
+        <element name="Person" positionX="-1323" positionY="-657" width="128" height="148"/>
+        <element name="SavedVariables" positionX="-1559" positionY="-372" width="128" height="75"/>
+        <element name="Semester" positionX="-1008" positionY="-648" width="128" height="73"/>
+        <element name="Subject" positionX="-1161" positionY="-648" width="128" height="120"/>
+        <element name="TimetableSlot" positionX="-1541" positionY="-657" width="128" height="193"/>
     </elements>
 </model>

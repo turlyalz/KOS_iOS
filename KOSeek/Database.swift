@@ -15,7 +15,7 @@ class Database {
     
     private init(){ }
 
-    class func addNewPersonTo(context context: NSManagedObjectContext, firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?) {
+    class func addPersonTo(context context: NSManagedObjectContext, firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?) {
         let entityDescription = NSEntityDescription.entityForName("Person", inManagedObjectContext: context)
         let user = Person(entity: entityDescription!, insertIntoManagedObjectContext: context)
         user.firstName = firstName
@@ -87,7 +87,7 @@ class Database {
         saveContext(context)
     }
     
-    class func addNewSemesterTo(context context: NSManagedObjectContext, name: String?, id: String?) {
+    class func addSemesterTo(context context: NSManagedObjectContext, name: String?, id: String?) {
         let entityDescription = NSEntityDescription.entityForName("Semester", inManagedObjectContext: context)
         let semester = Semester(entity: entityDescription!, insertIntoManagedObjectContext: context)
         semester.name = name
@@ -142,7 +142,7 @@ class Database {
         return nil
     }
     
-    class func addNewSubjectTo(context context: NSManagedObjectContext, code: String?, name: String?, completed: NSNumber?, credits: String?, semester: String?) {
+    class func addSubjectTo(context context: NSManagedObjectContext, code: String?, name: String?, completed: NSNumber?, credits: String?, semester: String?) {
         let entityDescription = NSEntityDescription.entityForName("Subject", inManagedObjectContext: context)
         let subject = Subject(entity: entityDescription!, insertIntoManagedObjectContext: context)
         subject.code = code
@@ -171,6 +171,26 @@ class Database {
             }
             saveContext(context)
         }
+    }
+    
+    class func addSlotTo(context context: NSManagedObjectContext, type: String?, subject: String?, subjectName: String?, teacher: String?, day: NSNumber?, duration: NSNumber?, firstHour: NSNumber?, parity: String?, room: String?, person: Person?) {
+        guard let uPerson = person else {
+            return
+        }
+        let entityDescription = NSEntityDescription.entityForName("TimetableSlot", inManagedObjectContext: context)
+        let slot = TimetableSlot(entity: entityDescription!, insertIntoManagedObjectContext: context)
+        slot.person = uPerson
+        slot.subject = subject
+        slot.subjectName = subjectName
+        slot.teacher = teacher
+        slot.day = day
+        slot.duration = duration
+        slot.firstHour = firstHour
+        slot.parity = parity
+        slot.room = room
+        uPerson.addSlot(slot)
+        //print(slot)
+        saveContext(context)
     }
     
     private class func saveContext(context: NSManagedObjectContext) {

@@ -9,7 +9,10 @@
 import Foundation
 
 let MaxWaitForResponse = 10
+let Parity = (Even: "EVEN", Odd: "ODD", Both: "BOTH")
+
 let BGHeaderColor = UIColor(red: 80/255.0, green: 85/255.0, blue: 90/255.0, alpha: 1)
+
 
 typealias SavedVariablesContent = (username: String?, currentSemester: String?)
 

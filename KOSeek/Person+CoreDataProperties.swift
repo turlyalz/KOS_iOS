@@ -20,5 +20,16 @@ extension Person {
     @NSManaged var lastName: String?
     @NSManaged var personalNumber: String?
     @NSManaged var username: String?
+    @NSManaged var timetableSlots: NSSet?
+    
+    func addSlot(value: TimetableSlot) {
+        let slots = self.mutableSetValueForKey("timetableSlots");
+        slots.addObject(value)
+    }
+    
+    func removeSlot(value: TimetableSlot) {
+        let slots = self.mutableSetValueForKey("timetableSlots");
+        slots.removeObject(value)
+    }
 
 }

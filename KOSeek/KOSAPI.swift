@@ -31,6 +31,9 @@ class KOSAPI {
             download("Exams", extensionURL: examsExtensionURL, parser: examsParser)
         }*/
         
+        download("Timetable slots", extensionURL: "/students/" + SavedVariables.username! + "/parallels?access_token=" + LoginHelper.accessToken + "&limit=1000", parser: timetableSlotParser)
+
+        
         var subjectExtensionURL = "/courses?access_token=" + LoginHelper.accessToken + "&limit=1000&lang=cs&query="
         for code in SavedVariables.subjectCodes {
             if code == SavedVariables.subjectCodes.last {
@@ -54,6 +57,40 @@ class KOSAPI {
         
     }
     
+    private class func timetableSlotParser(xml: XMLIndexer) {
+        let slotNumberStr = xml["atom:feed"]["osearch:totalResults"].element?.text
+        guard let uSlotNumberStr = slotNumberStr, slotNumber = Int(uSlotNumberStr) else {
+            return
+        }
+        let person = Database.getPersonBy(username: SavedVariables.username!, context: SavedVariables.cdh!.backgroundContext!)
+        for index in 0...slotNumber-1 {
+            let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
+            let subject = content["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
+            let type = content["parallelType"].element?.text
+            let teacher = content["teacher"].element?.text
+            let slot = content["timetableSlot"]
+            let dayStr = slot["day"].element?.text
+            var day: NSNumber = 0
+            if let uDay = dayStr, dayInt = Int(uDay) {
+                day = dayInt
+            }
+            let durationStr = slot["duration"].element?.text
+            var duration: NSNumber = 0
+            if let uDuration = durationStr, durationInt = Int(uDuration) {
+                duration = durationInt
+            }
+            let firstHourStr = slot["firstHour"].element?.text
+            var firstHour: NSNumber = 0
+            if let uFirstHour = firstHourStr, firstHourInt = Int(uFirstHour) {
+                firstHour = firstHourInt
+            }
+            let parity = slot["parity"].element?.text
+            let room = slot["room"].element?.text
+            Database.addSlotTo(context: SavedVariables.cdh!.backgroundContext!, type: type, subject: subject, subjectName: subject, teacher: teacher, day: day, duration: duration, firstHour: firstHour, parity: parity, room: room, person: person)
+            
+        }
+    }
+    
     private class func currentSemesterParser(xml: XMLIndexer) {
         SavedVariables.currentSemester = xml["atom:feed"]["atom:entry"][0]["atom:content"]["semester"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("semesters/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
         print("Current semester: \(SavedVariables.currentSemester)")
@@ -63,12 +100,13 @@ class KOSAPI {
     }
     
     private class func personParser(xml: XMLIndexer) {
-        let firstName = xml["atom:entry"]["atom:content"]["firstName"].element?.text
-        let lastName = xml["atom:entry"]["atom:content"]["lastName"].element?.text
-        let username = xml["atom:entry"]["atom:content"]["username"].element?.text
-        let email = xml["atom:entry"]["atom:content"]["email"].element?.text
-        let personalNumber = xml["atom:entry"]["atom:content"]["personalNumber"].element?.text
-        Database.addNewPersonTo(context: SavedVariables.cdh!.backgroundContext!, firstName: firstName, lastName: lastName, username: username, email: email, personalNumber: personalNumber)
+        let content = xml["atom:entry"]["atom:content"]
+        let firstName = content["firstName"].element?.text
+        let lastName = content["lastName"].element?.text
+        let username = content["username"].element?.text
+        let email = content["email"].element?.text
+        let personalNumber = content["personalNumber"].element?.text
+        Database.addPersonTo(context: SavedVariables.cdh!.backgroundContext!, firstName: firstName, lastName: lastName, username: username, email: email, personalNumber: personalNumber)
     }
 
     private class func semesterParser(xml: XMLIndexer) {
@@ -77,19 +115,20 @@ class KOSAPI {
             return
         }
         for index in 0...subjectNumber-1 {
-            let semesterID = xml["atom:feed"]["atom:entry"][index]["atom:content"]["semester"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("semesters/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
+            let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
+            let semesterID = content["semester"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("semesters/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
             if let semID = semesterID {
                 if SavedVariables.semesterIDNameDict[semID] == nil {
-                    let semesterName = xml["atom:feed"]["atom:entry"][index]["atom:content"]["semester"].element?.text
+                    let semesterName = content["semester"].element?.text
                     SavedVariables.semesterIDNameDict[semID] = semesterName
-                    Database.addNewSemesterTo(context: SavedVariables.cdh!.backgroundContext!, name: semesterName, id: semID)
+                    Database.addSemesterTo(context: SavedVariables.cdh!.backgroundContext!, name: semesterName, id: semID)
                     //print(SavedVariables.semesterIDNameDict[semID])
                 }
             }
             
-            let completedStr = xml["atom:feed"]["atom:entry"][index]["atom:content"]["completed"].element?.text
-            let subjectName = xml["atom:feed"]["atom:entry"][index]["atom:content"]["course"].element?.text
-            let code = xml["atom:feed"]["atom:entry"][index]["atom:content"]["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
+            let completedStr = content["completed"].element?.text
+            let subjectName = content["course"].element?.text
+            let code = content["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
             var completed = 0
             if completedStr == "true" {
                 completed = 1
@@ -101,7 +140,7 @@ class KOSAPI {
                 SavedVariables.subjectCodes.append(uCode)
             }
             //print("Code: \(code), name: \(subjectName), semester: \(semesterID)")
-            Database.addNewSubjectTo(context: SavedVariables.cdh!.backgroundContext!, code: code, name: subjectName, completed: completed, credits: nil, semester: semesterID)
+            Database.addSubjectTo(context: SavedVariables.cdh!.backgroundContext!, code: code, name: subjectName, completed: completed, credits: nil, semester: semesterID)
         }
     }
 
@@ -113,8 +152,9 @@ class KOSAPI {
             }
         }
         for index in 0...number-1 {
-            let code = xml["atom:feed"]["atom:entry"][index]["atom:content"]["code"].element?.text
-            let credits = xml["atom:feed"]["atom:entry"][index]["atom:content"]["credits"].element?.text
+            let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
+            let code = content["code"].element?.text
+            let credits = content["credits"].element?.text
             Database.changeSubjectBy(code: code, name: nil, completed: nil, credits: credits, semester: nil, context: SavedVariables.cdh!.backgroundContext!)
         }
     }
