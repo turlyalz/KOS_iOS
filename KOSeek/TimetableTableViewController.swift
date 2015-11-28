@@ -55,10 +55,11 @@ class TimetableViewController: UITableViewController {
         let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width-30, height: 30))
         let days = [0: "Mon", 1: "Tue", 2: "Wed", 3: "Thu", 4: "Fri", 5: "Sat"]
         for i in 0...5 {
-            let label: UILabel = UILabel(frame: CGRect(x: 15+CGFloat(i)*screenSize.width/6, y: 0, width: screenSize.width/6, height: 30))
+            let label: UILabel = UILabel(frame: CGRect(x: 60+CGFloat(i)*(screenSize.width-60)/6, y: 0, width: (screenSize.width-60)/6-15, height: 30))
             label.text = days[i]
             view.addSubview(label)
         }
+        view.backgroundColor = .whiteColor()
         return view
     }
     
@@ -66,7 +67,10 @@ class TimetableViewController: UITableViewController {
         let cell = SlotTableViewCell()
         let person = Database.getPersonBy(username: SavedVariables.username!, context: SavedVariables.cdh!.managedObjectContext)
         let slots = person?.timetableSlots?.allObjects as? [TimetableSlot]
-        cell.timetableSlot = slots?.first
+        cell.row = indexPath.row
+        cell.timetableSlots = slots
+        
+        
 
         return cell
     }

@@ -188,6 +188,7 @@ class Database {
         slot.firstHour = firstHour
         slot.parity = parity
         slot.room = room
+        slot.type = type
         uPerson.addSlot(slot)
         //print(slot)
         saveContext(context)
