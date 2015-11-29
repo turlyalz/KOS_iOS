@@ -54,14 +54,17 @@ class SideMenuController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view: UIView = UIView(frame: CGRect(x: 10, y: -10, width: 100, height: 50))
-        let label: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: 100, height: 50))
+        let view = UIView(frame: CGRect(x: 10, y: -10, width: 100, height: 50))
+        let label = UILabel(frame: CGRect(x: 50, y: 0, width: 100, height: 50))
+        let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 32, height: 24))
+        imageView.image = UIImage(named: "KOS")
         view.backgroundColor = BGHeaderColor
         
         label.text = "KOS ČVUT"
         label.textColor = .whiteColor()
         
         view.addSubview(label)
+        view.addSubview(imageView)
         
         return view
     }
