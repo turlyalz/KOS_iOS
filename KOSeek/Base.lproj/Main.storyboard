@@ -182,6 +182,7 @@
                         <segue destination="Dsv-5b-xJJ" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="5X7-8d-YpJ"/>
                         <segue destination="u6a-f3-h4P" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="FBU-Bn-6l6"/>
                         <segue destination="BPB-b9-845" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="vwg-3F-iqu"/>
+                        <segue destination="RuO-Zx-omT" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="kPD-FR-EI4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ys-9q-EpN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -215,7 +216,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JjQ-Kr-oDL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1275" y="2188"/>
+            <point key="canvasLocation" x="611" y="2188"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DKi-1O-Q2L">
@@ -276,7 +277,7 @@
                                     <color key="backgroundColor" red="0.47058823529411764" green="0.63529411764705879" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="yB6-Yz-cgN" kind="custom" identifier="slideMenuToTimetable" customClass="SWRevealViewControllerSeguePushController" id="DYU-8V-Yjc"/>
+                                    <segue destination="yB6-Yz-cgN" kind="custom" identifier="" customClass="SWRevealViewControllerSeguePushController" id="DYU-8V-Yjc"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Semester" id="8Cx-Dm-VxM">
@@ -612,10 +613,10 @@
             </objects>
             <point key="canvasLocation" x="2717" y="1355"/>
         </scene>
-        <!--Timetable-->
+        <!--Even Week-->
         <scene sceneID="E5K-cP-kps">
             <objects>
-                <tableViewController id="odL-05-Xpn" customClass="TimetableViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="evenWeek" id="odL-05-Xpn" customClass="TimetableViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="AGV-v7-CuE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -627,15 +628,14 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Timetable" id="lgY-Ey-9nm">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="PFP-Xr-cqV">
-                            <color key="tintColor" red="0.22352941179999999" green="0.23921568630000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <navigationItem key="navigationItem" title="Even Week" id="lgY-Ey-9nm">
+                        <barButtonItem key="rightBarButtonItem" title="Switch Week" id="ZoW-kp-mWt">
+                            <connections>
+                                <segue destination="RuO-Zx-omT" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="3cb-r0-2Xc"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="menuButton" destination="PFP-Xr-cqV" id="xNh-AK-c3w"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wVt-zq-Uar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -656,7 +656,52 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Db-n9-SUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1275" y="1355"/>
+            <point key="canvasLocation" x="611" y="1355"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nOU-tO-ecO">
+            <objects>
+                <navigationController id="RuO-Zx-omT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uG6-Vp-snI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.43137254899999999" green="0.45098039220000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jgV-d9-B1N" kind="relationship" relationship="rootViewController" id="hT0-Va-ssy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="13B-B3-mAr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1308" y="1355"/>
+        </scene>
+        <!--Odd Week-->
+        <scene sceneID="oMs-tl-KRE">
+            <objects>
+                <tableViewController restorationIdentifier="oddWeek" id="jgV-d9-B1N" customClass="TimetableViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="f3Y-Vg-OML">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="jgV-d9-B1N" id="xzn-38-38c"/>
+                            <outlet property="delegate" destination="jgV-d9-B1N" id="Ynh-T2-mtU"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Odd Week" id="nWy-sD-hLz">
+                        <barButtonItem key="rightBarButtonItem" title="Switch Week" id="ph5-aM-Gfy">
+                            <connections>
+                                <segue destination="yB6-Yz-cgN" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="wMA-gy-0Ah"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m9k-x4-0Gh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1308" y="2188"/>
         </scene>
     </scenes>
     <resources>
@@ -669,12 +714,13 @@
         <image name="timetable" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Q2c-SP-SKF"/>
-        <segue reference="tw2-9q-5dk"/>
-        <segue reference="gqg-lU-my3"/>
-        <segue reference="pn5-gg-Cwc"/>
-        <segue reference="DYU-8V-Yjc"/>
-        <segue reference="oQ7-TJ-uoE"/>
-        <segue reference="PeF-pM-b66"/>
+        <segue reference="9HU-us-G6V"/>
+        <segue reference="uIv-US-8Aj"/>
+        <segue reference="IJA-97-2dF"/>
+        <segue reference="5X7-8d-YpJ"/>
+        <segue reference="FBU-Bn-6l6"/>
+        <segue reference="vwg-3F-iqu"/>
+        <segue reference="wMA-gy-0Ah"/>
+        <segue reference="3cb-r0-2Xc"/>
     </inferredMetricsTieBreakers>
 </document>
