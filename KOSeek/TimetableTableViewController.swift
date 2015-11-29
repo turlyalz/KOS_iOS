@@ -17,6 +17,7 @@ class TimetableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let menuButton = UIBarButtonItem(image: UIImage(named: "menu"), style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        menuButton.tintColor = MenuButtonTintColor
         self.navigationItem.leftBarButtonItem = menuButton
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()

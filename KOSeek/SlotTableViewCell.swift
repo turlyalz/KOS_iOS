@@ -83,11 +83,14 @@ class SlotTableViewCell: UITableViewCell {
         subjectLabel.numberOfLines = 0
         subjectLabel.font = UIFont.systemFontOfSize(10)
         imageView.addSubview(subjectLabel)
-        if slot.type == "TUTORIAL" {
-            imageView.backgroundColor = UIColor.greenColor()
+        guard let type = slot.type else {
+            return nil
         }
-        if slot.type == "LECTURE" {
-            imageView.backgroundColor = UIColor.yellowColor()
+        switch type {
+            case "TUTORIAL": imageView.backgroundColor = SlotTutorialColor
+            case "LECTURE": imageView.backgroundColor = SlotLectureColor
+            case "LABORATORY": imageView.backgroundColor = SlotLectureColor
+            default: break
         }
         return imageView
     }

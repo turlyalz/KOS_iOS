@@ -190,7 +190,7 @@ class Database {
         slot.room = room
         slot.type = type
         uPerson.addSlot(slot)
-        //print(slot)
+        print(slot)
         saveContext(context)
     }
     

@@ -86,8 +86,7 @@ class KOSAPI {
             }
             let parity = slot["parity"].element?.text
             let room = slot["room"].element?.text
-            Database.addSlotTo(context: SavedVariables.cdh!.backgroundContext!, type: type, subject: subject, subjectName: subject, teacher: teacher, day: day, duration: duration, firstHour: firstHour, parity: parity, room: room, person: person)
-            
+            Database.addSlotTo(context: SavedVariables.cdh!.backgroundContext!, type: type, subject: subject, subjectName: subject, teacher: teacher, day: day, duration: duration, firstHour: firstHour, parity: parity, room: room, person: person)            
         }
     }
     

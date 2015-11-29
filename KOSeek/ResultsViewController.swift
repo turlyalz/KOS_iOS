@@ -177,7 +177,7 @@ class ResultsViewController: UITableViewController {
         cell.addSubview(subjectCreditsLabel)
         
         if subject.completed == 1 {
-            cell.backgroundColor = UIColor(red: 155/255, green: 200/255, blue: 201/255, alpha: 1)
+            cell.backgroundColor = SlotTutorialColor
         }
         
         return cell
