@@ -19,8 +19,8 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = "revealToggle:"
+            menuButton.target = self
+            menuButton.action = "menuButtonPressed"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         teachers = Database.getPersons(SavedVariables.cdh!.managedObjectContext)
@@ -46,6 +46,11 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func menuButtonPressed() {
+        self.view.endEditing(true)
+        UIApplication.sharedApplication().sendAction("revealToggle:", to: self.revealViewController(), from: self, forEvent: nil)
     }
     
     // MARK: - Search bar delegate
