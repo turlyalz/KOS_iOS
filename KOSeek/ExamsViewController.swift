@@ -22,7 +22,7 @@ class ExamsViewController: UITableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        guard let semester = SavedVariables.currentSemester, subjects = Database.getSubjectsBy(semester: semester, context: SavedVariables.cdh!.managedObjectContext) else {
+        guard let semester = SavedVariables.currentSemester, subjects = Database.getSubjectsBy(semester: semester, context: SavedVariables.cdh.managedObjectContext) else {
             return
         }
         
@@ -44,8 +44,8 @@ class ExamsViewController: UITableViewController {
     }
     
     func setupDropdownMenu() {
-        if let _ = subjects.first {
-            dropdownMenuView = BTNavigationDropdownMenu(title: subjects.first!, items: subjects, navController: self.navigationController)
+        if let first = subjects.first {
+            dropdownMenuView = BTNavigationDropdownMenu(title: first, items: subjects, navController: self.navigationController)
             dropdownMenuView?.cellHeight = DropdownMenuViewCellHeight
             dropdownMenuView?.cellBackgroundColor =  DropdownMenuView.cellBackgroundColor
             dropdownMenuView?.cellSelectionColor = DropdownMenuView.cellSelectionColor

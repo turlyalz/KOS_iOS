@@ -64,7 +64,7 @@ class KOSAPI {
         guard let uSlotNumberStr = slotNumberStr, slotNumber = Int(uSlotNumberStr) else {
             return
         }
-        let person = Database.getPersonBy(username: SavedVariables.username!, context: SavedVariables.cdh!.backgroundContext!)
+        let person = Database.getPersonBy(username: SavedVariables.username!, context: SavedVariables.cdh.backgroundContext!)
         for index in 0...slotNumber-1 {
             let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
             let subject = content["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
@@ -88,7 +88,7 @@ class KOSAPI {
             }
             let parity = slot["parity"].element?.text
             let room = slot["room"].element?.text
-            Database.addSlotTo(context: SavedVariables.cdh!.backgroundContext!, type: type, subject: subject, subjectName: subject, teacher: teacher, day: day, duration: duration, firstHour: firstHour, parity: parity, room: room, person: person)            
+            Database.addSlotTo(context: SavedVariables.cdh.backgroundContext!, type: type, subject: subject, subjectName: subject, teacher: teacher, day: day, duration: duration, firstHour: firstHour, parity: parity, room: room, person: person)            
         }
     }
     
@@ -96,7 +96,7 @@ class KOSAPI {
         SavedVariables.currentSemester = xml["atom:feed"]["atom:entry"][0]["atom:content"]["semester"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("semesters/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
         print("Current semester: \(SavedVariables.currentSemester)")
         if let currentSemester = SavedVariables.currentSemester {
-            Database.setSavedVariables(SavedVariables.cdh!.backgroundContext!, username: SavedVariables.username!, currentSemester: currentSemester)
+            Database.setSavedVariables(SavedVariables.cdh.backgroundContext!, username: SavedVariables.username!, currentSemester: currentSemester)
         }
     }
     
@@ -108,13 +108,13 @@ class KOSAPI {
         for index in 0...teacherNumber-1 {
             let title = xml["atom:feed"]["atom:entry"][index]["atom:title"].element?.text
             let person = personInfoParser(xml, index: index)
-            Database.addPersonTo(context: SavedVariables.cdh!.backgroundContext!, firstName: person.firstName, lastName: person.lastName, username: person.username, email: person.email, personalNumber: person.personalNumber, title: title)
+            Database.addPersonTo(context: SavedVariables.cdh.backgroundContext!, firstName: person.firstName, lastName: person.lastName, username: person.username, email: person.email, personalNumber: person.personalNumber, title: title)
         }
     }
     
     private class func userParser(xml: XMLIndexer) {
         let person = personInfoParser(xml, index: -1)
-        Database.addPersonTo(context: SavedVariables.cdh!.backgroundContext!, firstName: person.firstName, lastName: person.lastName, username: person.username, email: person.email, personalNumber: person.personalNumber, title: nil)
+        Database.addPersonTo(context: SavedVariables.cdh.backgroundContext!, firstName: person.firstName, lastName: person.lastName, username: person.username, email: person.email, personalNumber: person.personalNumber, title: nil)
 
     }
     
@@ -145,7 +145,7 @@ class KOSAPI {
                 if SavedVariables.semesterIDNameDict[semID] == nil {
                     let semesterName = content["semester"].element?.text
                     SavedVariables.semesterIDNameDict[semID] = semesterName
-                    Database.addSemesterTo(context: SavedVariables.cdh!.backgroundContext!, name: semesterName, id: semID)
+                    Database.addSemesterTo(context: SavedVariables.cdh.backgroundContext!, name: semesterName, id: semID)
                     //print(SavedVariables.semesterIDNameDict[semID])
                 }
             }
@@ -164,7 +164,7 @@ class KOSAPI {
                 SavedVariables.subjectCodes.append(uCode)
             }
             //print("Code: \(code), name: \(subjectName), semester: \(semesterID)")
-            Database.addSubjectTo(context: SavedVariables.cdh!.backgroundContext!, code: code, name: subjectName, completed: completed, credits: nil, semester: semesterID)
+            Database.addSubjectTo(context: SavedVariables.cdh.backgroundContext!, code: code, name: subjectName, completed: completed, credits: nil, semester: semesterID)
         }
     }
 
@@ -179,13 +179,13 @@ class KOSAPI {
             let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
             let code = content["code"].element?.text
             let credits = content["credits"].element?.text
-            Database.changeSubjectBy(code: code, name: nil, completed: nil, credits: credits, semester: nil, context: SavedVariables.cdh!.backgroundContext!)
+            Database.changeSubjectBy(code: code, name: nil, completed: nil, credits: credits, semester: nil, context: SavedVariables.cdh.backgroundContext!)
         }
     }
     
     private class func download(name: String, extensionURL: String, parser: (XMLIndexer) -> Void) {
         dispatch_async(dispatch_get_main_queue(), {
-            SavedVariables.waitingViewController?.counter += 7
+            SavedVariables.waitingViewController?.counter += 5
             return
         })
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + extensionURL)!)
@@ -205,7 +205,7 @@ class KOSAPI {
             }
             running = false
             dispatch_async(dispatch_get_main_queue(), {
-                SavedVariables.waitingViewController?.counter += 7
+                SavedVariables.waitingViewController?.counter += 5
                 return
             })
         }

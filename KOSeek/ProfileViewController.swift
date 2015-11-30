@@ -10,22 +10,22 @@ import UIKit
 
 class ProfileViewController: UITableViewController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    var profileInfo: Person?
+    var profileInfo: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
-        if let username = SavedVariables.username {
-            profileInfo = Database.getPersonBy(username: username, context: SavedVariables.cdh!.managedObjectContext)
-            if let _ = profileInfo?.firstName, _ = profileInfo?.lastName {
-                self.title = (profileInfo?.firstName)! + " " + (profileInfo?.lastName)!
-            }
+        setProfileInfo()
+    }
+    
+    func setProfileInfo() {
+        if let username = SavedVariables.username, profileInfo = Database.getPersonBy(username: username, context: SavedVariables.cdh.managedObjectContext), firstName = profileInfo.firstName, lastName = profileInfo.lastName, email = profileInfo.email, personalNumber = profileInfo.personalNumber {
+            self.profileInfo.appendContentsOf(["Email: " + email, "Personal number: " + personalNumber])
+            self.title = firstName + " " + lastName
         }
     }
     
@@ -48,31 +48,17 @@ class ProfileViewController: UITableViewController {
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         updateValues()
+        tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        
-        let label: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 50))
-        
-        if indexPath.row == 1 {
-            if let _ = profileInfo?.email, _ = profileInfo?.personalNumber {
-                label.text = "Email: " + (profileInfo?.email)!
-            }
-        }
-        else {
-            if let _ = profileInfo?.email, _ = profileInfo?.personalNumber {
-                label.text = "Personal number: " + (profileInfo?.personalNumber)!
-            }
-        }
-        
+        let label = UILabel(frame: CGRect(x: 15, y: 0, width: screenSize.width-15, height: 50))
+        label.text = profileInfo[indexPath.row]
         label.textColor = .blackColor()
-        
         cell.addSubview(label)
-        
         cell.separatorInset = UIEdgeInsetsZero
         cell.layoutMargins = UIEdgeInsetsZero
-
         return cell
     }
 }

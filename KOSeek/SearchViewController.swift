@@ -14,7 +14,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     
     var teachers: [Person]?
     var filtered: [Person]?
-    var searchBar: UISearchBar?
+    let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,21 +23,20 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
             menuButton.action = "menuButtonPressed"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        teachers = Database.getPersons(SavedVariables.cdh!.managedObjectContext)
+        teachers = Database.getPersons(SavedVariables.cdh.managedObjectContext)
         createSearchBar()
-        if let searchText = SavedVariables.searchText, _ = searchBar {
-            searchBar(searchBar!, textDidChange: searchText)
-            searchBar!.text = searchText
+        if let searchText = SavedVariables.searchText {
+            searchBar(searchBar, textDidChange: searchText)
+            searchBar.text = searchText
         }
     }
       
     func createSearchBar() {
-        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
-        searchBar?.barTintColor = DropdownMenuView.cellBackgroundColor
-        searchBar?.placeholder = "type to start"
-        searchBar?.showsCancelButton = true
-        searchBar?.tintColor = BGHeaderColor
-        searchBar?.delegate = self
+        searchBar.barTintColor = DropdownMenuView.cellBackgroundColor
+        searchBar.placeholder = "type to start"
+        searchBar.showsCancelButton = true
+        searchBar.tintColor = BGHeaderColor
+        searchBar.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -98,13 +97,13 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         updateValues()
-        searchBar?.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: 44)
+        searchBar.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: 44)
         tableView.reloadData()
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
-        view.addSubview(searchBar!)
+        view.addSubview(searchBar)
         return view
     }
 

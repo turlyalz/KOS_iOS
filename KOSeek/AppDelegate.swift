@@ -13,7 +13,6 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    //lazy var coreDataStack = CoreDataStack()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         SavedVariables.cdh = self.cdh
@@ -41,7 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = exampleViewController
             self.window?.makeKeyAndVisible()
         }
-
     }
     
     // #pragma mark - Core Data Helper

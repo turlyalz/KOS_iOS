@@ -24,7 +24,7 @@ class TimetableViewController: UITableViewController {
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        let person = Database.getPersonBy(username: SavedVariables.username!, context: SavedVariables.cdh!.managedObjectContext)
+        let person = Database.getPersonBy(username: SavedVariables.username!, context: SavedVariables.cdh.managedObjectContext)
         slots = person?.timetableSlots?.allObjects as? [TimetableSlot]
         parity = self.restorationIdentifier
     }

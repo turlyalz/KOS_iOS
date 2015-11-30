@@ -12,6 +12,7 @@ class SlotTableViewCell: UITableViewCell {
 
     private let times = [1: "7:30", 2: "9:00", 3: "9:15", 4: "10:45", 5: "11:00", 6: "12:30", 7: "12:45", 8: "14:15", 9: "14:30", 10: "16:00", 11: "16:15", 12: "17:45", 13: "18:00", 14: "19:30", 15: "19:45", 16: "21:15"]
     
+    private var slotViews: [UIView: String] = [:]
     var parity: String = "evenWeek"
     var row: Int = -1
     var timetableSlots: [TimetableSlot]? {
@@ -53,7 +54,6 @@ class SlotTableViewCell: UITableViewCell {
     }
     
     private func checkParity(slot: TimetableSlot) -> Bool {
-        //print("Slot: \(slot), parity: \(parity)")
         guard let slotParity = slot.parity else {
             return false
         }
@@ -76,23 +76,35 @@ class SlotTableViewCell: UITableViewCell {
         let dayInt = Int(day)
         let cellWidth = (screenSize.width-60)/6
         let x = 60+CGFloat(dayInt-1)*cellWidth
-        let imageView = UIView(frame: CGRect(x: x, y: 0, width: cellWidth-10, height: 44))
+        
+        let slotView = UIView(frame: CGRect(x: x, y: 0, width: cellWidth-10, height: 44))
         let subjectLabel = UILabel(frame: CGRect(x: 5, y: 5, width: cellWidth-15, height: 40))
+        let tapGesture = UITapGestureRecognizer(target: self, action: "tappedOnSlot:")
+        slotView.addGestureRecognizer(tapGesture)
         subjectLabel.text = slot.subject
         subjectLabel.textAlignment = .Center
         subjectLabel.numberOfLines = 0
         subjectLabel.font = UIFont.systemFontOfSize(10)
-        imageView.addSubview(subjectLabel)
+        slotView.addSubview(subjectLabel)
         guard let type = slot.type else {
             return nil
         }
         switch type {
-            case "TUTORIAL": imageView.backgroundColor = SlotTutorialColor
-            case "LECTURE": imageView.backgroundColor = SlotLectureColor
-            case "LABORATORY": imageView.backgroundColor = SlotLectureColor
+            case "TUTORIAL": slotView.backgroundColor = SlotTutorialColor
+            case "LECTURE": slotView.backgroundColor = SlotLectureColor
+            case "LABORATORY": slotView.backgroundColor = SlotLectureColor
             default: break
         }
-        return imageView
+        if let subject = slot.subject {
+            slotViews[slotView] = subject
+        }
+        return slotView
+    }
+    
+    func tappedOnSlot(gesture: UIGestureRecognizer) {
+        if let view = gesture.view {
+            print("Select: \(slotViews[view])")
+        }
     }
 
 }

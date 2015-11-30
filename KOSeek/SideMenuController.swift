@@ -21,7 +21,18 @@ class SideMenuController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-        
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        SavedVariables.canDropDownMenuShow = false
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        SavedVariables.canDropDownMenuShow = true
+        print(SavedVariables.canDropDownMenuShow)
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -36,11 +47,8 @@ class SideMenuController: UITableViewController {
         if indexPath.row == 0 {
             let label: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 50))
             
-            if let username = SavedVariables.username {
-                let profileInfo = Database.getPersonBy(username: username, context: SavedVariables.cdh!.managedObjectContext)
-                if let _ = profileInfo?.firstName, _ = profileInfo?.lastName {
-                    label.text = (profileInfo?.firstName)! + " " + (profileInfo?.lastName)!
-                }
+            if let username = SavedVariables.username, profileInfo = Database.getPersonBy(username: username, context: SavedVariables.cdh.managedObjectContext), firstName = profileInfo.firstName, lastName = profileInfo.lastName{
+                label.text = firstName + " " + lastName
             }
 
             label.textColor = .whiteColor()
@@ -73,7 +81,7 @@ class SideMenuController: UITableViewController {
     
     func logOutHandler(action: UIAlertAction) -> Void {
         self.performSegueWithIdentifier("logOut", sender: self)
-        Database.delete(context: SavedVariables.cdh!.managedObjectContext)
+        Database.delete(context: SavedVariables.cdh.managedObjectContext)
         SavedVariables.resetAll()
     }
     

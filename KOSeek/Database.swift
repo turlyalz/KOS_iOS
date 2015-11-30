@@ -67,11 +67,11 @@ class Database {
     }
     
     private class func delete(entity: String, context: NSManagedObjectContext) {
-        let coord = SavedVariables.cdh?.store.persistentStoreCoordinator
+        let coord = SavedVariables.cdh.store.persistentStoreCoordinator
         let fetchRequest = NSFetchRequest(entityName: entity)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
-            try coord?.executeRequest(deleteRequest, withContext: context)
+            try coord.executeRequest(deleteRequest, withContext: context)
         } catch let error as NSError {
             debugPrint(error)
         }
@@ -210,7 +210,7 @@ class Database {
     }
     
     private class func saveContext(context: NSManagedObjectContext) {
-        SavedVariables.cdh?.saveContext(context)
+        SavedVariables.cdh.saveContext(context)
     }
     
 }

@@ -48,8 +48,8 @@ class ResultsViewController: UITableViewController {
     }
     
     func setupDropdownMenu() {
-        if let _ = semesters.first {
-            dropdownMenuView = BTNavigationDropdownMenu(title: semesters.first!, items: semesters, navController: self.navigationController)
+        if let first = semesters.first {
+            dropdownMenuView = BTNavigationDropdownMenu(title: first, items: semesters, navController: self.navigationController)
             dropdownMenuView?.cellHeight = DropdownMenuViewCellHeight
             dropdownMenuView?.cellBackgroundColor =  DropdownMenuView.cellBackgroundColor
             dropdownMenuView?.cellSelectionColor = DropdownMenuView.cellSelectionColor
@@ -78,11 +78,11 @@ class ResultsViewController: UITableViewController {
     var subjects: [Subject] = []
     
     func setTotalCreditsValues() {
-        guard let semesters = Database.getSemestersFrom(context: SavedVariables.cdh!.managedObjectContext) else {
+        guard let semesters = Database.getSemestersFrom(context: SavedVariables.cdh.managedObjectContext) else {
             return
         }
         for semester in semesters {
-            guard let id = semester.id, subj = Database.getSubjectsBy(semester: id, context: SavedVariables.cdh!.managedObjectContext) else {
+            guard let id = semester.id, subj = Database.getSubjectsBy(semester: id, context: SavedVariables.cdh.managedObjectContext) else {
                 return
             }
             for subject in subj {
@@ -98,7 +98,7 @@ class ResultsViewController: UITableViewController {
     }
     
     func updateSubjects(semester: String) {
-        if let subj = Database.getSubjectsBy(semester: semester, context: SavedVariables.cdh!.managedObjectContext) {
+        if let subj = Database.getSubjectsBy(semester: semester, context: SavedVariables.cdh.managedObjectContext) {
             subjects = subj
             semesterCreditsEnrolled = 0
             semesterCreditsObtained = 0

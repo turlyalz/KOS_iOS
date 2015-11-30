@@ -362,11 +362,13 @@ public class BTNavigationDropdownMenu: UIView {
     }
     
     func menuButtonTapped(sender: UIButton) {
+        if SavedVariables.canDropDownMenuShow {
         self.isShown = !self.isShown
         if self.isShown == true {
             self.showMenu()
         } else {
             self.hideMenu()
+        }
         }
     }
 }
