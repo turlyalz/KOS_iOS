@@ -12,9 +12,9 @@
     <entity name="Person" representedClassName=".Person" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isTeacher" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="personalNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="timetableSlots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimetableSlot" inverseName="person" inverseEntity="TimetableSlot" syncable="YES"/>
     </entity>
@@ -47,7 +47,7 @@
     </entity>
     <elements>
         <element name="Exam" positionX="-1323" positionY="-369" width="128" height="148"/>
-        <element name="Person" positionX="-1323" positionY="-657" width="128" height="148"/>
+        <element name="Person" positionX="-1323" positionY="-657" width="128" height="150"/>
         <element name="SavedVariables" positionX="-1559" positionY="-372" width="128" height="75"/>
         <element name="Semester" positionX="-1008" positionY="-648" width="128" height="73"/>
         <element name="Subject" positionX="-1161" positionY="-648" width="128" height="120"/>

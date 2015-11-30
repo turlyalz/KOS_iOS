@@ -8,23 +8,36 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController {
+class SearchViewController: UITableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    
+    var teachers: [Person]?
+    var filtered: [Person]?
+    var searchBar: UISearchBar?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        teachers = Database.getPersons(SavedVariables.cdh!.managedObjectContext)
+        createSearchBar()
+        if let searchText = SavedVariables.searchText, _ = searchBar {
+            searchBar(searchBar!, textDidChange: searchText)
+            searchBar!.text = searchText
+        }
+    }
+      
+    func createSearchBar() {
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
+        searchBar?.barTintColor = DropdownMenuView.cellBackgroundColor
+        searchBar?.placeholder = "type to start"
+        searchBar?.showsCancelButton = true
+        searchBar?.tintColor = BGHeaderColor
+        searchBar?.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -33,78 +46,77 @@ class SearchViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Search bar delegate
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        self.view.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.view.endEditing(true)
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        filtered = teachers?.filter({ (person) -> Bool in
+            if person.username == SavedVariables.username {
+                return false
+            }
+            guard let firstName = person.firstName, lastName = person.lastName else {
+                return false
+            }
+            var tmp: NSString = firstName
+            var range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            if range.location == NSNotFound {
+                tmp = lastName
+                range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            }
+            return range.location != NSNotFound
+        })
+        SavedVariables.searchText = searchText
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let uFiltered = filtered else {
+            return 0
+        }
+        return uFiltered.count
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         updateValues()
+        searchBar?.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: 44)
+        tableView.reloadData()
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
+        view.addSubview(searchBar!)
+        return view
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let cell = UITableViewCell()
+        if let title = filtered?[indexPath.row].title {
+            cell.textLabel?.text = title
+        } else {
+            if let firstName = filtered?[indexPath.row].firstName, lastName = filtered?[indexPath.row].lastName {
+                cell.textLabel?.text = firstName + " " + lastName
+            }
+        }
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+ 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.view.endEditing(true)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

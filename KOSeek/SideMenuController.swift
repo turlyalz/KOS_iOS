@@ -21,7 +21,7 @@ class SideMenuController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+        
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -44,10 +44,8 @@ class SideMenuController: UITableViewController {
             }
 
             label.textColor = .whiteColor()
-            
             cell.addSubview(label)
         }
-        
         cell.separatorInset = UIEdgeInsetsZero
         cell.layoutMargins = UIEdgeInsetsZero
         return cell

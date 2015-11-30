@@ -21,7 +21,7 @@ class KOSAPI {
     
     // Download all data
     class func downloadAllData() {
-        download("Person Info", extensionURL: "/students/" + SavedVariables.username! + "?access_token=" + LoginHelper.accessToken + "&lang=cs", parser: personParser)
+        download("User person Info", extensionURL: "/students/" + SavedVariables.username! + "?access_token=" + LoginHelper.accessToken + "&lang=cs", parser: userParser)
         download("Current Semester", extensionURL: "/students/" + SavedVariables.username! + "/enrolledCourses?access_token=" + LoginHelper.accessToken + "&lang=cs", parser: currentSemesterParser)
         download("Enrolled Courses", extensionURL: "/students/" + SavedVariables.username! + "/enrolledCourses?access_token=" + LoginHelper.accessToken + "&sem=none&limit=1000&lang=cs", parser: semesterParser)
         
@@ -32,6 +32,8 @@ class KOSAPI {
         }*/
         
         download("Timetable slots", extensionURL: "/students/" + SavedVariables.username! + "/parallels?access_token=" + LoginHelper.accessToken + "&limit=1000", parser: timetableSlotParser)
+        
+        download("Teachers", extensionURL: "/divisions/18000/teachers/?access_token=" + LoginHelper.accessToken + "&limit=1000&lang=cs", parser: teachersParser)
 
         
         var subjectExtensionURL = "/courses?access_token=" + LoginHelper.accessToken + "&limit=1000&lang=cs&query="
@@ -98,14 +100,37 @@ class KOSAPI {
         }
     }
     
-    private class func personParser(xml: XMLIndexer) {
-        let content = xml["atom:entry"]["atom:content"]
+    private class func teachersParser(xml: XMLIndexer) {
+        let teacherNumberStr = xml["atom:feed"]["osearch:totalResults"].element?.text
+        guard let uTeacherNumberStr = teacherNumberStr, teacherNumber = Int(uTeacherNumberStr) else {
+            return
+        }
+        for index in 0...teacherNumber-1 {
+            let title = xml["atom:feed"]["atom:entry"][index]["atom:title"].element?.text
+            let person = personInfoParser(xml, index: index)
+            Database.addPersonTo(context: SavedVariables.cdh!.backgroundContext!, firstName: person.firstName, lastName: person.lastName, username: person.username, email: person.email, personalNumber: person.personalNumber, title: title)
+        }
+    }
+    
+    private class func userParser(xml: XMLIndexer) {
+        let person = personInfoParser(xml, index: -1)
+        Database.addPersonTo(context: SavedVariables.cdh!.backgroundContext!, firstName: person.firstName, lastName: person.lastName, username: person.username, email: person.email, personalNumber: person.personalNumber, title: nil)
+
+    }
+    
+    private class func personInfoParser(xml: XMLIndexer, index: Int) -> (firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?) {
+        var content: XMLIndexer
+        if index != -1 {
+            content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
+        } else {
+            content = xml["atom:entry"]["atom:content"]
+        }
         let firstName = content["firstName"].element?.text
         let lastName = content["lastName"].element?.text
         let username = content["username"].element?.text
         let email = content["email"].element?.text
         let personalNumber = content["personalNumber"].element?.text
-        Database.addPersonTo(context: SavedVariables.cdh!.backgroundContext!, firstName: firstName, lastName: lastName, username: username, email: email, personalNumber: personalNumber)
+        return (firstName: firstName, lastName: lastName, username: username, email: email, personalNumber: personalNumber)
     }
 
     private class func semesterParser(xml: XMLIndexer) {

@@ -15,14 +15,15 @@ class Database {
     
     private init(){ }
 
-    class func addPersonTo(context context: NSManagedObjectContext, firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?) {
+    class func addPersonTo(context context: NSManagedObjectContext, firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?, title: String?) {
         let entityDescription = NSEntityDescription.entityForName("Person", inManagedObjectContext: context)
-        let user = Person(entity: entityDescription!, insertIntoManagedObjectContext: context)
-        user.firstName = firstName
-        user.lastName = lastName
-        user.username = username
-        user.email = email
-        user.personalNumber = personalNumber
+        let person = Person(entity: entityDescription!, insertIntoManagedObjectContext: context)
+        person.firstName = firstName
+        person.lastName = lastName
+        person.username = username
+        person.email = email
+        person.personalNumber = personalNumber
+        person.title = title
         saveContext(context)
     }
     
@@ -34,6 +35,21 @@ class Database {
             let results = try context.executeFetchRequest(request)
             if results.count > 0 {
                 return results[0] as? Person
+            }
+        }
+        catch let error as NSError {
+            debugPrint(error)
+        }
+        return nil
+    }
+    
+    class func getPersons(context: NSManagedObjectContext) -> [Person]? {
+        let request = NSFetchRequest(entityName: "Person")
+        request.returnsObjectsAsFaults = false
+        do {
+            let results = try context.executeFetchRequest(request)
+            if results.count > 0 {
+                return results as? [Person]
             }
         }
         catch let error as NSError {
@@ -190,7 +206,6 @@ class Database {
         slot.room = room
         slot.type = type
         uPerson.addSlot(slot)
-        print(slot)
         saveContext(context)
     }
     

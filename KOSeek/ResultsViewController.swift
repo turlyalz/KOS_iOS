@@ -134,11 +134,13 @@ class ResultsViewController: UITableViewController {
         labelLeft.text = "Credits enrolled: " + String(semesterCreditsEnrolled) + "\nCredits obtained: " + String(semesterCreditsObtained)
         labelLeft.textColor = .whiteColor()
         labelLeft.font = UIFont.systemFontOfSize(14)
+        labelLeft.textAlignment = .Center
         
         labelRight.numberOfLines = 0
         labelRight.text = "Total enrolled: " + String(totalCreditsEnrolled) + "\nTotal obtained: " + String(totalCreditsObtained)
         labelRight.textColor = .whiteColor()
         labelRight.font = UIFont.systemFontOfSize(14)
+        labelRight.textAlignment = .Center
         
         view.addSubview(labelLeft)
         view.addSubview(labelRight)

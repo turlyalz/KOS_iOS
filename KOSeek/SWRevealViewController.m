@@ -71,7 +71,6 @@ static CGFloat statusBarAdjustment( UIView* view )
 
 @implementation SWRevealView
 
-
 static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1, CGFloat max1)
 {
     CGFloat result = min2 + (v1-min1)*((max2-min2)/(max1-min1));
@@ -406,7 +405,6 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 {
     return NO;  // not supported
 }
-
 
 - (BOOL)transitionWasCancelled
 {
@@ -1156,6 +1154,9 @@ const int FrontViewPositionNone = 0xff;
 
 - (BOOL)_panGestureShouldBegin
 {
+    
+    [self.view endEditing:YES];
+
     // forbid gesture if the initial translation is not horizontal
     UIView *recognizerView = _panGestureRecognizer.view;
     CGPoint translation = [_panGestureRecognizer translationInView:recognizerView];

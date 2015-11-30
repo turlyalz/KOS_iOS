@@ -16,10 +16,10 @@ extension Person {
 
     @NSManaged var email: String?
     @NSManaged var firstName: String?
-    @NSManaged var isTeacher: NSNumber?
     @NSManaged var lastName: String?
     @NSManaged var personalNumber: String?
     @NSManaged var username: String?
+    @NSManaged var title: String?
     @NSManaged var timetableSlots: NSSet?
     
     func addSlot(value: TimetableSlot) {

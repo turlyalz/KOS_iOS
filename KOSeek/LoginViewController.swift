@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true);
+        self.view.endEditing(true)
     }
     
     func loginFailedMessage(message: String) {

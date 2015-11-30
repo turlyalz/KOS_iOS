@@ -552,35 +552,25 @@
         <scene sceneID="xgi-97-R4j">
             <objects>
                 <tableViewController id="AQu-SG-JJH" customClass="SearchViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dH7-KC-uzP">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="44" sectionFooterHeight="28" id="dH7-KC-uzP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableFooterView" contentMode="redraw" placeholder="touch to start..." id="FcF-Ma-4hU">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="barTintColor" red="0.47058823529999999" green="0.63529411759999999" blue="0.71204255760000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                        </searchBar>
-                        <sections>
-                            <tableViewSection id="aqT-lr-cLI">
-                                <cells/>
-                            </tableViewSection>
-                        </sections>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="AQu-SG-JJH" id="sDI-7R-uLX"/>
                             <outlet property="delegate" destination="AQu-SG-JJH" id="Xqg-vP-dOX"/>
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Search" id="TqC-Hf-uP8">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="4b2-lB-uJw">
+                    <navigationItem key="navigationItem" title="Search" id="dYP-e9-Nwd">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="eYY-NV-J42" userLabel="Menu Button">
                             <color key="tintColor" red="0.22352941179999999" green="0.23921568630000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="menuButton" destination="4b2-lB-uJw" id="IXj-nF-3yx"/>
+                        <outlet property="menuButton" destination="eYY-NV-J42" id="LNL-0r-y85"/>
                         <outlet property="searchDisplayController" destination="94A-mM-i4n" id="IGq-ku-Uuu"/>
                     </connections>
                 </tableViewController>
