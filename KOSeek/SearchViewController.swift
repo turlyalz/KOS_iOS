@@ -29,6 +29,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
             searchBar(searchBar, textDidChange: searchText)
             searchBar.text = searchText
         }
+        SavedVariables.searchViewController = self
     }
       
     func createSearchBar() {

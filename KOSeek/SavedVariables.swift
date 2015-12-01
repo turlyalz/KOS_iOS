@@ -12,6 +12,7 @@ import CoreData
 class SavedVariables {
     static var sideMenuViewController: SideMenuController?
     static var waitingViewController: WaitingViewController?
+    static var searchViewController: SearchViewController?
     static var cdh: CoreDataHelper = CoreDataHelper()
     static var searchText: String? = nil
     static var username: String?

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ResultsViewController: UITableViewController {
 
@@ -155,33 +156,43 @@ class ResultsViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let subject = subjects[indexPath.row]
-        
-        let subjectCodeLabel: UILabel = UILabel(frame: CGRect(x: 10, y: 0, width: SubjectCell.subjectCodeWidth, height: SubjectCell.height))
+        let subjectCodeLabel = UILabel()
         subjectCodeLabel.text = subject.code
         subjectCodeLabel.numberOfLines = 2
         subjectCodeLabel.font = .systemFontOfSize(14)
         subjectCodeLabel.textColor = .blackColor()
         cell.addSubview(subjectCodeLabel)
-        
-        let subjectNameLabel: UILabel = UILabel(frame: CGRect(x: SubjectCell.subjectCodeWidth+7, y: 0, width: SubjectCell.subjectNameWidth, height: SubjectCell.height))
+        subjectCodeLabel.snp_remakeConstraints { (make) -> Void in
+            make.left.equalTo(cell).offset(10)
+            make.width.equalTo(cell).multipliedBy(1.0/5.0)
+            make.height.equalTo(cell)
+        }
+        let subjectNameLabel = UILabel()
         subjectNameLabel.text = subject.name
         subjectNameLabel.numberOfLines = 2
         subjectNameLabel.font = .systemFontOfSize(15)
         subjectNameLabel.textColor = .blackColor()
         subjectNameLabel.textAlignment = NSTextAlignment.Center
         cell.addSubview(subjectNameLabel)
-        
-        let subjectCreditsLabel: UILabel = UILabel(frame: CGRect(x: SubjectCell.subjectCodeWidth+SubjectCell.subjectNameWidth+7, y: 0, width: SubjectCell.subjectCreditWidth, height: SubjectCell.height))
+        subjectNameLabel.snp_remakeConstraints { (make) -> Void in
+            make.left.equalTo(subjectCodeLabel.snp_right).offset(8)
+            make.width.equalTo(cell).multipliedBy(19.0/30.0)
+            make.height.equalTo(cell)
+        }
+        let subjectCreditsLabel = UILabel()
         subjectCreditsLabel.text = subject.credits
         subjectCreditsLabel.font = .systemFontOfSize(15)
         subjectCreditsLabel.textColor = .blackColor()
         subjectCreditsLabel.textAlignment = NSTextAlignment.Center
         cell.addSubview(subjectCreditsLabel)
-        
+        subjectCreditsLabel.snp_remakeConstraints { (make) -> Void in
+            make.left.equalTo(subjectNameLabel.snp_right)
+            make.width.equalTo(cell).multipliedBy(1.0/6.0)
+            make.height.equalTo(cell)
+        }
         if subject.completed == 1 {
             cell.backgroundColor = SlotTutorialColor
         }
-        
         return cell
     }
     

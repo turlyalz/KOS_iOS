@@ -25,12 +25,13 @@ class SideMenuController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         SavedVariables.canDropDownMenuShow = false
+        SavedVariables.searchViewController?.searchBar.userInteractionEnabled = false
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         SavedVariables.canDropDownMenuShow = true
-        print(SavedVariables.canDropDownMenuShow)
+        SavedVariables.searchViewController?.searchBar.userInteractionEnabled = true
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
