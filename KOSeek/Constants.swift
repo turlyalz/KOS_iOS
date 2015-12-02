@@ -23,8 +23,8 @@ typealias SavedVariablesContent = (username: String?, currentSemester: String?)
 var screenSize: CGRect = UIScreen.mainScreen().bounds
 
 // Dropdown menu constants
-var SemesterNumber: CGFloat = 8
-var DropdownMenuViewCellHeight: CGFloat = screenSize.height/(SemesterNumber+2)
+var SemesterNumber: CGFloat = 10
+var DropdownMenuViewCellHeight: CGFloat = screenSize.height/SemesterNumber
 
 let DropdownMenuView: (cellBackgroundColor: UIColor, cellSelectionColor: UIColor, cellSeparatorColor: UIColor, cellTextLabelFont: UIFont?, cellTextLabelColor: UIColor, arrowPadding: CGFloat, animationDuration: NSTimeInterval, maskBackgroundColor: UIColor, maskBackgroundOpacity: CGFloat) =
     (cellBackgroundColor: UIColor(red: 120/255, green: 162/255, blue: 182/255, alpha: 1),
