@@ -54,8 +54,7 @@ class WaitingViewController: UIViewController {
             dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
                 KOSAPI.downloadAllData()
             })
-        }
-        else {
+        } else {
             loginFailedMessage(response.error)
         }
     }

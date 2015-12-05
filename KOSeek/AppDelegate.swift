@@ -22,9 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setSavedVariables() {
         let response = Database.getSavedVariablesFrom(context: self.cdh.managedObjectContext)
-        if let username = response.username, currentSemester = response.currentSemester {
+        if let username = response.username, currentSemester = response.currentSemester, accessToken = response.accessToken, refreshToken = response.refreshToken, expires = response.expires {
             SavedVariables.username = username
             SavedVariables.currentSemester = currentSemester
+            LoginHelper.setAuthToken(accessToken)
+            LoginHelper.refreshToken = refreshToken
+            LoginHelper.expires = expires
             if let semesters = Database.getSemestersFrom(context: self.cdh.managedObjectContext) {
                 for semester in semesters {
                     if let id = semester.id, name = semester.name {

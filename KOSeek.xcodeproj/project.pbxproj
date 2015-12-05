@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C015DD81C05FE8A0074B6F6 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C015DD71C05FE8A0074B6F6 /* CoreDataStore.swift */; };
 		9C015DDA1C05FF410074B6F6 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C015DD91C05FF410074B6F6 /* CoreDataHelper.swift */; };
+		9C168A431C13105D006257EC /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C168A421C13105D006257EC /* NSDateExtension.swift */; };
 		9C1A1B271C086A590050E03E /* TimetableSlot+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B251C086A590050E03E /* TimetableSlot+CoreDataProperties.swift */; };
 		9C1A1B281C086A590050E03E /* TimetableSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B261C086A590050E03E /* TimetableSlot.swift */; };
 		9C1A1B2F1C0911050050E03E /* TimetableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B2D1C0911050050E03E /* TimetableTableViewController.swift */; };
@@ -42,6 +43,7 @@
 		9C9E50211BE12C2E009B6CB1 /* ExamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50201BE12C2E009B6CB1 /* ExamsViewController.swift */; };
 		9C9E50231BE12C50009B6CB1 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */; };
 		9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */; };
+		9CB8E5A11C11C1BE00804F38 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB8E5A01C11C1BE00804F38 /* Exam.swift */; };
 		9CE171651BF8A48900C56D2F /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */; };
 		9CE171661BF8A48900C56D2F /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171621BF8A48900C56D2F /* Subject.swift */; };
 		9CE8F9D81C0F1F8F009C229F /* SnapKit in Resources */ = {isa = PBXBuildFile; fileRef = 9CE8F9D71C0F1F8F009C229F /* SnapKit */; };
@@ -94,6 +96,7 @@
 /* Begin PBXFileReference section */
 		9C015DD71C05FE8A0074B6F6 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		9C015DD91C05FF410074B6F6 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		9C168A421C13105D006257EC /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		9C1A1B251C086A590050E03E /* TimetableSlot+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimetableSlot+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9C1A1B261C086A590050E03E /* TimetableSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableSlot.swift; sourceTree = "<group>"; };
 		9C1A1B2D1C0911050050E03E /* TimetableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableTableViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 		9C9E50201BE12C2E009B6CB1 /* ExamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamsViewController.swift; sourceTree = "<group>"; };
 		9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		9CB8E5A01C11C1BE00804F38 /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
 		9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9CE171621BF8A48900C56D2F /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		9CE8F9D71C0F1F8F009C229F /* SnapKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SnapKit; path = /Volumes/Media/Alzhan/CVUT/KOSeek/KOS_iOS/SnapKit; sourceTree = "<absolute>"; };
@@ -273,15 +277,16 @@
 		9C31E5971BDE7712004FF6CB /* ApplicationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				9C8ED0791BE3D5A200611CBF /* SavedVariables.swift */,
 				9C86AE881BF3F37C0096C72E /* SwiftyJSON.swift */,
 				9C86AE8A1BF3F3CC0096C72E /* SWXMLHash.swift */,
 				9C31E5941BDE4B7C004FF6CB /* LoginHelper.swift */,
-				9C8ED0791BE3D5A200611CBF /* SavedVariables.swift */,
 				9C86AE421BF3B2BA0096C72E /* KOSAPI.swift */,
 				9C2BFD291BF5420E00744E85 /* Database.swift */,
 				9C43A1031BF7F67A0018ABB0 /* Constants.swift */,
 				9C015DD71C05FE8A0074B6F6 /* CoreDataStore.swift */,
 				9C015DD91C05FF410074B6F6 /* CoreDataHelper.swift */,
+				9C168A421C13105D006257EC /* NSDateExtension.swift */,
 			);
 			name = ApplicationLayer;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				9C86AE821BF3B7870096C72E /* KOSModel.xcdatamodeld */,
+				9CB8E5A01C11C1BE00804F38 /* Exam.swift */,
 				9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */,
 				9CE171621BF8A48900C56D2F /* Subject.swift */,
 				9C6FB4D01BFE2E2700C682C4 /* Semester+CoreDataProperties.swift */,
@@ -476,6 +482,7 @@
 				9CE8F9EE1C0F2086009C229F /* Debugging.swift in Sources */,
 				9CE8F9EF1C0F2086009C229F /* EdgeInsets.swift in Sources */,
 				9CE8F9F01C0F2086009C229F /* LayoutConstraint.swift in Sources */,
+				9C168A431C13105D006257EC /* NSDateExtension.swift in Sources */,
 				9CE8F9F11C0F2086009C229F /* SnapKit.h in Sources */,
 				9CE8F9F21C0F2086009C229F /* SnapKit.swift in Sources */,
 				9CE8F9F31C0F2086009C229F /* SourceLocation.swift in Sources */,
@@ -485,6 +492,7 @@
 				9C6FB4D31BFE2E2700C682C4 /* Semester.swift in Sources */,
 				9C015DDA1C05FF410074B6F6 /* CoreDataHelper.swift in Sources */,
 				9C6FB4DB1BFE811100C682C4 /* BTNavigationDropdownMenu.swift in Sources */,
+				9CB8E5A11C11C1BE00804F38 /* Exam.swift in Sources */,
 				9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */,
 				9C2D987D1BDFA37A00CF5A11 /* SWRevealViewController.m in Sources */,
 				9C1A1B271C086A590050E03E /* TimetableSlot+CoreDataProperties.swift in Sources */,

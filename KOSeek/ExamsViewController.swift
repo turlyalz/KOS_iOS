@@ -12,7 +12,9 @@ class ExamsViewController: UITableViewController {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     var subjects: [String] = []
+    var exams: [Exam] = []
     var dropdownMenuView: BTNavigationDropdownMenu?
+    let alertLoadingView = UIAlertController(title: "", message: "Downloading. Please Wait.", preferredStyle: UIAlertControllerStyle.Alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,17 +23,18 @@ class ExamsViewController: UITableViewController {
             menuButton.action = "menuButtonPressed"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
         guard let semester = SavedVariables.currentSemester, subjects = Database.getSubjectsBy(semester: semester, context: SavedVariables.cdh.managedObjectContext) else {
             return
         }
-        
         for subject in subjects {
             if let code = subject.code {
                 self.subjects.append(code)
             }
         }
-        
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        activityIndicator.frame = CGRect(x: 25, y: 30, width: 10, height: 10)
+        activityIndicator.startAnimating()
+        alertLoadingView.view.addSubview(activityIndicator)
         setupDropdownMenu()
     }
     
@@ -56,11 +59,25 @@ class ExamsViewController: UITableViewController {
             dropdownMenuView?.maskBackgroundColor = DropdownMenuView.maskBackgroundColor
             dropdownMenuView?.maskBackgroundOpacity = DropdownMenuView.maskBackgroundOpacity
             dropdownMenuView?.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-                //let semester = self.semesterIDNameDict[indexPath].0
-                //self.updateSubjects(semester)
+                self.presentViewController(self.alertLoadingView, animated: true, completion: nil)
+                dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
+                    self.didSelectSubject(self.subjects[indexPath])
+                })
             }
             self.navigationItem.titleView = dropdownMenuView
         }
+    }
+    
+    func didSelectSubject(subjectCode: String) {
+        if let exams = KOSAPI.downloadExamBy(subjectCode) {
+            self.exams = exams
+        } else {
+            print("No exams")
+        }
+        dispatch_async(dispatch_get_main_queue(), {
+            self.alertLoadingView.dismissViewControllerAnimated(true, completion: nil)
+            return
+        })
     }
     
     override func viewDidAppear(animated: Bool) {

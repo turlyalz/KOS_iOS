@@ -18,7 +18,7 @@ let SlotLectureColor = UIColor(red: 255/255.0, green: 245/255.0, blue: 207/255.0
 let SlotLaboratoryColor = UIColor(red: 189/255.0, green: 196/255.0, blue: 231/255.0, alpha: 1)
 let MenuButtonTintColor = UIColor(red: 57/255.0, green: 61/255.0, blue: 67/255.0, alpha: 1)
 
-typealias SavedVariablesContent = (username: String?, currentSemester: String?)
+typealias SavedVariablesContent = (username: String?, currentSemester: String?, accessToken: String?, refreshToken: String?, expires: NSDate?)
 
 var screenSize: CGRect = UIScreen.mainScreen().bounds
 
@@ -46,7 +46,7 @@ func updateSemesterNumber(number: Int) {
 // Check if comunication error
 func errorOcurredIn(response: NSURLResponse?) -> Bool {
     guard let httpResponse = response as? NSHTTPURLResponse, resp = httpResponse.URL else  {
-        return true
+        return false
     }
     let respStr = String(resp)
     if respStr.rangeOfString("authentication_error=true") != nil {

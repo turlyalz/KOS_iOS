@@ -86,20 +86,25 @@ class Database {
                 let res = results[0] as! NSManagedObject
                 let username = res.valueForKey("username") as! String
                 let currentSemester = res.valueForKey("currentSemester") as! String
-                return (username, currentSemester: currentSemester)
+                let accessToken = res.valueForKey("accessToken") as! String
+                let refreshToken = res.valueForKey("refreshToken") as! String
+                let expires = res.valueForKey("expires") as! NSDate
+                return (username, currentSemester: currentSemester, accessToken: accessToken, refreshToken: refreshToken, expires: expires)
             }
         }
         catch let error as NSError {
             debugPrint(error)
         }
-        
-        return (nil, nil)
+        return (nil, nil, nil, nil, nil)
     }
     
-    class func setSavedVariables(context: NSManagedObjectContext, username: String, currentSemester: String) {
+    class func setSavedVariables(context: NSManagedObjectContext, username: String, currentSemester: String, accessToken: String, refreshToken: String, expires: NSDate) {
         let SV = NSEntityDescription.insertNewObjectForEntityForName("SavedVariables", inManagedObjectContext: context)
         SV.setValue(username, forKey: "username")
         SV.setValue(currentSemester, forKey: "currentSemester")
+        SV.setValue(accessToken, forKey: "accessToken")
+        SV.setValue(refreshToken, forKey: "refreshToken")
+        SV.setValue(expires, forKey: "expires")
         saveContext(context)
     }
     

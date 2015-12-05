@@ -47,11 +47,9 @@ class SideMenuController: UITableViewController {
         
         if indexPath.row == 0 {
             let label: UILabel = UILabel(frame: CGRect(x: 15, y: 0, width: 300, height: 50))
-            
             if let username = SavedVariables.username, profileInfo = Database.getPersonBy(username: username, context: SavedVariables.cdh.managedObjectContext), firstName = profileInfo.firstName, lastName = profileInfo.lastName{
                 label.text = firstName + " " + lastName
             }
-
             label.textColor = .whiteColor()
             cell.addSubview(label)
         }
