@@ -25,9 +25,9 @@ class KOSAPI {
             return
         }
         download("User person Info", extensionURL: "/students/" + SavedVariables.username! + "?access_token=" + accessToken + "&lang=cs", parser: userParser)
-        download("Current Semester", extensionURL: "/students/" + SavedVariables.username! + "/enrolledCourses?access_token=" + accessToken + "&lang=cs", parser: currentSemesterParser)
+        download("Current Semester", extensionURL: "/semesters/current?access_token=" + accessToken + "&lang=cs", parser: currentSemesterParser)
         download("Enrolled Courses", extensionURL: "/students/" + SavedVariables.username! + "/enrolledCourses?access_token=" + accessToken + "&sem=none&limit=1000&lang=cs", parser: semesterParser)
-        
+
         download("Timetable slots", extensionURL: "/students/" + SavedVariables.username! + "/parallels?access_token=" + accessToken + "&limit=1000", parser: timetableSlotParser)
         
         download("Teachers", extensionURL: "/divisions/18000/teachers/?access_token=" + accessToken + "&limit=1000&lang=cs", parser: teachersParser)
@@ -112,7 +112,7 @@ class KOSAPI {
     }
     
     private class func currentSemesterParser(xml: XMLIndexer) {
-        SavedVariables.currentSemester = xml["atom:feed"]["atom:entry"][0]["atom:content"]["semester"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("semesters/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
+        SavedVariables.currentSemester = xml["atom:entry"]["atom:content"]["code"].element?.text
         print("Current semester: \(SavedVariables.currentSemester)")
         if let currentSemester = SavedVariables.currentSemester, accessToken = LoginHelper.getAuthToken() {
             Database.setSavedVariables(SavedVariables.cdh.backgroundContext!, username: SavedVariables.username!, currentSemester: currentSemester, accessToken: accessToken, refreshToken: LoginHelper.refreshToken, expires: LoginHelper.expires)
@@ -214,6 +214,8 @@ class KOSAPI {
         })
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + extensionURL)!)
         request.HTTPMethod = "GET"
+        request.addValue("application/xml", forHTTPHeaderField: "accept")
+        //print("That value: \(request.valueForHTTPHeaderField("Accept"))")
         print("Request = \(request)")
         var failed = false
         var running = false
@@ -223,6 +225,10 @@ class KOSAPI {
                 failed = true
                 return
             }
+            print("Downloading \(name)...")
+            //let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            //print("Response string = [ \(responseString) ]")
+
             if let uData = data {
                 let xml = SWXMLHash.parse(uData)
                 parser(xml)
@@ -249,6 +255,7 @@ class KOSAPI {
     private class func downloadExams(name: String, extensionURL: String) -> [Exam]? {
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + extensionURL)!)
         request.HTTPMethod = "GET"
+        //request.addValue("application/atom+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         print("Request = \(request)")
         var failed = false
         var running = false
