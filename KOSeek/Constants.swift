@@ -32,7 +32,7 @@ let DropdownMenuView: (cellBackgroundColor: UIColor, cellSelectionColor: UIColor
     arrowPadding: 15, animationDuration: 0.4, maskBackgroundColor: UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0), maskBackgroundOpacity: 0.3)
 
 
-// Updates values if orientation did changed
+// Updates values if orientation was changed
 func updateValues() {
     screenSize = UIScreen.mainScreen().bounds
     DropdownMenuViewCellHeight = screenSize.height/SemesterNumber
@@ -59,3 +59,11 @@ func errorOcurredIn(response: NSURLResponse?) -> Bool {
     }
     return false
 }
+
+func createAlertView(text: String, viewController: UIViewController, handlerYes: (UIAlertAction) -> (), handlerNo: (UIAlertAction) -> ()) {
+    let alert = UIAlertController(title: "", message: text, preferredStyle: UIAlertControllerStyle.Alert)
+    alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: handlerYes))
+    alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: handlerNo))
+    viewController.presentViewController(alert, animated: true, completion: nil)
+}
+

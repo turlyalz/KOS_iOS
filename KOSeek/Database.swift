@@ -63,7 +63,15 @@ class Database {
         delete("Person", context: context)
         delete("Subject", context: context)
         delete("Semester", context: context)
+        delete("TimetableSlot", context: context)
         delete("SavedVariables", context: context)
+    }
+    
+    class func deleteOnlyUserData(context context: NSManagedObjectContext) {
+        delete("Person", context: context)
+        delete("Subject", context: context)
+        delete("Semester", context: context)
+        delete("TimetableSlot", context: context)
     }
     
     private class func delete(entity: String, context: NSManagedObjectContext) {

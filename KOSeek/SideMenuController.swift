@@ -84,21 +84,12 @@ class SideMenuController: UITableViewController {
         SavedVariables.resetAll()
     }
     
-    func logOutMessage(indexPath: NSIndexPath) {
-        let alertLogOut = UIAlertController(title: "", message: "Are you sure you want to log out?", preferredStyle: UIAlertControllerStyle.Alert)
-        alertLogOut.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: logOutHandler))
-        alertLogOut.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default,
-            handler: {
-                action in
-                self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
-            }
-        ))
-        self.presentViewController(alertLogOut, animated: true, completion: nil)
-    }
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == menus.count-1 {
-            logOutMessage(indexPath)
+            createAlertView("Are you sure you want to log out?", viewController: self, handlerYes: logOutHandler, handlerNo: {
+                action in
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            })
         }
     }
     

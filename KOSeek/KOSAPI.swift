@@ -20,9 +20,12 @@ class KOSAPI {
     private init(){ }
     
     // Download all data
-    class func downloadAllData() {
+    class func downloadAllData() -> Bool{
         guard let accessToken = LoginHelper.getAuthToken() else {
-            return
+            return false
+        }
+        if (!Reachability.isConnectedToNetwork()) {
+            return false
         }
         download("User person Info", extensionURL: "/students/" + SavedVariables.username! + "?access_token=" + accessToken + "&lang=cs", parser: userParser)
         download("Current Semester", extensionURL: "/semesters/current?access_token=" + accessToken + "&lang=cs", parser: currentSemesterParser)
@@ -49,6 +52,7 @@ class KOSAPI {
         })
 
         onComplete()
+        return true
     }
     
     class func downloadExamBy(subjectCode: String) -> [Exam]? {

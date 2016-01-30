@@ -43,7 +43,7 @@ class ProfileViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -51,8 +51,29 @@ class ProfileViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    func updateDataButtonPressed(sender: UIButton!) {
+        createAlertView("All your actual data will be removed and new data will be downloaded. Are you sure you want to continue?", viewController: self, handlerYes: {
+            action in
+            Database.deleteOnlyUserData(context: SavedVariables.cdh.backgroundContext!)
+            KOSAPI.onComplete = {
+                
+            }
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { KOSAPI.downloadAllData() })
+            },
+            handlerNo: {action in})
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        if (indexPath.row == 2) {
+            let button = UIButton(type: UIButtonType.System) as UIButton
+            button.frame = CGRect(x: 15, y: 0, width: screenSize.width/3, height: 50)
+            button.setTitle("Update all data", forState: .Normal)
+            //button.setTitleColor(.blackColor(), forState: .Normal)
+            button.addTarget(self, action: "updateDataButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+            cell.addSubview(button)
+            return cell
+        }
         let label = UILabel(frame: CGRect(x: 15, y: 0, width: screenSize.width-15, height: 50))
         label.text = profileInfo[indexPath.row]
         label.textColor = .blackColor()
