@@ -16,6 +16,7 @@ class MainTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = TableViewBackgroundColor
         menuButton = UIBarButtonItem(image: UIImage(named: "menu"), style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         menuButton.tintColor = MenuButtonTintColor
         if self.revealViewController() != nil {
@@ -62,7 +63,7 @@ class MainTableViewController: UITableViewController {
         line.backgroundColor = .grayColor()
         line.alpha = 0.5
         let view = UIView()
-        view.backgroundColor = .whiteColor()
+        view.backgroundColor = TableViewBackgroundColor
         view.addSubview(line)
         return view
     }

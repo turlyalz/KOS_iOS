@@ -17,6 +17,7 @@ let SlotTutorialColor = UIColor(red: 219/255.0, green: 242/255.0, blue: 219/255.
 let SlotLectureColor = UIColor(red: 255/255.0, green: 245/255.0, blue: 207/255.0, alpha: 1)
 let SlotLaboratoryColor = UIColor(red: 189/255.0, green: 196/255.0, blue: 231/255.0, alpha: 1)
 let MenuButtonTintColor = UIColor(red: 57/255.0, green: 61/255.0, blue: 67/255.0, alpha: 1)
+let TableViewBackgroundColor = UIColor(white: 1, alpha: 0.95)
 
 typealias SavedVariablesContent = (username: String?, currentSemester: String?, accessToken: String?, refreshToken: String?, expires: NSDate?)
 
