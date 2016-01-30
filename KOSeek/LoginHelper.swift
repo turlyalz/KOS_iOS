@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: LoginHelper
+/// Static class provides functions to get an access token, refresh token using KOSAPI
 class LoginHelper {
         
     private static let baseURL = "https://auth.fit.cvut.cz/oauth/"
@@ -22,17 +22,7 @@ class LoginHelper {
     static var refreshToken = ""
     static var expires: NSDate = NSDate()
     
-    private init(){ }
-    
-    private class func loginRequest(username: String, password: String) -> (success: Bool, error: String) {
-        if username == "" {
-            return (false, "Username cannot be empty!")
-        }
-        
-        if password == "" {
-            return (false, "Password cannot be empty!")
-        }
-        
+    private class func loginRequest(username: String, password: String) -> (success: Bool, error: String) {       
         print("Try to log in with username: '\(username)', password: '\(password)'")
         
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + login)!)
@@ -270,6 +260,7 @@ class LoginHelper {
         accessToken = token
     }
     
+    /// Returns access token, if it's out of date - gets new one using refreshAuthToken function
     class func getAuthToken() -> String? {
         let currentDate = NSDate(timeIntervalSinceNow: NSTimeInterval(360))
         print("Current date: \(currentDate), expires in: \(expires)")
@@ -282,7 +273,7 @@ class LoginHelper {
         return accessToken
     }
     
-    // Get an authorization token for comunication with KOS API
+    /// Get an authorization token for comunication with KOS API
     class func getAuthToken(username username: String, password: String) -> (success: Bool, error: String) {
         let loginResponse = loginRequest(username, password: password)
         if !loginResponse.success {

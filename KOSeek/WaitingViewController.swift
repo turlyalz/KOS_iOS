@@ -37,17 +37,12 @@ class WaitingViewController: UIViewController {
             self.performSegueWithIdentifier("downloadCompleteSegue", sender: nil)
         }
         KOSAPI.increaseProgressBar = { value in
-            if value == 100 {
-                self.counter = value
-            } else {
-                self.counter += value
-            }
+            self.counter += value
         }
         let response = LoginHelper.getAuthToken(username: SavedVariables.username!, password: SavedVariables.password!)
         SavedVariables.password = nil
         if response.success {
             progressView.hidden = false
-            self.counter = 0
             statusLabel.text = "Downloading data, please wait."
             dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
                 KOSAPI.downloadAllData()

@@ -8,7 +8,8 @@
 
 import SystemConfiguration
 
-public class Reachability {
+/// Class provides function to check if internet connection is reachable 
+class Reachability {
     class func isConnectedToNetwork() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))

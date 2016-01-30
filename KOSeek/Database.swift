@@ -10,10 +10,8 @@ import Foundation
 import UIKit
 import CoreData
 
-// MARK: Database
+/// Static class provides access to all storage user data
 class Database {
-    
-    private init(){ }
 
     class func addPersonTo(context context: NSManagedObjectContext, firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?, title: String?) {
         let entityDescription = NSEntityDescription.entityForName("Person", inManagedObjectContext: context)

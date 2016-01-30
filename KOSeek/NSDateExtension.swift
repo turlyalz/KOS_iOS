@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Extension for comparing two NSDate objects
 extension NSDate {
     func isGreaterThanDate(dateToCompare : NSDate) -> Bool {
         var isGreater = false

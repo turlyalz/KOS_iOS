@@ -43,6 +43,7 @@ class ProfileViewController: MainTableViewController {
             return
         }
         self.progressView = UIProgressView(frame: CGRect(x: 35, y: 50, width: 200, height: 20))
+        counter = 0
         let alertLoadingView = UIAlertController(title: "", message: "Downloading. Please Wait.", preferredStyle: UIAlertControllerStyle.Alert)
         alertLoadingView.view.addSubview(progressView)
         self.presentViewController(alertLoadingView, animated: true, completion: nil)

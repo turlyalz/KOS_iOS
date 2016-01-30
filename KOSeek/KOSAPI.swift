@@ -10,19 +10,17 @@ import Foundation
 import UIKit
 import CoreData
 
-// MARK: KOSAPI
+/// Static class provides functions for downloading all data using KOSAPI
 class KOSAPI {
     
-    // Function that called when all downloads are completed
+    /// Function that called when all downloads are completed
     static var onComplete: (() -> Void)!
-    // Function that called when need to increase progress bar
+    /// Function that called when need to increase progress bar
     static var increaseProgressBar: ((Int) -> Void)!
     
     private static let baseURL = "https://kosapi.fit.cvut.cz/api/3"
     
-    private init(){ }
-    
-    // Download all data
+    /// Download all data
     class func downloadAllData() {
         guard let accessToken = LoginHelper.getAuthToken() else {
             return
@@ -51,10 +49,11 @@ class KOSAPI {
         
         dispatch_async(dispatch_get_main_queue(), {
             increaseProgressBar(100)
+            onComplete()
             return
         })
 
-        onComplete()
+        
     }
     
     class func downloadExamBy(subjectCode: String) -> [Exam]? {

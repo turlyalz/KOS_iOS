@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+/// Static class that storing local data
 class SavedVariables {
     static var sideMenuViewController: SideMenuController?
     static var searchViewController: SearchViewController?
@@ -20,8 +21,6 @@ class SavedVariables {
     static var currentSemester: String?
     static var subjectCodes: [String] = []
     static var canDropDownMenuShow: Bool = false
-    
-    private init(){ }
 
     class func resetAll() {
         username = nil

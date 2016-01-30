@@ -8,7 +8,6 @@
 
 import UIKit
 
-// MARK: SideMenuConroller
 class SideMenuController: UITableViewController {
     
     private let menus = ["Username", "Timetable", "Semester", "Exams", "Results", "Search People", "LogOut"]
