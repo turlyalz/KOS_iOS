@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ResultsViewController: UITableViewController {
+class ResultsViewController: MainTableViewController {
 
-    @IBOutlet weak var menuButton: UIBarButtonItem!
     var semesterIDNameDict: [(String, String)] = []
     var semesters: [String] = []
+    var subjects: [Subject] = []
     var dropdownMenuView: BTNavigationDropdownMenu?
     var semesterCreditsEnrolled: Int = 0
     var semesterCreditsObtained: Int = 0
@@ -21,30 +21,16 @@ class ResultsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.revealViewController() != nil {
-            menuButton.target = self
-            menuButton.action = "menuButtonPressed"
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
         semesterIDNameDict = SavedVariables.semesterIDNameDict.sort({$0.0 < $1.0})
         for (_, semester) in semesterIDNameDict {
             semesters.append(semester)
         }
         updateSemesterNumber(semesters.count)
-        
         setupDropdownMenu()
         if let firstSemester = semesterIDNameDict.first {
             updateSubjects(firstSemester.0)
         }
         setTotalCreditsValues()
-    }
-    
-    func menuButtonPressed() {
-        if dropdownMenuView?.getShown() == true {
-            dropdownMenuView?.hideMenu()
-            dropdownMenuView?.setShown(false)
-        }
-        UIApplication.sharedApplication().sendAction("revealToggle:", to: self.revealViewController(), from: self, forEvent: nil)
     }
     
     func setupDropdownMenu() {
@@ -66,16 +52,6 @@ class ResultsViewController: UITableViewController {
             self.navigationItem.titleView = dropdownMenuView
         }
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        SavedVariables.sideMenuViewController?.view.userInteractionEnabled = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    var subjects: [Subject] = []
     
     func setTotalCreditsValues() {
         guard let semesters = Database.getSemestersFrom(context: SavedVariables.cdh.managedObjectContext) else {
@@ -114,10 +90,6 @@ class ResultsViewController: UITableViewController {
             subjects.sortInPlace({ $0.0.code < $0.1.code })
             tableView.reloadData()
         }
-    }
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -196,13 +168,12 @@ class ResultsViewController: UITableViewController {
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        updateValues()
+        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
         dropdownMenuView?.cellHeight = DropdownMenuViewCellHeight
         if dropdownMenuView?.getShown() == true {
             dropdownMenuView?.hideMenu()
             dropdownMenuView?.setShown(false)
         }
-        tableView.reloadData()
     }
     
 }

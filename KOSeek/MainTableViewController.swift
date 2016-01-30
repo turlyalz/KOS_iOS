@@ -1,0 +1,70 @@
+//
+//  MainTableViewController.swift
+//  KOSeek
+//
+//  Created by Alzhan on 30.01.16.
+//  Copyright © 2016 Alzhan Turlybekov. All rights reserved.
+//
+
+import UIKit
+
+// Base class for all ViewControllers
+class MainTableViewController: UITableViewController {
+    
+    var menuButton: UIBarButtonItem!
+    var childFunc: () -> () = {}
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        menuButton = UIBarButtonItem(image: UIImage(named: "menu"), style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        menuButton.tintColor = MenuButtonTintColor
+        if self.revealViewController() != nil {
+            menuButton.target = self
+            menuButton.action = "menuButtonPressed"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        self.navigationItem.leftBarButtonItem = menuButton
+    }
+    
+    func menuButtonPressed() {
+        childFunc()
+        UIApplication.sharedApplication().sendAction("revealToggle:", to: self.revealViewController(), from: self, forEvent: nil)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        SavedVariables.sideMenuViewController?.view.userInteractionEnabled = true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: - Table view data source
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        updateValues()
+        tableView.reloadData()
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.7
+    }
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let line = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 0.7))
+        line.backgroundColor = .grayColor()
+        line.alpha = 0.5
+        let view = UIView()
+        view.backgroundColor = .whiteColor()
+        view.addSubview(line)
+        return view
+    }
+    
+}

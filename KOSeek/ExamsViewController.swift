@@ -8,9 +8,8 @@
 
 import UIKit
 
-class ExamsViewController: UITableViewController {
+class ExamsViewController: MainTableViewController {
     
-    @IBOutlet weak var menuButton: UIBarButtonItem!
     var subjects: [String] = []
     var exams: [Exam] = []
     var dropdownMenuView: BTNavigationDropdownMenu?
@@ -18,10 +17,11 @@ class ExamsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.revealViewController() != nil {
-            menuButton.target = self
-            menuButton.action = "menuButtonPressed"
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        super.childFunc =  {
+            if self.dropdownMenuView?.getShown() == true {
+                self.dropdownMenuView?.hideMenu()
+                self.dropdownMenuView?.setShown(false)
+            }
         }
         guard let semester = SavedVariables.currentSemester, subjects = Database.getSubjectsBy(semester: semester, context: SavedVariables.cdh.managedObjectContext) else {
             return
@@ -36,14 +36,6 @@ class ExamsViewController: UITableViewController {
         activityIndicator.startAnimating()
         alertLoadingView.view.addSubview(activityIndicator)
         setupDropdownMenu()
-    }
-    
-    func menuButtonPressed() {
-        if dropdownMenuView?.getShown() == true {
-            dropdownMenuView?.hideMenu()
-            dropdownMenuView?.setShown(false)
-        }
-        UIApplication.sharedApplication().sendAction("revealToggle:", to: self.revealViewController(), from: self, forEvent: nil)
     }
     
     func setupDropdownMenu() {

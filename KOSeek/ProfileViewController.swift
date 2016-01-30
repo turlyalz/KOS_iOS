@@ -8,17 +8,20 @@
 
 import UIKit
 
-class ProfileViewController: UITableViewController {
-    @IBOutlet weak var menuButton: UIBarButtonItem!
+class ProfileViewController: MainTableViewController {
+    
     var profileInfo: [String] = []
+    var progressView: UIProgressView!
+    var counter:Int = 0 {
+        didSet {
+            let fractionalProgress = Float(counter) / 100.0
+            let animated = counter != 0
+            progressView.setProgress(fractionalProgress, animated: animated)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = "revealToggle:"
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
         setProfileInfo()
     }
     
@@ -29,51 +32,37 @@ class ProfileViewController: UITableViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        SavedVariables.sideMenuViewController?.view.userInteractionEnabled = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        updateValues()
-        tableView.reloadData()
+    func startUpdate(action: UIAlertAction) {
+        if (!Reachability.isConnectedToNetwork()) {
+            createAlertView("", text: "You have no internet connection. Please check your settings and try again.", viewController: self, handlers: ["OK": { _ in }])
+            return
+        }
+        self.progressView = UIProgressView(frame: CGRect(x: 35, y: 50, width: 200, height: 20))
+        let alertLoadingView = UIAlertController(title: "", message: "Downloading. Please Wait.", preferredStyle: UIAlertControllerStyle.Alert)
+        alertLoadingView.view.addSubview(progressView)
+        self.presentViewController(alertLoadingView, animated: true, completion: nil)
+        Database.deleteOnlyUserData(context: SavedVariables.cdh.backgroundContext!)
+        SavedVariables.semesterIDNameDict = [:]
+        KOSAPI.onComplete = {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        KOSAPI.increaseProgressBar = { value in
+            self.counter += value
+        }
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { KOSAPI.downloadAllData() })
     }
-    
-    func updateDataButtonPressed(sender: UIButton!) {
-        createAlertView("All your actual data will be removed and new data will be downloaded. Are you sure you want to continue?", viewController: self, handlerYes: {
-            action in
-            Database.deleteOnlyUserData(context: SavedVariables.cdh.backgroundContext!)
-            KOSAPI.onComplete = {
-                
-            }
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { KOSAPI.downloadAllData() })
-            },
-            handlerNo: {action in})
+
+    @IBAction func updateDataButtonPressed(sender: UIBarButtonItem) {
+        createAlertView("", text: "All of your actual data will be removed and new data will be downloaded.\nAre you sure you want to continue?", viewController: self, handlers: ["Yes": startUpdate, "No": {_ in} ])
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        if (indexPath.row == 2) {
-            let button = UIButton(type: UIButtonType.System) as UIButton
-            button.frame = CGRect(x: 15, y: 0, width: screenSize.width/3, height: 50)
-            button.setTitle("Update all data", forState: .Normal)
-            //button.setTitleColor(.blackColor(), forState: .Normal)
-            button.addTarget(self, action: "updateDataButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-            cell.addSubview(button)
-            return cell
-        }
         let label = UILabel(frame: CGRect(x: 15, y: 0, width: screenSize.width-15, height: 50))
         label.text = profileInfo[indexPath.row]
         label.textColor = .blackColor()

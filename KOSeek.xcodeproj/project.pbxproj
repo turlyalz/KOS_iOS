@@ -40,6 +40,7 @@
 		9C86AE8B1BF3F3CC0096C72E /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE8A1BF3F3CC0096C72E /* SWXMLHash.swift */; };
 		9C8A49B51BE011C7009ECFCA /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8A49B41BE011C7009ECFCA /* SideMenuController.swift */; };
 		9C8ED07A1BE3D5A200611CBF /* SavedVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED0791BE3D5A200611CBF /* SavedVariables.swift */; };
+		9C9841011C5D5592009ACD05 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9841001C5D5592009ACD05 /* MainTableViewController.swift */; };
 		9C9E50211BE12C2E009B6CB1 /* ExamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50201BE12C2E009B6CB1 /* ExamsViewController.swift */; };
 		9C9E50231BE12C50009B6CB1 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */; };
 		9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */; };
@@ -57,7 +58,6 @@
 		9CE8F9EE1C0F2086009C229F /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E01C0F2086009C229F /* Debugging.swift */; };
 		9CE8F9EF1C0F2086009C229F /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E11C0F2086009C229F /* EdgeInsets.swift */; };
 		9CE8F9F01C0F2086009C229F /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E21C0F2086009C229F /* LayoutConstraint.swift */; };
-		9CE8F9F11C0F2086009C229F /* SnapKit.h in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E31C0F2086009C229F /* SnapKit.h */; };
 		9CE8F9F21C0F2086009C229F /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E41C0F2086009C229F /* SnapKit.swift */; };
 		9CE8F9F31C0F2086009C229F /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E51C0F2086009C229F /* SourceLocation.swift */; };
 		9CE8F9F41C0F2086009C229F /* View+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E61C0F2086009C229F /* View+SnapKit.swift */; };
@@ -136,6 +136,7 @@
 		9C86AE8A1BF3F3CC0096C72E /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
 		9C8A49B41BE011C7009ECFCA /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
 		9C8ED0791BE3D5A200611CBF /* SavedVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedVariables.swift; sourceTree = "<group>"; };
+		9C9841001C5D5592009ACD05 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		9C9E50201BE12C2E009B6CB1 /* ExamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamsViewController.swift; sourceTree = "<group>"; };
 		9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +250,7 @@
 				9C2BFD271BF51B0200744E85 /* ProfileViewController.swift */,
 				9C1A1B2D1C0911050050E03E /* TimetableTableViewController.swift */,
 				9C1A1B311C0916E50050E03E /* SlotTableViewCell.swift */,
+				9C9841001C5D5592009ACD05 /* MainTableViewController.swift */,
 			);
 			name = SideMenuViewControllers;
 			sourceTree = "<group>";
@@ -486,7 +488,6 @@
 				9CE8F9EF1C0F2086009C229F /* EdgeInsets.swift in Sources */,
 				9CE8F9F01C0F2086009C229F /* LayoutConstraint.swift in Sources */,
 				9C168A431C13105D006257EC /* NSDateExtension.swift in Sources */,
-				9CE8F9F11C0F2086009C229F /* SnapKit.h in Sources */,
 				9CE8F9F21C0F2086009C229F /* SnapKit.swift in Sources */,
 				9CE8F9F31C0F2086009C229F /* SourceLocation.swift in Sources */,
 				9CE8F9F41C0F2086009C229F /* View+SnapKit.swift in Sources */,
@@ -496,6 +497,7 @@
 				9C6FB4D31BFE2E2700C682C4 /* Semester.swift in Sources */,
 				9C015DDA1C05FF410074B6F6 /* CoreDataHelper.swift in Sources */,
 				9C6FB4DB1BFE811100C682C4 /* BTNavigationDropdownMenu.swift in Sources */,
+				9C9841011C5D5592009ACD05 /* MainTableViewController.swift in Sources */,
 				9CB8E5A11C11C1BE00804F38 /* Exam.swift in Sources */,
 				9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */,
 				9C2D987D1BDFA37A00CF5A11 /* SWRevealViewController.m in Sources */,

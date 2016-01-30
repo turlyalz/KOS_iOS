@@ -8,20 +8,12 @@
 
 import UIKit
 
-class SemesterViewController: UITableViewController {
+class SemesterViewController: MainTableViewController {
 
-    @IBOutlet weak var menuButton: UIBarButtonItem!
     var subjects: [Subject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = "revealToggle:"
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
-        
         guard let currentSemester = SavedVariables.currentSemester, subj = Database.getSubjectsBy(semester: currentSemester, context: SavedVariables.cdh.managedObjectContext) else {
             return
         }
@@ -30,20 +22,7 @@ class SemesterViewController: UITableViewController {
         subjects.sortInPlace({ $0.0.code < $0.1.code })
     }
     
-    override func viewDidAppear(animated: Bool) {
-        SavedVariables.sideMenuViewController?.view.userInteractionEnabled = true
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return subjects.count
     }
@@ -90,10 +69,4 @@ class SemesterViewController: UITableViewController {
         }
         return cell
     }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        updateValues()
-        self.tableView.reloadData()
-    }
-   
 }

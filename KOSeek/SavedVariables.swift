@@ -11,7 +11,6 @@ import CoreData
 
 class SavedVariables {
     static var sideMenuViewController: SideMenuController?
-    static var waitingViewController: WaitingViewController?
     static var searchViewController: SearchViewController?
     static var cdh: CoreDataHelper = CoreDataHelper()
     static var searchText: String? = nil
@@ -21,7 +20,6 @@ class SavedVariables {
     static var currentSemester: String?
     static var subjectCodes: [String] = []
     static var canDropDownMenuShow: Bool = false
-    
     
     private init(){ }
 

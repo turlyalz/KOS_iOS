@@ -8,23 +8,16 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController, UISearchBarDelegate {
-
-    @IBOutlet weak var menuButton: UIBarButtonItem!
-    
+class SearchViewController: MainTableViewController, UISearchBarDelegate {
+   
     var teachers: [Person]?
     var filtered: [Person]?
     let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.revealViewController() != nil {
-            menuButton.target = self
-            menuButton.action = "menuButtonPressed"
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
         teachers = Database.getPersons(SavedVariables.cdh.managedObjectContext)
-        createSearchBar()
+        initSearchBar()
         if let searchText = SavedVariables.searchText {
             searchBar(searchBar, textDidChange: searchText)
             searchBar.text = searchText
@@ -32,7 +25,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         SavedVariables.searchViewController = self
     }
       
-    func createSearchBar() {
+    func initSearchBar() {
         searchBar.barTintColor = DropdownMenuView.cellBackgroundColor
         searchBar.placeholder = "type to start"
         searchBar.showsCancelButton = true
@@ -40,21 +33,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         searchBar.delegate = self
     }
     
-    override func viewDidAppear(animated: Bool) {
-        SavedVariables.sideMenuViewController?.view.userInteractionEnabled = true
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    func menuButtonPressed() {
-        self.view.endEditing(true)
-        UIApplication.sharedApplication().sendAction("revealToggle:", to: self.revealViewController(), from: self, forEvent: nil)
-    }
-    
     // MARK: - Search bar delegate
-    
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         self.view.endEditing(true)
     }
@@ -84,11 +63,6 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let uFiltered = filtered else {
             return 0
@@ -97,9 +71,8 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        updateValues()
         searchBar.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: 44)
-        tableView.reloadData()
+        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -107,7 +80,6 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
         view.addSubview(searchBar)
         return view
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()

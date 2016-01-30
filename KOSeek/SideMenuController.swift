@@ -86,10 +86,10 @@ class SideMenuController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == menus.count-1 {
-            createAlertView("Are you sure you want to log out?", viewController: self, handlerYes: logOutHandler, handlerNo: {
+            createAlertView("", text: "Are you sure you want to log out?", viewController: self, handlers: ["Yes": logOutHandler, "No": {
                 action in
                 self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
-            })
+            }])
         }
     }
     

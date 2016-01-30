@@ -13,19 +13,22 @@ import CoreData
 // MARK: KOSAPI
 class KOSAPI {
     
-    // Function that calls when all downloads are completed
+    // Function that called when all downloads are completed
     static var onComplete: (() -> Void)!
+    // Function that called when need to increase progress bar
+    static var increaseProgressBar: ((Int) -> Void)!
+    
     private static let baseURL = "https://kosapi.fit.cvut.cz/api/3"
     
     private init(){ }
     
     // Download all data
-    class func downloadAllData() -> Bool{
+    class func downloadAllData() {
         guard let accessToken = LoginHelper.getAuthToken() else {
-            return false
+            return
         }
         if (!Reachability.isConnectedToNetwork()) {
-            return false
+            return
         }
         download("User person Info", extensionURL: "/students/" + SavedVariables.username! + "?access_token=" + accessToken + "&lang=cs", parser: userParser)
         download("Current Semester", extensionURL: "/semesters/current?access_token=" + accessToken + "&lang=cs", parser: currentSemesterParser)
@@ -47,12 +50,11 @@ class KOSAPI {
         download("Subjects Info", extensionURL: subjectExtensionURL, parser: subjectsDetailsParser)
         
         dispatch_async(dispatch_get_main_queue(), {
-            SavedVariables.waitingViewController?.counter = 100
+            increaseProgressBar(100)
             return
         })
 
         onComplete()
-        return true
     }
     
     class func downloadExamBy(subjectCode: String) -> [Exam]? {
@@ -213,7 +215,7 @@ class KOSAPI {
     
     private class func download(name: String, extensionURL: String, parser: (XMLIndexer) -> Void) {
         dispatch_async(dispatch_get_main_queue(), {
-            SavedVariables.waitingViewController?.counter += 5
+            increaseProgressBar(9)
             return
         })
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + extensionURL)!)
@@ -239,7 +241,7 @@ class KOSAPI {
             }
             running = false
             dispatch_async(dispatch_get_main_queue(), {
-                SavedVariables.waitingViewController?.counter += 5
+                increaseProgressBar(8)
                 return
             })
         }

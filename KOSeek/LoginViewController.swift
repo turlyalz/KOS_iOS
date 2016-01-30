@@ -25,19 +25,13 @@ class LoginViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func loginFailedMessage(message: String) {
-        let alertLoginFailed = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertLoginFailed.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alertLoginFailed, animated: true, completion: nil)
-    }
-    
     @IBAction func loginButton(sender: UIButton) {
         if usernameField.text == "" {
-            loginFailedMessage("Username cannot be empty!")
+            createAlertView("", text: "Username cannot be empty!", viewController: self, handlers: ["OK": { _ in }])
             return
         }
         if passwordField.text == "" {
-            loginFailedMessage("Password cannot be empty!")
+            createAlertView("", text: "Password cannot be empty!", viewController: self, handlers: ["OK": { _ in }])
             return
         }
         SavedVariables.username = usernameField.text!

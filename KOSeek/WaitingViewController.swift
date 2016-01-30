@@ -24,7 +24,6 @@ class WaitingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SavedVariables.waitingViewController = self
         statusLabel.text = "Logging In, please wait."
         progressView.setProgress(0, animated: true)
         progressView.hidden = true
@@ -32,18 +31,17 @@ class WaitingViewController: UIViewController {
             self.activityIndicator.startAnimating()
         })
     }
-    
-    func loginFailedMessage(message: String) {
-        let alertLoginFailed = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertLoginFailed.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
-            self.performSegueWithIdentifier("failedLoginSegue", sender: nil)
-        }))
-        self.presentViewController(alertLoginFailed, animated: true, completion: nil)
-    }
-    
+      
     override func viewDidAppear(animated: Bool) {
         KOSAPI.onComplete = {
             self.performSegueWithIdentifier("downloadCompleteSegue", sender: nil)
+        }
+        KOSAPI.increaseProgressBar = { value in
+            if value == 100 {
+                self.counter = value
+            } else {
+                self.counter += value
+            }
         }
         let response = LoginHelper.getAuthToken(username: SavedVariables.username!, password: SavedVariables.password!)
         SavedVariables.password = nil
@@ -55,7 +53,9 @@ class WaitingViewController: UIViewController {
                 KOSAPI.downloadAllData()
             })
         } else {
-            loginFailedMessage(response.error)
+            createAlertView("", text: response.error, viewController: self, handlers: ["OK": { action in
+                self.performSegueWithIdentifier("failedLoginSegue", sender: nil)
+                }])
         }
     }
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
@@ -196,7 +196,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wbB-bC-lL8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.96600323135343269" green="1" blue="0.98118197717177402" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="iMi-Rf-4hl" id="zgz-PC-XHx"/>
@@ -205,14 +205,14 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Profile" id="8M9-o8-npt">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="XIA-Cg-j3G">
+                        <barButtonItem key="rightBarButtonItem" image="update" id="8Jd-sD-vjS">
                             <color key="tintColor" red="0.22352941179999999" green="0.23921568630000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="updateDataButtonPressed:" destination="iMi-Rf-4hl" id="PuR-en-uct"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="menuButton" destination="XIA-Cg-j3G" id="Vq6-wB-uLR"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JjQ-Kr-oDL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -423,15 +423,8 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Semester" id="Lqe-U6-R7q">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="SGr-0c-D0m">
-                            <color key="tintColor" red="0.22352941179999999" green="0.23921568630000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Semester" id="Lqe-U6-R7q"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="menuButton" destination="SGr-0c-D0m" id="67b-Xh-dpQ"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2E-QS-C1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -469,15 +462,8 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Exams" id="xWm-eo-gtU">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="0BZ-yE-DfO">
-                            <color key="tintColor" red="0.22352941179999999" green="0.23921568630000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Exams" id="xWm-eo-gtU"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="menuButton" destination="0BZ-yE-DfO" id="Oqj-fp-S5g"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9V-IC-rOA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -517,15 +503,8 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Results" id="w9R-UN-KPn">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="quq-7H-5lW">
-                            <color key="tintColor" red="0.22352941179999999" green="0.23921568630000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Results" id="w9R-UN-KPn"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="menuButton" destination="quq-7H-5lW" id="m6c-6h-aWp"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6YM-Cw-WaO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -563,14 +542,9 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Search" id="dYP-e9-Nwd">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="eYY-NV-J42" userLabel="Menu Button">
-                            <color key="tintColor" red="0.22352941179999999" green="0.23921568630000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Search" id="dYP-e9-Nwd"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="menuButton" destination="eYY-NV-J42" id="LNL-0r-y85"/>
                         <outlet property="searchDisplayController" destination="94A-mM-i4n" id="IGq-ku-Uuu"/>
                     </connections>
                 </tableViewController>
@@ -701,12 +675,12 @@
     <resources>
         <image name="exams" width="64" height="64"/>
         <image name="logOut" width="64" height="64"/>
-        <image name="menu" width="22" height="22"/>
         <image name="results" width="64" height="64"/>
         <image name="search" width="64" height="64"/>
         <image name="semester" width="64" height="64"/>
         <image name="switch" width="22" height="22"/>
         <image name="timetable" width="64" height="64"/>
+        <image name="update" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9HU-us-G6V"/>

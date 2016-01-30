@@ -60,10 +60,11 @@ func errorOcurredIn(response: NSURLResponse?) -> Bool {
     return false
 }
 
-func createAlertView(text: String, viewController: UIViewController, handlerYes: (UIAlertAction) -> (), handlerNo: (UIAlertAction) -> ()) {
-    let alert = UIAlertController(title: "", message: text, preferredStyle: UIAlertControllerStyle.Alert)
-    alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: handlerYes))
-    alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: handlerNo))
+func createAlertView(title: String, text: String, viewController: UIViewController, handlers: [String: (UIAlertAction) -> ()]) {
+    let alert = UIAlertController(title: title, message: text, preferredStyle: UIAlertControllerStyle.Alert)
+    for (title, handler) in handlers {
+        alert.addAction(UIAlertAction(title: title, style: UIAlertActionStyle.Default, handler: handler))
+    }
     viewController.presentViewController(alert, animated: true, completion: nil)
 }
 
