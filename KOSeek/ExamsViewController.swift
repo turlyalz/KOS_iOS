@@ -17,7 +17,7 @@ class ExamsViewController: MainTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        super.childFunc =  {
+        super.childFuncBeforeShowSideMenu =  {
             if self.dropdownMenuView?.getShown() == true {
                 self.dropdownMenuView?.hideMenu()
                 self.dropdownMenuView?.setShown(false)

@@ -12,7 +12,7 @@ import UIKit
 class MainTableViewController: UITableViewController {
     
     var menuButton: UIBarButtonItem!
-    var childFunc: () -> () = {}
+    var childFuncBeforeShowSideMenu: () -> () = {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class MainTableViewController: UITableViewController {
     }
     
     func menuButtonPressed() {
-        childFunc()
+        childFuncBeforeShowSideMenu()
         UIApplication.sharedApplication().sendAction("revealToggle:", to: self.revealViewController(), from: self, forEvent: nil)
     }
     
@@ -44,10 +44,6 @@ class MainTableViewController: UITableViewController {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-    
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         updateValues()
         tableView.reloadData()
@@ -58,6 +54,10 @@ class MainTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if tableView.numberOfRowsInSection(section) == 0 {
+            tableView.scrollEnabled = false
+            return nil
+        }
         let line = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 0.7))
         line.backgroundColor = .grayColor()
         line.alpha = 0.5

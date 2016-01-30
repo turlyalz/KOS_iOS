@@ -21,6 +21,12 @@ class ResultsViewController: MainTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.childFuncBeforeShowSideMenu =  {
+            if self.dropdownMenuView?.getShown() == true {
+                self.dropdownMenuView?.hideMenu()
+                self.dropdownMenuView?.setShown(false)
+            }
+        }
         semesterIDNameDict = SavedVariables.semesterIDNameDict.sort({$0.0 < $1.0})
         for (_, semester) in semesterIDNameDict {
             semesters.append(semester)
