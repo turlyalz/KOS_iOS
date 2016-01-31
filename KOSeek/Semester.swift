@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 class Semester: NSManagedObject {
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)

@@ -14,6 +14,7 @@
 		9C1A1B281C086A590050E03E /* TimetableSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B261C086A590050E03E /* TimetableSlot.swift */; };
 		9C1A1B2F1C0911050050E03E /* TimetableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B2D1C0911050050E03E /* TimetableTableViewController.swift */; };
 		9C1A1B321C0916E50050E03E /* SlotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B311C0916E50050E03E /* SlotTableViewCell.swift */; };
+		9C1B2E311C5E9C4600FC30C3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B2E301C5E9C4600FC30C3 /* StringExtension.swift */; };
 		9C22728E1BD6517B00DE7F15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */; };
 		9C2272901BD6517B00DE7F15 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */; };
 		9C2272931BD6517B00DE7F15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2272911BD6517B00DE7F15 /* Main.storyboard */; };
@@ -102,6 +103,7 @@
 		9C1A1B261C086A590050E03E /* TimetableSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableSlot.swift; sourceTree = "<group>"; };
 		9C1A1B2D1C0911050050E03E /* TimetableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableTableViewController.swift; sourceTree = "<group>"; };
 		9C1A1B311C0916E50050E03E /* SlotTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotTableViewCell.swift; sourceTree = "<group>"; };
+		9C1B2E301C5E9C4600FC30C3 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		9C22728A1BD6517B00DE7F15 /* KOSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				9C015DD91C05FF410074B6F6 /* CoreDataHelper.swift */,
 				9C168A421C13105D006257EC /* NSDateExtension.swift */,
 				9CCFF9351C5CCC2400868703 /* Reachability.swift */,
+				9C1B2E301C5E9C4600FC30C3 /* StringExtension.swift */,
 			);
 			name = ApplicationLayer;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				9CE8F9F41C0F2086009C229F /* View+SnapKit.swift in Sources */,
 				9CCFF9361C5CCC2400868703 /* Reachability.swift in Sources */,
 				9CE8F9F51C0F2086009C229F /* ViewController+SnapKit.swift in Sources */,
+				9C1B2E311C5E9C4600FC30C3 /* StringExtension.swift in Sources */,
 				9C9E50211BE12C2E009B6CB1 /* ExamsViewController.swift in Sources */,
 				9C6FB4D31BFE2E2700C682C4 /* Semester.swift in Sources */,
 				9C015DDA1C05FF410074B6F6 /* CoreDataHelper.swift in Sources */,

@@ -69,3 +69,11 @@ func createAlertView(title: String, text: String, viewController: UIViewControll
     viewController.presentViewController(alert, animated: true, completion: nil)
 }
 
+func formatDateString(string: String) -> (date: String, time: String) {
+    let year = string[2...3]
+    let month = string[5...6]
+    let day = string[8...9]
+    let time = string[11...15]
+    return (day + "." + month + "." + year, time)
+}
+

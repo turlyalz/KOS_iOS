@@ -38,7 +38,7 @@ class SemesterViewController: MainTableViewController {
         cell.addSubview(subjectCodeLabel)
         subjectCodeLabel.snp_remakeConstraints { (make) -> Void in
             make.left.equalTo(cell).offset(10)
-            make.width.equalTo(cell).multipliedBy(1.0/5.0)
+            make.width.equalTo(cell).dividedBy(5)
             make.height.equalTo(cell)
         }
         let subjectNameLabel = UILabel()
@@ -61,7 +61,7 @@ class SemesterViewController: MainTableViewController {
         cell.addSubview(subjectCreditsLabel)
         subjectCreditsLabel.snp_remakeConstraints { (make) -> Void in
             make.left.equalTo(subjectNameLabel.snp_right)
-            make.width.equalTo(cell).multipliedBy(1.0/6.0)
+            make.width.equalTo(cell).dividedBy(6)
             make.height.equalTo(cell)
         }
         if subject.completed == 1 {

@@ -82,6 +82,7 @@ class SearchViewController: MainTableViewController, UISearchBarDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        tableView.scrollEnabled = true
         let cell = UITableViewCell()
         if let title = filtered?[indexPath.row].title {
             cell.textLabel?.text = title

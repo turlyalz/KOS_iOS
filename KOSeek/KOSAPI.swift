@@ -77,9 +77,9 @@ class KOSAPI {
             let room = content["room"].element?.text
             let signinDeadline = content["signinDeadline"].element?.text
             let startDate = content["startDate"].element?.text
-            let endDate = content["endDate"].element?.text
+            let cancelDeadline = content["cancelDeadline"].element?.text
             let termType = content["termType"].element?.text
-            exams.append(Exam(capacity: capacity, occupied: occupied, room: room, signinDeadline: signinDeadline, startDate: startDate, endDate: endDate, termType: termType))
+            exams.append(Exam(capacity: capacity, occupied: occupied, room: room, signinDeadline: signinDeadline, startDate: startDate, cancelDeadline: cancelDeadline, termType: termType))
         }
         return exams
     }
