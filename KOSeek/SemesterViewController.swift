@@ -49,19 +49,19 @@ class SemesterViewController: MainTableViewController {
         subjectNameLabel.textAlignment = NSTextAlignment.Center
         cell.addSubview(subjectNameLabel)
         subjectNameLabel.snp_remakeConstraints { (make) -> Void in
-            make.left.equalTo(subjectCodeLabel.snp_right).offset(8)
-            make.width.equalTo(cell).multipliedBy(19.0/30.0)
+            make.left.equalTo(subjectCodeLabel.snp_right).offset(6)
+            make.width.equalTo(cell).multipliedBy(20.5/35.0)
             make.height.equalTo(cell)
         }
-        let subjectCreditsLabel = UILabel()
+        let subjectCreditsLabel = UILabel()       
         subjectCreditsLabel.text = subject.credits
         subjectCreditsLabel.font = .systemFontOfSize(15)
         subjectCreditsLabel.textColor = .blackColor()
         subjectCreditsLabel.textAlignment = NSTextAlignment.Center
         cell.addSubview(subjectCreditsLabel)
         subjectCreditsLabel.snp_remakeConstraints { (make) -> Void in
-            make.left.equalTo(subjectNameLabel.snp_right)
-            make.width.equalTo(cell).dividedBy(6)
+            make.left.equalTo(subjectNameLabel.snp_right).offset(6)
+            make.width.equalTo(cell).dividedBy(7.5)
             make.height.equalTo(cell)
         }
         if subject.completed == 1 {

@@ -183,6 +183,7 @@
                         <segue destination="u6a-f3-h4P" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="FBU-Bn-6l6"/>
                         <segue destination="BPB-b9-845" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="vwg-3F-iqu"/>
                         <segue destination="RuO-Zx-omT" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="kPD-FR-EI4"/>
+                        <segue destination="Zes-4r-aZE" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="fT1-Nq-pnK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ys-9q-EpN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -372,8 +373,31 @@
                                     <segue destination="u6a-f3-h4P" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="PeF-pM-b66"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogOut" id="6mP-4B-rJA">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Student Office" id="rlm-0k-zeN" userLabel="Student Office">
                                 <rect key="frame" x="0.0" y="320" width="600" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rlm-0k-zeN" id="ey3-Q1-zBB">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Student Office" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gi-8p-B6A" userLabel="Student Office">
+                                            <rect key="frame" x="51" y="15" width="117" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="studentOffice" translatesAutoresizingMaskIntoConstraints="NO" id="Va3-mX-uzj">
+                                            <rect key="frame" x="15" y="13" width="24" height="24"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.47058823529999999" green="0.63529411759999999" blue="0.71204255760000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Zes-4r-aZE" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Av4-Fp-A59"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogOut" id="6mP-4B-rJA">
+                                <rect key="frame" x="0.0" y="366" width="600" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6mP-4B-rJA" id="gsJ-FM-5TU">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
@@ -671,6 +695,45 @@
             </objects>
             <point key="canvasLocation" x="1308" y="2188"/>
         </scene>
+        <!--Student Office-->
+        <scene sceneID="G3d-CD-RYj">
+            <objects>
+                <tableViewController id="5V3-Oe-7UG" customClass="SemesterViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="FSK-z3-p8W">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="5V3-Oe-7UG" id="fKR-00-KCV"/>
+                            <outlet property="delegate" destination="5V3-Oe-7UG" id="8gI-Kr-WJl"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Student Office" id="5qP-3Z-Xiy"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XKt-q9-Uv9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3425" y="-542"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="F77-xF-J8U">
+            <objects>
+                <navigationController id="Zes-4r-aZE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fto-nY-D7j">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.43137254899999999" green="0.45098039220000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="5V3-Oe-7UG" kind="relationship" relationship="rootViewController" id="d5H-bI-aPH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ka3-jV-ePz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2717" y="-542"/>
+        </scene>
     </scenes>
     <resources>
         <image name="exams" width="64" height="64"/>
@@ -678,18 +741,20 @@
         <image name="results" width="64" height="64"/>
         <image name="search" width="64" height="64"/>
         <image name="semester" width="64" height="64"/>
+        <image name="studentOffice" width="64" height="64"/>
         <image name="switch" width="22" height="22"/>
         <image name="timetable" width="64" height="64"/>
         <image name="update" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9HU-us-G6V"/>
+        <segue reference="pn5-gg-Cwc"/>
         <segue reference="uIv-US-8Aj"/>
-        <segue reference="IJA-97-2dF"/>
-        <segue reference="5X7-8d-YpJ"/>
-        <segue reference="FBU-Bn-6l6"/>
-        <segue reference="vwg-3F-iqu"/>
-        <segue reference="wMA-gy-0Ah"/>
-        <segue reference="3cb-r0-2Xc"/>
+        <segue reference="kPD-FR-EI4"/>
+        <segue reference="gqg-lU-my3"/>
+        <segue reference="Q2c-SP-SKF"/>
+        <segue reference="DYU-8V-Yjc"/>
+        <segue reference="oQ7-TJ-uoE"/>
+        <segue reference="PeF-pM-b66"/>
+        <segue reference="Av4-Fp-A59"/>
     </inferredMetricsTieBreakers>
 </document>

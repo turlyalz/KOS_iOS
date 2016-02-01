@@ -71,8 +71,8 @@ class SearchViewController: MainTableViewController, UISearchBarDelegate {
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        searchBar.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: 44)
         super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
+        searchBar.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: 44)
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
