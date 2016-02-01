@@ -72,14 +72,20 @@ class KOSAPI {
         var exams: [Exam] = []
         for index in 0...examNumber-1 {
             let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
+            let startDate = content["startDate"].element?.text
+            if isLateDate(startDate) {
+                continue
+            }
             let capacity = content["capacity"].element?.text
             let occupied = content["occupied"].element?.text
             let room = content["room"].element?.text
             let signinDeadline = content["signinDeadline"].element?.text
-            let startDate = content["startDate"].element?.text
             let cancelDeadline = content["cancelDeadline"].element?.text
             let termType = content["termType"].element?.text
             exams.append(Exam(capacity: capacity, occupied: occupied, room: room, signinDeadline: signinDeadline, startDate: startDate, cancelDeadline: cancelDeadline, termType: termType))
+        }
+        if exams.count == 0 {
+            return nil
         }
         return exams
     }

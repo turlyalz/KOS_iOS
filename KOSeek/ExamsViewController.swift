@@ -10,6 +10,7 @@ import UIKit
 
 class ExamsViewController: MainTableViewController {
     
+    var selectedIndex: Int = 0
     var subjects: [String] = []
     var exams: [Exam] = []
     var dropdownMenuView: BTNavigationDropdownMenu?
@@ -26,6 +27,7 @@ class ExamsViewController: MainTableViewController {
         guard let semester = SavedVariables.currentSemester, subjects = Database.getSubjectsBy(semester: semester, context: SavedVariables.cdh.managedObjectContext) else {
             return
         }
+        self.subjects.append("Please select subject")
         for subject in subjects {
             if let code = subject.code {
                 self.subjects.append(code)
@@ -51,6 +53,10 @@ class ExamsViewController: MainTableViewController {
             dropdownMenuView?.maskBackgroundColor = DropdownMenuView.maskBackgroundColor
             dropdownMenuView?.maskBackgroundOpacity = DropdownMenuView.maskBackgroundOpacity
             dropdownMenuView?.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
+                if indexPath == self.selectedIndex {
+                    return
+                }
+                self.selectedIndex = indexPath
                 self.presentViewController(self.alertLoadingView, animated: true, completion: nil)
                 dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
                     self.didSelectSubject(self.subjects[indexPath])
@@ -61,8 +67,9 @@ class ExamsViewController: MainTableViewController {
     }
     
     func didSelectSubject(subjectCode: String) {
-        if let exams = KOSAPI.downloadExamBy(subjectCode) {
-            self.exams = exams
+        let exams: [Exam]? = KOSAPI.downloadExamBy(subjectCode)
+        if exams != nil  {
+            self.exams = exams!
         } else {
             print("No exams")
             self.exams = []
@@ -70,16 +77,11 @@ class ExamsViewController: MainTableViewController {
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
             self.alertLoadingView.dismissViewControllerAnimated(true, completion: nil)
+            if exams == nil {
+                createAlertView("", text: "No available exams", viewController: self, handlers: ["OK": {_ in }])
+            }
             return
         })
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        SavedVariables.sideMenuViewController?.view.userInteractionEnabled = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -95,7 +97,7 @@ class ExamsViewController: MainTableViewController {
         return exams.count
     }
     
-    func drawHSeparator(cell: UITableViewCell, leftLabel: UILabel) -> ConstraintItem {
+    func drawHSeparator(cell: UIView, leftLabel: UILabel) -> ConstraintItem {
         let hLine = UIView()
         hLine.backgroundColor = .grayColor()
         cell.addSubview(hLine)
@@ -107,10 +109,10 @@ class ExamsViewController: MainTableViewController {
         return hLine.snp_right
     }
     
-    func setLabelParameters(label: UILabel, text: String?) {
+    func setLabelParameters(label: UILabel, text: String?, color: UIColor = .blackColor()) {
         label.text = text
         label.font = .systemFontOfSize(13)
-        label.textColor = .blackColor()
+        label.textColor = color
         label.textAlignment = .Center
         label.numberOfLines = 2
     }
@@ -127,7 +129,7 @@ class ExamsViewController: MainTableViewController {
             cell.addSubview(startDateLabel)
             startDateLabel.snp_remakeConstraints { (make) -> Void in
                 make.left.equalTo(cell).offset(8)
-                make.width.equalTo(cell).dividedBy(7)
+                make.width.equalTo(cell).dividedBy(6)
                 make.height.equalTo(cell)
             }
         }
@@ -163,27 +165,90 @@ class ExamsViewController: MainTableViewController {
         cell.addSubview(capacityLabel)
         capacityLabel.snp_remakeConstraints { (make) -> Void in
             make.left.equalTo(rightPoint).offset(8)
-            make.width.equalTo(cell).dividedBy(8)
+            make.width.equalTo(cell).dividedBy(7)
             make.height.equalTo(cell)
         }
         
         rightPoint = drawHSeparator(cell, leftLabel: capacityLabel)
-/*
-        let cancelDeadlineLabel = UILabel()
+
+        let signinDeadlineLabel = UILabel()
         dateTuple = (date: "", time: "")
-        if let cancelDeadline = exam.cancelDeadline {
+        if let cancelDeadline = exam.signinDeadline {
             dateTuple = formatDateString(cancelDeadline)
-            print(dateTuple)
-            setLabelParameters(cancelDeadlineLabel, text: dateTuple.date)
-            cell.addSubview(cancelDeadlineLabel)
-            startDateLabel.snp_remakeConstraints { (make) -> Void in
+            setLabelParameters(signinDeadlineLabel, text: dateTuple.date)
+            cell.addSubview(signinDeadlineLabel)
+            signinDeadlineLabel.snp_remakeConstraints { (make) -> Void in
                 make.left.equalTo(rightPoint).offset(8)
-                make.width.equalTo(cell).dividedBy(7.5)
+                make.width.equalTo(cell).dividedBy(6)
                 make.height.equalTo(cell)
             }
-        }*/
+        }
   
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view: UIView = UIView()
+        view.backgroundColor = BGHeaderColor
+        let startDateLabel = UILabel()
+        setLabelParameters(startDateLabel, text: "Date", color: .whiteColor())
+        view.addSubview(startDateLabel)
+        startDateLabel.snp_remakeConstraints { (make) -> Void in
+            make.left.equalTo(view).offset(8)
+            make.width.equalTo(view).dividedBy(6)
+            make.height.equalTo(view)
+        }
+
+        var rightPoint = drawHSeparator(view, leftLabel: startDateLabel)
+        
+        let startTimeLabel = UILabel()
+        setLabelParameters(startTimeLabel, text: "Time", color: .whiteColor())
+        view.addSubview(startTimeLabel)
+        startTimeLabel.snp_remakeConstraints { (make) -> Void in
+            make.left.equalTo(rightPoint).offset(8)
+            make.width.equalTo(view).dividedBy(8.5)
+            make.height.equalTo(view)
+        }
+        
+        rightPoint = drawHSeparator(view, leftLabel: startTimeLabel)
+        
+        let roomLabel = UILabel()
+        setLabelParameters(roomLabel, text: "Place", color: .whiteColor())
+        view.addSubview(roomLabel)
+        roomLabel.snp_remakeConstraints { (make) -> Void in
+            make.left.equalTo(rightPoint).offset(8)
+            make.width.equalTo(view).dividedBy(8)
+            make.height.equalTo(view)
+        }
+        
+        rightPoint = drawHSeparator(view, leftLabel: roomLabel)
+        
+        let capacityLabel = UILabel()
+        setLabelParameters(capacityLabel, text: "Occ/Cap", color: .whiteColor())
+
+        view.addSubview(capacityLabel)
+        capacityLabel.snp_remakeConstraints { (make) -> Void in
+            make.left.equalTo(rightPoint).offset(8)
+            make.width.equalTo(view).dividedBy(7)
+            make.height.equalTo(view)
+        }
+        
+        rightPoint = drawHSeparator(view, leftLabel: capacityLabel)
+        
+        let cancelDeadlineLabel = UILabel()
+        setLabelParameters(cancelDeadlineLabel, text: "Deadline (total)", color: .whiteColor())
+        view.addSubview(cancelDeadlineLabel)
+        cancelDeadlineLabel.snp_remakeConstraints { (make) -> Void in
+            make.left.equalTo(rightPoint).offset(8)
+            make.width.equalTo(view).dividedBy(6)
+            make.height.equalTo(view)
+        }
+      
+        return view
     }
     
     

@@ -70,10 +70,30 @@ func createAlertView(title: String, text: String, viewController: UIViewControll
 }
 
 func formatDateString(string: String) -> (date: String, time: String) {
+    if string.characters.count < 10 {
+        return ("", "")
+    }
     let year = string[2...3]
     let month = string[5...6]
     let day = string[8...9]
+    let date = day + "." + month + "." + year
+    if string.characters.count < 16 {
+        return (date, "")
+    }
     let time = string[11...15]
-    return (day + "." + month + "." + year, time)
+    return (date, time)
+}
+
+func isLateDate(string: String?) -> Bool {
+    let formatter = NSDateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+    guard let str = string else {
+        return false
+    }
+    guard let date = formatter.dateFromString(str) else {
+        return false
+    }
+    let now = NSDate()
+    return date.isLessThanDate(now)
 }
 
