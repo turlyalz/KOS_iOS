@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let username = response.username, currentSemester = response.currentSemester, accessToken = response.accessToken, refreshToken = response.refreshToken, expires = response.expires {
             SavedVariables.username = username
             SavedVariables.currentSemester = currentSemester
+            OpenHoursDownloader.data = Database.getOpenHoursData(self.cdh.managedObjectContext)
+            OpenHoursDownloader.parse()
             LoginHelper.setAuthToken(accessToken)
             LoginHelper.refreshToken = refreshToken
             LoginHelper.expires = expires

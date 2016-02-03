@@ -55,7 +55,10 @@ class ProfileViewController: MainTableViewController {
         KOSAPI.increaseProgressBar = { value in
             self.counter += value
         }
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { KOSAPI.downloadAllData() })
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
+            KOSAPI.downloadAllData()
+            OpenHoursDownloader.download()
+        })
     }
 
     @IBAction func updateDataButtonPressed(sender: UIBarButtonItem) {

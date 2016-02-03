@@ -10,9 +10,9 @@ import UIKit
 
 class TimetableViewController: MainTableViewController {
     
-    var sideMenuVC: SideMenuController?
-    var slots: [TimetableSlot]?
-    var parity: String?
+    private var sideMenuVC: SideMenuController?
+    private var slots: [TimetableSlot]?
+    private var parity: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()

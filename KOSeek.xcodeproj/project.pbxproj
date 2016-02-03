@@ -47,6 +47,7 @@
 		9C9E50231BE12C50009B6CB1 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */; };
 		9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */; };
 		9CB8E5A11C11C1BE00804F38 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB8E5A01C11C1BE00804F38 /* Exam.swift */; };
+		9CCF603B1C6142D00024A91D /* OpenHoursDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF603A1C6142D00024A91D /* OpenHoursDownloader.swift */; };
 		9CCFF9361C5CCC2400868703 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFF9351C5CCC2400868703 /* Reachability.swift */; };
 		9CE171651BF8A48900C56D2F /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */; };
 		9CE171661BF8A48900C56D2F /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171621BF8A48900C56D2F /* Subject.swift */; };
@@ -145,6 +146,7 @@
 		9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9CB8E5A01C11C1BE00804F38 /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
+		9CCF603A1C6142D00024A91D /* OpenHoursDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenHoursDownloader.swift; sourceTree = "<group>"; };
 		9CCFF9351C5CCC2400868703 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9CE171621BF8A48900C56D2F /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				9C168A421C13105D006257EC /* NSDateExtension.swift */,
 				9CCFF9351C5CCC2400868703 /* Reachability.swift */,
 				9C1B2E301C5E9C4600FC30C3 /* StringExtension.swift */,
+				9CCF603A1C6142D00024A91D /* OpenHoursDownloader.swift */,
 			);
 			name = ApplicationLayer;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				9CE8F9E81C0F2086009C229F /* Constraint.swift in Sources */,
 				9CE8F9E91C0F2086009C229F /* ConstraintAttributes.swift in Sources */,
 				9CE8F9EA1C0F2086009C229F /* ConstraintDescription.swift in Sources */,
+				9CCF603B1C6142D00024A91D /* OpenHoursDownloader.swift in Sources */,
 				9CE8F9EB1C0F2086009C229F /* ConstraintItem.swift in Sources */,
 				9CE8F9EC1C0F2086009C229F /* ConstraintMaker.swift in Sources */,
 				9CE8F9ED1C0F2086009C229F /* ConstraintRelation.swift in Sources */,

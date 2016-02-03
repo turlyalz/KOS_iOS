@@ -56,6 +56,27 @@ class Database {
         return nil
     }
     
+    class func getOpenHoursData(context: NSManagedObjectContext) -> NSData? {
+        let request = NSFetchRequest(entityName: "OpenHours")
+        request.returnsObjectsAsFaults = false
+        do {
+            let results = try context.executeFetchRequest(request)
+            if results.count > 0 {
+                return results[0].valueForKey("data") as? NSData
+            }
+        }
+        catch let error as NSError {
+            debugPrint(error)
+        }
+        return nil
+    }
+    
+    class func setOpenHoursData(context: NSManagedObjectContext, data: NSData) {
+        let oh = NSEntityDescription.insertNewObjectForEntityForName("OpenHours", inManagedObjectContext: context)
+        oh.setValue(data, forKey: "data")
+        saveContext(context)
+    }
+    
     // Delete all data from database.
     class func delete(context context: NSManagedObjectContext) {
         delete("Person", context: context)
@@ -63,6 +84,7 @@ class Database {
         delete("Semester", context: context)
         delete("TimetableSlot", context: context)
         delete("SavedVariables", context: context)
+        delete("OpenHours", context: context)
     }
     
     class func deleteOnlyUserData(context context: NSManagedObjectContext) {
@@ -70,6 +92,7 @@ class Database {
         delete("Subject", context: context)
         delete("Semester", context: context)
         delete("TimetableSlot", context: context)
+        delete("OpenHours", context: context)
     }
     
     private class func delete(entity: String, context: NSManagedObjectContext) {

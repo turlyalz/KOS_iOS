@@ -698,7 +698,7 @@
         <!--Student Office-->
         <scene sceneID="G3d-CD-RYj">
             <objects>
-                <tableViewController id="5V3-Oe-7UG" customClass="SemesterViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="5V3-Oe-7UG" customClass="StudentOfficeViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="FSK-z3-p8W">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

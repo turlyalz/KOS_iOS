@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Xcode 7.0">
+    <entity name="OpenHours" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="data" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
     <entity name="Person" representedClassName=".Person" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,7 +12,7 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="timetableSlots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimetableSlot" inverseName="person" inverseEntity="TimetableSlot" syncable="YES"/>
     </entity>
-    <entity name="SavedVariables" representedClassName="" syncable="YES">
+    <entity name="SavedVariables" representedClassName="NSManagedObject" syncable="YES">
         <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="currentSemester" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="expires" optional="YES" attributeType="Date" syncable="YES"/>
@@ -40,8 +43,9 @@
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="timetableSlots" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
+        <element name="OpenHours" positionX="-1152" positionY="-459" width="128" height="60"/>
         <element name="Person" positionX="-1323" positionY="-657" width="128" height="150"/>
-        <element name="SavedVariables" positionX="-1388" positionY="-379" width="128" height="118"/>
+        <element name="SavedVariables" positionX="-1388" positionY="-379" width="128" height="120"/>
         <element name="Semester" positionX="-1008" positionY="-648" width="128" height="73"/>
         <element name="Subject" positionX="-1161" positionY="-648" width="128" height="120"/>
         <element name="TimetableSlot" positionX="-1541" positionY="-657" width="128" height="193"/>
