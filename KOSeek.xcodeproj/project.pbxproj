@@ -15,13 +15,14 @@
 		9C1A1B2F1C0911050050E03E /* TimetableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B2D1C0911050050E03E /* TimetableTableViewController.swift */; };
 		9C1A1B321C0916E50050E03E /* SlotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B311C0916E50050E03E /* SlotTableViewCell.swift */; };
 		9C1B2E311C5E9C4600FC30C3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B2E301C5E9C4600FC30C3 /* StringExtension.swift */; };
-		9C22728E1BD6517B00DE7F15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */; };
+		9C2145891C63E07700265017 /* DropdownMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2145881C63E07700265017 /* DropdownMenuViewController.swift */; };
 		9C2272901BD6517B00DE7F15 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */; };
 		9C2272931BD6517B00DE7F15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2272911BD6517B00DE7F15 /* Main.storyboard */; };
 		9C2272951BD6517B00DE7F15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C2272941BD6517B00DE7F15 /* Assets.xcassets */; };
 		9C2272981BD6517B00DE7F15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2272961BD6517B00DE7F15 /* LaunchScreen.storyboard */; };
 		9C2272A31BD6517B00DE7F15 /* KOSeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2272A21BD6517B00DE7F15 /* KOSeekTests.swift */; };
 		9C2272AE1BD6517B00DE7F15 /* KOSeekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2272AD1BD6517B00DE7F15 /* KOSeekUITests.swift */; };
+		9C287DBF1C629A6D003AED50 /* TableContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C287DBE1C629A6D003AED50 /* TableContentViewController.swift */; };
 		9C28FEAB1BDFA51600D7DE04 /* SemesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C28FEAA1BDFA51600D7DE04 /* SemesterViewController.swift */; };
 		9C2BFD281BF51B0200744E85 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2BFD271BF51B0200744E85 /* ProfileViewController.swift */; };
 		9C2BFD2A1BF5420E00744E85 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2BFD291BF5420E00744E85 /* Database.swift */; };
@@ -46,7 +47,6 @@
 		9C9E50211BE12C2E009B6CB1 /* ExamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50201BE12C2E009B6CB1 /* ExamsViewController.swift */; };
 		9C9E50231BE12C50009B6CB1 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */; };
 		9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */; };
-		9CB8E5A11C11C1BE00804F38 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB8E5A01C11C1BE00804F38 /* Exam.swift */; };
 		9CCF603B1C6142D00024A91D /* OpenHoursDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF603A1C6142D00024A91D /* OpenHoursDownloader.swift */; };
 		9CCFF9361C5CCC2400868703 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFF9351C5CCC2400868703 /* Reachability.swift */; };
 		9CE171651BF8A48900C56D2F /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */; };
@@ -98,58 +98,57 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9C015DD71C05FE8A0074B6F6 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
-		9C015DD91C05FF410074B6F6 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
-		9C168A421C13105D006257EC /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
-		9C1A1B251C086A590050E03E /* TimetableSlot+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimetableSlot+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9C1A1B261C086A590050E03E /* TimetableSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableSlot.swift; sourceTree = "<group>"; };
-		9C1A1B2D1C0911050050E03E /* TimetableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableTableViewController.swift; sourceTree = "<group>"; };
-		9C1A1B311C0916E50050E03E /* SlotTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotTableViewCell.swift; sourceTree = "<group>"; };
-		9C1B2E301C5E9C4600FC30C3 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		9C015DD71C05FE8A0074B6F6 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStore.swift; path = KOSeek/CoreDataStore.swift; sourceTree = "<group>"; };
+		9C015DD91C05FF410074B6F6 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataHelper.swift; path = KOSeek/CoreDataHelper.swift; sourceTree = "<group>"; };
+		9C168A421C13105D006257EC /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateExtension.swift; path = KOSeek/NSDateExtension.swift; sourceTree = "<group>"; };
+		9C1A1B251C086A590050E03E /* TimetableSlot+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TimetableSlot+CoreDataProperties.swift"; path = "KOSeek/TimetableSlot+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9C1A1B261C086A590050E03E /* TimetableSlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimetableSlot.swift; path = KOSeek/TimetableSlot.swift; sourceTree = "<group>"; };
+		9C1A1B2D1C0911050050E03E /* TimetableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimetableTableViewController.swift; path = KOSeek/TimetableTableViewController.swift; sourceTree = "<group>"; };
+		9C1A1B311C0916E50050E03E /* SlotTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlotTableViewCell.swift; path = KOSeek/SlotTableViewCell.swift; sourceTree = "<group>"; };
+		9C1B2E301C5E9C4600FC30C3 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = KOSeek/StringExtension.swift; sourceTree = "<group>"; };
+		9C2145881C63E07700265017 /* DropdownMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DropdownMenuViewController.swift; path = KOSeek/DropdownMenuViewController.swift; sourceTree = "<group>"; };
 		9C22728A1BD6517B00DE7F15 /* KOSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = KOSeek/LoginViewController.swift; sourceTree = "<group>"; };
 		9C2272921BD6517B00DE7F15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C2272941BD6517B00DE7F15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C2272971BD6517B00DE7F15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9C2272991BD6517B00DE7F15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C22729E1BD6517B00DE7F15 /* KOSeekTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KOSeekTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C2272A21BD6517B00DE7F15 /* KOSeekTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOSeekTests.swift; sourceTree = "<group>"; };
 		9C2272A41BD6517B00DE7F15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C2272A91BD6517B00DE7F15 /* KOSeekUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KOSeekUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C2272AD1BD6517B00DE7F15 /* KOSeekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KOSeekUITests.swift; sourceTree = "<group>"; };
 		9C2272AF1BD6517B00DE7F15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C28FEAA1BDFA51600D7DE04 /* SemesterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemesterViewController.swift; sourceTree = "<group>"; };
-		9C2BFD271BF51B0200744E85 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		9C2BFD291BF5420E00744E85 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		9C2D987B1BDFA37A00CF5A11 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		9C2D987C1BDFA37A00CF5A11 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		9C2D987F1BDFA3D300CF5A11 /* KOSeek-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KOSeek-Bridging-Header.h"; sourceTree = "<group>"; };
-		9C31E5941BDE4B7C004FF6CB /* LoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginHelper.swift; sourceTree = "<group>"; };
-		9C43A1031BF7F67A0018ABB0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		9C5523D31C03B6CD00DC6A04 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9C5523D41C03B6CD00DC6A04 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		9C57521D1C6001D3005FA457 /* StudentOfficeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentOfficeViewController.swift; sourceTree = "<group>"; };
-		9C6FB4D01BFE2E2700C682C4 /* Semester+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Semester+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9C6FB4D11BFE2E2700C682C4 /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
-		9C6FB4DA1BFE811100C682C4 /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
-		9C6FB4E01BFE86F700C682C4 /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
-		9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
-		9C86AE421BF3B2BA0096C72E /* KOSAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOSAPI.swift; sourceTree = "<group>"; };
+		9C287DBE1C629A6D003AED50 /* TableContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableContentViewController.swift; path = KOSeek/TableContentViewController.swift; sourceTree = "<group>"; };
+		9C28FEAA1BDFA51600D7DE04 /* SemesterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SemesterViewController.swift; path = KOSeek/SemesterViewController.swift; sourceTree = "<group>"; };
+		9C2BFD271BF51B0200744E85 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = KOSeek/ProfileViewController.swift; sourceTree = "<group>"; };
+		9C2BFD291BF5420E00744E85 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Database.swift; path = KOSeek/Database.swift; sourceTree = "<group>"; };
+		9C2D987B1BDFA37A00CF5A11 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = KOSeek/SWRevealViewController.h; sourceTree = "<group>"; };
+		9C2D987C1BDFA37A00CF5A11 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = KOSeek/SWRevealViewController.m; sourceTree = "<group>"; };
+		9C2D987F1BDFA3D300CF5A11 /* KOSeek-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "KOSeek-Bridging-Header.h"; path = "KOSeek/KOSeek-Bridging-Header.h"; sourceTree = "<group>"; };
+		9C31E5941BDE4B7C004FF6CB /* LoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginHelper.swift; path = KOSeek/LoginHelper.swift; sourceTree = "<group>"; };
+		9C43A1031BF7F67A0018ABB0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = KOSeek/Constants.swift; sourceTree = "<group>"; };
+		9C5523D31C03B6CD00DC6A04 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataProperties.swift"; path = "KOSeek/Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9C5523D41C03B6CD00DC6A04 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Person.swift; path = KOSeek/Person.swift; sourceTree = "<group>"; };
+		9C57521D1C6001D3005FA457 /* StudentOfficeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentOfficeViewController.swift; path = KOSeek/StudentOfficeViewController.swift; sourceTree = "<group>"; };
+		9C6FB4D01BFE2E2700C682C4 /* Semester+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Semester+CoreDataProperties.swift"; path = "KOSeek/Semester+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9C6FB4D11BFE2E2700C682C4 /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Semester.swift; path = KOSeek/Semester.swift; sourceTree = "<group>"; };
+		9C6FB4DA1BFE811100C682C4 /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTNavigationDropdownMenu.swift; path = KOSeek/BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
+		9C6FB4E01BFE86F700C682C4 /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BTNavigationDropdownMenu.bundle; path = KOSeek/BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
+		9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaitingViewController.swift; path = KOSeek/WaitingViewController.swift; sourceTree = "<group>"; };
+		9C86AE421BF3B2BA0096C72E /* KOSAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KOSAPI.swift; path = KOSeek/KOSAPI.swift; sourceTree = "<group>"; };
 		9C86AE831BF3B7870096C72E /* KOSModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KOSModel.xcdatamodel; sourceTree = "<group>"; };
-		9C86AE881BF3F37C0096C72E /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		9C86AE8A1BF3F3CC0096C72E /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
-		9C8A49B41BE011C7009ECFCA /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
-		9C8ED0791BE3D5A200611CBF /* SavedVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedVariables.swift; sourceTree = "<group>"; };
-		9C9841001C5D5592009ACD05 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
-		9C9E50201BE12C2E009B6CB1 /* ExamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamsViewController.swift; sourceTree = "<group>"; };
-		9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
-		9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		9CB8E5A01C11C1BE00804F38 /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
-		9CCF603A1C6142D00024A91D /* OpenHoursDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenHoursDownloader.swift; sourceTree = "<group>"; };
-		9CCFF9351C5CCC2400868703 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9CE171621BF8A48900C56D2F /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		9C86AE881BF3F37C0096C72E /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = KOSeek/SwiftyJSON.swift; sourceTree = "<group>"; };
+		9C86AE8A1BF3F3CC0096C72E /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SWXMLHash.swift; path = KOSeek/SWXMLHash.swift; sourceTree = "<group>"; };
+		9C8A49B41BE011C7009ECFCA /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideMenuController.swift; path = KOSeek/SideMenuController.swift; sourceTree = "<group>"; };
+		9C8ED0791BE3D5A200611CBF /* SavedVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SavedVariables.swift; path = KOSeek/SavedVariables.swift; sourceTree = "<group>"; };
+		9C9841001C5D5592009ACD05 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTableViewController.swift; path = KOSeek/MainTableViewController.swift; sourceTree = "<group>"; };
+		9C9E50201BE12C2E009B6CB1 /* ExamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamsViewController.swift; path = KOSeek/ExamsViewController.swift; sourceTree = "<group>"; };
+		9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsViewController.swift; path = KOSeek/ResultsViewController.swift; sourceTree = "<group>"; };
+		9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = KOSeek/SearchViewController.swift; sourceTree = "<group>"; };
+		9CCF603A1C6142D00024A91D /* OpenHoursDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenHoursDownloader.swift; path = KOSeek/OpenHoursDownloader.swift; sourceTree = "<group>"; };
+		9CCFF9351C5CCC2400868703 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = KOSeek/Reachability.swift; sourceTree = "<group>"; };
+		9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Subject+CoreDataProperties.swift"; path = "KOSeek/Subject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9CE171621BF8A48900C56D2F /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subject.swift; path = KOSeek/Subject.swift; sourceTree = "<group>"; };
 		9CE8F9D71C0F1F8F009C229F /* SnapKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SnapKit; path = /Volumes/Media/Alzhan/CVUT/KOSeek/KOS_iOS/SnapKit; sourceTree = "<absolute>"; };
 		9CE8F9DA1C0F2086009C229F /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = ../SnapKit/Constraint.swift; sourceTree = "<group>"; };
 		9CE8F9DB1C0F2086009C229F /* ConstraintAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = ../SnapKit/ConstraintAttributes.swift; sourceTree = "<group>"; };
@@ -219,11 +218,9 @@
 				9C31E5971BDE7712004FF6CB /* ApplicationLayer */,
 				9C86AE441BF3B2EB0096C72E /* DataLayer */,
 				9C31E5961BDE76F0004FF6CB /* PresentationLayer */,
-				9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */,
 				9C2272911BD6517B00DE7F15 /* Main.storyboard */,
 				9C2272941BD6517B00DE7F15 /* Assets.xcassets */,
 				9C2272961BD6517B00DE7F15 /* LaunchScreen.storyboard */,
-				9C2272991BD6517B00DE7F15 /* Info.plist */,
 			);
 			path = KOSeek;
 			sourceTree = "<group>";
@@ -246,7 +243,7 @@
 			path = KOSeekUITests;
 			sourceTree = "<group>";
 		};
-		9C2D98761BDFA04A00CF5A11 /* SideMenuViewControllers */ = {
+		9C2D98761BDFA04A00CF5A11 /* MainViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				9C28FEAA1BDFA51600D7DE04 /* SemesterViewController.swift */,
@@ -258,8 +255,11 @@
 				9C1A1B311C0916E50050E03E /* SlotTableViewCell.swift */,
 				9C9841001C5D5592009ACD05 /* MainTableViewController.swift */,
 				9C57521D1C6001D3005FA457 /* StudentOfficeViewController.swift */,
+				9C287DBE1C629A6D003AED50 /* TableContentViewController.swift */,
+				9C2145881C63E07700265017 /* DropdownMenuViewController.swift */,
 			);
-			name = SideMenuViewControllers;
+			name = MainViewControllers;
+			path = MenuViewControllers;
 			sourceTree = "<group>";
 		};
 		9C2D987E1BDFA38E00CF5A11 /* SWRevealViewController */ = {
@@ -269,7 +269,7 @@
 				9C2D987C1BDFA37A00CF5A11 /* SWRevealViewController.m */,
 				9C2D987F1BDFA3D300CF5A11 /* KOSeek-Bridging-Header.h */,
 			);
-			name = SWRevealViewController;
+			path = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 		9C31E5961BDE76F0004FF6CB /* PresentationLayer */ = {
@@ -277,12 +277,13 @@
 			children = (
 				9C6FB4E21BFE909400C682C4 /* DropdownMenu */,
 				9C2D987E1BDFA38E00CF5A11 /* SWRevealViewController */,
-				9C2D98761BDFA04A00CF5A11 /* SideMenuViewControllers */,
+				9C2D98761BDFA04A00CF5A11 /* MainViewControllers */,
 				9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */,
 				9C8A49B41BE011C7009ECFCA /* SideMenuController.swift */,
 				9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */,
 			);
 			name = PresentationLayer;
+			path = src/PresentationLayer;
 			sourceTree = "<group>";
 		};
 		9C31E5971BDE7712004FF6CB /* ApplicationLayer */ = {
@@ -303,6 +304,7 @@
 				9CCF603A1C6142D00024A91D /* OpenHoursDownloader.swift */,
 			);
 			name = ApplicationLayer;
+			path = src/ApplicationLayer;
 			sourceTree = "<group>";
 		};
 		9C6FB4E21BFE909400C682C4 /* DropdownMenu */ = {
@@ -311,14 +313,13 @@
 				9C6FB4E01BFE86F700C682C4 /* BTNavigationDropdownMenu.bundle */,
 				9C6FB4DA1BFE811100C682C4 /* BTNavigationDropdownMenu.swift */,
 			);
-			name = DropdownMenu;
+			path = DropdownMenu;
 			sourceTree = "<group>";
 		};
 		9C86AE441BF3B2EB0096C72E /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
 				9C86AE821BF3B7870096C72E /* KOSModel.xcdatamodeld */,
-				9CB8E5A01C11C1BE00804F38 /* Exam.swift */,
 				9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */,
 				9CE171621BF8A48900C56D2F /* Subject.swift */,
 				9C6FB4D01BFE2E2700C682C4 /* Semester+CoreDataProperties.swift */,
@@ -329,6 +330,7 @@
 				9C1A1B261C086A590050E03E /* TimetableSlot.swift */,
 			);
 			name = DataLayer;
+			path = src/DataLayer;
 			sourceTree = "<group>";
 		};
 		9CE8F9F61C0F20C5009C229F /* SnapKit */ = {
@@ -350,6 +352,7 @@
 				9CE8F9E71C0F2086009C229F /* ViewController+SnapKit.swift */,
 			);
 			name = SnapKit;
+			path = ../SnapKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -510,13 +513,13 @@
 				9C015DDA1C05FF410074B6F6 /* CoreDataHelper.swift in Sources */,
 				9C6FB4DB1BFE811100C682C4 /* BTNavigationDropdownMenu.swift in Sources */,
 				9C9841011C5D5592009ACD05 /* MainTableViewController.swift in Sources */,
-				9CB8E5A11C11C1BE00804F38 /* Exam.swift in Sources */,
 				9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */,
 				9C2D987D1BDFA37A00CF5A11 /* SWRevealViewController.m in Sources */,
 				9C1A1B271C086A590050E03E /* TimetableSlot+CoreDataProperties.swift in Sources */,
 				9C1A1B281C086A590050E03E /* TimetableSlot.swift in Sources */,
 				9C8A49B51BE011C7009ECFCA /* SideMenuController.swift in Sources */,
 				9C9E50231BE12C50009B6CB1 /* ResultsViewController.swift in Sources */,
+				9C287DBF1C629A6D003AED50 /* TableContentViewController.swift in Sources */,
 				9C2BFD281BF51B0200744E85 /* ProfileViewController.swift in Sources */,
 				9C1A1B2F1C0911050050E03E /* TimetableTableViewController.swift in Sources */,
 				9C86AE3B1BF3B1F60096C72E /* WaitingViewController.swift in Sources */,
@@ -535,9 +538,9 @@
 				9C43A1041BF7F67A0018ABB0 /* Constants.swift in Sources */,
 				9C28FEAB1BDFA51600D7DE04 /* SemesterViewController.swift in Sources */,
 				9C5523D51C03B6CD00DC6A04 /* Person+CoreDataProperties.swift in Sources */,
+				9C2145891C63E07700265017 /* DropdownMenuViewController.swift in Sources */,
 				9C86AE8B1BF3F3CC0096C72E /* SWXMLHash.swift in Sources */,
 				9C86AE431BF3B2BA0096C72E /* KOSAPI.swift in Sources */,
-				9C22728E1BD6517B00DE7F15 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

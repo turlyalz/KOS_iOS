@@ -194,7 +194,7 @@
         <scene sceneID="UrG-As-TLC">
             <objects>
                 <tableViewController id="iMi-Rf-4hl" customClass="ProfileViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wbB-bC-lL8">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wbB-bC-lL8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -436,7 +436,7 @@
         <scene sceneID="QIf-uL-L5x">
             <objects>
                 <tableViewController id="7Gy-57-lMz" customClass="SemesterViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8wx-8U-sVW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8wx-8U-sVW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -605,7 +605,7 @@
         <scene sceneID="E5K-cP-kps">
             <objects>
                 <tableViewController restorationIdentifier="evenWeek" id="odL-05-Xpn" customClass="TimetableViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="AGV-v7-CuE">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="AGV-v7-CuE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -669,7 +669,7 @@
         <scene sceneID="oMs-tl-KRE">
             <objects>
                 <tableViewController restorationIdentifier="oddWeek" id="jgV-d9-B1N" customClass="TimetableViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="f3Y-Vg-OML">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="f3Y-Vg-OML">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -699,7 +699,7 @@
         <scene sceneID="G3d-CD-RYj">
             <objects>
                 <tableViewController id="5V3-Oe-7UG" customClass="StudentOfficeViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="FSK-z3-p8W">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="FSK-z3-p8W">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -747,14 +747,14 @@
         <image name="update" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pn5-gg-Cwc"/>
-        <segue reference="uIv-US-8Aj"/>
-        <segue reference="kPD-FR-EI4"/>
-        <segue reference="gqg-lU-my3"/>
         <segue reference="Q2c-SP-SKF"/>
-        <segue reference="DYU-8V-Yjc"/>
+        <segue reference="uIv-US-8Aj"/>
         <segue reference="oQ7-TJ-uoE"/>
         <segue reference="PeF-pM-b66"/>
         <segue reference="Av4-Fp-A59"/>
+        <segue reference="gqg-lU-my3"/>
+        <segue reference="pn5-gg-Cwc"/>
+        <segue reference="wMA-gy-0Ah"/>
+        <segue reference="3cb-r0-2Xc"/>
     </inferredMetricsTieBreakers>
 </document>

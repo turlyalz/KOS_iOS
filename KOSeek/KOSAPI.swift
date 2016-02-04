@@ -52,40 +52,56 @@ class KOSAPI {
             onComplete()
             return
         })
-
-        
     }
     
-    class func downloadExamBy(subjectCode: String) -> [Exam]? {
+    class func downloadExamBy(subjectCode: String) -> [[String]] {
         guard let currentSemester = SavedVariables.currentSemester, accessToken = LoginHelper.getAuthToken() else {
-            return nil
+            return []
         }
         var examsExtensionURL =  "/exams/?access_token=" + accessToken + "&query=semester='" + currentSemester
         examsExtensionURL += "';course='" + subjectCode + "'&limit=1000"
         return downloadExams("Exam for subject: " + subjectCode, extensionURL: examsExtensionURL)
     }
-
-    private class func examsParser(xml: XMLIndexer) -> [Exam]? {
-        guard let examNumber = getNumberFrom(xml) else {
-            return nil
+    
+    class func convertNil(array: [String?]) -> [String] {
+        var result: [String] = []
+        for value in array {
+            if let value = value {
+                result.append(value)
+            } else {
+                result.append("")
+            }
         }
-        var exams: [Exam] = []
+        return result
+    }
+    
+    private class func examsParser(xml: XMLIndexer) -> [[String]] {
+        guard let examNumber = getNumberFrom(xml) else {
+            return []
+        }
+        var exams: [[String]] = []
         for index in 0...examNumber-1 {
             let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
             let startDate = content["startDate"].element?.text
-            if isLateDate(startDate) {
-                continue
-            }
+            let room = content["room"].element?.text
             let capacity = content["capacity"].element?.text
             let occupied = content["occupied"].element?.text
-            let room = content["room"].element?.text
-            let signinDeadline = content["signinDeadline"].element?.text
+            //let signinDeadline = content["signinDeadline"].element?.text
             let cancelDeadline = content["cancelDeadline"].element?.text
-            let termType = content["termType"].element?.text
-            exams.append(Exam(capacity: capacity, occupied: occupied, room: room, signinDeadline: signinDeadline, startDate: startDate, cancelDeadline: cancelDeadline, termType: termType))
-        }
-        if exams.count == 0 {
-            return nil
+            //let termType = content["termType"].element?.text
+            var exam = convertNil([startDate, room, capacity, occupied, cancelDeadline])
+            if isLateDate(exam[0]) {
+                continue
+            }
+            let dateTuple = formatDateString(exam[0])
+            exam.removeFirst()
+            let occ = exam[2] + "/" + exam[1]
+            exam.removeAtIndex(1)
+            exam.removeAtIndex(1)
+            exam.insert(occ, atIndex: 1)
+            exam.insert(dateTuple.date, atIndex: 0)
+            exam.insert(dateTuple.time, atIndex: 1)
+            exams.append(exam)
         }
         return exams
     }
@@ -226,7 +242,6 @@ class KOSAPI {
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + extensionURL)!)
         request.HTTPMethod = "GET"
         request.addValue("application/xml", forHTTPHeaderField: "accept")
-        //print("That value: \(request.valueForHTTPHeaderField("Accept"))")
         print("Request = \(request)")
         var failed = false
         var running = false
@@ -237,8 +252,6 @@ class KOSAPI {
                 return
             }
             print("Downloading \(name)...")
-            //let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            //print("Response string = [ \(responseString) ]")
 
             if let uData = data {
                 let xml = SWXMLHash.parse(uData)
@@ -263,14 +276,13 @@ class KOSAPI {
         }
     }
     
-    private class func downloadExams(name: String, extensionURL: String) -> [Exam]? {
+    private class func downloadExams(name: String, extensionURL: String) -> [[String]] {
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + extensionURL)!)
         request.HTTPMethod = "GET"
-        //request.addValue("application/atom+xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         print("Request = \(request)")
         var failed = false
         var running = false
-        var exams: [Exam]? = nil
+        var exams: [[String]] = []
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, _, error in
             if error != nil {
                 print("error=\(error)")
@@ -296,7 +308,6 @@ class KOSAPI {
         }
         return exams
     }
-
 }
 
 

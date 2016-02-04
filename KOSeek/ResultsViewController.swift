@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ResultsViewController: MainTableViewController {
+class ResultsViewController: DropdownMenuViewController {
 
     var semesterIDNameDict: [(String, String)] = []
     var semesters: [String] = []
     var subjects: [Subject] = []
-    var dropdownMenuView: BTNavigationDropdownMenu?
     var semesterCreditsEnrolled: Int = 0
     var semesterCreditsObtained: Int = 0
     var totalCreditsEnrolled: Int = 0
@@ -21,42 +20,20 @@ class ResultsViewController: MainTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        super.childFuncBeforeShowSideMenu =  {
-            if self.dropdownMenuView?.getShown() == true {
-                self.dropdownMenuView?.hideMenu()
-                self.dropdownMenuView?.setShown(false)
-            }
-        }
         semesterIDNameDict = SavedVariables.semesterIDNameDict.sort({$0.0 < $1.0})
         for (_, semester) in semesterIDNameDict {
             semesters.append(semester)
         }
         updateSemesterNumber(semesters.count)
-        setupDropdownMenu()
+        super.dropdownData = semesters
+        super.didSelectItemHandler = { indexPath in
+            self.didSelectItem(indexPath)
+        }
+        super.setupDropdownMenu()
         if let firstSemester = semesterIDNameDict.first {
             updateSubjects(firstSemester.0)
         }
         setTotalCreditsValues()
-    }
-    
-    func setupDropdownMenu() {
-        if let first = semesters.first {
-            dropdownMenuView = BTNavigationDropdownMenu(title: first, items: semesters, navController: self.navigationController)
-            dropdownMenuView?.cellHeight = DropdownMenuViewCellHeight
-            dropdownMenuView?.cellBackgroundColor =  DropdownMenuView.cellBackgroundColor
-            dropdownMenuView?.cellSelectionColor = DropdownMenuView.cellSelectionColor
-            dropdownMenuView?.cellTextLabelColor = DropdownMenuView.cellTextLabelColor
-            dropdownMenuView?.cellSeparatorColor = DropdownMenuView.cellSeparatorColor
-            dropdownMenuView?.arrowPadding = DropdownMenuView.arrowPadding
-            dropdownMenuView?.animationDuration = DropdownMenuView.animationDuration
-            dropdownMenuView?.maskBackgroundColor = DropdownMenuView.maskBackgroundColor
-            dropdownMenuView?.maskBackgroundOpacity = DropdownMenuView.maskBackgroundOpacity
-            dropdownMenuView?.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-                let semester = self.semesterIDNameDict[indexPath].0
-                self.updateSubjects(semester)
-            }
-            self.navigationItem.titleView = dropdownMenuView
-        }
     }
     
     func setTotalCreditsValues() {
@@ -77,6 +54,11 @@ class ResultsViewController: MainTableViewController {
                 }
             }
         }
+    }
+    
+    func didSelectItem(indexPath: Int) {
+        let semester = self.semesterIDNameDict[indexPath].0
+        self.updateSubjects(semester)
     }
     
     func updateSubjects(semester: String) {
@@ -130,14 +112,6 @@ class ResultsViewController: MainTableViewController {
         return subjects.count
     }
     
-    func setLabelParameters(label: UILabel, text: String?, fontSize: CGFloat = 15, numberOfLines: Int = 2) {
-        label.text = text
-        label.font = .systemFontOfSize(fontSize)
-        label.textColor = .blackColor()
-        label.textAlignment = .Center
-        label.numberOfLines = numberOfLines
-    }
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let subject = subjects[indexPath.row]
@@ -169,16 +143,6 @@ class ResultsViewController: MainTableViewController {
             cell.backgroundColor = SlotTutorialColor
         }
         return cell
-    }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
-        dropdownMenuView?.cellHeight = DropdownMenuViewCellHeight
-        if dropdownMenuView?.getShown() == true {
-            dropdownMenuView?.hideMenu()
-            dropdownMenuView?.setShown(false)
-        }
-    }
-    
+    }    
 }
 

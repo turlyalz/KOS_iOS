@@ -84,13 +84,10 @@ func formatDateString(string: String) -> (date: String, time: String) {
     return (date, time)
 }
 
-func isLateDate(string: String?) -> Bool {
+func isLateDate(string: String) -> Bool {
     let formatter = NSDateFormatter()
     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-    guard let str = string else {
-        return false
-    }
-    guard let date = formatter.dateFromString(str) else {
+    guard let date = formatter.dateFromString(string) else {
         return false
     }
     let now = NSDate()
