@@ -747,14 +747,14 @@
         <image name="update" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Q2c-SP-SKF"/>
+        <segue reference="3cb-r0-2Xc"/>
+        <segue reference="DYU-8V-Yjc"/>
         <segue reference="uIv-US-8Aj"/>
         <segue reference="oQ7-TJ-uoE"/>
         <segue reference="PeF-pM-b66"/>
+        <segue reference="Q2c-SP-SKF"/>
         <segue reference="Av4-Fp-A59"/>
-        <segue reference="gqg-lU-my3"/>
         <segue reference="pn5-gg-Cwc"/>
-        <segue reference="wMA-gy-0Ah"/>
-        <segue reference="3cb-r0-2Xc"/>
+        <segue reference="gqg-lU-my3"/>
     </inferredMetricsTieBreakers>
 </document>

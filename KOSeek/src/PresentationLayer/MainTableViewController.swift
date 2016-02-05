@@ -8,7 +8,7 @@
 
 import UIKit
 
-// Base class for all ViewControllers
+/// Base class for all ViewControllers
 class MainTableViewController: UITableViewController {
     
     var menuButton: UIBarButtonItem!

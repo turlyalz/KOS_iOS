@@ -8,11 +8,13 @@
 
 import UIKit
 
+/// Common class for view controllers with table content (drawing separators) 
 class TableContentViewController: MainTableViewController {
     
     var data: [[String]] = []
     var header: [String] = []
-    var sizes: [CGFloat] = []
+    var sizes = [CGFloat](count: 5, repeatedValue: 7.0)
+    var offsets = [CGFloat](count: 5, repeatedValue: 8.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,7 @@ class TableContentViewController: MainTableViewController {
         label.textColor = textColor
         label.textAlignment = .Center
         label.numberOfLines = numberOfLines
+        label.adjustsFontSizeToFitWidth = true
     }
     
     func drawHSeparator(view: UIView, leftView: UIView) -> ConstraintItem {
@@ -39,8 +42,8 @@ class TableContentViewController: MainTableViewController {
     }
     
     private func getRow(array: [String], isHeader: Bool) -> UITableViewCell {
-        if array.count != sizes.count {
-            sizes = []
+        if array.count != sizes.count || array.count != offsets.count {
+            print("Warning: sizes and offsets counts of row must be the same as array count!")
         }
         let view = UITableViewCell()
         if isHeader {
@@ -57,15 +60,11 @@ class TableContentViewController: MainTableViewController {
             view.addSubview(label)
             label.snp_remakeConstraints { (make) -> Void in
                 if index == 0 {
-                    make.left.equalTo(view).offset(8)
+                    make.left.equalTo(view).offset(offsets[index])
                 } else {
-                    make.left.equalTo(rightPoint).offset(8)
+                    make.left.equalTo(rightPoint).offset(offsets[index])
                 }
-                if sizes.count != 0 {
-                    make.width.equalTo(view).dividedBy(sizes[index])
-                } else {
-                    make.width.equalTo(view).multipliedBy(1.0/7.0)
-                }
+                make.width.equalTo(view).dividedBy(sizes[index])
                 make.height.equalTo(view)
             }
             if index != array.count-1 {

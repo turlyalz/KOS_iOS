@@ -94,6 +94,7 @@ class SideMenuController: UITableViewController {
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         updateValues()
+        tableView.reloadData()
     }
     
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Class that provides dropdown menu for navigation title 
 class DropdownMenuViewController: TableContentViewController {
 
     private var dropdownMenuView: BTNavigationDropdownMenu?
@@ -45,6 +46,7 @@ class DropdownMenuViewController: TableContentViewController {
     }
 
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
         dropdownMenuView?.cellHeight = DropdownMenuViewCellHeight
         if dropdownMenuView?.getShown() == true {
             dropdownMenuView?.hideMenu()
