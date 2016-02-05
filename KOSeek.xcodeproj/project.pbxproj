@@ -17,7 +17,7 @@
 		9C1A1B2F1C0911050050E03E /* TimetableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B2D1C0911050050E03E /* TimetableTableViewController.swift */; };
 		9C1A1B321C0916E50050E03E /* SlotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B311C0916E50050E03E /* SlotTableViewCell.swift */; };
 		9C1B2E311C5E9C4600FC30C3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B2E301C5E9C4600FC30C3 /* StringExtension.swift */; };
-		9C22728E1BD6517B00DE7F15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */; };
+		9C22728E1BD6517B00DE7F15 /* src in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728D1BD6517B00DE7F15 /* src */; };
 		9C2272901BD6517B00DE7F15 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */; };
 		9C2272931BD6517B00DE7F15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2272911BD6517B00DE7F15 /* Main.storyboard */; };
 		9C2272951BD6517B00DE7F15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C2272941BD6517B00DE7F15 /* Assets.xcassets */; };
@@ -111,7 +111,7 @@
 		9C1A1B311C0916E50050E03E /* SlotTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotTableViewCell.swift; sourceTree = "<group>"; };
 		9C1B2E301C5E9C4600FC30C3 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		9C22728A1BD6517B00DE7F15 /* KOSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9C22728D1BD6517B00DE7F15 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
 		9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9C2272921BD6517B00DE7F15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C2272941BD6517B00DE7F15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 				9C31E5971BDE7712004FF6CB /* ApplicationLayer */,
 				9C86AE441BF3B2EB0096C72E /* DataLayer */,
 				9C31E5961BDE76F0004FF6CB /* PresentationLayer */,
-				9C22728D1BD6517B00DE7F15 /* AppDelegate.swift */,
+				9C22728D1BD6517B00DE7F15 /* src */,
 				9C2272911BD6517B00DE7F15 /* Main.storyboard */,
 				9C2272941BD6517B00DE7F15 /* Assets.xcassets */,
 				9C2272961BD6517B00DE7F15 /* LaunchScreen.storyboard */,
@@ -289,6 +289,7 @@
 				9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */,
 			);
 			name = PresentationLayer;
+			path = src/PresentationLayer;
 			sourceTree = "<group>";
 		};
 		9C31E5971BDE7712004FF6CB /* ApplicationLayer */ = {
@@ -309,6 +310,7 @@
 				9CCF603A1C6142D00024A91D /* OpenHoursDownloader.swift */,
 			);
 			name = ApplicationLayer;
+			path = src/ApplicationLayer;
 			sourceTree = "<group>";
 		};
 		9C6FB4E21BFE909400C682C4 /* DropdownMenu */ = {
@@ -335,6 +337,7 @@
 				9C1A1B261C086A590050E03E /* TimetableSlot.swift */,
 			);
 			name = DataLayer;
+			path = src/DataLayer;
 			sourceTree = "<group>";
 		};
 		9CE8F9F61C0F20C5009C229F /* SnapKit */ = {
@@ -545,7 +548,7 @@
 				9C5523D51C03B6CD00DC6A04 /* Person+CoreDataProperties.swift in Sources */,
 				9C86AE8B1BF3F3CC0096C72E /* SWXMLHash.swift in Sources */,
 				9C86AE431BF3B2BA0096C72E /* KOSAPI.swift in Sources */,
-				9C22728E1BD6517B00DE7F15 /* AppDelegate.swift in Sources */,
+				9C22728E1BD6517B00DE7F15 /* src in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
