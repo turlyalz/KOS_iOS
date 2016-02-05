@@ -17,7 +17,6 @@
 		9C1A1B2F1C0911050050E03E /* TimetableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B2D1C0911050050E03E /* TimetableTableViewController.swift */; };
 		9C1A1B321C0916E50050E03E /* SlotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1B311C0916E50050E03E /* SlotTableViewCell.swift */; };
 		9C1B2E311C5E9C4600FC30C3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1B2E301C5E9C4600FC30C3 /* StringExtension.swift */; };
-		9C22728E1BD6517B00DE7F15 /* src in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728D1BD6517B00DE7F15 /* src */; };
 		9C2272901BD6517B00DE7F15 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */; };
 		9C2272931BD6517B00DE7F15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C2272911BD6517B00DE7F15 /* Main.storyboard */; };
 		9C2272951BD6517B00DE7F15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C2272941BD6517B00DE7F15 /* Assets.xcassets */; };
@@ -48,25 +47,26 @@
 		9C9E50211BE12C2E009B6CB1 /* ExamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50201BE12C2E009B6CB1 /* ExamsViewController.swift */; };
 		9C9E50231BE12C50009B6CB1 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */; };
 		9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */; };
+		9CA9694D1C654C9E001291C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9694C1C654C9E001291C1 /* AppDelegate.swift */; };
+		9CA9695D1C654FA0001291C1 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9694F1C654FA0001291C1 /* Constraint.swift */; };
+		9CA9695E1C654FA0001291C1 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA969501C654FA0001291C1 /* ConstraintAttributes.swift */; };
+		9CA9695F1C654FA0001291C1 /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA969511C654FA0001291C1 /* ConstraintDescription.swift */; };
+		9CA969601C654FA0001291C1 /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA969521C654FA0001291C1 /* ConstraintItem.swift */; };
+		9CA969611C654FA0001291C1 /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA969531C654FA0001291C1 /* ConstraintMaker.swift */; };
+		9CA969621C654FA0001291C1 /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA969541C654FA0001291C1 /* ConstraintRelation.swift */; };
+		9CA969631C654FA0001291C1 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA969551C654FA0001291C1 /* Debugging.swift */; };
+		9CA969641C654FA0001291C1 /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA969561C654FA0001291C1 /* EdgeInsets.swift */; };
+		9CA969651C654FA0001291C1 /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA969571C654FA0001291C1 /* LayoutConstraint.swift */; };
+		9CA969661C654FA0001291C1 /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA969591C654FA0001291C1 /* SnapKit.swift */; };
+		9CA969671C654FA0001291C1 /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9695A1C654FA0001291C1 /* SourceLocation.swift */; };
+		9CA969681C654FA0001291C1 /* View+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9695B1C654FA0001291C1 /* View+SnapKit.swift */; };
+		9CA969691C654FA0001291C1 /* ViewController+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9695C1C654FA0001291C1 /* ViewController+SnapKit.swift */; };
 		9CB8E5A11C11C1BE00804F38 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB8E5A01C11C1BE00804F38 /* Exam.swift */; };
 		9CCF603B1C6142D00024A91D /* OpenHoursDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF603A1C6142D00024A91D /* OpenHoursDownloader.swift */; };
 		9CCFF9361C5CCC2400868703 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFF9351C5CCC2400868703 /* Reachability.swift */; };
 		9CE171651BF8A48900C56D2F /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */; };
 		9CE171661BF8A48900C56D2F /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171621BF8A48900C56D2F /* Subject.swift */; };
 		9CE8F9D81C0F1F8F009C229F /* SnapKit in Resources */ = {isa = PBXBuildFile; fileRef = 9CE8F9D71C0F1F8F009C229F /* SnapKit */; };
-		9CE8F9E81C0F2086009C229F /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9DA1C0F2086009C229F /* Constraint.swift */; };
-		9CE8F9E91C0F2086009C229F /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9DB1C0F2086009C229F /* ConstraintAttributes.swift */; };
-		9CE8F9EA1C0F2086009C229F /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9DC1C0F2086009C229F /* ConstraintDescription.swift */; };
-		9CE8F9EB1C0F2086009C229F /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9DD1C0F2086009C229F /* ConstraintItem.swift */; };
-		9CE8F9EC1C0F2086009C229F /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9DE1C0F2086009C229F /* ConstraintMaker.swift */; };
-		9CE8F9ED1C0F2086009C229F /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9DF1C0F2086009C229F /* ConstraintRelation.swift */; };
-		9CE8F9EE1C0F2086009C229F /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E01C0F2086009C229F /* Debugging.swift */; };
-		9CE8F9EF1C0F2086009C229F /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E11C0F2086009C229F /* EdgeInsets.swift */; };
-		9CE8F9F01C0F2086009C229F /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E21C0F2086009C229F /* LayoutConstraint.swift */; };
-		9CE8F9F21C0F2086009C229F /* SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E41C0F2086009C229F /* SnapKit.swift */; };
-		9CE8F9F31C0F2086009C229F /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E51C0F2086009C229F /* SourceLocation.swift */; };
-		9CE8F9F41C0F2086009C229F /* View+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E61C0F2086009C229F /* View+SnapKit.swift */; };
-		9CE8F9F51C0F2086009C229F /* ViewController+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8F9E71C0F2086009C229F /* ViewController+SnapKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,7 +111,6 @@
 		9C1A1B311C0916E50050E03E /* SlotTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotTableViewCell.swift; sourceTree = "<group>"; };
 		9C1B2E301C5E9C4600FC30C3 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		9C22728A1BD6517B00DE7F15 /* KOSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C22728D1BD6517B00DE7F15 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
 		9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9C2272921BD6517B00DE7F15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9C2272941BD6517B00DE7F15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,26 +148,27 @@
 		9C9E50201BE12C2E009B6CB1 /* ExamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamsViewController.swift; sourceTree = "<group>"; };
 		9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		9CA9694C1C654C9E001291C1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = src/AppDelegate.swift; sourceTree = "<group>"; };
+		9CA9694F1C654FA0001291C1 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		9CA969501C654FA0001291C1 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
+		9CA969511C654FA0001291C1 /* ConstraintDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintDescription.swift; sourceTree = "<group>"; };
+		9CA969521C654FA0001291C1 /* ConstraintItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintItem.swift; sourceTree = "<group>"; };
+		9CA969531C654FA0001291C1 /* ConstraintMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintMaker.swift; sourceTree = "<group>"; };
+		9CA969541C654FA0001291C1 /* ConstraintRelation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintRelation.swift; sourceTree = "<group>"; };
+		9CA969551C654FA0001291C1 /* Debugging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debugging.swift; sourceTree = "<group>"; };
+		9CA969561C654FA0001291C1 /* EdgeInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeInsets.swift; sourceTree = "<group>"; };
+		9CA969571C654FA0001291C1 /* LayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConstraint.swift; sourceTree = "<group>"; };
+		9CA969581C654FA0001291C1 /* SnapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapKit.h; sourceTree = "<group>"; };
+		9CA969591C654FA0001291C1 /* SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapKit.swift; sourceTree = "<group>"; };
+		9CA9695A1C654FA0001291C1 /* SourceLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceLocation.swift; sourceTree = "<group>"; };
+		9CA9695B1C654FA0001291C1 /* View+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+SnapKit.swift"; sourceTree = "<group>"; };
+		9CA9695C1C654FA0001291C1 /* ViewController+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+SnapKit.swift"; sourceTree = "<group>"; };
 		9CB8E5A01C11C1BE00804F38 /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
 		9CCF603A1C6142D00024A91D /* OpenHoursDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenHoursDownloader.swift; sourceTree = "<group>"; };
 		9CCFF9351C5CCC2400868703 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9CE171621BF8A48900C56D2F /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		9CE8F9D71C0F1F8F009C229F /* SnapKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SnapKit; path = /Volumes/Media/Alzhan/CVUT/KOSeek/KOS_iOS/SnapKit; sourceTree = "<absolute>"; };
-		9CE8F9DA1C0F2086009C229F /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = ../SnapKit/Constraint.swift; sourceTree = "<group>"; };
-		9CE8F9DB1C0F2086009C229F /* ConstraintAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = ../SnapKit/ConstraintAttributes.swift; sourceTree = "<group>"; };
-		9CE8F9DC1C0F2086009C229F /* ConstraintDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = ../SnapKit/ConstraintDescription.swift; sourceTree = "<group>"; };
-		9CE8F9DD1C0F2086009C229F /* ConstraintItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = ../SnapKit/ConstraintItem.swift; sourceTree = "<group>"; };
-		9CE8F9DE1C0F2086009C229F /* ConstraintMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = ../SnapKit/ConstraintMaker.swift; sourceTree = "<group>"; };
-		9CE8F9DF1C0F2086009C229F /* ConstraintRelation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = ../SnapKit/ConstraintRelation.swift; sourceTree = "<group>"; };
-		9CE8F9E01C0F2086009C229F /* Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = ../SnapKit/Debugging.swift; sourceTree = "<group>"; };
-		9CE8F9E11C0F2086009C229F /* EdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EdgeInsets.swift; path = ../SnapKit/EdgeInsets.swift; sourceTree = "<group>"; };
-		9CE8F9E21C0F2086009C229F /* LayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = ../SnapKit/LayoutConstraint.swift; sourceTree = "<group>"; };
-		9CE8F9E31C0F2086009C229F /* SnapKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SnapKit.h; path = ../SnapKit/SnapKit.h; sourceTree = "<group>"; };
-		9CE8F9E41C0F2086009C229F /* SnapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SnapKit.swift; path = ../SnapKit/SnapKit.swift; sourceTree = "<group>"; };
-		9CE8F9E51C0F2086009C229F /* SourceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SourceLocation.swift; path = ../SnapKit/SourceLocation.swift; sourceTree = "<group>"; };
-		9CE8F9E61C0F2086009C229F /* View+SnapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "View+SnapKit.swift"; path = "../SnapKit/View+SnapKit.swift"; sourceTree = "<group>"; };
-		9CE8F9E71C0F2086009C229F /* ViewController+SnapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ViewController+SnapKit.swift"; path = "../SnapKit/ViewController+SnapKit.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,12 +219,12 @@
 		9C22728C1BD6517B00DE7F15 /* KOSeek */ = {
 			isa = PBXGroup;
 			children = (
-				9CE8F9F61C0F20C5009C229F /* SnapKit */,
+				9CA9694E1C654FA0001291C1 /* SnapKit */,
 				9C31E5971BDE7712004FF6CB /* ApplicationLayer */,
 				9C86AE441BF3B2EB0096C72E /* DataLayer */,
 				9C31E5961BDE76F0004FF6CB /* PresentationLayer */,
-				9C22728D1BD6517B00DE7F15 /* src */,
 				9C2272911BD6517B00DE7F15 /* Main.storyboard */,
+				9CA9694C1C654C9E001291C1 /* AppDelegate.swift */,
 				9C2272941BD6517B00DE7F15 /* Assets.xcassets */,
 				9C2272961BD6517B00DE7F15 /* LaunchScreen.storyboard */,
 				9C2272991BD6517B00DE7F15 /* Info.plist */,
@@ -340,23 +340,23 @@
 			path = src/DataLayer;
 			sourceTree = "<group>";
 		};
-		9CE8F9F61C0F20C5009C229F /* SnapKit */ = {
+		9CA9694E1C654FA0001291C1 /* SnapKit */ = {
 			isa = PBXGroup;
 			children = (
-				9CE8F9DA1C0F2086009C229F /* Constraint.swift */,
-				9CE8F9DB1C0F2086009C229F /* ConstraintAttributes.swift */,
-				9CE8F9DC1C0F2086009C229F /* ConstraintDescription.swift */,
-				9CE8F9DD1C0F2086009C229F /* ConstraintItem.swift */,
-				9CE8F9DE1C0F2086009C229F /* ConstraintMaker.swift */,
-				9CE8F9DF1C0F2086009C229F /* ConstraintRelation.swift */,
-				9CE8F9E01C0F2086009C229F /* Debugging.swift */,
-				9CE8F9E11C0F2086009C229F /* EdgeInsets.swift */,
-				9CE8F9E21C0F2086009C229F /* LayoutConstraint.swift */,
-				9CE8F9E31C0F2086009C229F /* SnapKit.h */,
-				9CE8F9E41C0F2086009C229F /* SnapKit.swift */,
-				9CE8F9E51C0F2086009C229F /* SourceLocation.swift */,
-				9CE8F9E61C0F2086009C229F /* View+SnapKit.swift */,
-				9CE8F9E71C0F2086009C229F /* ViewController+SnapKit.swift */,
+				9CA9694F1C654FA0001291C1 /* Constraint.swift */,
+				9CA969501C654FA0001291C1 /* ConstraintAttributes.swift */,
+				9CA969511C654FA0001291C1 /* ConstraintDescription.swift */,
+				9CA969521C654FA0001291C1 /* ConstraintItem.swift */,
+				9CA969531C654FA0001291C1 /* ConstraintMaker.swift */,
+				9CA969541C654FA0001291C1 /* ConstraintRelation.swift */,
+				9CA969551C654FA0001291C1 /* Debugging.swift */,
+				9CA969561C654FA0001291C1 /* EdgeInsets.swift */,
+				9CA969571C654FA0001291C1 /* LayoutConstraint.swift */,
+				9CA969581C654FA0001291C1 /* SnapKit.h */,
+				9CA969591C654FA0001291C1 /* SnapKit.swift */,
+				9CA9695A1C654FA0001291C1 /* SourceLocation.swift */,
+				9CA9695B1C654FA0001291C1 /* View+SnapKit.swift */,
+				9CA9695C1C654FA0001291C1 /* ViewController+SnapKit.swift */,
 			);
 			name = SnapKit;
 			path = src/SnapKit;
@@ -497,59 +497,59 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CE8F9E81C0F2086009C229F /* Constraint.swift in Sources */,
-				9CE8F9E91C0F2086009C229F /* ConstraintAttributes.swift in Sources */,
-				9CE8F9EA1C0F2086009C229F /* ConstraintDescription.swift in Sources */,
 				9CCF603B1C6142D00024A91D /* OpenHoursDownloader.swift in Sources */,
-				9CE8F9EB1C0F2086009C229F /* ConstraintItem.swift in Sources */,
-				9CE8F9EC1C0F2086009C229F /* ConstraintMaker.swift in Sources */,
-				9CE8F9ED1C0F2086009C229F /* ConstraintRelation.swift in Sources */,
-				9CE8F9EE1C0F2086009C229F /* Debugging.swift in Sources */,
-				9CE8F9EF1C0F2086009C229F /* EdgeInsets.swift in Sources */,
-				9CE8F9F01C0F2086009C229F /* LayoutConstraint.swift in Sources */,
 				9C168A431C13105D006257EC /* NSDateExtension.swift in Sources */,
-				9CE8F9F21C0F2086009C229F /* SnapKit.swift in Sources */,
-				9CE8F9F31C0F2086009C229F /* SourceLocation.swift in Sources */,
-				9CE8F9F41C0F2086009C229F /* View+SnapKit.swift in Sources */,
+				9CA969661C654FA0001291C1 /* SnapKit.swift in Sources */,
 				9CCFF9361C5CCC2400868703 /* Reachability.swift in Sources */,
-				9CE8F9F51C0F2086009C229F /* ViewController+SnapKit.swift in Sources */,
 				9C1B2E311C5E9C4600FC30C3 /* StringExtension.swift in Sources */,
 				9C57521E1C6001D3005FA457 /* StudentOfficeViewController.swift in Sources */,
 				9C9E50211BE12C2E009B6CB1 /* ExamsViewController.swift in Sources */,
 				9C6FB4D31BFE2E2700C682C4 /* Semester.swift in Sources */,
 				9C015DDA1C05FF410074B6F6 /* CoreDataHelper.swift in Sources */,
 				9C6FB4DB1BFE811100C682C4 /* BTNavigationDropdownMenu.swift in Sources */,
+				9CA9695F1C654FA0001291C1 /* ConstraintDescription.swift in Sources */,
+				9CA9695E1C654FA0001291C1 /* ConstraintAttributes.swift in Sources */,
+				9CA969671C654FA0001291C1 /* SourceLocation.swift in Sources */,
+				9CA969611C654FA0001291C1 /* ConstraintMaker.swift in Sources */,
+				9CA969651C654FA0001291C1 /* LayoutConstraint.swift in Sources */,
 				9C9841011C5D5592009ACD05 /* MainTableViewController.swift in Sources */,
 				9CB8E5A11C11C1BE00804F38 /* Exam.swift in Sources */,
 				9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */,
 				9C2D987D1BDFA37A00CF5A11 /* SWRevealViewController.m in Sources */,
+				9CA969601C654FA0001291C1 /* ConstraintItem.swift in Sources */,
 				9C1A1B271C086A590050E03E /* TimetableSlot+CoreDataProperties.swift in Sources */,
+				9CA969621C654FA0001291C1 /* ConstraintRelation.swift in Sources */,
 				9C1A1B281C086A590050E03E /* TimetableSlot.swift in Sources */,
 				9C8A49B51BE011C7009ECFCA /* SideMenuController.swift in Sources */,
 				9C9E50231BE12C50009B6CB1 /* ResultsViewController.swift in Sources */,
+				9CA969681C654FA0001291C1 /* View+SnapKit.swift in Sources */,
 				9C01D4EF1C63FF3B00D22C77 /* TableContentViewController.swift in Sources */,
 				9C2BFD281BF51B0200744E85 /* ProfileViewController.swift in Sources */,
 				9C1A1B2F1C0911050050E03E /* TimetableTableViewController.swift in Sources */,
 				9C86AE3B1BF3B1F60096C72E /* WaitingViewController.swift in Sources */,
 				9C5523D61C03B6CD00DC6A04 /* Person.swift in Sources */,
+				9CA9695D1C654FA0001291C1 /* Constraint.swift in Sources */,
 				9C2BFD2A1BF5420E00744E85 /* Database.swift in Sources */,
 				9C86AE841BF3B7870096C72E /* KOSModel.xcdatamodeld in Sources */,
 				9C015DD81C05FE8A0074B6F6 /* CoreDataStore.swift in Sources */,
 				9C2272901BD6517B00DE7F15 /* LoginViewController.swift in Sources */,
+				9CA969691C654FA0001291C1 /* ViewController+SnapKit.swift in Sources */,
 				9C8ED07A1BE3D5A200611CBF /* SavedVariables.swift in Sources */,
 				9CE171661BF8A48900C56D2F /* Subject.swift in Sources */,
 				9C01D4F11C63FF4C00D22C77 /* DropdownMenuViewController.swift in Sources */,
 				9C31E5951BDE4B7C004FF6CB /* LoginHelper.swift in Sources */,
 				9C86AE891BF3F37C0096C72E /* SwiftyJSON.swift in Sources */,
 				9C1A1B321C0916E50050E03E /* SlotTableViewCell.swift in Sources */,
+				9CA969641C654FA0001291C1 /* EdgeInsets.swift in Sources */,
 				9C6FB4D21BFE2E2700C682C4 /* Semester+CoreDataProperties.swift in Sources */,
 				9CE171651BF8A48900C56D2F /* Subject+CoreDataProperties.swift in Sources */,
 				9C43A1041BF7F67A0018ABB0 /* Constants.swift in Sources */,
+				9CA969631C654FA0001291C1 /* Debugging.swift in Sources */,
 				9C28FEAB1BDFA51600D7DE04 /* SemesterViewController.swift in Sources */,
 				9C5523D51C03B6CD00DC6A04 /* Person+CoreDataProperties.swift in Sources */,
 				9C86AE8B1BF3F3CC0096C72E /* SWXMLHash.swift in Sources */,
 				9C86AE431BF3B2BA0096C72E /* KOSAPI.swift in Sources */,
-				9C22728E1BD6517B00DE7F15 /* src in Sources */,
+				9CA9694D1C654C9E001291C1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,7 +701,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Alzhan.KOSeek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "KOSeek/KOSeek-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "KOSeek/src/PresentationLayer/KOSeek-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -720,7 +720,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Alzhan.KOSeek;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "KOSeek/KOSeek-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "KOSeek/src/PresentationLayer/KOSeek-Bridging-Header.h";
 			};
 			name = Release;
 		};
