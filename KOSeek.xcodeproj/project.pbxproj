@@ -359,6 +359,7 @@
 				9CE8F9E71C0F2086009C229F /* ViewController+SnapKit.swift */,
 			);
 			name = SnapKit;
+			path = src/SnapKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
