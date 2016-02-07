@@ -65,7 +65,6 @@ class MainTableViewController: UITableViewController {
         line.backgroundColor = .grayColor()
         line.alpha = 0.5
         let view = UIView()
-        view.backgroundColor = TableViewBackgroundColor
         view.addSubview(line)
         return view
     }

@@ -19,7 +19,7 @@ class KOSAPI {
     static var increaseProgressBar: ((Int) -> Void)!
     
     /// Variable defines download language
-    static var downloadLanguage = "en"
+    static var downloadLanguage = "cs"
     
     private static let baseURL = "https://kosapi.fit.cvut.cz/api/3"
     

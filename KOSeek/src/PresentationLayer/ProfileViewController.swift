@@ -75,27 +75,25 @@ class ProfileViewController: MainTableViewController {
     func segmentedControlAction(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             KOSAPI.downloadLanguage = "cs"
+            print("Y")
         } else {
             KOSAPI.downloadLanguage = "en"
+            print("X")
         }
     }
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 20
+            return 40
         }
-        return 0
+        return 0.7
     }
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if section != 0 {
-            return nil
-        }
         let line = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 0.7))
         line.backgroundColor = .grayColor()
         line.alpha = 0.5
         let view = UIView()
-        view.backgroundColor = TableViewBackgroundColor
         view.addSubview(line)
         return view
     }
@@ -119,7 +117,7 @@ class ProfileViewController: MainTableViewController {
                 make.width.equalTo(cell).dividedBy(2)
                 make.height.equalTo(cell)
             }
-            let segmentedControl = UISegmentedControl(items: ["český", "english"])
+            let segmentedControl = UISegmentedControl(items: ["Český", "English"])
             segmentedControl.selectedSegmentIndex = 0
             segmentedControl.addTarget(self, action: "segmentedControlAction:", forControlEvents: .ValueChanged)
             cell.addSubview(segmentedControl)
