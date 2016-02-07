@@ -23,9 +23,9 @@ typealias SavedVariablesContent = (username: String?, currentSemester: String?, 
 
 var screenSize: CGRect = UIScreen.mainScreen().bounds
 
-// Dropdown menu constants
+// Dropdown menu constants and variables
 var SemesterNumber: CGFloat = 10
-var DropdownMenuViewCellHeight: CGFloat = screenSize.height/SemesterNumber
+var DropdownMenuViewCellHeight: CGFloat = (screenSize.height-20)/SemesterNumber
 
 let DropdownMenuView: (cellBackgroundColor: UIColor, cellSelectionColor: UIColor, cellSeparatorColor: UIColor, cellTextLabelFont: UIFont?, cellTextLabelColor: UIColor, arrowPadding: CGFloat, animationDuration: NSTimeInterval, maskBackgroundColor: UIColor, maskBackgroundOpacity: CGFloat) =
     (cellBackgroundColor: UIColor(red: 120/255, green: 162/255, blue: 182/255, alpha: 1),
@@ -36,7 +36,7 @@ let DropdownMenuView: (cellBackgroundColor: UIColor, cellSelectionColor: UIColor
 // Updates values if orientation was changed
 func updateValues() {
     screenSize = UIScreen.mainScreen().bounds
-    DropdownMenuViewCellHeight = screenSize.height/SemesterNumber
+    DropdownMenuViewCellHeight = (screenSize.height-20)/SemesterNumber
 }
 
 func updateSemesterNumber(number: Int) {

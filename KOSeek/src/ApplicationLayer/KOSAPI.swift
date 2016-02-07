@@ -18,6 +18,9 @@ class KOSAPI {
     /// Function that called when need to increase progress bar
     static var increaseProgressBar: ((Int) -> Void)!
     
+    /// Variable defines download language
+    static var downloadLanguage = "en"
+    
     private static let baseURL = "https://kosapi.fit.cvut.cz/api/3"
     
     /// Download all data
@@ -30,13 +33,13 @@ class KOSAPI {
         }
         download("User person Info", extensionURL: "/students/" + SavedVariables.username! + "?access_token=" + accessToken + "&lang=cs", parser: userParser)
         download("Current Semester", extensionURL: "/semesters/current?access_token=" + accessToken + "&lang=cs", parser: currentSemesterParser)
-        download("Enrolled Courses", extensionURL: "/students/" + SavedVariables.username! + "/enrolledCourses?access_token=" + accessToken + "&sem=none&limit=1000&lang=cs", parser: semesterParser)
+        download("Enrolled Courses", extensionURL: "/students/" + SavedVariables.username! + "/enrolledCourses?access_token=" + accessToken + "&sem=none&limit=1000&lang=" + downloadLanguage, parser: semesterParser)
 
-        download("Timetable slots", extensionURL: "/students/" + SavedVariables.username! + "/parallels?access_token=" + accessToken + "&limit=1000", parser: timetableSlotParser)
+        download("Timetable slots", extensionURL: "/students/" + SavedVariables.username! + "/parallels?access_token=" + accessToken + "&limit=1000&lang=" + downloadLanguage, parser: timetableSlotParser)
         
-        download("Teachers", extensionURL: "/divisions/18000/teachers/?access_token=" + accessToken + "&limit=1000&lang=cs", parser: teachersParser)
+        download("Teachers", extensionURL: "/divisions/18000/teachers/?access_token=" + accessToken + "&limit=1000&lang=" + downloadLanguage, parser: teachersParser)
         
-        var subjectExtensionURL = "/courses?access_token=" + accessToken + "&limit=1000&lang=cs&query="
+        var subjectExtensionURL = "/courses?access_token=" + accessToken + "&limit=1000&lang=" + downloadLanguage + "&query="
         for code in SavedVariables.subjectCodes {
             if code == SavedVariables.subjectCodes.last {
                 subjectExtensionURL += "code=" + code
@@ -114,6 +117,7 @@ class KOSAPI {
         for index in 0...slotNumber-1 {
             let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
             let subject = content["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
+            let subjectName = content["course"].element?.text
             let type = content["parallelType"].element?.text
             let teacher = content["teacher"].element?.text
             let slot = content["timetableSlot"]
@@ -134,7 +138,7 @@ class KOSAPI {
             }
             let parity = slot["parity"].element?.text
             let room = slot["room"].element?.text
-            Database.addSlotTo(context: SavedVariables.cdh.backgroundContext!, type: type, subject: subject, subjectName: subject, teacher: teacher, day: day, duration: duration, firstHour: firstHour, parity: parity, room: room, person: person)            
+            Database.addSlotTo(context: SavedVariables.cdh.backgroundContext!, type: type, subject: subject, subjectName: subjectName, teacher: teacher, day: day, duration: duration, firstHour: firstHour, parity: parity, room: room, person: person)
         }
     }
     

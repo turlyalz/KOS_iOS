@@ -33,7 +33,14 @@ class ProfileViewController: MainTableViewController {
     }
     
     // MARK: - Table view data source
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 {
+            return 1
+        }
         return 2
     }
     
@@ -65,14 +72,65 @@ class ProfileViewController: MainTableViewController {
         createAlertView("", text: "All of your actual data will be removed and new data will be downloaded.\nAre you sure you want to continue?", viewController: self, handlers: ["Yes": startUpdate, "No": {_ in} ])
     }
     
+    func segmentedControlAction(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            KOSAPI.downloadLanguage = "cs"
+        } else {
+            KOSAPI.downloadLanguage = "en"
+        }
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 20
+        }
+        return 0
+    }
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section != 0 {
+            return nil
+        }
+        let line = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 0.7))
+        line.backgroundColor = .grayColor()
+        line.alpha = 0.5
+        let view = UIView()
+        view.backgroundColor = TableViewBackgroundColor
+        view.addSubview(line)
+        return view
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let label = UILabel(frame: CGRect(x: 15, y: 0, width: screenSize.width-15, height: 50))
-        label.text = profileInfo[indexPath.row]
-        label.textColor = .blackColor()
-        cell.addSubview(label)
-        cell.separatorInset = UIEdgeInsetsZero
-        cell.layoutMargins = UIEdgeInsetsZero
+        if indexPath.section == 0 {
+            let label = UILabel(frame: CGRect(x: 15, y: 0, width: screenSize.width-15, height: 50))
+            label.text = profileInfo[indexPath.row]
+            label.textColor = .blackColor()
+            cell.addSubview(label)
+            cell.separatorInset = UIEdgeInsetsZero
+            cell.layoutMargins = UIEdgeInsetsZero
+        } else {
+            let label = UILabel()
+            label.text = "Download language: "
+            label.textColor = .blackColor()
+            cell.addSubview(label)
+            label.snp_remakeConstraints { (make) -> Void in
+                make.left.equalTo(cell).offset(10)
+                make.width.equalTo(cell).dividedBy(2)
+                make.height.equalTo(cell)
+            }
+            let segmentedControl = UISegmentedControl(items: ["český", "english"])
+            segmentedControl.selectedSegmentIndex = 0
+            segmentedControl.addTarget(self, action: "segmentedControlAction:", forControlEvents: .ValueChanged)
+            cell.addSubview(segmentedControl)
+            segmentedControl.snp_remakeConstraints { (make) -> Void in
+                make.left.equalTo(label.snp_right).offset(12)
+                make.centerY.equalTo(cell.snp_centerY)
+                make.width.equalTo(cell).dividedBy(3)
+                make.height.equalTo(cell).dividedBy(2)
+            }
+        }
+        
         return cell
     }
 }

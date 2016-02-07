@@ -43,7 +43,6 @@ class TimetableViewController: MainTableViewController {
             view.addSubview(label)
             label.textColor = .whiteColor()
         }
-        //view.backgroundColor = .whiteColor()
         return view
     }
     
@@ -54,6 +53,7 @@ class TimetableViewController: MainTableViewController {
             cell.parity = parity
         }
         cell.timetableSlots = slots
+        cell.timetableViewController = self
         return cell
     }
 }

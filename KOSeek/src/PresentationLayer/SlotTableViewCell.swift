@@ -12,7 +12,7 @@ class SlotTableViewCell: UITableViewCell {
 
     private let times = [1: "7:30", 2: "9:00", 3: "9:15", 4: "10:45", 5: "11:00", 6: "12:30", 7: "12:45", 8: "14:15", 9: "14:30", 10: "16:00", 11: "16:15", 12: "17:45", 13: "18:00", 14: "19:30", 15: "19:45", 16: "21:15"]
     
-    private var slotViews: [UIView: String] = [:]
+    private var slotViews: [UIView: TimetableSlot] = [:]
     var parity: String = "evenWeek"
     var row: Int = -1
     var timetableSlots: [TimetableSlot]? {
@@ -20,15 +20,12 @@ class SlotTableViewCell: UITableViewCell {
             setSlots()
         }
     }
+    var timetableViewController: UITableViewController? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
+   
     private func setSlots() {
         let timeLabel = UILabel(frame: CGRect(x: 5, y: 10, width: 60, height: 30))
         timeLabel.text = times[row+1]
@@ -95,15 +92,46 @@ class SlotTableViewCell: UITableViewCell {
             case "LABORATORY": slotView.backgroundColor = SlotLectureColor
             default: break
         }
-        if let subject = slot.subject {
-            slotViews[slotView] = subject
-        }
+        slotViews[slotView] = slot
         return slotView
     }
     
     func tappedOnSlot(gesture: UIGestureRecognizer) {
-        if let view = gesture.view {
-            print("Select: \(slotViews[view])")
+        if let view = gesture.view, timetableViewController = timetableViewController {
+            let slot = slotViews[view]
+            var text: String = ""
+            if let subject = slot?.subject {
+                if let name = slot?.subjectName {
+                    text = name
+                }
+                text += "\nStart: "
+                if let start = slot?.firstHour {
+                    let startInt = Int(start)
+                    if let time = times[startInt] {
+                        text += time
+                    }
+                    text += "\nEnd: "
+                    if let duration = slot?.duration {
+                        let durationInt = Int(duration)
+                        let index = Int(startInt+durationInt-1)
+                        if let time = times[index] {
+                            text += time
+                        }
+                    }
+                } else {
+                    text += "\nEnd: "
+                }
+               
+                text += "\nRoom: "
+                if let room = slot?.room {
+                    text += room
+                }
+                text += "\nTeacher: "
+                if let teacher = slot?.teacher {
+                    text += teacher
+                }
+                createAlertView(subject, text: text, viewController: timetableViewController, handlers: ["OK": {_ in }])
+            }
         }
     }
 

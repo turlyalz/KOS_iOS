@@ -146,7 +146,7 @@ class LoginHelper {
         running = true
         task.resume()
         
-        var count = 0
+        var count = -5
         while running && !failed && count < MaxWaitForResponse {
             print("waiting for code response...")
             sleep(1)
