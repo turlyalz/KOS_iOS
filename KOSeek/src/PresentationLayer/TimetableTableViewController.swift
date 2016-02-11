@@ -16,9 +16,29 @@ class TimetableViewController: MainTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setSlots()
+        parity = self.restorationIdentifier
+        makePullToRefresh("refreshTableView")
+    }
+    
+    private func setSlots() {
         let person = Database.getPersonBy(username: SavedVariables.username!, context: SavedVariables.cdh.managedObjectContext)
         slots = person?.timetableSlots?.allObjects as? [TimetableSlot]
-        parity = self.restorationIdentifier
+    }
+    
+    func refreshTableView() {
+        if (!Reachability.isConnectedToNetwork()) {
+            return
+        }
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
+            Database.delete("TimetableSlot", context: SavedVariables.cdh.backgroundContext!)
+            KOSAPI.downloadTimeTableSlots(SavedVariables.cdh.backgroundContext!)
+            self.setSlots()
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                self.endRefreshing()
+            })
+        })
     }
     
     // MARK: - Table view data source

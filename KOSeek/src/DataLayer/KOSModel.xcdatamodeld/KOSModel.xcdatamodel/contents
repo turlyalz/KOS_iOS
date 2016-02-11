@@ -22,13 +22,14 @@
     <entity name="Semester" representedClassName=".Semester" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="subjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" inverseName="semester" inverseEntity="Subject" syncable="YES"/>
     </entity>
     <entity name="Subject" representedClassName=".Subject" syncable="YES">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="completed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="credits" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="semester" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Semester" inverseName="subjects" inverseEntity="Semester" syncable="YES"/>
     </entity>
     <entity name="TimetableSlot" representedClassName=".TimetableSlot" syncable="YES">
         <attribute name="day" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -43,11 +44,11 @@
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="timetableSlots" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
-        <element name="OpenHours" positionX="-1152" positionY="-459" width="128" height="60"/>
-        <element name="Person" positionX="-1323" positionY="-657" width="128" height="150"/>
-        <element name="SavedVariables" positionX="-1388" positionY="-379" width="128" height="120"/>
-        <element name="Semester" positionX="-1008" positionY="-648" width="128" height="73"/>
-        <element name="Subject" positionX="-1161" positionY="-648" width="128" height="120"/>
+        <element name="OpenHours" positionX="-1154" positionY="-396" width="128" height="60"/>
+        <element name="Person" positionX="-1359" positionY="-612" width="128" height="150"/>
+        <element name="SavedVariables" positionX="-1539" positionY="-396" width="128" height="120"/>
+        <element name="Semester" positionX="-981" positionY="-603" width="128" height="88"/>
+        <element name="Subject" positionX="-1161" positionY="-648" width="128" height="118"/>
         <element name="TimetableSlot" positionX="-1541" positionY="-657" width="128" height="193"/>
     </elements>
 </model>

@@ -16,7 +16,7 @@ class ExamsViewController: DropdownMenuViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let semester = SavedVariables.currentSemester, subs = Database.getSubjectsBy(semester: semester, context: SavedVariables.cdh.managedObjectContext) else {
+        guard let semester = SavedVariables.currentSemester, subs = Database.getSubjectsBy(semesterID: semester, context: SavedVariables.cdh.managedObjectContext) else {
             return
         }
         self.subjects.append("Please select subject")

@@ -10,9 +10,9 @@ import UIKit
 
 class ProfileViewController: MainTableViewController {
     
-    var profileInfo: [String] = []
-    var progressView: UIProgressView!
-    var counter:Int = 0 {
+    private var profileInfo: [String] = []
+    private var progressView: UIProgressView!
+    private var counter:Int = 0 {
         didSet {
             let fractionalProgress = Float(counter) / 100.0
             let animated = counter != 0
@@ -63,7 +63,7 @@ class ProfileViewController: MainTableViewController {
             self.counter += value
         }
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
-            KOSAPI.downloadAllData()
+            KOSAPI.downloadAllData(SavedVariables.cdh.backgroundContext!)
             OpenHoursDownloader.download()
         })
     }
@@ -75,10 +75,8 @@ class ProfileViewController: MainTableViewController {
     func segmentedControlAction(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             KOSAPI.downloadLanguage = "cs"
-            print("Y")
         } else {
             KOSAPI.downloadLanguage = "en"
-            print("X")
         }
     }
     
@@ -128,7 +126,11 @@ class ProfileViewController: MainTableViewController {
                 make.height.equalTo(cell).dividedBy(2)
             }
         }
-        
         return cell
+    }
+
+    func refresh(sender:AnyObject)
+    {
+        // Code to refresh table view
     }
 }

@@ -10,21 +10,44 @@ import UIKit
 
 class SemesterViewController: MainTableViewController {
 
-    var subjects: [Subject] = []
+    private var subjects: [Subject] = []
+    private var currentSemester: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let currentSemester = SavedVariables.currentSemester, subj = Database.getSubjectsBy(semester: currentSemester, context: SavedVariables.cdh.managedObjectContext) else {
+        guard let currentSemester = SavedVariables.currentSemester, subj = Database.getSubjectsBy(semesterID: currentSemester, context: SavedVariables.cdh.managedObjectContext) else {
             return
         }
+        self.currentSemester = currentSemester
         subjects = subj
         self.title = SavedVariables.semesterIDNameDict[currentSemester]
         subjects.sortInPlace({ $0.0.code < $0.1.code })
+        makePullToRefresh("refreshTableView")
     }
     
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return subjects.count
+    }
+
+    func refreshTableView() {
+        if (!Reachability.isConnectedToNetwork()) {
+            return
+        }
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
+            Database.deleteObjects("Subject", context: SavedVariables.cdh.backgroundContext!, predicate: NSPredicate(format: "semester.id == %@", self.currentSemester))
+            KOSAPI.downloadEnrolledCourses(SavedVariables.cdh.backgroundContext!, semesterID: self.currentSemester)
+            KOSAPI.downloadSubjectsInfo(SavedVariables.cdh.backgroundContext!)
+            guard let currentSemester = SavedVariables.currentSemester, subj = Database.getSubjectsBy(semesterID: currentSemester, context: SavedVariables.cdh.backgroundContext!) else {
+                return
+            }
+            self.subjects = subj
+            self.subjects.sortInPlace({ $0.0.code < $0.1.code })
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                self.endRefreshing()
+            })
+        })
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

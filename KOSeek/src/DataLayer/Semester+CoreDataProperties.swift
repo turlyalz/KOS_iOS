@@ -16,5 +16,15 @@ extension Semester {
 
     @NSManaged var name: String?
     @NSManaged var id: String?
-
+    @NSManaged var subjects: NSSet?
+    
+    func addSubject(value: Subject) {
+        let subjects = self.mutableSetValueForKey("subjects");
+        subjects.addObject(value)
+    }
+    
+    func removeSubject(value: Subject) {
+        let subjects = self.mutableSetValueForKey("subjects");
+        subjects.removeObject(value)
+    }
 }

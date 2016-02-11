@@ -10,8 +10,8 @@ import UIKit
 
 class SearchViewController: MainTableViewController, UISearchBarDelegate {
    
-    var teachers: [Person]?
-    var filtered: [Person]?
+    private var teachers: [Person]?
+    private var filtered: [Person]?
     let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
     
     override func viewDidLoad() {

@@ -10,13 +10,14 @@ import UIKit
 
 class ResultsViewController: DropdownMenuViewController {
 
-    var semesterIDNameDict: [(String, String)] = []
-    var semesters: [String] = []
-    var subjects: [Subject] = []
-    var semesterCreditsEnrolled: Int = 0
-    var semesterCreditsObtained: Int = 0
-    var totalCreditsEnrolled: Int = 0
-    var totalCreditsObtained: Int = 0
+    private var semesterIDNameDict: [(String, String)] = []
+    private var semesters: [String] = []
+    private var subjects: [Subject] = []
+    private var semesterCreditsEnrolled: Int = 0
+    private var semesterCreditsObtained: Int = 0
+    private var totalCreditsEnrolled: Int = 0
+    private var totalCreditsObtained: Int = 0
+    private var selectedSemester: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +33,10 @@ class ResultsViewController: DropdownMenuViewController {
         super.setupDropdownMenu()
         if let firstSemester = semesterIDNameDict.first {
             updateSubjects(firstSemester.0)
+            selectedSemester = firstSemester.0
         }
         setTotalCreditsValues()
+        makePullToRefresh("refreshTableView")
     }
     
     func setTotalCreditsValues() {
@@ -41,7 +44,7 @@ class ResultsViewController: DropdownMenuViewController {
             return
         }
         for semester in semesters {
-            guard let id = semester.id, subj = Database.getSubjectsBy(semester: id, context: SavedVariables.cdh.managedObjectContext) else {
+            guard let id = semester.id, subj = Database.getSubjectsBy(semesterID: id, context: SavedVariables.cdh.managedObjectContext) else {
                 return
             }
             for subject in subj {
@@ -58,17 +61,19 @@ class ResultsViewController: DropdownMenuViewController {
     
     func didSelectItem(indexPath: Int) {
         let semester = self.semesterIDNameDict[indexPath].0
+        selectedSemester = semester
         self.updateSubjects(semester)
     }
     
     func updateSubjects(semester: String) {
-        if let subj = Database.getSubjectsBy(semester: semester, context: SavedVariables.cdh.managedObjectContext) {
+        if let subj = Database.getSubjectsBy(semesterID: semester, context: SavedVariables.cdh.managedObjectContext) {
+            print(subj.last?.code)
             subjects = subj
             semesterCreditsEnrolled = 0
             semesterCreditsObtained = 0
             for subject in subjects {
                 guard let credits = subject.credits, creditsInt = Int(credits) else {
-                    return
+                    continue
                 }
                 semesterCreditsEnrolled += creditsInt
                 if subject.completed == 1 {
@@ -78,6 +83,26 @@ class ResultsViewController: DropdownMenuViewController {
             subjects.sortInPlace({ $0.0.code < $0.1.code })
             tableView.reloadData()
         }
+    }
+    
+    func refreshTableView() {
+        if (!Reachability.isConnectedToNetwork()) {
+            return
+        }
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
+            Database.deleteObjects("Subject", context: SavedVariables.cdh.backgroundContext!, predicate: NSPredicate(format: "semester.id == %@", self.selectedSemester))
+            KOSAPI.downloadEnrolledCourses(SavedVariables.cdh.backgroundContext!, semesterID: self.selectedSemester)
+            KOSAPI.downloadSubjectsInfo(SavedVariables.cdh.backgroundContext!)
+            guard let subj = Database.getSubjectsBy(semesterID: self.selectedSemester, context: SavedVariables.cdh.backgroundContext!) else {
+                return
+            }
+            self.subjects = subj
+            self.subjects.sortInPlace({ $0.0.code < $0.1.code })
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                self.endRefreshing()
+            })
+        })
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

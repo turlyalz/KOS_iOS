@@ -8,7 +8,7 @@
 
 import Foundation
 
-let MaxWaitForResponse = 10
+let MaxWaitForResponse = 12
 let Parity = (Even: "EVEN", Odd: "ODD", Both: "BOTH")
 
 // Colors

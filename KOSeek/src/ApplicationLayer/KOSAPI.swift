@@ -16,45 +16,87 @@ class KOSAPI {
     /// Function that called when all downloads are completed
     static var onComplete: (() -> Void)!
     /// Function that called when need to increase progress bar
-    static var increaseProgressBar: ((Int) -> Void)!
+    static var increaseProgressBar: ((Int) -> Void)?
     
     /// Variable defines download language
     static var downloadLanguage = "cs"
     
     private static let baseURL = "https://kosapi.fit.cvut.cz/api/3"
+    private static var semesterID = "none"
     
     /// Download all data
-    class func downloadAllData() {
-        guard let accessToken = LoginHelper.getAuthToken() else {
-            return
-        }
+    class func downloadAllData(context: NSManagedObjectContext) {
         if (!Reachability.isConnectedToNetwork()) {
             return
         }
-        download("User person Info", extensionURL: "/students/" + SavedVariables.username! + "?access_token=" + accessToken + "&lang=cs", parser: userParser)
-        download("Current Semester", extensionURL: "/semesters/current?access_token=" + accessToken + "&lang=cs", parser: currentSemesterParser)
-        download("Enrolled Courses", extensionURL: "/students/" + SavedVariables.username! + "/enrolledCourses?access_token=" + accessToken + "&sem=none&limit=1000&lang=" + downloadLanguage, parser: semesterParser)
-
-        download("Timetable slots", extensionURL: "/students/" + SavedVariables.username! + "/parallels?access_token=" + accessToken + "&limit=1000&lang=" + downloadLanguage, parser: timetableSlotParser)
-        
-        download("Teachers", extensionURL: "/divisions/18000/teachers/?access_token=" + accessToken + "&limit=1000&lang=" + downloadLanguage, parser: teachersParser)
-        
-        var subjectExtensionURL = "/courses?access_token=" + accessToken + "&limit=1000&lang=" + downloadLanguage + "&query="
-        for code in SavedVariables.subjectCodes {
-            if code == SavedVariables.subjectCodes.last {
-                subjectExtensionURL += "code=" + code
-            }
-            else {
-                subjectExtensionURL += "code=" + code + ","
-            }
-        }
-        download("Subjects Info", extensionURL: subjectExtensionURL, parser: subjectsDetailsParser)
-        
+        downloadUserInfo(context)
+        downloadEnrolledCourses(context, semesterID: "none")
+        downloadTimeTableSlots(context)
+        downloadCurrentSemester(context)
+        downloadTeachers(context)
+        downloadSubjectsInfo(context)
         dispatch_async(dispatch_get_main_queue(), {
-            increaseProgressBar(100)
+            increaseProgressBar?(100)
             onComplete()
             return
         })
+    }
+    
+    class func downloadUserInfo(context: NSManagedObjectContext) {
+        guard let accessToken = LoginHelper.getAuthToken() else {
+            return
+        }
+        download("User person Info", extensionURL: "/students/" + SavedVariables.username! + "?access_token=" + accessToken + "&lang=cs", context: context, parser: userParser)
+    }
+    
+    class func downloadEnrolledCourses(context: NSManagedObjectContext, semesterID: String) {
+        guard let accessToken = LoginHelper.getAuthToken() else {
+            return
+        }
+        self.semesterID = semesterID
+        if (semesterID != "none") {
+            download("Enrolled Courses", extensionURL: "/students/" + SavedVariables.username! + "/enrolledCourses?access_token=" + accessToken + "&sem=" + semesterID + "&limit=1000&lang=" + downloadLanguage, context: context, parser: subjectsParser)
+        } else {
+            download("Enrolled Courses", extensionURL: "/students/" + SavedVariables.username! + "/enrolledCourses?access_token=" + accessToken + "&sem=" + semesterID + "&limit=1000&lang=" + downloadLanguage, context: context, parser: semesterParser)
+        }
+    }
+    
+    class func downloadTimeTableSlots(context: NSManagedObjectContext) {
+        guard let accessToken = LoginHelper.getAuthToken() else {
+            return
+        }
+        download("Timetable slots", extensionURL: "/students/" + SavedVariables.username! + "/parallels?access_token=" + accessToken + "&limit=1000&lang=" + downloadLanguage, context: context, parser: timetableSlotParser)
+    }
+    
+    class func downloadCurrentSemester(context: NSManagedObjectContext) {
+        guard let accessToken = LoginHelper.getAuthToken() else {
+            return
+        }
+        download("Current Semester", extensionURL: "/semesters/current?access_token=" + accessToken + "&lang=" + downloadLanguage, context: context, parser: currentSemesterParser)
+    }
+    
+    class func downloadTeachers(context: NSManagedObjectContext) {
+        guard let accessToken = LoginHelper.getAuthToken() else {
+            return
+        }
+        download("Teachers", extensionURL: "/divisions/18000/teachers/?access_token=" + accessToken + "&limit=1000&lang=" + downloadLanguage, context: context, parser: teachersParser)
+    }
+    
+    class func downloadSubjectsInfo(context: NSManagedObjectContext) {
+        guard let accessToken = LoginHelper.getAuthToken() else {
+            return
+        }
+        var subjectExtensionURL = "/courses?access_token=" + accessToken + "&limit=1000&lang=" + downloadLanguage + "&query="
+        guard let subjects = Database.getSubjects(context) else {
+            return
+        }
+        for subject in subjects {
+            if let code = subject.code {
+                subjectExtensionURL += "code=" + code + ","
+            }
+        }
+        let url = String(subjectExtensionURL.characters.dropLast())
+        download("Subjects Info", extensionURL: url, context: context, parser: subjectsDetailsParser)
     }
     
     class func downloadExamBy(subjectCode: String) -> [[String]] {
@@ -109,11 +151,11 @@ class KOSAPI {
         return exams
     }
     
-    private class func timetableSlotParser(xml: XMLIndexer) {
+    private class func timetableSlotParser(xml: XMLIndexer, context: NSManagedObjectContext) {
         guard let slotNumber = getNumberFrom(xml) else {
             return
         }
-        let person = Database.getPersonBy(username: SavedVariables.username!, context: SavedVariables.cdh.backgroundContext!)
+        let person = Database.getPersonBy(username: SavedVariables.username!, context: context)
         for index in 0...slotNumber-1 {
             let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
             let subject = content["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
@@ -138,32 +180,32 @@ class KOSAPI {
             }
             let parity = slot["parity"].element?.text
             let room = slot["room"].element?.text
-            Database.addSlotTo(context: SavedVariables.cdh.backgroundContext!, type: type, subject: subject, subjectName: subjectName, teacher: teacher, day: day, duration: duration, firstHour: firstHour, parity: parity, room: room, person: person)
+            Database.addSlotTo(context: context, type: type, subject: subject, subjectName: subjectName, teacher: teacher, day: day, duration: duration, firstHour: firstHour, parity: parity, room: room, person: person)
         }
     }
     
-    private class func currentSemesterParser(xml: XMLIndexer) {
+    private class func currentSemesterParser(xml: XMLIndexer, context: NSManagedObjectContext) {
         SavedVariables.currentSemester = xml["atom:entry"]["atom:content"]["code"].element?.text
         print("Current semester: \(SavedVariables.currentSemester)")
         if let currentSemester = SavedVariables.currentSemester, accessToken = LoginHelper.getAuthToken() {
-            Database.setSavedVariables(SavedVariables.cdh.backgroundContext!, username: SavedVariables.username!, currentSemester: currentSemester, accessToken: accessToken, refreshToken: LoginHelper.refreshToken, expires: LoginHelper.expires)
+            Database.setSavedVariables(context, username: SavedVariables.username!, currentSemester: currentSemester, accessToken: accessToken, refreshToken: LoginHelper.refreshToken, expires: LoginHelper.expires)
         }
     }
     
-    private class func teachersParser(xml: XMLIndexer) {
+    private class func teachersParser(xml: XMLIndexer, context: NSManagedObjectContext) {
         guard let teacherNumber = getNumberFrom(xml) else {
             return
         }
         for index in 0...teacherNumber-1 {
             let title = xml["atom:feed"]["atom:entry"][index]["atom:title"].element?.text
             let person = personInfoParser(xml, index: index)
-            Database.addPersonTo(context: SavedVariables.cdh.backgroundContext!, firstName: person.firstName, lastName: person.lastName, username: person.username, email: person.email, personalNumber: person.personalNumber, title: title)
+            Database.addPersonTo(context: context, firstName: person.firstName, lastName: person.lastName, username: person.username, email: person.email, personalNumber: person.personalNumber, title: title)
         }
     }
     
-    private class func userParser(xml: XMLIndexer) {
+    private class func userParser(xml: XMLIndexer, context: NSManagedObjectContext) {
         let person = personInfoParser(xml, index: -1)
-        Database.addPersonTo(context: SavedVariables.cdh.backgroundContext!, firstName: person.firstName, lastName: person.lastName, username: person.username, email: person.email, personalNumber: person.personalNumber, title: nil)
+        Database.addPersonTo(context: context, firstName: person.firstName, lastName: person.lastName, username: person.username, email: person.email, personalNumber: person.personalNumber, title: nil)
 
     }
     
@@ -182,40 +224,53 @@ class KOSAPI {
         return (firstName: firstName, lastName: lastName, username: username, email: email, personalNumber: personalNumber)
     }
 
-    private class func semesterParser(xml: XMLIndexer) {
-        let subjectNumberStr = xml["atom:feed"]["osearch:totalResults"].element?.text
-        guard let uSubjectNumberStr = subjectNumberStr, subjectNumber = Int(uSubjectNumberStr) else {
+    private class func semesterParser(xml: XMLIndexer, context: NSManagedObjectContext) {
+        guard let number = getNumberFrom(xml) else {
             return
         }
-        for index in 0...subjectNumber-1 {
+        for index in 0...number-1 {
             let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
             let semesterID = content["semester"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("semesters/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
-            if let semID = semesterID {
-                if SavedVariables.semesterIDNameDict[semID] == nil {
-                    let semesterName = content["semester"].element?.text
-                    SavedVariables.semesterIDNameDict[semID] = semesterName
-                    Database.addSemesterTo(context: SavedVariables.cdh.backgroundContext!, name: semesterName, id: semID)
-                }
+            guard let semID = semesterID else {
+                return
             }
-            
-            let completedStr = content["completed"].element?.text
-            let subjectName = content["course"].element?.text
-            let code = content["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
-            var completed = 0
-            if completedStr == "true" {
-                completed = 1
+            var semester: Semester?
+            if SavedVariables.semesterIDNameDict[semID] == nil {
+                let semesterName = content["semester"].element?.text
+                SavedVariables.semesterIDNameDict[semID] = semesterName
+                semester = Database.addSemesterTo(context: context, name: semesterName, id: semID)
+            } else {
+                semester = Database.getSemesterBy(semID, context: context)
             }
-            else {
-                completed = 0
-            }
-            if let uCode = code {
-                SavedVariables.subjectCodes.append(uCode)
-            }
-            Database.addSubjectTo(context: SavedVariables.cdh.backgroundContext!, code: code, name: subjectName, completed: completed, credits: nil, semester: semesterID)
+            subjectParser(xml, semester: semester, index: index, context: context)
         }
     }
+    
+    private class func subjectsParser(xml: XMLIndexer, context: NSManagedObjectContext) {
+        guard let number = getNumberFrom(xml) else {
+            return
+        }
+        let semester = Database.getSemesterBy(semesterID, context: context)
+        for index in 0...number-1 {
+            subjectParser(xml, semester: semester, index: index, context: context)
+        }
+    }
+    
+    private class func subjectParser(xml: XMLIndexer, semester: Semester?, index: Int, context: NSManagedObjectContext) {
+        let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
+        let completedStr = content["completed"].element?.text
+        let subjectName = content["course"].element?.text
+        let code = content["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
+        var completed = 0
+        if completedStr == "true" {
+            completed = 1
+        } else {
+            completed = 0
+        }
+        Database.addSubjectTo(context: context, code: code, name: subjectName, completed: completed, credits: nil, semester: semester)
+    }
 
-    private class func subjectsDetailsParser(xml: XMLIndexer) {
+    private class func subjectsDetailsParser(xml: XMLIndexer, context: NSManagedObjectContext) {
         guard let number = getNumberFrom(xml) else {
             return
         }
@@ -223,7 +278,7 @@ class KOSAPI {
             let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
             let code = content["code"].element?.text
             let credits = content["credits"].element?.text
-            Database.changeSubjectBy(code: code, name: nil, completed: nil, credits: credits, semester: nil, context: SavedVariables.cdh.backgroundContext!)
+            Database.changeSubjectBy(code: code, name: nil, completed: nil, credits: credits, semester: nil, context: context)
         }
     }
     
@@ -238,9 +293,9 @@ class KOSAPI {
         return number
     }
     
-    private class func download(name: String, extensionURL: String, parser: (XMLIndexer) -> Void) {
+    private class func download(name: String, extensionURL: String, context: NSManagedObjectContext, parser: (XMLIndexer, NSManagedObjectContext) -> Void) {
         dispatch_async(dispatch_get_main_queue(), {
-            increaseProgressBar(9)
+            increaseProgressBar?(9)
             return
         })
         let request = NSMutableURLRequest(URL: NSURL(string: baseURL + extensionURL)!)
@@ -259,11 +314,11 @@ class KOSAPI {
 
             if let uData = data {
                 let xml = SWXMLHash.parse(uData)
-                parser(xml)
+                parser(xml, context)
             }
             running = false
             dispatch_async(dispatch_get_main_queue(), {
-                increaseProgressBar(8)
+                increaseProgressBar?(8)
                 return
             })
         }

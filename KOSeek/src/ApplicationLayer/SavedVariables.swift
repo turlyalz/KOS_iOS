@@ -19,7 +19,6 @@ class SavedVariables {
     static var password: String?
     static var semesterIDNameDict: [String:String] = [:]
     static var currentSemester: String?
-    static var subjectCodes: [String] = []
     static var canDropDownMenuShow: Bool = false
 
     class func resetAll() {
@@ -27,6 +26,5 @@ class SavedVariables {
         password = nil
         semesterIDNameDict = [:]
         currentSemester = nil
-        subjectCodes = []
     }
 }

@@ -8,10 +8,11 @@
 
 import UIKit
 
-/// Base class for all ViewControllers
+/// Base class for all ViewControllers (with control refresh functionality)
 class MainTableViewController: UITableViewController {
     
-    var menuButton: UIBarButtonItem!
+    private var menuButton: UIBarButtonItem!
+    private let tableRefreshControl = UIRefreshControl()
     var childFuncBeforeShowSideMenu: () -> () = {}
     
     override func viewDidLoad() {
@@ -25,6 +26,16 @@ class MainTableViewController: UITableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         self.navigationItem.leftBarButtonItem = menuButton
+    }
+    
+    func makePullToRefresh(triggerToMethodName: String) {
+        tableRefreshControl.backgroundColor = UIColor.whiteColor()
+        tableRefreshControl.addTarget(self, action: Selector(triggerToMethodName), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(tableRefreshControl)
+    }
+    
+    func endRefreshing() {
+        tableRefreshControl.endRefreshing()
     }
     
     func menuButtonPressed() {
