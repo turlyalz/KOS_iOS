@@ -30,6 +30,7 @@ class CourseEventsViewController: TableContentViewController {
         }
         super.header = ["Date", "Time", "Place", "Occ/Cap", "Cancel deadline"]
         super.sizes = [6.0, 8.5, 7.5, 7.5, 6.0]
+        makePullToRefresh("refreshTableView")
     }
     
     func unwrap(value: String?) -> String {
@@ -38,6 +39,21 @@ class CourseEventsViewController: TableContentViewController {
             result = val
         }
         return result
+    }
+    
+    func refreshTableView() {
+        if (!Reachability.isConnectedToNetwork()) {
+            return
+        }/*
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
+            Database.delete("Exam", context: SavedVariables.cdh.backgroundContext!)
+            OpenHoursDownloader.download()
+            self.setTable()
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                self.endRefreshing()
+            })
+        })*/
     }
 
 }

@@ -92,4 +92,12 @@ class SemesterViewController: MainTableViewController {
         }
         return cell
     }
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if tableView.numberOfRowsInSection(section) == 0 {
+            tableView.scrollEnabled = true
+            return nil
+        }
+        return super.tableView(tableView, viewForFooterInSection: section)
+    }
 }
