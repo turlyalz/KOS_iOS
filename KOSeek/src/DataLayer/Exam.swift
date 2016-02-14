@@ -1,15 +1,15 @@
 //
-//  TimetableSlot.swift
+//  Exam.swift
 //  KOSeek
 //
-//  Created by Alzhan on 27.11.15.
-//  Copyright © 2015 Alzhan Turlybekov. All rights reserved.
+//  Created by Alzhan on 14.02.16.
+//  Copyright © 2016 Alzhan Turlybekov. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-class TimetableSlot: NSManagedObject {
+class Exam: NSManagedObject {
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }

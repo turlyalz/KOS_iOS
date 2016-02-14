@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Xcode 7.0">
+    <entity name="Exam" representedClassName=".Exam" syncable="YES">
+        <attribute name="cancelDeadline" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="capacity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="occupied" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="room" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signinDeadline" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subject" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="termType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="OpenHours" representedClassName="NSManagedObject" syncable="YES">
         <attribute name="data" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
@@ -44,11 +55,12 @@
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="timetableSlots" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
-        <element name="OpenHours" positionX="-1154" positionY="-396" width="128" height="60"/>
+        <element name="OpenHours" positionX="-1361" positionY="-402" width="128" height="60"/>
         <element name="Person" positionX="-1359" positionY="-612" width="128" height="150"/>
         <element name="SavedVariables" positionX="-1539" positionY="-396" width="128" height="120"/>
         <element name="Semester" positionX="-981" positionY="-603" width="128" height="88"/>
         <element name="Subject" positionX="-1161" positionY="-648" width="128" height="118"/>
         <element name="TimetableSlot" positionX="-1541" positionY="-657" width="128" height="193"/>
+        <element name="Exam" positionX="-1179" positionY="-405" width="128" height="178"/>
     </elements>
 </model>

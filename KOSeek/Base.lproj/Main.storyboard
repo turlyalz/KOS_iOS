@@ -184,6 +184,7 @@
                         <segue destination="BPB-b9-845" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="vwg-3F-iqu"/>
                         <segue destination="RuO-Zx-omT" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="kPD-FR-EI4"/>
                         <segue destination="Zes-4r-aZE" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="fT1-Nq-pnK"/>
+                        <segue destination="E8I-kc-PKa" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="Bjo-3h-1St"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ys-9q-EpN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -327,8 +328,31 @@
                                     <segue destination="6Ji-5c-54X" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Q2c-SP-SKF"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Results" id="g7n-oZ-37v">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Course Events" id="7oV-2v-a3Q" userLabel="Course Events">
                                 <rect key="frame" x="0.0" y="228" width="600" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7oV-2v-a3Q" id="MQ6-tr-Mrd">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Course Events" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kXE-8W-Yfw" userLabel="Course Events">
+                                            <rect key="frame" x="51" y="15" width="119" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="exams" translatesAutoresizingMaskIntoConstraints="NO" id="qUL-bu-WNT">
+                                            <rect key="frame" x="17" y="15" width="20" height="20"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.47058823529999999" green="0.63529411759999999" blue="0.71204255760000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="E8I-kc-PKa" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="QGR-WY-wp3"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Results" id="g7n-oZ-37v">
+                                <rect key="frame" x="0.0" y="274" width="600" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g7n-oZ-37v" id="HXZ-CV-sgn">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
@@ -351,7 +375,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Search People" id="FbL-fd-PIi">
-                                <rect key="frame" x="0.0" y="274" width="600" height="46"/>
+                                <rect key="frame" x="0.0" y="320" width="600" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FbL-fd-PIi" id="nsw-8F-DCq">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
@@ -374,7 +398,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Student Office" id="rlm-0k-zeN" userLabel="Student Office">
-                                <rect key="frame" x="0.0" y="320" width="600" height="46"/>
+                                <rect key="frame" x="0.0" y="366" width="600" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rlm-0k-zeN" id="ey3-Q1-zBB">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
@@ -397,7 +421,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogOut" id="6mP-4B-rJA">
-                                <rect key="frame" x="0.0" y="366" width="600" height="46"/>
+                                <rect key="frame" x="0.0" y="412" width="600" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6mP-4B-rJA" id="gsJ-FM-5TU">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
@@ -734,6 +758,45 @@
             </objects>
             <point key="canvasLocation" x="2717" y="-542"/>
         </scene>
+        <!--Course Events-->
+        <scene sceneID="e9u-id-BMs">
+            <objects>
+                <tableViewController id="PAM-P5-uPR" customClass="CourseEventsViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pYj-VI-Xdv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="PAM-P5-uPR" id="sj3-XP-Q0F"/>
+                            <outlet property="delegate" destination="PAM-P5-uPR" id="EKX-AE-Ojb"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Course Events" id="lRU-1F-VsL"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a1q-DY-HVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4844" y="2182"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="U7G-5b-dyR">
+            <objects>
+                <navigationController id="E8I-kc-PKa" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lex-wq-TTO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.43137254899999999" green="0.45098039220000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="PAM-P5-uPR" kind="relationship" relationship="rootViewController" id="vLI-TE-HkB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TtZ-cj-Rvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4844" y="1355"/>
+        </scene>
     </scenes>
     <resources>
         <image name="exams" width="64" height="64"/>
@@ -747,14 +810,15 @@
         <image name="update" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3cb-r0-2Xc"/>
-        <segue reference="DYU-8V-Yjc"/>
+        <segue reference="5X7-8d-YpJ"/>
         <segue reference="uIv-US-8Aj"/>
-        <segue reference="oQ7-TJ-uoE"/>
-        <segue reference="PeF-pM-b66"/>
-        <segue reference="Q2c-SP-SKF"/>
-        <segue reference="Av4-Fp-A59"/>
-        <segue reference="pn5-gg-Cwc"/>
-        <segue reference="gqg-lU-my3"/>
+        <segue reference="kPD-FR-EI4"/>
+        <segue reference="fT1-Nq-pnK"/>
+        <segue reference="Bjo-3h-1St"/>
+        <segue reference="9HU-us-G6V"/>
+        <segue reference="9cO-8Q-G0I"/>
+        <segue reference="FBU-Bn-6l6"/>
+        <segue reference="IJA-97-2dF"/>
+        <segue reference="vwg-3F-iqu"/>
     </inferredMetricsTieBreakers>
 </document>

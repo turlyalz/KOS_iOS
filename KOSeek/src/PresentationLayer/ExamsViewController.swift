@@ -50,7 +50,7 @@ class ExamsViewController: DropdownMenuViewController {
     }
     
     func didSelectSubject(subjectCode: String) {
-        let exams: [[String]] = KOSAPI.downloadExamBy(subjectCode)
+        /*let exams: [[String]] = KOSAPI.downloadExamBy(subjectCode)
         super.data = exams
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
@@ -59,6 +59,6 @@ class ExamsViewController: DropdownMenuViewController {
                 createAlertView("", text: "No available exams", viewController: self, handlers: ["OK": {_ in }])
             }
             return
-        })
+        })*/
     }
 }

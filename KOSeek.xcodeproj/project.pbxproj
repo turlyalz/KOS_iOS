@@ -27,6 +27,9 @@
 		9C2BFD281BF51B0200744E85 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2BFD271BF51B0200744E85 /* ProfileViewController.swift */; };
 		9C2BFD2A1BF5420E00744E85 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2BFD291BF5420E00744E85 /* Database.swift */; };
 		9C2D987D1BDFA37A00CF5A11 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D987C1BDFA37A00CF5A11 /* SWRevealViewController.m */; };
+		9C2EEFA41C712A0A003C3BEA /* CourseEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2EEFA31C712A0A003C3BEA /* CourseEventsViewController.swift */; };
+		9C2EEFA71C712CE0003C3BEA /* Exam+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2EEFA51C712CE0003C3BEA /* Exam+CoreDataProperties.swift */; };
+		9C2EEFA81C712CE0003C3BEA /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2EEFA61C712CE0003C3BEA /* Exam.swift */; };
 		9C31E5951BDE4B7C004FF6CB /* LoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C31E5941BDE4B7C004FF6CB /* LoginHelper.swift */; };
 		9C43A1041BF7F67A0018ABB0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C43A1031BF7F67A0018ABB0 /* Constants.swift */; };
 		9C5523D51C03B6CD00DC6A04 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5523D31C03B6CD00DC6A04 /* Person+CoreDataProperties.swift */; };
@@ -61,7 +64,6 @@
 		9CA969671C654FA0001291C1 /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9695A1C654FA0001291C1 /* SourceLocation.swift */; };
 		9CA969681C654FA0001291C1 /* View+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9695B1C654FA0001291C1 /* View+SnapKit.swift */; };
 		9CA969691C654FA0001291C1 /* ViewController+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9695C1C654FA0001291C1 /* ViewController+SnapKit.swift */; };
-		9CB8E5A11C11C1BE00804F38 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB8E5A01C11C1BE00804F38 /* Exam.swift */; };
 		9CCF603B1C6142D00024A91D /* OpenHoursDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF603A1C6142D00024A91D /* OpenHoursDownloader.swift */; };
 		9CCFF9361C5CCC2400868703 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFF9351C5CCC2400868703 /* Reachability.swift */; };
 		9CE171651BF8A48900C56D2F /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */; };
@@ -128,6 +130,9 @@
 		9C2D987B1BDFA37A00CF5A11 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		9C2D987C1BDFA37A00CF5A11 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		9C2D987F1BDFA3D300CF5A11 /* KOSeek-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KOSeek-Bridging-Header.h"; sourceTree = "<group>"; };
+		9C2EEFA31C712A0A003C3BEA /* CourseEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseEventsViewController.swift; sourceTree = "<group>"; };
+		9C2EEFA51C712CE0003C3BEA /* Exam+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Exam+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9C2EEFA61C712CE0003C3BEA /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
 		9C31E5941BDE4B7C004FF6CB /* LoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginHelper.swift; sourceTree = "<group>"; };
 		9C43A1031BF7F67A0018ABB0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9C5523D31C03B6CD00DC6A04 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -163,7 +168,6 @@
 		9CA9695A1C654FA0001291C1 /* SourceLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceLocation.swift; sourceTree = "<group>"; };
 		9CA9695B1C654FA0001291C1 /* View+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+SnapKit.swift"; sourceTree = "<group>"; };
 		9CA9695C1C654FA0001291C1 /* ViewController+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+SnapKit.swift"; sourceTree = "<group>"; };
-		9CB8E5A01C11C1BE00804F38 /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
 		9CCF603A1C6142D00024A91D /* OpenHoursDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenHoursDownloader.swift; sourceTree = "<group>"; };
 		9CCFF9351C5CCC2400868703 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 				9C9841001C5D5592009ACD05 /* MainTableViewController.swift */,
 				9C01D4EE1C63FF3B00D22C77 /* TableContentViewController.swift */,
 				9C57521D1C6001D3005FA457 /* StudentOfficeViewController.swift */,
+				9C2EEFA31C712A0A003C3BEA /* CourseEventsViewController.swift */,
 			);
 			name = SideMenuViewControllers;
 			sourceTree = "<group>";
@@ -326,7 +331,6 @@
 			isa = PBXGroup;
 			children = (
 				9C86AE821BF3B7870096C72E /* KOSModel.xcdatamodeld */,
-				9CB8E5A01C11C1BE00804F38 /* Exam.swift */,
 				9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */,
 				9CE171621BF8A48900C56D2F /* Subject.swift */,
 				9C6FB4D01BFE2E2700C682C4 /* Semester+CoreDataProperties.swift */,
@@ -335,6 +339,8 @@
 				9C5523D41C03B6CD00DC6A04 /* Person.swift */,
 				9C1A1B251C086A590050E03E /* TimetableSlot+CoreDataProperties.swift */,
 				9C1A1B261C086A590050E03E /* TimetableSlot.swift */,
+				9C2EEFA51C712CE0003C3BEA /* Exam+CoreDataProperties.swift */,
+				9C2EEFA61C712CE0003C3BEA /* Exam.swift */,
 			);
 			name = DataLayer;
 			path = src/DataLayer;
@@ -501,19 +507,20 @@
 				9C168A431C13105D006257EC /* NSDateExtension.swift in Sources */,
 				9CA969661C654FA0001291C1 /* SnapKit.swift in Sources */,
 				9CCFF9361C5CCC2400868703 /* Reachability.swift in Sources */,
+				9C2EEFA71C712CE0003C3BEA /* Exam+CoreDataProperties.swift in Sources */,
 				9C1B2E311C5E9C4600FC30C3 /* StringExtension.swift in Sources */,
 				9C57521E1C6001D3005FA457 /* StudentOfficeViewController.swift in Sources */,
 				9C9E50211BE12C2E009B6CB1 /* ExamsViewController.swift in Sources */,
 				9C6FB4D31BFE2E2700C682C4 /* Semester.swift in Sources */,
 				9C015DDA1C05FF410074B6F6 /* CoreDataHelper.swift in Sources */,
 				9C6FB4DB1BFE811100C682C4 /* BTNavigationDropdownMenu.swift in Sources */,
+				9C2EEFA81C712CE0003C3BEA /* Exam.swift in Sources */,
 				9CA9695F1C654FA0001291C1 /* ConstraintDescription.swift in Sources */,
 				9CA9695E1C654FA0001291C1 /* ConstraintAttributes.swift in Sources */,
 				9CA969671C654FA0001291C1 /* SourceLocation.swift in Sources */,
 				9CA969611C654FA0001291C1 /* ConstraintMaker.swift in Sources */,
 				9CA969651C654FA0001291C1 /* LayoutConstraint.swift in Sources */,
 				9C9841011C5D5592009ACD05 /* MainTableViewController.swift in Sources */,
-				9CB8E5A11C11C1BE00804F38 /* Exam.swift in Sources */,
 				9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */,
 				9C2D987D1BDFA37A00CF5A11 /* SWRevealViewController.m in Sources */,
 				9CA969601C654FA0001291C1 /* ConstraintItem.swift in Sources */,
@@ -527,6 +534,7 @@
 				9C2BFD281BF51B0200744E85 /* ProfileViewController.swift in Sources */,
 				9C1A1B2F1C0911050050E03E /* TimetableTableViewController.swift in Sources */,
 				9C86AE3B1BF3B1F60096C72E /* WaitingViewController.swift in Sources */,
+				9C2EEFA41C712A0A003C3BEA /* CourseEventsViewController.swift in Sources */,
 				9C5523D61C03B6CD00DC6A04 /* Person.swift in Sources */,
 				9CA9695D1C654FA0001291C1 /* Constraint.swift in Sources */,
 				9C2BFD2A1BF5420E00744E85 /* Database.swift in Sources */,

@@ -54,7 +54,7 @@ class ProfileViewController: MainTableViewController {
         let alertLoadingView = UIAlertController(title: "", message: "Downloading. Please Wait.", preferredStyle: UIAlertControllerStyle.Alert)
         alertLoadingView.view.addSubview(progressView)
         self.presentViewController(alertLoadingView, animated: true, completion: nil)
-        Database.deleteOnlyUserData(context: SavedVariables.cdh.backgroundContext!)
+        Database.delete(context: SavedVariables.cdh.backgroundContext!, onlyUserData: true)
         SavedVariables.semesterIDNameDict = [:]
         KOSAPI.onComplete = {
             self.dismissViewControllerAnimated(true, completion: nil)

@@ -56,6 +56,52 @@ class Database {
         return nil
     }
     
+    class func addExamTo(context context: NSManagedObjectContext, name: String?, capacity: String?, occupied: String?, startDate: String?, room: String?, cancelDeadline: String?, signinDeadline: String?, termType: String?, subject: String?) {
+        let entityDescription = NSEntityDescription.entityForName("Exam", inManagedObjectContext: context)
+        let exam = Exam(entity: entityDescription!, insertIntoManagedObjectContext: context)
+        exam.name = name
+        exam.occupied = occupied
+        exam.startDate = startDate
+        exam.room = room
+        exam.cancelDeadline = cancelDeadline
+        exam.signinDeadline = signinDeadline
+        exam.termType = termType
+        exam.subject = subject
+        saveContext(context)
+    }
+    
+    private class func getExamsBy(subject subject: String, context: NSManagedObjectContext) -> [Exam]? {
+        let request = NSFetchRequest(entityName: "Exam")
+        request.returnsObjectsAsFaults = false
+        request.predicate = NSPredicate(format: "subject == %@", subject)
+        do {
+            let results = try context.executeFetchRequest(request)
+            if results.count > 0 {
+                return results as? [Exam]
+            }
+        }
+        catch let error as NSError {
+            debugPrint(error)
+        }
+        return nil
+    }
+    
+    class func getCourseEvents(context: NSManagedObjectContext) -> [Exam]? {
+        let request = NSFetchRequest(entityName: "Exam")
+        request.returnsObjectsAsFaults = false
+        request.predicate = NSPredicate(format: "termType == %@", "COURSE_EVENT")
+        do {
+            let results = try context.executeFetchRequest(request)
+            if results.count > 0 {
+                return results as? [Exam]
+            }
+        }
+        catch let error as NSError {
+            debugPrint(error)
+        }
+        return nil
+    }
+    
     class func getOpenHoursData(context: NSManagedObjectContext) -> NSData? {
         let request = NSFetchRequest(entityName: "OpenHours")
         request.returnsObjectsAsFaults = false
@@ -78,20 +124,15 @@ class Database {
     }
     
     // Delete all data from database.
-    class func delete(context context: NSManagedObjectContext) {
+    class func delete(context context: NSManagedObjectContext, onlyUserData: Bool) {
         delete("Person", context: context)
         delete("Subject", context: context)
         delete("Semester", context: context)
         delete("TimetableSlot", context: context)
-        delete("SavedVariables", context: context)
-        delete("OpenHours", context: context)
-    }
-    
-    class func deleteOnlyUserData(context context: NSManagedObjectContext) {
-        delete("Person", context: context)
-        delete("Subject", context: context)
-        delete("Semester", context: context)
-        delete("TimetableSlot", context: context)
+        if !onlyUserData {
+            delete("SavedVariables", context: context)
+        }
+        delete("Exam", context: context)
         delete("OpenHours", context: context)
     }
     

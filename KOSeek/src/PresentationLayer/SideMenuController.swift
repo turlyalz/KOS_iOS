@@ -10,7 +10,7 @@ import UIKit
 
 class SideMenuController: UITableViewController {
     
-    private let menus = ["Username", "Timetable", "Semester", "Exams", "Results", "Search People", "Student Office", "LogOut"]
+    private let menus = ["Username", "Timetable", "Semester", "Exams", "Course Events", "Results", "Search People", "Student Office", "LogOut"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

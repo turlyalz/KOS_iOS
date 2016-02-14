@@ -23,6 +23,7 @@ class KOSAPI {
     
     private static let baseURL = "https://kosapi.fit.cvut.cz/api/3"
     private static var semesterID = "none"
+    private static var courseEvent = false
     
     /// Download all data
     class func downloadAllData(context: NSManagedObjectContext) {
@@ -35,6 +36,7 @@ class KOSAPI {
         downloadCurrentSemester(context)
         downloadTeachers(context)
         downloadSubjectsInfo(context)
+        downloadAllCourseEvents(context)
         dispatch_async(dispatch_get_main_queue(), {
             increaseProgressBar?(100)
             onComplete()
@@ -99,56 +101,53 @@ class KOSAPI {
         download("Subjects Info", extensionURL: url, context: context, parser: subjectsDetailsParser)
     }
     
-    class func downloadExamBy(subjectCode: String) -> [[String]] {
+    class func downloadExamBy(subjectCode: String, context: NSManagedObjectContext) {
         guard let currentSemester = SavedVariables.currentSemester, accessToken = LoginHelper.getAuthToken() else {
-            return []
+            return
         }
-        var examsExtensionURL =  "/exams/?access_token=" + accessToken + "&query=semester='" + currentSemester
-        examsExtensionURL += "';course='" + subjectCode + "'&limit=1000"
-        return downloadExams("Exam for subject: " + subjectCode, extensionURL: examsExtensionURL)
+        var extensionURL =  "/exams/?access_token=" + accessToken + "&query=semester='" + currentSemester
+        extensionURL += "';course='" + subjectCode + "'&limit=1000"
+        courseEvent = false
+        download("Exams for subject: " + subjectCode, extensionURL: extensionURL, context: context, parser: examsOrCourseEventsParser)
     }
     
-    class func convertNil(array: [String?]) -> [String] {
-        var result: [String] = []
-        for value in array {
-            if let value = value {
-                result.append(value)
-            } else {
-                result.append("")
-            }
+    class func downloadAllCourseEvents(context: NSManagedObjectContext) {
+        guard let currentSemester = SavedVariables.currentSemester, accessToken = LoginHelper.getAuthToken() else {
+            return
         }
-        return result
+        let extensionURL =  "/courseEvents/?access_token=" + accessToken + "&query=semester='" + currentSemester + "&limit=1000"
+        courseEvent = true
+        download("Course events", extensionURL: extensionURL, context: context, parser: examsOrCourseEventsParser)
     }
     
-    private class func examsParser(xml: XMLIndexer) -> [[String]] {
+    private class func examsOrCourseEventsParser(xml: XMLIndexer, context: NSManagedObjectContext) {
         guard let examNumber = getNumberFrom(xml) else {
-            return []
+            return
         }
-        var exams: [[String]] = []
         for index in 0...examNumber-1 {
             let content = xml["atom:feed"]["atom:entry"][index]["atom:content"]
+            let subject = content["course"].element?.attributes["xlink:href"]?.stringByReplacingOccurrencesOfString("courses/", withString: "").stringByReplacingOccurrencesOfString("/", withString: "")
+            let name = content["name"].element?.text
             let startDate = content["startDate"].element?.text
             let room = content["room"].element?.text
             let capacity = content["capacity"].element?.text
             let occupied = content["occupied"].element?.text
-            //let signinDeadline = content["signinDeadline"].element?.text
+            let signinDeadline = content["signinDeadline"].element?.text
             let cancelDeadline = content["cancelDeadline"].element?.text
-            //let termType = content["termType"].element?.text
-            var exam = convertNil([startDate, room, capacity, occupied, cancelDeadline])
-            if isLateDate(exam[0]) {
+            var termType: String?
+            if courseEvent {
+                termType = "COURSE_EVENT"
+            } else {
+                termType = content["termType"].element?.text
+            }
+            guard let uStartDate = startDate else {
                 continue
             }
-            let dateTuple = formatDateString(exam[0])
-            exam.removeFirst()
-            let occ = exam[2] + "/" + exam[1]
-            exam.removeAtIndex(1)
-            exam.removeAtIndex(1)
-            exam.insert(occ, atIndex: 1)
-            exam.insert(dateTuple.date, atIndex: 0)
-            exam.insert(dateTuple.time, atIndex: 1)
-            exams.append(exam)
+            if isLateDate(uStartDate) {
+                continue
+            }
+            Database.addExamTo(context: context, name: name, capacity: capacity, occupied: occupied, startDate: startDate, room: room, cancelDeadline: cancelDeadline, signinDeadline: signinDeadline, termType: termType, subject: subject)
         }
-        return exams
     }
     
     private class func timetableSlotParser(xml: XMLIndexer, context: NSManagedObjectContext) {
@@ -333,39 +332,6 @@ class KOSAPI {
         if failed || errorOcurredIn(task.response) || count >= MaxWaitForResponse{
             print("Unable to download \(name)")
         }
-    }
-    
-    private class func downloadExams(name: String, extensionURL: String) -> [[String]] {
-        let request = NSMutableURLRequest(URL: NSURL(string: baseURL + extensionURL)!)
-        request.HTTPMethod = "GET"
-        print("Request = \(request)")
-        var failed = false
-        var running = false
-        var exams: [[String]] = []
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, _, error in
-            if error != nil {
-                print("error=\(error)")
-                failed = true
-                return
-            }
-            if let uData = data {
-                let xml = SWXMLHash.parse(uData)
-                exams = examsParser(xml)
-            }
-            running = false
-        }
-        running = true
-        task.resume()
-        var count = 0
-        while running && !failed && count < MaxWaitForResponse {
-            print("waiting for response...")
-            sleep(1)
-            count++
-        }
-        if failed || errorOcurredIn(task.response) || count >= MaxWaitForResponse{
-            print("Unable to download \(name)")
-        }
-        return exams
     }
 }
 
