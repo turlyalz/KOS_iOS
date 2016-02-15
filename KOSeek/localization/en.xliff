@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="KOSeek/Base.lproj/LaunchScreen.storyboard" source-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.2" build-num="7C68"/>
+    </header>
+    <body>
+      <trans-unit id="I7b-dX-TE9.text">
+        <source>Welcome to KOSeek</source>
+        <note>Class = "UILabel"; text = "Welcome to KOSeek"; ObjectID = "I7b-dX-TE9";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="KOSeek/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.2" build-num="7C68"/>
+    </header>
+    <body>
+      <trans-unit id="1gi-8p-B6A.text">
+        <source>Student Office</source>
+        <note>Class = "UILabel"; text = "Student Office"; ObjectID = "1gi-8p-B6A";</note>
+      </trans-unit>
+      <trans-unit id="2pb-Ua-NL8.text">
+        <source>Exams</source>
+        <note>Class = "UILabel"; text = "Exams"; ObjectID = "2pb-Ua-NL8";</note>
+      </trans-unit>
+      <trans-unit id="5qP-3Z-Xiy.title">
+        <source>Student Office</source>
+        <note>Class = "UINavigationItem"; title = "Student Office"; ObjectID = "5qP-3Z-Xiy";</note>
+      </trans-unit>
+      <trans-unit id="7LC-Y6-5qj.text">
+        <source>Username:</source>
+        <note>Class = "UILabel"; text = "Username:"; ObjectID = "7LC-Y6-5qj";</note>
+      </trans-unit>
+      <trans-unit id="8M9-o8-npt.title">
+        <source>Profile</source>
+        <note>Class = "UINavigationItem"; title = "Profile"; ObjectID = "8M9-o8-npt";</note>
+      </trans-unit>
+      <trans-unit id="102-DD-6Yy.text">
+        <source>Welcome to KOS iOS</source>
+        <note>Class = "UILabel"; text = "Welcome to KOS iOS"; ObjectID = "102-DD-6Yy";</note>
+      </trans-unit>
+      <trans-unit id="C8j-Ar-DPW.title">
+        <source>KOS iOS</source>
+        <note>Class = "UINavigationItem"; title = "KOS iOS"; ObjectID = "C8j-Ar-DPW";</note>
+      </trans-unit>
+      <trans-unit id="DhN-hH-WAM.normalTitle">
+        <source>Log In</source>
+        <note>Class = "UIButton"; normalTitle = "Log In"; ObjectID = "DhN-hH-WAM";</note>
+      </trans-unit>
+      <trans-unit id="HVY-p5-Dxd.text">
+        <source>Timetable</source>
+        <note>Class = "UILabel"; text = "Timetable"; ObjectID = "HVY-p5-Dxd";</note>
+      </trans-unit>
+      <trans-unit id="ICl-K0-qLS.text">
+        <source>People Search</source>
+        <note>Class = "UILabel"; text = "People Search"; ObjectID = "ICl-K0-qLS";</note>
+      </trans-unit>
+      <trans-unit id="Lqe-U6-R7q.title">
+        <source>Semester</source>
+        <note>Class = "UINavigationItem"; title = "Semester"; ObjectID = "Lqe-U6-R7q";</note>
+      </trans-unit>
+      <trans-unit id="SWd-E6-LLy.text">
+        <source>Password:</source>
+        <note>Class = "UILabel"; text = "Password:"; ObjectID = "SWd-E6-LLy";</note>
+      </trans-unit>
+      <trans-unit id="XZt-NZ-tdQ.text">
+        <source>Log out</source>
+        <note>Class = "UILabel"; text = "Log out"; ObjectID = "XZt-NZ-tdQ";</note>
+      </trans-unit>
+      <trans-unit id="dYP-e9-Nwd.title">
+        <source>Search</source>
+        <note>Class = "UINavigationItem"; title = "Search"; ObjectID = "dYP-e9-Nwd";</note>
+      </trans-unit>
+      <trans-unit id="kXE-8W-Yfw.text">
+        <source>Course Events</source>
+        <note>Class = "UILabel"; text = "Course Events"; ObjectID = "kXE-8W-Yfw";</note>
+      </trans-unit>
+      <trans-unit id="lRU-1F-VsL.title">
+        <source>Course Events</source>
+        <note>Class = "UINavigationItem"; title = "Course Events"; ObjectID = "lRU-1F-VsL";</note>
+      </trans-unit>
+      <trans-unit id="lgY-Ey-9nm.title">
+        <source>Even Week</source>
+        <note>Class = "UINavigationItem"; title = "Even Week"; ObjectID = "lgY-Ey-9nm";</note>
+      </trans-unit>
+      <trans-unit id="nWy-sD-hLz.title">
+        <source>Odd Week</source>
+        <note>Class = "UINavigationItem"; title = "Odd Week"; ObjectID = "nWy-sD-hLz";</note>
+      </trans-unit>
+      <trans-unit id="v2d-8j-Pki.text">
+        <source>Please wait. Downloading data.</source>
+        <note>Class = "UILabel"; text = "Please wait. Downloading data."; ObjectID = "v2d-8j-Pki";</note>
+      </trans-unit>
+      <trans-unit id="v93-K3-Cxy.text">
+        <source>Semester</source>
+        <note>Class = "UILabel"; text = "Semester"; ObjectID = "v93-K3-Cxy";</note>
+      </trans-unit>
+      <trans-unit id="w9R-UN-KPn.title">
+        <source>Results</source>
+        <note>Class = "UINavigationItem"; title = "Results"; ObjectID = "w9R-UN-KPn";</note>
+      </trans-unit>
+      <trans-unit id="xWm-eo-gtU.title">
+        <source>Exams</source>
+        <note>Class = "UINavigationItem"; title = "Exams"; ObjectID = "xWm-eo-gtU";</note>
+      </trans-unit>
+      <trans-unit id="xyl-Me-mtC.text">
+        <source>Results</source>
+        <note>Class = "UILabel"; text = "Results"; ObjectID = "xyl-Me-mtC";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="KOSeek/Info.plist" source-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.2" build-num="7C68"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="KOSeek/Localizable.strings" source-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.2" build-num="7C68"/>
+    </header>
+    <body>
+      <trans-unit id="Cancel deadline">
+        <source>Cancel deadline</source>
+        <note>Cancel deadline</note>
+      </trans-unit>
+      <trans-unit id="Date">
+        <source>Date</source>
+        <note>Date
+   Place</note>
+      </trans-unit>
+      <trans-unit id="Occ/Cap">
+        <source>Occ/Cap</source>
+        <note>Occ/Cap</note>
+      </trans-unit>
+      <trans-unit id="Time">
+        <source>Time</source>
+        <note>Time</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="KOSeekTests/Info.plist" source-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.2" build-num="7C68"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="KOSeekUITests/Info.plist" source-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.2" build-num="7C68"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
