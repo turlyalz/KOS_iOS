@@ -12,6 +12,9 @@ import Foundation
 let MaxWaitForResponse = 12
 let Parity = (Even: "EVEN", Odd: "ODD", Both: "BOTH")
 
+// Headers
+let examHeader = [NSLocalizedString("Date", comment: "Date"), NSLocalizedString("Time", comment: "Time"), NSLocalizedString("Date", comment: "Place"), NSLocalizedString("Occ/Cap", comment: "Occ/Cap"), NSLocalizedString("Cancel deadline", comment: "Cancel deadline")]
+
 // Colors
 let BGHeaderColor = UIColor(red: 80/255.0, green: 85/255.0, blue: 90/255.0, alpha: 1)
 let SlotTutorialColor = UIColor(red: 219/255.0, green: 242/255.0, blue: 219/255.0, alpha: 1)

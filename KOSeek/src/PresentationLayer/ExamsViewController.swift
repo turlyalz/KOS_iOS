@@ -35,7 +35,7 @@ class ExamsViewController: DropdownMenuViewController {
         activityIndicator.frame = CGRect(x: 25, y: 30, width: 10, height: 10)
         activityIndicator.startAnimating()
         alertLoadingView.view.addSubview(activityIndicator)
-        super.header = ["Date", "Time", "Place", "Occ/Cap", "Cancel deadline"]
+        super.header = examHeader
         super.sizes = [6.0, 8.5, 7.5, 7.5, 6.0]
     }
     

@@ -15,7 +15,7 @@ class CourseEventsViewController: TableContentViewController {
         super.viewDidLoad()
         courseEvents = Database.getCourseEvents(SavedVariables.cdh.managedObjectContext)
         super.data = fromExamsToData(courseEvents)
-        super.header = ["Date", "Time", "Place", "Occ/Cap", "Cancel deadline"]
+        super.header = examHeader
         super.sizes = [6.0, 8.5, 7.5, 7.5, 6.0]
         makePullToRefresh("refreshTableView")
         //createAlertView("", text: "No available one course events.\nPlease try later or pull to refresh", viewController: self, handlers: ["OK": {_ in }])
