@@ -70,7 +70,7 @@ class Database {
         saveContext(context)
     }
     
-    private class func getExamsBy(subject subject: String, context: NSManagedObjectContext) -> [Exam]? {
+    class func getExamsBy(subject subject: String, context: NSManagedObjectContext) -> [Exam]? {
         let request = NSFetchRequest(entityName: "Exam")
         request.returnsObjectsAsFaults = false
         request.predicate = NSPredicate(format: "subject == %@", subject)

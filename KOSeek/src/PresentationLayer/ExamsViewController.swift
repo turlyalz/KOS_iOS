@@ -19,12 +19,13 @@ class ExamsViewController: DropdownMenuViewController {
         guard let semester = SavedVariables.currentSemester, subs = Database.getSubjectsBy(semesterID: semester, context: SavedVariables.cdh.managedObjectContext) else {
             return
         }
-        self.subjects.append("Please select subject")
         for subject in subs {
             if let code = subject.code {
                 self.subjects.append(code)
             }
         }
+        self.subjects.sortInPlace(<)
+        self.subjects.insert("Please select subject", atIndex: 0)
         super.dropdownData = self.subjects
         super.didSelectItemHandler = { indexPath in
             self.didSelectItem(indexPath)
@@ -50,15 +51,19 @@ class ExamsViewController: DropdownMenuViewController {
     }
     
     func didSelectSubject(subjectCode: String) {
-        /*let exams: [[String]] = KOSAPI.downloadExamBy(subjectCode)
-        super.data = exams
+        var exams = Database.getExamsBy(subject: subjectCode, context: SavedVariables.cdh.backgroundContext!)
+        if exams == nil {
+            KOSAPI.downloadExamBy(subjectCode, context: SavedVariables.cdh.backgroundContext!)
+            exams = Database.getExamsBy(subject: subjectCode, context: SavedVariables.cdh.backgroundContext!)
+        }
+        super.data = fromExamsToData(exams)
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
             self.alertLoadingView.dismissViewControllerAnimated(true, completion: nil)
-            if exams.count == 0 {
+            if super.data.count == 0 {
                 createAlertView("", text: "No available exams", viewController: self, handlers: ["OK": {_ in }])
             }
             return
-        })*/
+        })
     }
 }

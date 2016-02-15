@@ -14,46 +14,24 @@ class CourseEventsViewController: TableContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         courseEvents = Database.getCourseEvents(SavedVariables.cdh.managedObjectContext)
-        if let uCourseEvents = courseEvents {
-            for courseEvent in uCourseEvents {
-                var dateTuple: (date: String, time: String) = (date: "", time: "")
-                if let startDate = courseEvent.startDate {
-                    dateTuple = formatDateString(startDate)
-                }
-                var totalCap = ""
-                if let occ = courseEvent.occupied, cap = courseEvent.capacity {
-                    totalCap += occ + "/" + cap
-                }
-                let array = [dateTuple.date, dateTuple.time, unwrap(courseEvent.room), totalCap, unwrap(courseEvent.cancelDeadline)]
-                super.data.append(array)
-            }
-        }
+        super.data = fromExamsToData(courseEvents)
         super.header = ["Date", "Time", "Place", "Occ/Cap", "Cancel deadline"]
         super.sizes = [6.0, 8.5, 7.5, 7.5, 6.0]
         makePullToRefresh("refreshTableView")
+        //createAlertView("", text: "No available one course events.\nPlease try later or pull to refresh", viewController: self, handlers: ["OK": {_ in }])
     }
-    
-    func unwrap(value: String?) -> String {
-        var result: String = ""
-        if let val = value {
-            result = val
-        }
-        return result
-    }
-    
+       
     func refreshTableView() {
         if (!Reachability.isConnectedToNetwork()) {
             return
-        }/*
+        }
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
-            Database.delete("Exam", context: SavedVariables.cdh.backgroundContext!)
-            OpenHoursDownloader.download()
-            self.setTable()
+            Database.deleteObjects("Exam", context: SavedVariables.cdh.backgroundContext!, predicate: NSPredicate(format: "termType == %@", "COURSE_EVENT"))
+            KOSAPI.downloadAllCourseEvents(SavedVariables.cdh.backgroundContext!)
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
                 self.endRefreshing()
             })
-        })*/
+        })
     }
-
 }

@@ -79,7 +79,7 @@ class SideMenuController: UITableViewController {
     
     func logOutHandler(action: UIAlertAction) -> Void {
         self.performSegueWithIdentifier("logOut", sender: self)
-        Database.delete(context: SavedVariables.cdh.managedObjectContext)
+        Database.delete(context: SavedVariables.cdh.managedObjectContext, onlyUserData: false)
         SavedVariables.resetAll()
     }
     

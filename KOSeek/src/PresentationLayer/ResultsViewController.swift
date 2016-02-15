@@ -67,7 +67,6 @@ class ResultsViewController: DropdownMenuViewController {
     
     func updateSubjects(semester: String) {
         if let subj = Database.getSubjectsBy(semesterID: semester, context: SavedVariables.cdh.managedObjectContext) {
-            print(subj.last?.code)
             subjects = subj
             semesterCreditsEnrolled = 0
             semesterCreditsObtained = 0
@@ -168,14 +167,6 @@ class ResultsViewController: DropdownMenuViewController {
             cell.backgroundColor = SlotTutorialColor
         }
         return cell
-    }
-    
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if tableView.numberOfRowsInSection(section) == 0 {
-            tableView.scrollEnabled = true
-            return nil
-        }
-        return super.tableView(tableView, viewForFooterInSection: section)
     }
 }
 

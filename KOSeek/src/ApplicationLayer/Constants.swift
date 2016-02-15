@@ -5,6 +5,7 @@
 //  Created by Alzhan on 15.11.15.
 //  Copyright © 2015 Alzhan Turlybekov. All rights reserved.
 //
+// File contains constants and global function
 
 import Foundation
 
@@ -92,5 +93,33 @@ func isLateDate(string: String) -> Bool {
     }
     let now = NSDate()
     return date.isLessThanDate(now)
+}
+
+func unwrap(value: String?) -> String {
+    var result: String = ""
+    if let val = value {
+        result = val
+    }
+    return result
+}
+
+func fromExamsToData(exams: [Exam]?) -> [[String]] {
+    var data: [[String]] = []
+    guard let exams = exams else {
+        return data
+    }
+    for exam in exams {
+        var dateTuple: (date: String, time: String) = (date: "", time: "")
+        if let startDate = exam.startDate {
+            dateTuple = formatDateString(startDate)
+        }
+        var totalCap = ""
+        if let occ = exam.occupied, cap = exam.capacity {
+            totalCap += occ + "/" + cap
+        }
+        let array = [dateTuple.date, dateTuple.time, unwrap(exam.room), totalCap, unwrap(exam.cancelDeadline)]
+        data.append(array)
+    }
+    return data
 }
 

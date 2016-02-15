@@ -68,10 +68,8 @@ class MainTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if tableView.numberOfRowsInSection(section) == 0 {
-            tableView.scrollEnabled = false
             return nil
         }
-        tableView.scrollEnabled = true
         let line = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 0.7))
         line.backgroundColor = .grayColor()
         line.alpha = 0.5
