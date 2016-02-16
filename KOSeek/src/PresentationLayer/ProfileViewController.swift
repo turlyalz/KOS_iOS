@@ -75,8 +75,10 @@ class ProfileViewController: MainTableViewController {
     func segmentedControlAction(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             KOSAPI.downloadLanguage = "cs"
+            SavedVariables.downloadLanguage = "cs"
         } else {
             KOSAPI.downloadLanguage = "en"
+            SavedVariables.downloadLanguage = "en"
         }
     }
     
@@ -116,7 +118,12 @@ class ProfileViewController: MainTableViewController {
                 make.height.equalTo(cell)
             }
             let segmentedControl = UISegmentedControl(items: ["Český", "English"])
-            segmentedControl.selectedSegmentIndex = 0
+            if KOSAPI.downloadLanguage == "cs" {
+                segmentedControl.selectedSegmentIndex = 0
+            } else {
+                segmentedControl.selectedSegmentIndex = 1
+            }
+            
             segmentedControl.addTarget(self, action: "segmentedControlAction:", forControlEvents: .ValueChanged)
             cell.addSubview(segmentedControl)
             segmentedControl.snp_remakeConstraints { (make) -> Void in

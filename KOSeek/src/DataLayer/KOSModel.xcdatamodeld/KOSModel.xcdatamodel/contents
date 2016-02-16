@@ -26,6 +26,7 @@
     <entity name="SavedVariables" representedClassName="NSManagedObject" syncable="YES">
         <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="currentSemester" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="downloadLanguage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="expires" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="refreshToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
@@ -55,12 +56,12 @@
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="timetableSlots" inverseEntity="Person" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Exam" positionX="-1179" positionY="-405" width="128" height="178"/>
         <element name="OpenHours" positionX="-1361" positionY="-402" width="128" height="60"/>
         <element name="Person" positionX="-1359" positionY="-612" width="128" height="150"/>
-        <element name="SavedVariables" positionX="-1539" positionY="-396" width="128" height="120"/>
+        <element name="SavedVariables" positionX="-1539" positionY="-396" width="128" height="135"/>
         <element name="Semester" positionX="-981" positionY="-603" width="128" height="88"/>
         <element name="Subject" positionX="-1161" positionY="-648" width="128" height="118"/>
         <element name="TimetableSlot" positionX="-1541" positionY="-657" width="128" height="193"/>
-        <element name="Exam" positionX="-1179" positionY="-405" width="128" height="178"/>
     </elements>
 </model>
