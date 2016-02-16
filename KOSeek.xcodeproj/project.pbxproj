@@ -39,8 +39,6 @@
 		9C5523D51C03B6CD00DC6A04 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5523D31C03B6CD00DC6A04 /* Person+CoreDataProperties.swift */; };
 		9C5523D61C03B6CD00DC6A04 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5523D41C03B6CD00DC6A04 /* Person.swift */; };
 		9C57521E1C6001D3005FA457 /* StudentOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C57521D1C6001D3005FA457 /* StudentOfficeViewController.swift */; };
-		9C58E3341C73AA0B005A0451 /* NSManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C58E3321C73AA0B005A0451 /* NSManagedObject+CoreDataProperties.swift */; };
-		9C58E3351C73AA0B005A0451 /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C58E3331C73AA0B005A0451 /* NSManagedObject.swift */; };
 		9C6FB4D21BFE2E2700C682C4 /* Semester+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FB4D01BFE2E2700C682C4 /* Semester+CoreDataProperties.swift */; };
 		9C6FB4D31BFE2E2700C682C4 /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FB4D11BFE2E2700C682C4 /* Semester.swift */; };
 		9C6FB4DB1BFE811100C682C4 /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6FB4DA1BFE811100C682C4 /* BTNavigationDropdownMenu.swift */; };
@@ -150,8 +148,6 @@
 		9C5523D31C03B6CD00DC6A04 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9C5523D41C03B6CD00DC6A04 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		9C57521D1C6001D3005FA457 /* StudentOfficeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentOfficeViewController.swift; sourceTree = "<group>"; };
-		9C58E3321C73AA0B005A0451 /* NSManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9C58E3331C73AA0B005A0451 /* NSManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObject.swift; sourceTree = "<group>"; };
 		9C6FB4D01BFE2E2700C682C4 /* Semester+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Semester+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9C6FB4D11BFE2E2700C682C4 /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
 		9C6FB4DA1BFE811100C682C4 /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
@@ -359,8 +355,6 @@
 				9C1A1B261C086A590050E03E /* TimetableSlot.swift */,
 				9C2EEFA51C712CE0003C3BEA /* Exam+CoreDataProperties.swift */,
 				9C2EEFA61C712CE0003C3BEA /* Exam.swift */,
-				9C58E3321C73AA0B005A0451 /* NSManagedObject+CoreDataProperties.swift */,
-				9C58E3331C73AA0B005A0451 /* NSManagedObject.swift */,
 			);
 			name = DataLayer;
 			path = src/DataLayer;
@@ -554,7 +548,6 @@
 				9C8A49B51BE011C7009ECFCA /* SideMenuController.swift in Sources */,
 				9C9E50231BE12C50009B6CB1 /* ResultsViewController.swift in Sources */,
 				9CA969681C654FA0001291C1 /* View+SnapKit.swift in Sources */,
-				9C58E3341C73AA0B005A0451 /* NSManagedObject+CoreDataProperties.swift in Sources */,
 				9C01D4EF1C63FF3B00D22C77 /* TableContentViewController.swift in Sources */,
 				9C2BFD281BF51B0200744E85 /* ProfileViewController.swift in Sources */,
 				9C1A1B2F1C0911050050E03E /* TimetableTableViewController.swift in Sources */,
@@ -576,7 +569,6 @@
 				9CA969641C654FA0001291C1 /* EdgeInsets.swift in Sources */,
 				9C6FB4D21BFE2E2700C682C4 /* Semester+CoreDataProperties.swift in Sources */,
 				9CE171651BF8A48900C56D2F /* Subject+CoreDataProperties.swift in Sources */,
-				9C58E3351C73AA0B005A0451 /* NSManagedObject.swift in Sources */,
 				9C43A1041BF7F67A0018ABB0 /* Constants.swift in Sources */,
 				9CA969631C654FA0001291C1 /* Debugging.swift in Sources */,
 				9C28FEAB1BDFA51600D7DE04 /* SemesterViewController.swift in Sources */,
