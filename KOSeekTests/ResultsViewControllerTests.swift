@@ -18,6 +18,13 @@ class ResultsViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         viewController = ResultsViewController()
+        let semesterIDNameDict = [("1","Letni 152"), ("4", "Zimni 141"), ("2", "Zimni 131")].sort({$0.0 < $1.0})
+        var array: [String] = []
+        for idName in semesterIDNameDict {
+            array.append(idName.1)
+        }
+        let rightArray = ["Letni 152", "Zimni 131", "Zimni 141"]
+        XCTAssertEqual(array, rightArray)
         viewController.viewDidLoad()
     }
     

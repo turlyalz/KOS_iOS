@@ -11,6 +11,9 @@ Are you sure you want to continue?" = "Všechna stažená data budou smazaná a 
 /* credits enrolled */
 "Credits enrolled: " = "Zapsané kredity: ";
 
+/* Day */
+"Day" = "Den";
+
 /* credits obtained */
 "Credits obtained: " = "Získané kredity: ";
 

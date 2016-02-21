@@ -1,0 +1,111 @@
+/* log out message */
+"Are you sure you want to log out?" = "Вы уверены, что хотите выйти?";
+
+/* Cancel deadline */
+"Cancel deadline" = "Дата отмены";
+
+/* credits enrolled */
+"Credits enrolled: " = "Кредитов записано: ";
+
+/* credits obtained */
+"Credits obtained: " = "Кредитов получено: ";
+
+/* Date */
+"Date" = "Дата";
+
+/* Day */
+"Day" = "День";
+
+/* download language */
+"Download language: " = "Язык загрузки: ";
+
+/* downloading data */
+"Downloading data, please wait." = "Загрузка данных, пожалуйста подождите.";
+
+/* email */
+"Email: " = "Емайл: ";
+
+/* end */
+"End: " = "Конец: ";
+
+/* friday */
+"Fri" = "Пят";
+
+/* From */
+"From" = "От";
+
+/* KOS */
+"KOS CTU" = "KOS ČVUT";
+
+/* login message */
+"Logging In, please wait." = "Пожалуйста подождите, происходит авторизация.";
+
+/* monday */
+"Mon" = "Пон";
+
+/* no */
+"No" = "Нет";
+
+/* no exams */
+"No available exams" = "Нет доступных экзаменов";
+
+/* Occ/Cap */
+"Occ/Cap" = "Зан/Кол";
+
+/* password empty */
+"Password cannot be empty!" = "Пароль не может быть пустым!";
+
+/* personal number */
+"Personal number: " = "Персональный номер: ";
+
+/* Place */
+"Place" = "Место";
+
+/* select subject */
+"Please select subject" = "Выберите предмет";
+
+/* room */
+"Room: " = "Место: ";
+
+/* saturday */
+"Sat" = "Суб";
+
+/* start */
+"Start: " = "Начало: ";
+
+/* teacher */
+"Teacher: " = "Учитель: ";
+
+/* thursday */
+"Thu" = "Чтв";
+
+/* Till */
+"Till" = "До";
+
+/* Time */
+"Time" = "Время";
+
+/* total enrolled */
+"Total enrolled: " = "Записано всего: ";
+
+/* total obtained */
+"Total obtained: " = "Получено всего: ";
+
+/* tuesday */
+"Tue" = "Вто";
+
+/* username empty */
+"Username cannot be empty!" = "Логин не может быть пустым!";
+
+/* wednesday */
+"Wed" = "Сре";
+
+/* yes */
+"Yes" = "Да";
+
+/* no internet */
+"You have no internet connection. Please check your settings and try again." = "Вы не подключены к интернету. Пожалуйста, проверьте ваши настройки и попробуйте снова.";
+
+/* type to start */
+"type to start" = "нажмите";
+

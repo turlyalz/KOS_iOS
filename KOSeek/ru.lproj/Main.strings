@@ -1,0 +1,60 @@
+/* Class = "UILabel"; text = "Student Office"; ObjectID = "1gi-8p-B6A"; */
+"1gi-8p-B6A.text" = "Офис студентов";
+
+/* Class = "UILabel"; text = "Exams"; ObjectID = "2pb-Ua-NL8"; */
+"2pb-Ua-NL8.text" = "Экзамены";
+
+/* Class = "UINavigationItem"; title = "Student Office"; ObjectID = "5qP-3Z-Xiy"; */
+"5qP-3Z-Xiy.title" = "Офис студентов";
+
+/* Class = "UILabel"; text = "Username:"; ObjectID = "7LC-Y6-5qj"; */
+"7LC-Y6-5qj.text" = "Логин:";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "8M9-o8-npt"; */
+"8M9-o8-npt.title" = "Профиль";
+
+/* Class = "UILabel"; text = "Welcome to KOS iOS"; ObjectID = "102-DD-6Yy"; */
+"102-DD-6Yy.text" = "Добро пожаловать в KOS iOS";
+
+/* Class = "UIButton"; normalTitle = "Log In"; ObjectID = "DhN-hH-WAM"; */
+"DhN-hH-WAM.normalTitle" = "Войти";
+
+/* Class = "UILabel"; text = "Timetable"; ObjectID = "HVY-p5-Dxd"; */
+"HVY-p5-Dxd.text" = "Расписание";
+
+/* Class = "UILabel"; text = "People Search"; ObjectID = "ICl-K0-qLS"; */
+"ICl-K0-qLS.text" = "Поиск людей";
+
+/* Class = "UINavigationItem"; title = "Semester"; ObjectID = "Lqe-U6-R7q"; */
+"Lqe-U6-R7q.title" = "Семестр";
+
+/* Class = "UILabel"; text = "Password:"; ObjectID = "SWd-E6-LLy"; */
+"SWd-E6-LLy.text" = "Пароль:";
+
+/* Class = "UILabel"; text = "Log out"; ObjectID = "XZt-NZ-tdQ"; */
+"XZt-NZ-tdQ.text" = "Выйти";
+
+/* Class = "UILabel"; text = "Course Events"; ObjectID = "kXE-8W-Yfw"; */
+"kXE-8W-Yfw.text" = "Разовые акции";
+
+/* Class = "UINavigationItem"; title = "Course Events"; ObjectID = "lRU-1F-VsL"; */
+"lRU-1F-VsL.title" = "Разовые акции";
+
+/* Class = "UINavigationItem"; title = "Even Week"; ObjectID = "lgY-Ey-9nm"; */
+"lgY-Ey-9nm.title" = "Четная неделя";
+
+/* Class = "UINavigationItem"; title = "Odd Week"; ObjectID = "nWy-sD-hLz"; */
+"nWy-sD-hLz.title" = "Нечетная неделя";
+
+/* Class = "UILabel"; text = "Semester"; ObjectID = "v93-K3-Cxy"; */
+"v93-K3-Cxy.text" = "Семестр";
+
+/* Class = "UINavigationItem"; title = "Results"; ObjectID = "w9R-UN-KPn"; */
+"w9R-UN-KPn.title" = "Результаты";
+
+/* Class = "UINavigationItem"; title = "Exams"; ObjectID = "xWm-eo-gtU"; */
+"xWm-eo-gtU.title" = "Экзамены";
+
+/* Class = "UILabel"; text = "Results"; ObjectID = "xyl-Me-mtC"; */
+"xyl-Me-mtC.text" = "Результаты";
+

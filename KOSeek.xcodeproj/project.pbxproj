@@ -169,6 +169,12 @@
 		9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		9CA475531C7A2320002A404D /* KOSAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOSAPITests.swift; sourceTree = "<group>"; };
+		9CA475551C7A3D91002A404D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9CA475561C7A3D91002A404D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9CA475571C7A3D91002A404D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9CA475581C7A3D91002A404D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9CA475591C7A3D91002A404D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9CA4755A1C7A3D92002A404D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		9CA9694C1C654C9E001291C1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = src/AppDelegate.swift; sourceTree = "<group>"; };
 		9CA9694F1C654FA0001291C1 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		9CA969501C654FA0001291C1 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
@@ -628,6 +634,7 @@
 			children = (
 				9C2272921BD6517B00DE7F15 /* Base */,
 				9C2798D91C728A3500C5504C /* cs */,
+				9CA4755A1C7A3D92002A404D /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -637,6 +644,7 @@
 			children = (
 				9C2272971BD6517B00DE7F15 /* Base */,
 				9C2798DA1C728A3500C5504C /* cs */,
+				9CA475591C7A3D91002A404D /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -645,6 +653,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C2798CD1C728A3400C5504C /* cs */,
+				9CA475551C7A3D91002A404D /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -653,6 +662,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C2798D21C728A3400C5504C /* cs */,
+				9CA475561C7A3D91002A404D /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -661,6 +671,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C2798D71C728A3500C5504C /* cs */,
+				9CA475581C7A3D91002A404D /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -669,6 +680,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C2798DE1C728A3500C5504C /* cs */,
+				9CA475571C7A3D91002A404D /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
