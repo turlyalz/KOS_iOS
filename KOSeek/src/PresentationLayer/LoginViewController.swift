@@ -27,11 +27,11 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(sender: UIButton) {
         if usernameField.text == "" {
-            createAlertView("", text: "Username cannot be empty!", viewController: self, handlers: ["OK": { _ in }])
+            createAlertView("", text: usernameEmptyMessage, viewController: self, handlers: ["OK": { _ in }])
             return
         }
         if passwordField.text == "" {
-            createAlertView("", text: "Password cannot be empty!", viewController: self, handlers: ["OK": { _ in }])
+            createAlertView("", text: passwordEmptyMessage, viewController: self, handlers: ["OK": { _ in }])
             return
         }
         SavedVariables.username = usernameField.text!

@@ -1,15 +1,109 @@
+/* refresh all */
+"All of your actual data will be removed and new data will be downloaded.
+Are you sure you want to continue?" = "Všechna stažená data budou smazaná a nová data budou stažená. Opravdu chcete pokračovat?";
+
+/* log out message */
+"Are you sure you want to log out?" = "Opravdu se chcete odhlásit?";
+
 /* Cancel deadline */
 "Cancel deadline" = "Termín odhlášení";
+
+/* credits enrolled */
+"Credits enrolled: " = "Zapsané kredity: ";
+
+/* credits obtained */
+"Credits obtained: " = "Získané kredity: ";
 
 /* Date */
 "Date" = "Datum";
 
+/* download language */
+"Download language: " = "Jazyk stahování: ";
+
+/* downloading data */
+"Downloading data, please wait." = "Stahování, počkejte prosím.";
+
+/* end */
+"End: " = "Konec: ";
+
+/* friday */
+"Fri" = "Pát";
+
+/* From */
+"From" = "Od";
+
+/* KOS */
+"KOS CTU" = "KOS ČVUT";
+
+/* login message */
+"Logging In, please wait." = "Přihlášení, počkejte prosím.";
+
+/* monday */
+"Mon" = "Pon";
+
+/* no */
+"No" = "Ne";
+
+/* no exams */
+"No available exams." = "Nejsou aktuálně zkoušky.";
+
 /* Occ/Cap */
 "Occ/Cap" = "Obs/Kap";
+
+/* password empty */
+"Password cannot be empty!" = "Heslo nesmí být prazdné!";
+
+/* personal number */
+"Personal number: " = "Osobní číslo: ";
 
 /* Place */
 "Place" = "Místo";
 
+/* select subject */
+"Please select subject" = "Vyberte si předmět";
+
+/* room */
+"Room: " = "Místo: ";
+
+/* saturday */
+"Sat" = "Sob";
+
+/* start */
+"Start: " = "Začátek: ";
+
+/* teacher */
+"Teacher: " = "Vyučující: ";
+
+/* thursday */
+"Thu" = "Čtv";
+
+/* Till */
+"Till" = "Do";
+
 /* Time */
 "Time" = "Čas";
+
+/* total enrolled */
+"Total enrolled: " = "Zapsáno celkem: ";
+
+/* total obtained */
+"Total obtained: " = "Získáno celkem: ";
+
+/* tuesday */
+"Tue" = "Úte";
+
+/* username empty */
+"Username cannot be empty!" = "Login nesmí být pradný!";
+
+/* wednesday */
+"Wed" = "Stř";
+
+/* yes */
+"Yes" = "Ano";
+
+/* no internet */
+"You have no internet connection. Please check your settings and try again." = "Nejste připojen k internetu. Zkontrolujte své nastavení a opakujte prosím.";
+
+/* type to start */
+"type to start" = "zmačkněte";
 

@@ -14,6 +14,8 @@ class OpenHoursDownloader {
     static var data: NSData? = nil
     static var table: [[String]]? = nil
     
+    private init() {}
+    
     class func download() {
         let url = NSURL(string: URL)
         var running = false
@@ -56,23 +58,24 @@ class OpenHoursDownloader {
             let content = try xml["html"]["body"]["div"].withAttr("class", "center")["div"].withAttr("id", "wrapper")["div"]
             let tbody = try content["div"].withAttr("class", "webcontent")["div"].withAttr("class", "content-text hasleft")["div"]["table"][1]["tbody"]
             table = []
-            let days = ["Mon", "Tue", "Wed", "Thu", "Fri"]
             for row in 2...6 {
-                var columns: [String] = [days[row-2]]
-                for column in 1...4 {
-                    var trimmedText: String = ""
-                    if row == 2 {
-                        if let text = tbody["tr"][row]["td"][column+1].element?.text {
-                            trimmedText = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                if let day = daysHeader[row-2] {
+                    var columns: [String] = [day]
+                    for column in 1...4 {
+                        var trimmedText: String = ""
+                        if row == 2 {
+                            if let text = tbody["tr"][row]["td"][column+1].element?.text {
+                                trimmedText = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                            }
+                        } else {
+                            if let text = tbody["tr"][row]["td"][column].element?.text {
+                                trimmedText = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                            }
                         }
-                    } else {
-                        if let text = tbody["tr"][row]["td"][column].element?.text {
-                            trimmedText = text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                        }
+                        columns.append(trimmedText)
                     }
-                    columns.append(trimmedText)
-                }
-                table?.append(columns)
+                    table?.append(columns)
+                    }
             }
         } catch let error as NSError {
             debugPrint(error)

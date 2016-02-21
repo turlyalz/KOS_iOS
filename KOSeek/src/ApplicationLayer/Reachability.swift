@@ -10,6 +10,9 @@ import SystemConfiguration
 
 /// Class provides function to check if internet connection is reachable 
 class Reachability {
+    
+    private init() {}
+    
     class func isConnectedToNetwork() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))

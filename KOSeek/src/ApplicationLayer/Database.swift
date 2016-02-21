@@ -12,7 +12,9 @@ import CoreData
 
 /// Static class provides access to all storage user data
 class Database {
-
+    
+    private init() {}
+    
     class func addPersonTo(context context: NSManagedObjectContext, firstName: String?, lastName: String?, username: String?, email: String?, personalNumber: String?, title: String?) {
         let entityDescription = NSEntityDescription.entityForName("Person", inManagedObjectContext: context)
         let person = Person(entity: entityDescription!, insertIntoManagedObjectContext: context)
@@ -177,22 +179,24 @@ class Database {
                 let accessToken = res.valueForKey("accessToken") as! String
                 let refreshToken = res.valueForKey("refreshToken") as! String
                 let expires = res.valueForKey("expires") as! NSDate
-                return (username, currentSemester: currentSemester, accessToken: accessToken, refreshToken: refreshToken, expires: expires)
+                let downloadLanguage = res.valueForKey("downloadLanguage") as! String
+                return (username, currentSemester: currentSemester, accessToken: accessToken, refreshToken: refreshToken, expires: expires, downloadLanguage: downloadLanguage)
             }
         }
         catch let error as NSError {
             debugPrint(error)
         }
-        return (nil, nil, nil, nil, nil)
+        return (nil, nil, nil, nil, nil, nil)
     }
     
-    class func setSavedVariables(context: NSManagedObjectContext, username: String, currentSemester: String, accessToken: String, refreshToken: String, expires: NSDate) {
+    class func setSavedVariables(context: NSManagedObjectContext, username: String, currentSemester: String, accessToken: String, refreshToken: String, expires: NSDate, downloadLanguage: String) {
         let SV = NSEntityDescription.insertNewObjectForEntityForName("SavedVariables", inManagedObjectContext: context)
         SV.setValue(username, forKey: "username")
         SV.setValue(currentSemester, forKey: "currentSemester")
         SV.setValue(accessToken, forKey: "accessToken")
         SV.setValue(refreshToken, forKey: "refreshToken")
         SV.setValue(expires, forKey: "expires")
+        SV.setValue(downloadLanguage, forKey: "downloadLanguage")
         saveContext(context)
     }
     

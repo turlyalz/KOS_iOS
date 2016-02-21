@@ -27,7 +27,7 @@ class SearchViewController: MainTableViewController, UISearchBarDelegate {
       
     func initSearchBar() {
         searchBar.barTintColor = DropdownMenuView.cellBackgroundColor
-        searchBar.placeholder = "type to start"
+        searchBar.placeholder = typeToStartString
         searchBar.showsCancelButton = true
         searchBar.tintColor = BGHeaderColor
         searchBar.delegate = self

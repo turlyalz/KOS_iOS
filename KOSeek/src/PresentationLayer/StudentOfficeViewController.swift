@@ -19,7 +19,7 @@ class StudentOfficeViewController: TableContentViewController {
     func setTable() {
         if let table = OpenHoursDownloader.table {
             super.data = table
-            super.header = ["Day", "From", "Till", "From", "Till"]
+            super.header = openHoursHeader
         }
     }
     

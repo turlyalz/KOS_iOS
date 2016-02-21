@@ -12,7 +12,7 @@ class ExamsViewController: DropdownMenuViewController {
     
     private var selectedIndex: Int = 0
     private var subjects: [String] = []
-    private let alertLoadingView = UIAlertController(title: "", message: "Downloading. Please Wait.", preferredStyle: UIAlertControllerStyle.Alert)
+    private let alertLoadingView = UIAlertController(title: "", message: downloadMessage, preferredStyle: UIAlertControllerStyle.Alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class ExamsViewController: DropdownMenuViewController {
             }
         }
         self.subjects.sortInPlace(<)
-        self.subjects.insert("Please select subject", atIndex: 0)
+        self.subjects.insert(selectSubjectString, atIndex: 0)
         super.dropdownData = self.subjects
         super.didSelectItemHandler = { indexPath in
             self.didSelectItem(indexPath)
@@ -61,7 +61,7 @@ class ExamsViewController: DropdownMenuViewController {
             self.tableView.reloadData()
             self.alertLoadingView.dismissViewControllerAnimated(true, completion: nil)
             if super.data.count == 0 {
-                createAlertView("", text: "No available exams", viewController: self, handlers: ["OK": {_ in }])
+                createAlertView("", text: noExamsMessage, viewController: self, handlers: ["OK": {_ in }])
             }
             return
         })

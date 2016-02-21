@@ -104,13 +104,13 @@ class SlotTableViewCell: UITableViewCell {
                 if let name = slot?.subjectName {
                     text = name
                 }
-                text += "\nStart: "
+                text += "\n" + startString
                 if let start = slot?.firstHour {
                     let startInt = Int(start)
                     if let time = times[startInt] {
                         text += time
                     }
-                    text += "\nEnd: "
+                    text += "\n" + endString
                     if let duration = slot?.duration {
                         let durationInt = Int(duration)
                         let index = Int(startInt+durationInt-1)
@@ -119,14 +119,14 @@ class SlotTableViewCell: UITableViewCell {
                         }
                     }
                 } else {
-                    text += "\nEnd: "
+                    text += "\n" + endString
                 }
                
-                text += "\nRoom: "
+                text +=  "\n" + roomString
                 if let room = slot?.room {
                     text += room
                 }
-                text += "\nTeacher: "
+                text += "\n" + teacherString
                 if let teacher = slot?.teacher {
                     text += teacher
                 }

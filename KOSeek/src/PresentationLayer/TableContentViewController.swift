@@ -11,7 +11,10 @@ import UIKit
 /// Common class for view controllers with table content (drawing separators) 
 class TableContentViewController: MainTableViewController {
     
+    /// Table data
     var data: [[String]] = []
+    
+    /// Header strings
     var header: [String] = []
     var sizes = [CGFloat](count: 5, repeatedValue: 7.0)
     var offsets = [CGFloat](count: 5, repeatedValue: 8.0)

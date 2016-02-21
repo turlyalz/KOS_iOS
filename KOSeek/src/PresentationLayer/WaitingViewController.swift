@@ -24,7 +24,7 @@ class WaitingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        statusLabel.text = "Logging In, please wait."
+        statusLabel.text = loggingMessage
         progressView.setProgress(0, animated: true)
         progressView.hidden = true
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
@@ -43,7 +43,7 @@ class WaitingViewController: UIViewController {
         SavedVariables.password = nil
         if response.success {
             progressView.hidden = false
-            statusLabel.text = "Downloading data, please wait."
+            statusLabel.text = downloadMessage
             dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
                 KOSAPI.downloadAllData(SavedVariables.cdh.backgroundContext!)
                 OpenHoursDownloader.download()

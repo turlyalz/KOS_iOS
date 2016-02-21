@@ -10,7 +10,7 @@ import UIKit
 
 class ResultsViewController: DropdownMenuViewController {
 
-    private var semesterIDNameDict: [(String, String)] = []
+    var semesterIDNameDict: [(String, String)] = []
     private var semesters: [String] = []
     private var subjects: [Subject] = []
     private var semesterCreditsEnrolled: Int = 0
@@ -115,13 +115,13 @@ class ResultsViewController: DropdownMenuViewController {
         view.backgroundColor = BGHeaderColor
         
         labelLeft.numberOfLines = 0
-        labelLeft.text = "Credits enrolled: " + String(semesterCreditsEnrolled) + "\nCredits obtained: " + String(semesterCreditsObtained)
+        labelLeft.text = creditsEnrolledString + String(semesterCreditsEnrolled) + "\n" + creditsObtained + String(semesterCreditsObtained)
         labelLeft.textColor = .whiteColor()
         labelLeft.font = UIFont.systemFontOfSize(14)
         labelLeft.textAlignment = .Center
         
         labelRight.numberOfLines = 0
-        labelRight.text = "Total enrolled: " + String(totalCreditsEnrolled) + "\nTotal obtained: " + String(totalCreditsObtained)
+        labelRight.text =  totalEnrolled + String(totalCreditsEnrolled) + "\n" + totalObtained + String(totalCreditsObtained)
         labelRight.textColor = .whiteColor()
         labelRight.font = UIFont.systemFontOfSize(14)
         labelRight.textAlignment = .Center

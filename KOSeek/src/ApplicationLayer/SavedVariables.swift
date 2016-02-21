@@ -20,7 +20,8 @@ class SavedVariables {
     static var semesterIDNameDict: [String:String] = [:]
     static var currentSemester: String?
     static var canDropDownMenuShow: Bool = false
-    static var downloadLanguage = "cs"
+    
+    private init() {}
 
     class func resetAll() {
         username = nil

@@ -26,7 +26,7 @@ class DropdownMenuViewController: TableContentViewController {
     }
     
     func setupDropdownMenu() {
-        if dropdownData.count == 0 {
+        if dropdownData.count == 0 || self.navigationController == nil {
             return
         }
         dropdownMenuView = BTNavigationDropdownMenu(title: dropdownData.first!, items: dropdownData, navController: self.navigationController)

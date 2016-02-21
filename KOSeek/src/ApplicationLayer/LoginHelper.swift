@@ -22,6 +22,8 @@ class LoginHelper {
     static var refreshToken = ""
     static var expires: NSDate = NSDate()
     
+    private init() {}
+    
     private class func loginRequest(username: String, password: String) -> (success: Bool, error: String) {       
         print("Try to log in with username: '\(username)', password: '\(password)'")
         

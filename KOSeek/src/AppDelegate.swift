@@ -22,9 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setSavedVariables() {
         let response = Database.getSavedVariablesFrom(context: self.cdh.managedObjectContext)
-        if let username = response.username, currentSemester = response.currentSemester, accessToken = response.accessToken, refreshToken = response.refreshToken, expires = response.expires {
+        if let username = response.username, currentSemester = response.currentSemester, accessToken = response.accessToken, refreshToken = response.refreshToken, expires = response.expires, downloadLanguage = response.downloadLanguage {
             SavedVariables.username = username
             SavedVariables.currentSemester = currentSemester
+            KOSAPI.downloadLanguage = downloadLanguage
             OpenHoursDownloader.data = Database.getOpenHoursData(self.cdh.managedObjectContext)
             OpenHoursDownloader.parse()
             LoginHelper.setAuthToken(accessToken)

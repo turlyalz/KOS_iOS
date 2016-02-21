@@ -53,7 +53,7 @@ class TimetableViewController: MainTableViewController {
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width-30, height: 30))
         view.backgroundColor = BGHeaderColor
-        let days = [0: "Mon", 1: "Tue", 2: "Wed", 3: "Thu", 4: "Fri", 5: "Sat"]
+        let days = daysHeader
         for i in 0...5 {
             let cellWidth = (screenSize.width-60)/6
             let x = 60+CGFloat(i)*cellWidth

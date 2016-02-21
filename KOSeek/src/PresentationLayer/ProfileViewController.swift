@@ -27,7 +27,7 @@ class ProfileViewController: MainTableViewController {
     
     func setProfileInfo() {
         if let username = SavedVariables.username, profileInfo = Database.getPersonBy(username: username, context: SavedVariables.cdh.managedObjectContext), firstName = profileInfo.firstName, lastName = profileInfo.lastName, email = profileInfo.email, personalNumber = profileInfo.personalNumber {
-            self.profileInfo.appendContentsOf(["Email: " + email, "Personal number: " + personalNumber])
+            self.profileInfo.appendContentsOf([emailString + email, personalNumberString + personalNumber])
             self.title = firstName + " " + lastName
         }
     }
@@ -46,12 +46,12 @@ class ProfileViewController: MainTableViewController {
     
     func startUpdate(action: UIAlertAction) {
         if (!Reachability.isConnectedToNetwork()) {
-            createAlertView("", text: "You have no internet connection. Please check your settings and try again.", viewController: self, handlers: ["OK": { _ in }])
+            createAlertView("", text: noInternetMessage, viewController: self, handlers: ["OK": { _ in }])
             return
         }
         self.progressView = UIProgressView(frame: CGRect(x: 35, y: 50, width: 200, height: 20))
         counter = 0
-        let alertLoadingView = UIAlertController(title: "", message: "Downloading. Please Wait.", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertLoadingView = UIAlertController(title: "", message: downloadMessage, preferredStyle: UIAlertControllerStyle.Alert)
         alertLoadingView.view.addSubview(progressView)
         self.presentViewController(alertLoadingView, animated: true, completion: nil)
         Database.delete(context: SavedVariables.cdh.backgroundContext!, onlyUserData: true)
@@ -69,16 +69,14 @@ class ProfileViewController: MainTableViewController {
     }
 
     @IBAction func updateDataButtonPressed(sender: UIBarButtonItem) {
-        createAlertView("", text: "All of your actual data will be removed and new data will be downloaded.\nAre you sure you want to continue?", viewController: self, handlers: ["Yes": startUpdate, "No": {_ in} ])
+        createAlertView("", text: refreshAllDataMessage, viewController: self, handlers: [yesString: startUpdate, noString: {_ in} ])
     }
     
     func segmentedControlAction(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             KOSAPI.downloadLanguage = "cs"
-            SavedVariables.downloadLanguage = "cs"
         } else {
             KOSAPI.downloadLanguage = "en"
-            SavedVariables.downloadLanguage = "en"
         }
     }
     
@@ -109,7 +107,7 @@ class ProfileViewController: MainTableViewController {
             cell.layoutMargins = UIEdgeInsetsZero
         } else {
             let label = UILabel()
-            label.text = "Download language: "
+            label.text = downloadLanguageString
             label.textColor = .blackColor()
             cell.addSubview(label)
             label.snp_remakeConstraints { (make) -> Void in

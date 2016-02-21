@@ -64,7 +64,7 @@ class SideMenuController: UITableViewController {
         imageView.image = UIImage(named: "KOS")
         view.backgroundColor = BGHeaderColor
         
-        label.text = "KOS ČVUT"
+        label.text = kosString
         label.textColor = .whiteColor()
         
         view.addSubview(label)
@@ -85,7 +85,7 @@ class SideMenuController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == menus.count-1 {
-            createAlertView("", text: "Are you sure you want to log out?", viewController: self, handlers: ["Yes": logOutHandler, "No": {
+            createAlertView("", text: logoutMessage, viewController: self, handlers: [yesString: logOutHandler, noString: {
                 action in
                 self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
             }])

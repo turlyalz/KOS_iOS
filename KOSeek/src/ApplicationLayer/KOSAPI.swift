@@ -25,6 +25,8 @@ class KOSAPI {
     private static var semesterID = "none"
     private static var courseEvent = false
     
+    private init() {}
+    
     /// Download all data
     class func downloadAllData(context: NSManagedObjectContext) {
         if (!Reachability.isConnectedToNetwork()) {
@@ -115,7 +117,7 @@ class KOSAPI {
         guard let currentSemester = SavedVariables.currentSemester, accessToken = LoginHelper.getAuthToken() else {
             return
         }
-        let extensionURL =  "/courseEvents/?access_token=" + accessToken + "&query=semester='" + currentSemester + "&limit=1000"
+        let extensionURL =  "/courseEvents/?access_token=" + accessToken + "&query=semester='" + currentSemester + "'&limit=1000"
         courseEvent = true
         download("Course events", extensionURL: extensionURL, context: context, parser: examsOrCourseEventsParser)
     }
@@ -187,7 +189,7 @@ class KOSAPI {
         SavedVariables.currentSemester = xml["atom:entry"]["atom:content"]["code"].element?.text
         print("Current semester: \(SavedVariables.currentSemester)")
         if let currentSemester = SavedVariables.currentSemester, accessToken = LoginHelper.getAuthToken() {
-            Database.setSavedVariables(context, username: SavedVariables.username!, currentSemester: currentSemester, accessToken: accessToken, refreshToken: LoginHelper.refreshToken, expires: LoginHelper.expires)
+            Database.setSavedVariables(context, username: SavedVariables.username!, currentSemester: currentSemester, accessToken: accessToken, refreshToken: LoginHelper.refreshToken, expires: LoginHelper.expires, downloadLanguage: downloadLanguage)
         }
     }
     
@@ -281,7 +283,7 @@ class KOSAPI {
         }
     }
     
-    private class func getNumberFrom(xml: XMLIndexer) -> Int? {
+    class func getNumberFrom(xml: XMLIndexer) -> Int? {
         let numberStr = xml["atom:feed"]["osearch:totalResults"].element?.text
         guard let uNumberStr = numberStr, number = Int(uNumberStr) else {
             return nil
@@ -292,7 +294,7 @@ class KOSAPI {
         return number
     }
     
-    private class func download(name: String, extensionURL: String, context: NSManagedObjectContext, parser: (XMLIndexer, NSManagedObjectContext) -> Void) {
+    class func download(name: String, extensionURL: String, context: NSManagedObjectContext, parser: (XMLIndexer, NSManagedObjectContext) -> Void) {
         dispatch_async(dispatch_get_main_queue(), {
             increaseProgressBar?(9)
             return
