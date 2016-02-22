@@ -8,17 +8,26 @@ Are you sure you want to continue?" = "Všechna stažená data budou smazaná a 
 /* Cancel deadline */
 "Cancel deadline" = "Termín odhlášení";
 
+/* completion */
+"Completion" = "Zakončení";
+
+/* credits */
+"Credits" = "Kredity";
+
 /* credits enrolled */
 "Credits enrolled: " = "Zapsané kredity: ";
-
-/* Day */
-"Day" = "Den";
 
 /* credits obtained */
 "Credits obtained: " = "Získané kredity: ";
 
 /* Date */
 "Date" = "Datum";
+
+/* Day */
+"Day" = "Den";
+
+/* description */
+"Description" = "Anotace";
 
 /* download language */
 "Download language: " = "Jazyk stahování: ";
@@ -38,6 +47,9 @@ Are you sure you want to continue?" = "Všechna stažená data budou smazaná a 
 /* KOS */
 "KOS CTU" = "KOS ČVUT";
 
+/* lectures content */
+"Lectures content" = "Osnova přednášek";
+
 /* login message */
 "Logging In, please wait." = "Přihlášení, počkejte prosím.";
 
@@ -48,7 +60,7 @@ Are you sure you want to continue?" = "Všechna stažená data budou smazaná a 
 "No" = "Ne";
 
 /* no exams */
-"No available exams." = "Nejsou aktuálně zkoušky.";
+"No available exams" = "Nejsou aktuálně zkoušky";
 
 /* Occ/Cap */
 "Occ/Cap" = "Obs/Kap";
@@ -65,11 +77,17 @@ Are you sure you want to continue?" = "Všechna stažená data budou smazaná a 
 /* select subject */
 "Please select subject" = "Vyberte si předmět";
 
+/* range */
+"Range" = "Rozsah";
+
 /* room */
 "Room: " = "Místo: ";
 
 /* saturday */
 "Sat" = "Sob";
+
+/* season */
+"Season" = "Semestr";
 
 /* start */
 "Start: " = "Začátek: ";
@@ -94,6 +112,9 @@ Are you sure you want to continue?" = "Všechna stažená data budou smazaná a 
 
 /* tuesday */
 "Tue" = "Úte";
+
+/* tutorials content */
+"Tutorials content" = "Osnova cvičení";
 
 /* username empty */
 "Username cannot be empty!" = "Login nesmí být pradný!";

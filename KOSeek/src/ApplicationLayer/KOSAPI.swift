@@ -23,6 +23,7 @@ class KOSAPI {
     
     private static let baseURL = "https://kosapi.fit.cvut.cz/api/3"
     private static var semesterID = "none"
+    private static var subjectCode = "none"
     private static var courseEvent = false
     
     private init() {}
@@ -120,6 +121,26 @@ class KOSAPI {
         let extensionURL =  "/courseEvents/?access_token=" + accessToken + "&query=semester='" + currentSemester + "'&limit=1000"
         courseEvent = true
         download("Course events", extensionURL: extensionURL, context: context, parser: examsOrCourseEventsParser)
+    }
+    
+    class func downloadSubjectDetails(code: String, context: NSManagedObjectContext) {
+        guard let accessToken = LoginHelper.getAuthToken() else {
+            return
+        }
+        let extensionURL =  "/courses?access_token=" + accessToken + "&limit=1000&query=code=" + code + "&detail=1&lang=" + downloadLanguage + "&multilang=0"
+        subjectCode = code
+        download("Subject details", extensionURL: extensionURL, context: context, parser: subjectDetailsParser)
+    }
+    
+    private class func subjectDetailsParser(xml: XMLIndexer, context: NSManagedObjectContext) {
+        let content = xml["atom:feed"]["atom:entry"]["atom:content"]
+        let completion = content["completion"].element?.text
+        let season = content["season"].element?.text
+        let range = content["range"].element?.text
+        let description = content["description"].element?.text
+        let lecturesContents = content["lecturesContents"].element?.text
+        let tutorialsContents = content["tutorialsContents"].element?.text
+        Database.addSubjectDetails(code: subjectCode, completion: completion, range: range, season: season, description: description, lecturesContents: lecturesContents, tutorialsContents: tutorialsContents, context: context)
     }
     
     private class func examsOrCourseEventsParser(xml: XMLIndexer, context: NSManagedObjectContext) {

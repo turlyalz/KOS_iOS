@@ -98,6 +98,7 @@ class ProfileViewController: MainTableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         if indexPath.section == 0 {
             let label = UILabel(frame: CGRect(x: 15, y: 0, width: screenSize.width-15, height: 50))
             label.text = profileInfo[indexPath.row]

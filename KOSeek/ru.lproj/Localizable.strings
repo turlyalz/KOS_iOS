@@ -1,8 +1,18 @@
+/* refresh all */
+"All of your actual data will be removed and new data will be downloaded.
+Are you sure you want to continue?" = "Все актуальные данные будут удалены и новые данные будут загружены. Вы уверены, что хотите продолжить?";
+
 /* log out message */
 "Are you sure you want to log out?" = "Вы уверены, что хотите выйти?";
 
 /* Cancel deadline */
 "Cancel deadline" = "Дата отмены";
+
+/* completion */
+"Completion" = "Завершение";
+
+/* credits */
+"Credits" = "Кредиты";
 
 /* credits enrolled */
 "Credits enrolled: " = "Кредитов записано: ";
@@ -15,6 +25,9 @@
 
 /* Day */
 "Day" = "День";
+
+/* description */
+"Description" = "Описание";
 
 /* download language */
 "Download language: " = "Язык загрузки: ";
@@ -37,8 +50,11 @@
 /* KOS */
 "KOS CTU" = "KOS ČVUT";
 
+/* lectures content */
+"Lectures content" = "Основа лекций";
+
 /* login message */
-"Logging In, please wait." = "Пожалуйста подождите, происходит авторизация.";
+"Logging In, please wait." = "Пожалуйста подождите, авторизация.";
 
 /* monday */
 "Mon" = "Пон";
@@ -64,11 +80,17 @@
 /* select subject */
 "Please select subject" = "Выберите предмет";
 
+/* range */
+"Range" = "Диапазон";
+
 /* room */
 "Room: " = "Место: ";
 
 /* saturday */
 "Sat" = "Суб";
+
+/* season */
+"Season" = "Семестр";
 
 /* start */
 "Start: " = "Начало: ";
@@ -93,6 +115,9 @@
 
 /* tuesday */
 "Tue" = "Вто";
+
+/* tutorials content */
+"Tutorials content" = "Основа практики";
 
 /* username empty */
 "Username cannot be empty!" = "Логин не может быть пустым!";

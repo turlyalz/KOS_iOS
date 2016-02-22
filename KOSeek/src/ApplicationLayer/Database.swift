@@ -272,7 +272,7 @@ class Database {
         return nil
     }
     
-    private class func getSubjectsBy(code code: String, context: NSManagedObjectContext) -> [Subject]? {
+    class func getSubjectsBy(code code: String, context: NSManagedObjectContext) -> [Subject]? {
         let request = NSFetchRequest(entityName: "Subject")
         request.returnsObjectsAsFaults = false
         request.predicate = NSPredicate(format: "code == %@", code)
@@ -314,6 +314,32 @@ class Database {
                 }
                 if let _ = semester {
                     subject.semester = semester
+                }
+            }
+            saveContext(context)
+        }
+    }
+    
+    class func addSubjectDetails(code code: String?, completion: String?, range: String?, season: String?, description: String?, lecturesContents: String?, tutorialsContents: String?, context: NSManagedObjectContext) {
+        if let uCode = code, subjects = getSubjectsBy(code: uCode, context: context) {
+            for subject in subjects {
+                if let _ = completion {
+                    subject.completion = completion
+                }
+                if let _ = range {
+                    subject.range = range
+                }
+                if let _ = season {
+                    subject.season = season
+                }
+                if let _ = description {
+                    subject.specification = description
+                }
+                if let _ = lecturesContents {
+                    subject.lecturesContents = lecturesContents
+                }
+                if let _ = tutorialsContents {
+                    subject.tutorialsContents = tutorialsContents
                 }
             }
             saveContext(context)

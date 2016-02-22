@@ -57,6 +57,7 @@
 		9C9E50231BE12C50009B6CB1 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50221BE12C50009B6CB1 /* ResultsViewController.swift */; };
 		9C9E50251BE12E42009B6CB1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E50241BE12E42009B6CB1 /* SearchViewController.swift */; };
 		9CA475541C7A2320002A404D /* KOSAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA475531C7A2320002A404D /* KOSAPITests.swift */; };
+		9CA4755C1C7A6B01002A404D /* SubjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4755B1C7A6B01002A404D /* SubjectDetailsViewController.swift */; };
 		9CA9694D1C654C9E001291C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9694C1C654C9E001291C1 /* AppDelegate.swift */; };
 		9CA9695D1C654FA0001291C1 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9694F1C654FA0001291C1 /* Constraint.swift */; };
 		9CA9695E1C654FA0001291C1 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA969501C654FA0001291C1 /* ConstraintAttributes.swift */; };
@@ -175,6 +176,7 @@
 		9CA475581C7A3D91002A404D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9CA475591C7A3D91002A404D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9CA4755A1C7A3D92002A404D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		9CA4755B1C7A6B01002A404D /* SubjectDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectDetailsViewController.swift; sourceTree = "<group>"; };
 		9CA9694C1C654C9E001291C1 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = src/AppDelegate.swift; sourceTree = "<group>"; };
 		9CA9694F1C654FA0001291C1 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		9CA969501C654FA0001291C1 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				9C22728F1BD6517B00DE7F15 /* LoginViewController.swift */,
 				9C8A49B41BE011C7009ECFCA /* SideMenuController.swift */,
 				9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */,
+				9CA4755B1C7A6B01002A404D /* SubjectDetailsViewController.swift */,
 			);
 			name = PresentationLayer;
 			path = src/PresentationLayer;
@@ -588,6 +591,7 @@
 				9C43A1041BF7F67A0018ABB0 /* Constants.swift in Sources */,
 				9CA969631C654FA0001291C1 /* Debugging.swift in Sources */,
 				9C28FEAB1BDFA51600D7DE04 /* SemesterViewController.swift in Sources */,
+				9CA4755C1C7A6B01002A404D /* SubjectDetailsViewController.swift in Sources */,
 				9C5523D51C03B6CD00DC6A04 /* Person+CoreDataProperties.swift in Sources */,
 				9C86AE8B1BF3F3CC0096C72E /* SWXMLHash.swift in Sources */,
 				9C86AE431BF3B2BA0096C72E /* KOSAPI.swift in Sources */,

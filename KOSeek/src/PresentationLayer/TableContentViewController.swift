@@ -22,16 +22,7 @@ class TableContentViewController: MainTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    func setLabelParameters(label: UILabel, text: String?, textColor: UIColor = .blackColor(), fontSize: CGFloat = 14, numberOfLines: Int = 2) {
-        label.text = text
-        label.font = .systemFontOfSize(fontSize)
-        label.textColor = textColor
-        label.textAlignment = .Center
-        label.numberOfLines = numberOfLines
-        label.adjustsFontSizeToFitWidth = true
-    }
-    
+        
     func drawHSeparator(view: UIView, leftView: UIView) -> ConstraintItem {
         let hLine = UIView()
         hLine.backgroundColor = .grayColor()
@@ -49,6 +40,7 @@ class TableContentViewController: MainTableViewController {
             print("Warning: sizes and offsets counts of row must be the same as array count!")
         }
         let view = UITableViewCell()
+        view.selectionStyle = UITableViewCellSelectionStyle.None
         if isHeader {
             view.backgroundColor = BGHeaderColor
         }

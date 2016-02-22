@@ -12,6 +12,9 @@ class SemesterViewController: MainTableViewController {
 
     private var subjects: [Subject] = []
     private var currentSemester: String = ""
+    private var subjectCode: String = ""
+    
+    private let alertLoadingView = UIAlertController(title: "", message: downloadMessage, preferredStyle: UIAlertControllerStyle.Alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,10 @@ class SemesterViewController: MainTableViewController {
         self.title = SavedVariables.semesterIDNameDict[currentSemester]
         subjects.sortInPlace({ $0.0.code < $0.1.code })
         makePullToRefresh("refreshTableView")
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        activityIndicator.frame = CGRect(x: 25, y: 30, width: 10, height: 10)
+        activityIndicator.startAnimating()
+        alertLoadingView.view.addSubview(activityIndicator)
     }
     
     // MARK: - Table view data source
@@ -91,5 +98,33 @@ class SemesterViewController: MainTableViewController {
             cell.backgroundColor = SlotTutorialColor
         }
         return cell
+    }
+    
+    func endDownloading() {
+        alertLoadingView.dismissViewControllerAnimated(true, completion: nil)
+        performSegueWithIdentifier("showSubjectDetails", sender: self)
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard let code = subjects[indexPath.row].code else {
+            return
+        }
+        subjectCode = code
+        self.presentViewController(self.alertLoadingView, animated: true, completion: nil)
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
+            KOSAPI.downloadSubjectDetails(code, context: SavedVariables.cdh.backgroundContext!)
+            dispatch_async(dispatch_get_main_queue(), { self.endDownloading() })
+        })
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showSubjectDetails" {
+            guard let navigationController = segue.destinationViewController as? UINavigationController else {
+                return
+            }
+            if let subjectDetailsViewController = navigationController.viewControllers[0] as? SubjectDetailsViewController {
+                subjectDetailsViewController.code = subjectCode
+            }
+        }
     }
 }

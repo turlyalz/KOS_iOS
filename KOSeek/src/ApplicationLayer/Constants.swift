@@ -20,6 +20,10 @@ let SlotLaboratoryColor = UIColor(red: 189/255.0, green: 196/255.0, blue: 231/25
 let MenuButtonTintColor = UIColor(red: 57/255.0, green: 61/255.0, blue: 67/255.0, alpha: 1)
 let TableViewBackgroundColor = UIColor(white: 1, alpha: 0.95)
 
+// Other
+let titleAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline), NSForegroundColorAttributeName: BGHeaderColor]
+let textAttributes = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)]
+
 typealias SavedVariablesContent = (username: String?, currentSemester: String?, accessToken: String?, refreshToken: String?, expires: NSDate?, downloadLanguage: String?)
 
 var screenSize: CGRect = UIScreen.mainScreen().bounds
@@ -121,5 +125,32 @@ func fromExamsToData(exams: [Exam]?) -> [[String]] {
         data.append(array)
     }
     return data
+}
+
+func getCompletionAbbr(completion: String?) -> String {
+    guard let compl = completion else {
+        return ""
+    }
+    switch (compl) {
+        case "CLFD_CREDIT": return "KZ"
+        case "CREDIT": return "Z"
+        case "CREDIT_EXAM": return "Z, ZK"
+        case "DEFENCE": return "O"
+        case "EXAM": return "Z"
+        case "NOTHING": return "NIC"
+        default: return ""
+    }
+}
+
+func getSeasonAbbr(season: String?) -> String {
+    guard let season = season else {
+        return ""
+    }
+    switch (season) {
+        case "WINTER": return "Z"
+        case "SUMMER": return "L"
+        case "BOTH": return "Z, L"
+        default: return ""
+    }
 }
 

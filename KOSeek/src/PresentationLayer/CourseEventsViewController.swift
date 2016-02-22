@@ -18,7 +18,6 @@ class CourseEventsViewController: TableContentViewController {
         super.header = examHeader
         super.sizes = [6.0, 8.5, 7.5, 7.5, 6.0]
         makePullToRefresh("refreshTableView")
-        //createAlertView("", text: "No available one course events.\nPlease try later or pull to refresh", viewController: self, handlers: ["OK": {_ in }])
     }
        
     func refreshTableView() {

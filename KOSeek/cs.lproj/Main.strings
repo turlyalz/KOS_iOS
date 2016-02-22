@@ -19,6 +19,9 @@
 /* Class = "UIButton"; normalTitle = "Log In"; ObjectID = "DhN-hH-WAM"; */
 "DhN-hH-WAM.normalTitle" = "Přihlásit se";
 
+/* Class = "UINavigationItem"; title = "Subject details"; ObjectID = "E6Z-TX-RGr"; */
+"E6Z-TX-RGr.title" = "Detaily předmětu";
+
 /* Class = "UILabel"; text = "Timetable"; ObjectID = "HVY-p5-Dxd"; */
 "HVY-p5-Dxd.text" = "Rozvrh";
 
@@ -34,6 +37,9 @@
 /* Class = "UILabel"; text = "Log out"; ObjectID = "XZt-NZ-tdQ"; */
 "XZt-NZ-tdQ.text" = "Odhlásit se";
 
+/* Class = "UINavigationItem"; title = "Search"; ObjectID = "dYP-e9-Nwd"; */
+"dYP-e9-Nwd.title" = "Vyhledávání";
+
 /* Class = "UILabel"; text = "Course Events"; ObjectID = "kXE-8W-Yfw"; */
 "kXE-8W-Yfw.text" = "Jednorazové akce";
 
@@ -45,6 +51,9 @@
 
 /* Class = "UINavigationItem"; title = "Odd Week"; ObjectID = "nWy-sD-hLz"; */
 "nWy-sD-hLz.title" = "Lichý týden";
+
+/* Class = "UILabel"; text = "Please wait. Downloading data."; ObjectID = "v2d-8j-Pki"; */
+"v2d-8j-Pki.text" = "Stahování dat. Počkejte prosím.";
 
 /* Class = "UILabel"; text = "Semester"; ObjectID = "v93-K3-Cxy"; */
 "v93-K3-Cxy.text" = "Semestr";

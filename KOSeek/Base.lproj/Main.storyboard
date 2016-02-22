@@ -185,6 +185,7 @@
                         <segue destination="RuO-Zx-omT" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="kPD-FR-EI4"/>
                         <segue destination="Zes-4r-aZE" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="fT1-Nq-pnK"/>
                         <segue destination="E8I-kc-PKa" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="Bjo-3h-1St"/>
+                        <segue destination="J9l-xU-XCt" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="7eD-Ku-dDL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ys-9q-EpN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -473,6 +474,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Semester" id="Lqe-U6-R7q"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="J9l-xU-XCt" kind="custom" identifier="showSubjectDetails" customClass="SWRevealViewControllerSeguePushController" id="agg-PN-ehS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2E-QS-C1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -538,7 +542,7 @@
         <scene sceneID="6AQ-hG-vvY">
             <objects>
                 <tableViewController id="fOe-z9-Lr4" customClass="ResultsViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="yA2-f1-GvS">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="yA2-f1-GvS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -553,6 +557,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Results" id="w9R-UN-KPn"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="J9l-xU-XCt" kind="custom" identifier="showSubjectDetails" customClass="SWRevealViewControllerSeguePushController" id="OVE-1c-wiu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6YM-Cw-WaO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -797,6 +804,45 @@
             </objects>
             <point key="canvasLocation" x="4844" y="1355"/>
         </scene>
+        <!--Subject details-->
+        <scene sceneID="GvG-P0-1ND">
+            <objects>
+                <tableViewController id="ZMO-Jx-ghK" userLabel="Subject details" customClass="SubjectDetailsViewController" customModule="KOSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qyo-er-fMp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="ZMO-Jx-ghK" id="Pdu-MY-9hJ"/>
+                            <outlet property="delegate" destination="ZMO-Jx-ghK" id="NmQ-67-Yhq"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Subject details" id="E6Z-TX-RGr" userLabel="Subject details"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gx8-Sz-Klc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4949" y="-134"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EJZ-F2-n56">
+            <objects>
+                <navigationController id="J9l-xU-XCt" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LWQ-Wo-by5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.43137254899999999" green="0.45098039220000002" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ZMO-Jx-ghK" kind="relationship" relationship="rootViewController" id="iQs-dp-8D6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Bb-Gm-W6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4233" y="-134"/>
+        </scene>
     </scenes>
     <resources>
         <image name="exams" width="64" height="64"/>
@@ -810,15 +856,16 @@
         <image name="update" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Q2c-SP-SKF"/>
+        <segue reference="fT1-Nq-pnK"/>
         <segue reference="uIv-US-8Aj"/>
+        <segue reference="9cO-8Q-G0I"/>
+        <segue reference="9HU-us-G6V"/>
         <segue reference="kPD-FR-EI4"/>
-        <segue reference="QGR-WY-wp3"/>
-        <segue reference="pn5-gg-Cwc"/>
-        <segue reference="DYU-8V-Yjc"/>
-        <segue reference="gqg-lU-my3"/>
-        <segue reference="PeF-pM-b66"/>
-        <segue reference="oQ7-TJ-uoE"/>
-        <segue reference="Av4-Fp-A59"/>
+        <segue reference="IJA-97-2dF"/>
+        <segue reference="Bjo-3h-1St"/>
+        <segue reference="5X7-8d-YpJ"/>
+        <segue reference="FBU-Bn-6l6"/>
+        <segue reference="vwg-3F-iqu"/>
+        <segue reference="OVE-1c-wiu"/>
     </inferredMetricsTieBreakers>
 </document>

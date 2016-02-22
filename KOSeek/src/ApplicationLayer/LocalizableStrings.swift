@@ -26,6 +26,13 @@ let creditsObtained = NSLocalizedString("Credits obtained: ", comment: "credits 
 let totalEnrolled = NSLocalizedString("Total enrolled: ", comment: "total enrolled")
 let totalObtained = NSLocalizedString("Total obtained: ", comment: "total obtained")
 let selectSubjectString = NSLocalizedString("Please select subject", comment: "select subject")
+let descriptionString = NSLocalizedString("Description", comment: "description")
+let lecturesContentString = NSLocalizedString("Lectures content", comment: "lectures content")
+let tutorialsContentString = NSLocalizedString("Tutorials content", comment: "tutorials content")
+let creditsString = NSLocalizedString("Credits", comment: "credits")
+let seasonString = NSLocalizedString("Season", comment: "season")
+let rangeString = NSLocalizedString("Range", comment: "range")
+let completionString = NSLocalizedString("Completion", comment: "completion")
 
 // Headers
 let examHeader = [NSLocalizedString("Date", comment: "Date"), NSLocalizedString("Time", comment: "Time"), NSLocalizedString("Place", comment: "Place"), NSLocalizedString("Occ/Cap", comment: "Occ/Cap"), NSLocalizedString("Cancel deadline", comment: "Cancel deadline")]

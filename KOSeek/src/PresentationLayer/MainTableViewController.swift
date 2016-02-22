@@ -28,6 +28,15 @@ class MainTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = menuButton
     }
     
+    func setLabelParameters(label: UILabel, text: String?, textAlignment: NSTextAlignment = .Center, textColor: UIColor = .blackColor(), fontSize: CGFloat = 14, numberOfLines: Int = 2, adjustFontSizeToFitWidth: Bool = true) {
+        label.text = text
+        label.font = .systemFontOfSize(fontSize)
+        label.textColor = textColor
+        label.textAlignment = textAlignment
+        label.numberOfLines = numberOfLines
+        label.adjustsFontSizeToFitWidth = adjustFontSizeToFitWidth
+    }
+    
     func makePullToRefresh(triggerToMethodName: String) {
         tableRefreshControl.backgroundColor = UIColor.whiteColor()
         tableRefreshControl.addTarget(self, action: Selector(triggerToMethodName), forControlEvents: UIControlEvents.ValueChanged)
