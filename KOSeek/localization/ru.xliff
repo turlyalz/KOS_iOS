@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="KOSeek/Base.lproj/LaunchScreen.storyboard" source-language="en" datatype="plaintext" target-language="ru">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.2" build-num="7C68"/>
+    </header>
+    <body>
+      <trans-unit id="I7b-dX-TE9.text">
+        <source>Welcome to KOSeek</source>
+        <target>Добро пожаловать в KOSeek</target>
+        <note>Class = "UILabel"; text = "Welcome to KOSeek"; ObjectID = "I7b-dX-TE9";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="KOSeek/Base.lproj/Main.storyboard" source-language="en" datatype="plaintext" target-language="ru">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.2" build-num="7C68"/>
+    </header>
+    <body>
+      <trans-unit id="1gi-8p-B6A.text">
+        <source>Student Office</source>
+        <target>Офис студентов</target>
+        <note>Class = "UILabel"; text = "Student Office"; ObjectID = "1gi-8p-B6A";</note>
+      </trans-unit>
+      <trans-unit id="2pb-Ua-NL8.text">
+        <source>Exams</source>
+        <target>Экзамены</target>
+        <note>Class = "UILabel"; text = "Exams"; ObjectID = "2pb-Ua-NL8";</note>
+      </trans-unit>
+      <trans-unit id="5qP-3Z-Xiy.title">
+        <source>Student Office</source>
+        <target>Офис студентов</target>
+        <note>Class = "UINavigationItem"; title = "Student Office"; ObjectID = "5qP-3Z-Xiy";</note>
+      </trans-unit>
+      <trans-unit id="7LC-Y6-5qj.text">
+        <source>Username:</source>
+        <target>Логин:</target>
+        <note>Class = "UILabel"; text = "Username:"; ObjectID = "7LC-Y6-5qj";</note>
+      </trans-unit>
+      <trans-unit id="8M9-o8-npt.title">
+        <source>Profile</source>
+        <target>Профиль</target>
+        <note>Class = "UINavigationItem"; title = "Profile"; ObjectID = "8M9-o8-npt";</note>
+      </trans-unit>
+      <trans-unit id="102-DD-6Yy.text">
+        <source>Welcome to KOS iOS</source>
+        <target>Добро пожаловать в KOS iOS</target>
+        <note>Class = "UILabel"; text = "Welcome to KOS iOS"; ObjectID = "102-DD-6Yy";</note>
+      </trans-unit>
+      <trans-unit id="C8j-Ar-DPW.title">
+        <source>KOS iOS</source>
+        <note>Class = "UINavigationItem"; title = "KOS iOS"; ObjectID = "C8j-Ar-DPW";</note>
+      </trans-unit>
+      <trans-unit id="DhN-hH-WAM.normalTitle">
+        <source>Log In</source>
+        <target>Войти</target>
+        <note>Class = "UIButton"; normalTitle = "Log In"; ObjectID = "DhN-hH-WAM";</note>
+      </trans-unit>
+      <trans-unit id="E6Z-TX-RGr.title">
+        <source>Subject details</source>
+        <note>Class = "UINavigationItem"; title = "Subject details"; ObjectID = "E6Z-TX-RGr";</note>
+      </trans-unit>
+      <trans-unit id="HVY-p5-Dxd.text">
+        <source>Timetable</source>
+        <target>Расписание</target>
+        <note>Class = "UILabel"; text = "Timetable"; ObjectID = "HVY-p5-Dxd";</note>
+      </trans-unit>
+      <trans-unit id="ICl-K0-qLS.text">
+        <source>People Search</source>
+        <target>Поиск людей</target>
+        <note>Class = "UILabel"; text = "People Search"; ObjectID = "ICl-K0-qLS";</note>
+      </trans-unit>
+      <trans-unit id="Lqe-U6-R7q.title">
+        <source>Semester</source>
+        <target>Семестр</target>
+        <note>Class = "UINavigationItem"; title = "Semester"; ObjectID = "Lqe-U6-R7q";</note>
+      </trans-unit>
+      <trans-unit id="SWd-E6-LLy.text">
+        <source>Password:</source>
+        <target>Пароль:</target>
+        <note>Class = "UILabel"; text = "Password:"; ObjectID = "SWd-E6-LLy";</note>
+      </trans-unit>
+      <trans-unit id="XZt-NZ-tdQ.text">
+        <source>Log out</source>
+        <target>Выйти</target>
+        <note>Class = "UILabel"; text = "Log out"; ObjectID = "XZt-NZ-tdQ";</note>
+      </trans-unit>
+      <trans-unit id="dYP-e9-Nwd.title">
+        <source>Search</source>
+        <target>Поиск</target>
+        <note>Class = "UINavigationItem"; title = "Search"; ObjectID = "dYP-e9-Nwd";</note>
+      </trans-unit>
+      <trans-unit id="kXE-8W-Yfw.text">
+        <source>Course Events</source>
+        <target>Разовые акции</target>
+        <note>Class = "UILabel"; text = "Course Events"; ObjectID = "kXE-8W-Yfw";</note>
+      </trans-unit>
+      <trans-unit id="lRU-1F-VsL.title">
+        <source>Course Events</source>
+        <target>Разовые акции</target>
+        <note>Class = "UINavigationItem"; title = "Course Events"; ObjectID = "lRU-1F-VsL";</note>
+      </trans-unit>
+      <trans-unit id="lgY-Ey-9nm.title">
+        <source>Even Week</source>
+        <target>Четная неделя</target>
+        <note>Class = "UINavigationItem"; title = "Even Week"; ObjectID = "lgY-Ey-9nm";</note>
+      </trans-unit>
+      <trans-unit id="nWy-sD-hLz.title">
+        <source>Odd Week</source>
+        <target>Нечетная неделя</target>
+        <note>Class = "UINavigationItem"; title = "Odd Week"; ObjectID = "nWy-sD-hLz";</note>
+      </trans-unit>
+      <trans-unit id="v2d-8j-Pki.text">
+        <source>Please wait. Downloading data.</source>
+        <target>Пожайлуста подождите. Загрузка данных.</target>
+        <note>Class = "UILabel"; text = "Please wait. Downloading data."; ObjectID = "v2d-8j-Pki";</note>
+      </trans-unit>
+      <trans-unit id="v93-K3-Cxy.text">
+        <source>Semester</source>
+        <target>Семестр</target>
+        <note>Class = "UILabel"; text = "Semester"; ObjectID = "v93-K3-Cxy";</note>
+      </trans-unit>
+      <trans-unit id="w9R-UN-KPn.title">
+        <source>Results</source>
+        <target>Результаты</target>
+        <note>Class = "UINavigationItem"; title = "Results"; ObjectID = "w9R-UN-KPn";</note>
+      </trans-unit>
+      <trans-unit id="xWm-eo-gtU.title">
+        <source>Exams</source>
+        <target>Экзамены</target>
+        <note>Class = "UINavigationItem"; title = "Exams"; ObjectID = "xWm-eo-gtU";</note>
+      </trans-unit>
+      <trans-unit id="xyl-Me-mtC.text">
+        <source>Results</source>
+        <target>Результаты</target>
+        <note>Class = "UILabel"; text = "Results"; ObjectID = "xyl-Me-mtC";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="KOSeek/Info.plist" source-language="en" datatype="plaintext" target-language="ru">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.2" build-num="7C68"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="KOSeek/Localizable.strings" source-language="en" datatype="plaintext" target-language="ru">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.2" build-num="7C68"/>
+    </header>
+    <body>
+      <trans-unit id="All of your actual data will be removed and new data will be downloaded.\nAre you sure you want to continue?">
+        <source>All of your actual data will be removed and new data will be downloaded.
+Are you sure you want to continue?</source>
+        <target>Все актуальные данные будут удалены и новые данные будут загружены. Вы уверены, что хотите продолжить?</target>
+        <note>refresh all</note>
+      </trans-unit>
+      <trans-unit id="Are you sure you want to log out?">
+        <source>Are you sure you want to log out?</source>
+        <target>Вы уверены, что хотите выйти?</target>
+        <note>log out message</note>
+      </trans-unit>
+      <trans-unit id="Cancel deadline">
+        <source>Cancel deadline</source>
+        <target>Дата отмены</target>
+        <note>Cancel deadline</note>
+      </trans-unit>
+      <trans-unit id="Completion">
+        <source>Completion</source>
+        <target>Завершение</target>
+        <note>completion</note>
+      </trans-unit>
+      <trans-unit id="Credits">
+        <source>Credits</source>
+        <target>Кредиты</target>
+        <note>credits</note>
+      </trans-unit>
+      <trans-unit id="Credits enrolled: ">
+        <source>Credits enrolled: </source>
+        <target>Кредитов записано: </target>
+        <note>credits enrolled</note>
+      </trans-unit>
+      <trans-unit id="Credits obtained: ">
+        <source>Credits obtained: </source>
+        <target>Кредитов получено: </target>
+        <note>credits obtained</note>
+      </trans-unit>
+      <trans-unit id="Date">
+        <source>Date</source>
+        <target>Дата</target>
+        <note>Date</note>
+      </trans-unit>
+      <trans-unit id="Day">
+        <source>Day</source>
+        <target>День</target>
+        <note>Day</note>
+      </trans-unit>
+      <trans-unit id="Description">
+        <source>Description</source>
+        <target>Описание</target>
+        <note>description</note>
+      </trans-unit>
+      <trans-unit id="Download language: ">
+        <source>Download language: </source>
+        <target>Язык загрузки: </target>
+        <note>download language</note>
+      </trans-unit>
+      <trans-unit id="Downloading data, please wait.">
+        <source>Downloading data, please wait.</source>
+        <target>Загрузка данных, пожалуйста подождите.</target>
+        <note>downloading data</note>
+      </trans-unit>
+      <trans-unit id="Email: ">
+        <source>Email: </source>
+        <target>Емайл: </target>
+        <note>email</note>
+      </trans-unit>
+      <trans-unit id="End: ">
+        <source>End: </source>
+        <target>Конец: </target>
+        <note>end</note>
+      </trans-unit>
+      <trans-unit id="Fri">
+        <source>Fri</source>
+        <target>Пят</target>
+        <note>friday</note>
+      </trans-unit>
+      <trans-unit id="From">
+        <source>From</source>
+        <target>От</target>
+        <note>From</note>
+      </trans-unit>
+      <trans-unit id="KOS CTU">
+        <source>KOS CTU</source>
+        <target>KOS ČVUT</target>
+        <note>KOS</note>
+      </trans-unit>
+      <trans-unit id="Lectures content">
+        <source>Lectures content</source>
+        <target>Основа лекций</target>
+        <note>lectures content</note>
+      </trans-unit>
+      <trans-unit id="Logging In, please wait.">
+        <source>Logging In, please wait.</source>
+        <target>Пожалуйста подождите, авторизация.</target>
+        <note>login message</note>
+      </trans-unit>
+      <trans-unit id="Mon">
+        <source>Mon</source>
+        <target>Пон</target>
+        <note>monday</note>
+      </trans-unit>
+      <trans-unit id="No">
+        <source>No</source>
+        <target>Нет</target>
+        <note>no</note>
+      </trans-unit>
+      <trans-unit id="No available exams">
+        <source>No available exams</source>
+        <target>Нет доступных экзаменов</target>
+        <note>no exams</note>
+      </trans-unit>
+      <trans-unit id="Occ/Cap">
+        <source>Occ/Cap</source>
+        <target>Зан/Кол</target>
+        <note>Occ/Cap</note>
+      </trans-unit>
+      <trans-unit id="Password cannot be empty!">
+        <source>Password cannot be empty!</source>
+        <target>Пароль не может быть пустым!</target>
+        <note>password empty</note>
+      </trans-unit>
+      <trans-unit id="Personal number: ">
+        <source>Personal number: </source>
+        <target>Персональный номер: </target>
+        <note>personal number</note>
+      </trans-unit>
+      <trans-unit id="Place">
+        <source>Place</source>
+        <target>Место</target>
+        <note>Place</note>
+      </trans-unit>
+      <trans-unit id="Please select subject">
+        <source>Please select subject</source>
+        <target>Выберите предмет</target>
+        <note>select subject</note>
+      </trans-unit>
+      <trans-unit id="Range">
+        <source>Range</source>
+        <target>Диапазон</target>
+        <note>range</note>
+      </trans-unit>
+      <trans-unit id="Room: ">
+        <source>Room: </source>
+        <target>Место: </target>
+        <note>room</note>
+      </trans-unit>
+      <trans-unit id="Sat">
+        <source>Sat</source>
+        <target>Суб</target>
+        <note>saturday</note>
+      </trans-unit>
+      <trans-unit id="Season">
+        <source>Season</source>
+        <target>Семестр</target>
+        <note>season</note>
+      </trans-unit>
+      <trans-unit id="Start: ">
+        <source>Start: </source>
+        <target>Начало: </target>
+        <note>start</note>
+      </trans-unit>
+      <trans-unit id="Teacher: ">
+        <source>Teacher: </source>
+        <target>Учитель: </target>
+        <note>teacher</note>
+      </trans-unit>
+      <trans-unit id="Thu">
+        <source>Thu</source>
+        <target>Чтв</target>
+        <note>thursday</note>
+      </trans-unit>
+      <trans-unit id="Till">
+        <source>Till</source>
+        <target>До</target>
+        <note>Till</note>
+      </trans-unit>
+      <trans-unit id="Time">
+        <source>Time</source>
+        <target>Время</target>
+        <note>Time</note>
+      </trans-unit>
+      <trans-unit id="Total enrolled: ">
+        <source>Total enrolled: </source>
+        <target>Записано всего: </target>
+        <note>total enrolled</note>
+      </trans-unit>
+      <trans-unit id="Total obtained: ">
+        <source>Total obtained: </source>
+        <target>Получено всего: </target>
+        <note>total obtained</note>
+      </trans-unit>
+      <trans-unit id="Tue">
+        <source>Tue</source>
+        <target>Вто</target>
+        <note>tuesday</note>
+      </trans-unit>
+      <trans-unit id="Tutorials content">
+        <source>Tutorials content</source>
+        <target>Основа практики</target>
+        <note>tutorials content</note>
+      </trans-unit>
+      <trans-unit id="Username cannot be empty!">
+        <source>Username cannot be empty!</source>
+        <target>Логин не может быть пустым!</target>
+        <note>username empty</note>
+      </trans-unit>
+      <trans-unit id="Wed">
+        <source>Wed</source>
+        <target>Сре</target>
+        <note>wednesday</note>
+      </trans-unit>
+      <trans-unit id="Yes">
+        <source>Yes</source>
+        <target>Да</target>
+        <note>yes</note>
+      </trans-unit>
+      <trans-unit id="You have no internet connection. Please check your settings and try again.">
+        <source>You have no internet connection. Please check your settings and try again.</source>
+        <target>Вы не подключены к интернету. Пожалуйста, проверьте ваши настройки и попробуйте снова.</target>
+        <note>no internet</note>
+      </trans-unit>
+      <trans-unit id="type to start">
+        <source>type to start</source>
+        <target>нажмите</target>
+        <note>type to start</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="KOSeekTests/Info.plist" source-language="en" datatype="plaintext" target-language="ru">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.2" build-num="7C68"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="KOSeekUITests/Info.plist" source-language="en" datatype="plaintext" target-language="ru">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="7.2" build-num="7C68"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>$(PRODUCT_NAME)</source>
+      </trans-unit>
+      <trans-unit id="CFBundleShortVersionString">
+        <source>1.0</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
