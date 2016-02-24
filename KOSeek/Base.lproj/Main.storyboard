@@ -313,15 +313,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="exams" translatesAutoresizingMaskIntoConstraints="NO" id="ZYE-uL-F5M">
+                                            <rect key="frame" x="17" y="15" width="20" height="20"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exams" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pb-Ua-NL8">
                                             <rect key="frame" x="51" y="15" width="112" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="exams" translatesAutoresizingMaskIntoConstraints="NO" id="ZYE-uL-F5M">
-                                            <rect key="frame" x="17" y="15" width="20" height="20"/>
-                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.47058823529411764" green="0.63529411764705879" blue="0.71204255756578949" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
@@ -342,7 +342,7 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="exams" translatesAutoresizingMaskIntoConstraints="NO" id="qUL-bu-WNT">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="courseEvents" translatesAutoresizingMaskIntoConstraints="NO" id="qUL-bu-WNT">
                                             <rect key="frame" x="17" y="15" width="20" height="20"/>
                                         </imageView>
                                     </subviews>
@@ -857,6 +857,7 @@
     </scenes>
     <resources>
         <image name="cancel" width="16" height="16"/>
+        <image name="courseEvents" width="64" height="64"/>
         <image name="exams" width="64" height="64"/>
         <image name="logOut" width="64" height="64"/>
         <image name="results" width="64" height="64"/>
@@ -873,11 +874,11 @@
         <segue reference="kPD-FR-EI4"/>
         <segue reference="pn5-gg-Cwc"/>
         <segue reference="PeF-pM-b66"/>
+        <segue reference="oQ7-TJ-uoE"/>
         <segue reference="Q2c-SP-SKF"/>
+        <segue reference="gqg-lU-my3"/>
         <segue reference="DYU-8V-Yjc"/>
         <segue reference="QGR-WY-wp3"/>
-        <segue reference="WmM-pM-H0s"/>
         <segue reference="agg-PN-ehS"/>
-        <segue reference="aBO-J2-sSY"/>
     </inferredMetricsTieBreakers>
 </document>
