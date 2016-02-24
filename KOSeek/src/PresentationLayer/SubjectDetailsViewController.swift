@@ -31,9 +31,11 @@ class SubjectDetailsViewController: MainTableViewController {
     
     func refreshTableView() {
         if (!Reachability.isConnectedToNetwork()) {
+            self.endRefreshing()
             return
         }
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
+            Database.deleteSubjectDetails(code: self.code, context: SavedVariables.cdh.backgroundContext!)
             KOSAPI.downloadSubjectDetails(self.code, context: SavedVariables.cdh.backgroundContext!)
             self.subject = Database.getSubjectsBy(code: self.code, context: SavedVariables.cdh.backgroundContext!)?.first
             dispatch_async(dispatch_get_main_queue(), {

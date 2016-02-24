@@ -320,6 +320,20 @@ class Database {
         }
     }
     
+    class func deleteSubjectDetails(code code: String?, context: NSManagedObjectContext) {
+        if let uCode = code, subjects = getSubjectsBy(code: uCode, context: context) {
+            for subject in subjects {
+                subject.completion = nil
+                subject.range = nil
+                subject.season = nil
+                subject.specification = nil
+                subject.lecturesContents = nil
+                subject.tutorialsContents = nil
+            }
+            saveContext(context)
+        }
+    }
+    
     class func addSubjectDetails(code code: String?, completion: String?, range: String?, season: String?, description: String?, lecturesContents: String?, tutorialsContents: String?, context: NSManagedObjectContext) {
         if let uCode = code, subjects = getSubjectsBy(code: uCode, context: context) {
             for subject in subjects {

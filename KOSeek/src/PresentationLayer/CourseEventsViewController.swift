@@ -22,6 +22,7 @@ class CourseEventsViewController: TableContentViewController {
        
     func refreshTableView() {
         if (!Reachability.isConnectedToNetwork()) {
+            self.endRefreshing()
             return
         }
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
