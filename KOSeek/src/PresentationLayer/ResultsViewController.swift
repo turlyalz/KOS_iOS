@@ -98,7 +98,7 @@ class ResultsViewController: DropdownMenuViewController {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
             Database.deleteObjects("Subject", context: SavedVariables.cdh.backgroundContext!, predicate: NSPredicate(format: "semester.id == %@", self.selectedSemester))
             KOSAPI.downloadEnrolledCourses(SavedVariables.cdh.backgroundContext!, semesterID: self.selectedSemester)
-            KOSAPI.downloadSubjectsInfo(SavedVariables.cdh.backgroundContext!)
+            KOSAPI.downloadSubjectsInfo(self.selectedSemester, context: SavedVariables.cdh.backgroundContext!)
             guard let subj = Database.getSubjectsBy(semesterID: self.selectedSemester, context: SavedVariables.cdh.backgroundContext!) else {
                 return
             }
@@ -183,11 +183,14 @@ class ResultsViewController: DropdownMenuViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("X")
         guard let code = subjects[indexPath.row].code else {
             return
         }
         subjectCode = code
+        if Database.getSubjectsBy(code: code, context: SavedVariables.cdh.managedObjectContext)?.first?.season != nil {
+            performSegueWithIdentifier("showSubjectDetails", sender: self)
+            return
+        }
         self.presentViewController(self.alertLoadingView, animated: true, completion: nil)
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
             KOSAPI.downloadSubjectDetails(code, context: SavedVariables.cdh.backgroundContext!)
@@ -202,6 +205,7 @@ class ResultsViewController: DropdownMenuViewController {
             }
             if let subjectDetailsViewController = navigationController.viewControllers[0] as? SubjectDetailsViewController {
                 subjectDetailsViewController.code = subjectCode
+                subjectDetailsViewController.closeSegue = "resultsSegue"
             }
         }
     }

@@ -44,7 +44,7 @@ class SemesterViewController: MainTableViewController {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
             Database.deleteObjects("Subject", context: SavedVariables.cdh.backgroundContext!, predicate: NSPredicate(format: "semester.id == %@", self.currentSemester))
             KOSAPI.downloadEnrolledCourses(SavedVariables.cdh.backgroundContext!, semesterID: self.currentSemester)
-            KOSAPI.downloadSubjectsInfo(SavedVariables.cdh.backgroundContext!)
+            KOSAPI.downloadSubjectsInfo(self.currentSemester, context: SavedVariables.cdh.backgroundContext!)
             guard let currentSemester = SavedVariables.currentSemester, subj = Database.getSubjectsBy(semesterID: currentSemester, context: SavedVariables.cdh.backgroundContext!) else {
                 return
             }
@@ -110,6 +110,10 @@ class SemesterViewController: MainTableViewController {
             return
         }
         subjectCode = code
+        if Database.getSubjectsBy(code: code, context: SavedVariables.cdh.managedObjectContext)?.first?.season != nil {
+            performSegueWithIdentifier("showSubjectDetails", sender: self)
+            return
+        }
         self.presentViewController(self.alertLoadingView, animated: true, completion: nil)
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
             KOSAPI.downloadSubjectDetails(code, context: SavedVariables.cdh.backgroundContext!)
@@ -124,6 +128,7 @@ class SemesterViewController: MainTableViewController {
             }
             if let subjectDetailsViewController = navigationController.viewControllers[0] as? SubjectDetailsViewController {
                 subjectDetailsViewController.code = subjectCode
+                subjectDetailsViewController.closeSegue = "semesterSegue"
             }
         }
     }

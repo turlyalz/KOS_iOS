@@ -38,7 +38,7 @@ class KOSAPI {
         downloadTimeTableSlots(context)
         downloadCurrentSemester(context)
         downloadTeachers(context)
-        downloadSubjectsInfo(context)
+        downloadSubjectsInfo(nil, context: context)
         downloadAllCourseEvents(context)
         dispatch_async(dispatch_get_main_queue(), {
             increaseProgressBar?(100)
@@ -87,13 +87,23 @@ class KOSAPI {
         download("Teachers", extensionURL: "/divisions/18000/teachers/?access_token=" + accessToken + "&limit=1000&lang=" + downloadLanguage, context: context, parser: teachersParser)
     }
     
-    class func downloadSubjectsInfo(context: NSManagedObjectContext) {
+    class func downloadSubjectsInfo(semester: String?, context: NSManagedObjectContext) {
         guard let accessToken = LoginHelper.getAuthToken() else {
             return
         }
         var subjectExtensionURL = "/courses?access_token=" + accessToken + "&limit=1000&lang=" + downloadLanguage + "&query="
-        guard let subjects = Database.getSubjects(context) else {
-            return
+        
+        var subjects: [Subject]
+        if let semester = semester {
+            guard let subjs = Database.getSubjectsBy(semesterID: semester, context: context) else {
+                return
+            }
+            subjects = subjs
+        } else {
+            guard let subjs = Database.getSubjects(context) else {
+                return
+            }
+            subjects = subjs
         }
         for subject in subjects {
             if let code = subject.code {

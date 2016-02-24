@@ -10,6 +10,7 @@ import UIKit
 
 class SubjectDetailsViewController: MainTableViewController {
     
+    var closeSegue: String? = nil
     var code: String = "none"
     private var subject: Subject?
     
@@ -17,10 +18,29 @@ class SubjectDetailsViewController: MainTableViewController {
         super.viewDidLoad()
         title = code
         subject = Database.getSubjectsBy(code: code, context: SavedVariables.cdh.managedObjectContext)?.first
+        makePullToRefresh("refreshTableView")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    @IBAction func close(sender: AnyObject) {
+        guard let segue = closeSegue else {
+            return
+        }
+        performSegueWithIdentifier(segue, sender: self)
+    }
+    
+    
+    func refreshTableView() {
+        if (!Reachability.isConnectedToNetwork()) {
+            return
+        }
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), {
+            KOSAPI.downloadSubjectDetails(self.code, context: SavedVariables.cdh.backgroundContext!)
+            self.subject = Database.getSubjectsBy(code: self.code, context: SavedVariables.cdh.backgroundContext!)?.first
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                self.endRefreshing()
+            })
+        })
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

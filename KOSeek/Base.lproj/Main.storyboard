@@ -303,7 +303,7 @@
                                     <color key="backgroundColor" red="0.47058823529411764" green="0.63529411764705879" blue="0.71204255756578949" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="k0F-Gn-j7r" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="gqg-lU-my3"/>
+                                    <segue destination="k0F-Gn-j7r" kind="custom" identifier="" customClass="SWRevealViewControllerSeguePushController" id="gqg-lU-my3"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Exams" id="YRY-xZ-Q9G">
@@ -372,7 +372,7 @@
                                     <color key="backgroundColor" red="0.47058823529411764" green="0.63529411764705879" blue="0.71204255756578949" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Dsv-5b-xJJ" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="oQ7-TJ-uoE"/>
+                                    <segue destination="Dsv-5b-xJJ" kind="custom" identifier="" customClass="SWRevealViewControllerSeguePushController" id="oQ7-TJ-uoE"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Search People" id="FbL-fd-PIi">
@@ -819,8 +819,19 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Subject details" id="E6Z-TX-RGr" userLabel="Subject details"/>
+                    <navigationItem key="navigationItem" title="Subject details" id="E6Z-TX-RGr" userLabel="Subject details">
+                        <barButtonItem key="rightBarButtonItem" image="cancel" id="qwU-8a-OVW">
+                            <color key="tintColor" red="0.22352941179999999" green="0.23921568630000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="close:" destination="ZMO-Jx-ghK" id="1tn-bj-knu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="Dsv-5b-xJJ" kind="custom" identifier="resultsSegue" customClass="SWRevealViewControllerSeguePushController" id="WmM-pM-H0s"/>
+                        <segue destination="k0F-Gn-j7r" kind="custom" identifier="semesterSegue" customClass="SWRevealViewControllerSeguePushController" id="aBO-J2-sSY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gx8-Sz-Klc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -845,6 +856,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cancel" width="16" height="16"/>
         <image name="exams" width="64" height="64"/>
         <image name="logOut" width="64" height="64"/>
         <image name="results" width="64" height="64"/>
@@ -856,16 +868,16 @@
         <image name="update" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fT1-Nq-pnK"/>
+        <segue reference="Av4-Fp-A59"/>
         <segue reference="uIv-US-8Aj"/>
-        <segue reference="9cO-8Q-G0I"/>
-        <segue reference="9HU-us-G6V"/>
         <segue reference="kPD-FR-EI4"/>
-        <segue reference="IJA-97-2dF"/>
-        <segue reference="Bjo-3h-1St"/>
-        <segue reference="5X7-8d-YpJ"/>
-        <segue reference="FBU-Bn-6l6"/>
-        <segue reference="vwg-3F-iqu"/>
-        <segue reference="OVE-1c-wiu"/>
+        <segue reference="pn5-gg-Cwc"/>
+        <segue reference="PeF-pM-b66"/>
+        <segue reference="Q2c-SP-SKF"/>
+        <segue reference="DYU-8V-Yjc"/>
+        <segue reference="QGR-WY-wp3"/>
+        <segue reference="WmM-pM-H0s"/>
+        <segue reference="agg-PN-ehS"/>
+        <segue reference="aBO-J2-sSY"/>
     </inferredMetricsTieBreakers>
 </document>
