@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 /// Common class for view controllers with table content (drawing separators) 
 class TableContentViewController: MainTableViewController {
@@ -44,7 +45,7 @@ class TableContentViewController: MainTableViewController {
         if isHeader {
             view.backgroundColor = BGHeaderColor
         }
-        var rightPoint = ConstraintItem(object: self, attributes: ConstraintAttributes.allZeros)
+        var rightPoint: ConstraintItem? = nil
         for index in 0...array.count-1 {
             let label = UILabel()
             if isHeader {
@@ -57,7 +58,7 @@ class TableContentViewController: MainTableViewController {
                 if index == 0 {
                     make.left.equalTo(view).offset(offsets[index])
                 } else {
-                    make.left.equalTo(rightPoint).offset(offsets[index])
+                    make.left.equalTo(rightPoint!).offset(offsets[index])
                 }
                 make.width.equalTo(view).dividedBy(sizes[index])
                 make.height.equalTo(view)

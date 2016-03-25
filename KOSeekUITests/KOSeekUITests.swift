@@ -7,9 +7,10 @@
 //
 
 import XCTest
+@testable import KOSeek
 
 class KOSeekUITests: XCTestCase {
-        
+    
     override func setUp() {
         super.setUp()
         
@@ -29,6 +30,23 @@ class KOSeekUITests: XCTestCase {
     }
     
     func testExample() {
+        
+        let app = XCUIApplication()
+        app.navigationBars[""].buttons["menu"].tap()
+        app.tables.cells.staticTexts["Alzhan Turlybekov"].tap()
+        let cells = app.tables.cells
+        XCTAssertEqual(cells.count, 3, "Found instead: \(cells.debugDescription)")
+        
+        app.navigationBars["Time"].buttons["menu"].tap()
+        
+        let tablesQuery = app.tables
+        tablesQuery.staticTexts["Timetable"].tap()
+        tablesQuery.cells.containingType(.StaticText, identifier:"9:15").staticTexts["BI-EPD.2"].tap()
+        app.alerts["BI-EPD.2"].collectionViews.buttons["OK"].tap()
+      
+        
+        // Failed to find matching element please file bug (bugreport.apple.com) and provide output from Console.app
+        
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
