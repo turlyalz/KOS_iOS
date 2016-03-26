@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 /// Static class provides functions to get an access token, refresh token using KOSAPI
 class LoginHelper {

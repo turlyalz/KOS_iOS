@@ -49,8 +49,6 @@
 		9C86AE3B1BF3B1F60096C72E /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */; };
 		9C86AE431BF3B2BA0096C72E /* KOSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE421BF3B2BA0096C72E /* KOSAPI.swift */; };
 		9C86AE841BF3B7870096C72E /* KOSModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE821BF3B7870096C72E /* KOSModel.xcdatamodeld */; };
-		9C86AE891BF3F37C0096C72E /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE881BF3F37C0096C72E /* SwiftyJSON.swift */; };
-		9C86AE8B1BF3F3CC0096C72E /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86AE8A1BF3F3CC0096C72E /* SWXMLHash.swift */; };
 		9C8A49B51BE011C7009ECFCA /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8A49B41BE011C7009ECFCA /* SideMenuController.swift */; };
 		9C8ED07A1BE3D5A200611CBF /* SavedVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8ED0791BE3D5A200611CBF /* SavedVariables.swift */; };
 		9C9841011C5D5592009ACD05 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9841001C5D5592009ACD05 /* MainTableViewController.swift */; };
@@ -149,8 +147,6 @@
 		9C86AE3A1BF3B1F60096C72E /* WaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
 		9C86AE421BF3B2BA0096C72E /* KOSAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KOSAPI.swift; sourceTree = "<group>"; };
 		9C86AE831BF3B7870096C72E /* KOSModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KOSModel.xcdatamodel; sourceTree = "<group>"; };
-		9C86AE881BF3F37C0096C72E /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		9C86AE8A1BF3F3CC0096C72E /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
 		9C8A49B41BE011C7009ECFCA /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
 		9C8ED0791BE3D5A200611CBF /* SavedVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedVariables.swift; sourceTree = "<group>"; };
 		9C9841001C5D5592009ACD05 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
@@ -328,8 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				9C8ED0791BE3D5A200611CBF /* SavedVariables.swift */,
-				9C86AE881BF3F37C0096C72E /* SwiftyJSON.swift */,
-				9C86AE8A1BF3F3CC0096C72E /* SWXMLHash.swift */,
 				9C31E5941BDE4B7C004FF6CB /* LoginHelper.swift */,
 				9C86AE421BF3B2BA0096C72E /* KOSAPI.swift */,
 				9C2BFD291BF5420E00744E85 /* Database.swift */,
@@ -597,7 +591,6 @@
 				9CE171661BF8A48900C56D2F /* Subject.swift in Sources */,
 				9C01D4F11C63FF4C00D22C77 /* DropdownMenuViewController.swift in Sources */,
 				9C31E5951BDE4B7C004FF6CB /* LoginHelper.swift in Sources */,
-				9C86AE891BF3F37C0096C72E /* SwiftyJSON.swift in Sources */,
 				9C1A1B321C0916E50050E03E /* SlotTableViewCell.swift in Sources */,
 				9C6FB4D21BFE2E2700C682C4 /* Semester+CoreDataProperties.swift in Sources */,
 				9CE171651BF8A48900C56D2F /* Subject+CoreDataProperties.swift in Sources */,
@@ -605,7 +598,6 @@
 				9C28FEAB1BDFA51600D7DE04 /* SemesterViewController.swift in Sources */,
 				9CA4755C1C7A6B01002A404D /* SubjectDetailsViewController.swift in Sources */,
 				9C5523D51C03B6CD00DC6A04 /* Person+CoreDataProperties.swift in Sources */,
-				9C86AE8B1BF3F3CC0096C72E /* SWXMLHash.swift in Sources */,
 				9C86AE431BF3B2BA0096C72E /* KOSAPI.swift in Sources */,
 				9CA9694D1C654C9E001291C1 /* AppDelegate.swift in Sources */,
 			);

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
+import SWXMLHash
 
 /// Static class provides functions for downloading all data using KOSAPI
 class KOSAPI {

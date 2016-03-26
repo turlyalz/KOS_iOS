@@ -8,7 +8,7 @@
 
 import SystemConfiguration
 
-/// Class provides function to check if internet connection is reachable 
+/// Class provides method to check if internet connection is reachable 
 class Reachability {
     
     private init() {}
