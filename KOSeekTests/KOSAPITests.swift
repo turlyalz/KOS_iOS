@@ -8,6 +8,7 @@
 
 import XCTest
 import CoreData
+import SWXMLHash
 @testable import KOSeek
 
 class KOSAPITests: XCTestCase {
