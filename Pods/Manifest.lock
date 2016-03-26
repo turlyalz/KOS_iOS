@@ -1,10 +1,25 @@
 PODS:
   - SnapKit (0.15.0)
+  - SwiftyJSON (2.3.2)
+  - SWXMLHash (2.1.0)
 
 DEPENDENCIES:
   - SnapKit (~> 0.15.0)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - SWXMLHash (~> 2.1.0)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SWXMLHash: 7257a358b3ab2f7a209e0b4e4cf552e8b6df5f0f
 
 COCOAPODS: 0.39.0
