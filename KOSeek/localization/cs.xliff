@@ -217,6 +217,11 @@ Are you sure you want to continue?</source>
         <target>Stahování, počkejte prosím.</target>
         <note>downloading data</note>
       </trans-unit>
+      <trans-unit id="Email has successfully added to buffer">
+        <source>Email has successfully added to buffer</source>
+        <target>Email byl úspěšně přidan do bufferu</target>
+        <note>buffer</note>
+      </trans-unit>
       <trans-unit id="Email: ">
         <source>Email: </source>
         <note>email</note>
@@ -315,6 +320,11 @@ Are you sure you want to continue?</source>
         <source>Start: </source>
         <target>Začátek: </target>
         <note>start</note>
+      </trans-unit>
+      <trans-unit id="Subject">
+        <source>Subject</source>
+        <target>Předmět</target>
+        <note>Subject</note>
       </trans-unit>
       <trans-unit id="Teacher: ">
         <source>Teacher: </source>
