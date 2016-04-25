@@ -35,6 +35,9 @@ Are you sure you want to continue?" = "Všechna stažená data budou smazaná a 
 /* downloading data */
 "Downloading data, please wait." = "Stahování, počkejte prosím.";
 
+/* buffer */
+"Email has successfully added to buffer" = "Email byl úspěšně přidan do bufferu";
+
 /* end */
 "End: " = "Konec: ";
 
@@ -91,6 +94,9 @@ Are you sure you want to continue?" = "Všechna stažená data budou smazaná a 
 
 /* start */
 "Start: " = "Začátek: ";
+
+/* Subject */
+"Subject" = "Předmět";
 
 /* teacher */
 "Teacher: " = "Vyučující: ";

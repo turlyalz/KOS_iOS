@@ -35,6 +35,9 @@ Are you sure you want to continue?" = "Все актуальные данные 
 /* downloading data */
 "Downloading data, please wait." = "Загрузка данных, пожалуйста подождите.";
 
+/* buffer */
+"Email has successfully added to buffer" = "Емайл был успешно добавлен в буфер";
+
 /* email */
 "Email: " = "Емайл: ";
 
@@ -94,6 +97,9 @@ Are you sure you want to continue?" = "Все актуальные данные 
 
 /* start */
 "Start: " = "Начало: ";
+
+/* Subject */
+"Subject" = "Предмет";
 
 /* teacher */
 "Teacher: " = "Учитель: ";

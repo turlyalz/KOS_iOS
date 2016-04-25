@@ -48,4 +48,5 @@ let passwordEmptyMessage = NSLocalizedString("Password cannot be empty!", commen
 let noInternetMessage = NSLocalizedString("You have no internet connection. Please check your settings and try again.", comment: "no internet")
 let refreshAllDataMessage = NSLocalizedString("All of your actual data will be removed and new data will be downloaded.\nAre you sure you want to continue?", comment: "refresh all")
 let noExamsMessage = NSLocalizedString("No available exams", comment: "no exams")
+let pasteBoardMessage = NSLocalizedString("Email has successfully added to buffer", comment: "buffer")
 

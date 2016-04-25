@@ -14,9 +14,13 @@ class CourseEventsViewController: TableContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         courseEvents = Database.getCourseEvents(SavedVariables.cdh.managedObjectContext)
-        super.data = fromExamsToData(courseEvents)
-        super.header = examHeader
-        super.sizes = [6.0, 8.5, 7.5, 7.5, 6.0]
+        
+        var header = examHeader
+        header.removeLast()
+        header.insert(NSLocalizedString("Subject", comment: "Subject"), atIndex: 0)
+        super.data = fromExamsToData(courseEvents, courseEvents: true)
+        super.header = header
+        super.sizes = [5.7, 5.5, 9.0, 8.2, 6.2]
         makePullToRefresh("refreshTableView")
     }
        

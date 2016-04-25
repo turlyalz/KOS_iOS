@@ -62,7 +62,6 @@
 		9CCFF9361C5CCC2400868703 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCFF9351C5CCC2400868703 /* Reachability.swift */; };
 		9CE171651BF8A48900C56D2F /* Subject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */; };
 		9CE171661BF8A48900C56D2F /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE171621BF8A48900C56D2F /* Subject.swift */; };
-		9CE8F9D81C0F1F8F009C229F /* SnapKit in Resources */ = {isa = PBXBuildFile; fileRef = 9CE8F9D71C0F1F8F009C229F /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,7 +165,6 @@
 		9CCFF9351C5CCC2400868703 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		9CE171611BF8A48900C56D2F /* Subject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9CE171621BF8A48900C56D2F /* Subject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
-		9CE8F9D71C0F1F8F009C229F /* SnapKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SnapKit; path = /Volumes/Media/Alzhan/CVUT/KOSeek/KOS_iOS/SnapKit; sourceTree = "<absolute>"; };
 		AABCA247573D8ABD276D913C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CB5C9712E77BCF49BE5E3FC0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F97F9BF04E688E52863306AC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -483,7 +481,6 @@
 				9C2272931BD6517B00DE7F15 /* Main.storyboard in Resources */,
 				9C34AD031C7E458B00B7959D /* Assets.xcassets in Resources */,
 				9C6FB4E11BFE86F700C682C4 /* BTNavigationDropdownMenu.bundle in Resources */,
-				9CE8F9D81C0F1F8F009C229F /* SnapKit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

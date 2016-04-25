@@ -59,7 +59,9 @@ class SearchViewController: MainTableViewController, UISearchBarDelegate {
             return range.location != NSNotFound
         })
         SavedVariables.searchText = searchText
+        searchBar.resignFirstResponder()
         self.tableView.reloadData()
+        searchBar.becomeFirstResponder()
     }
 
     // MARK: - Table view data source
@@ -72,28 +74,39 @@ class SearchViewController: MainTableViewController, UISearchBarDelegate {
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         super.didRotateFromInterfaceOrientation(fromInterfaceOrientation)
-        searchBar.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: 44)
+        searchBar.frame = CGRect(x: 0, y: 0, width: screenSize.width, height: 64)
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 64))
         view.addSubview(searchBar)
         return view
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 64
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.view.endEditing(true)
+        if let email = filtered?[indexPath.row].email {
+            let pasteBoard = UIPasteboard.generalPasteboard()
+            pasteBoard.string = email
+        }
+        createAlertView("", text: pasteBoardMessage, viewController: self, handlers: [ "OK": {_ in} ])
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        if let title = filtered?[indexPath.row].title {
-            cell.textLabel?.text = title
+        if let title = filtered?[indexPath.row].title, email = filtered?[indexPath.row].email {
+            cell.textLabel?.numberOfLines = 2
+            cell.textLabel?.text = title + "\n" + email
         } else {
-            if let firstName = filtered?[indexPath.row].firstName, lastName = filtered?[indexPath.row].lastName {
-                cell.textLabel?.text = firstName + " " + lastName
+            if let firstName = filtered?[indexPath.row].firstName, lastName = filtered?[indexPath.row].lastName, email = filtered?[indexPath.row].email {
+                cell.textLabel?.text = firstName + " " + lastName + "\n" + email
             }
         }
         return cell
-    }
- 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.view.endEditing(true)
     }
 }

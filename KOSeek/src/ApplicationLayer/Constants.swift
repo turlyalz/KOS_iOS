@@ -107,7 +107,7 @@ func unwrap(value: String?) -> String {
     return result
 }
 
-func fromExamsToData(exams: [Exam]?) -> [[String]] {
+func fromExamsToData(exams: [Exam]?, courseEvents: Bool = false) -> [[String]] {
     var data: [[String]] = []
     guard let exams = exams else {
         return data
@@ -121,7 +121,12 @@ func fromExamsToData(exams: [Exam]?) -> [[String]] {
         if let occ = exam.occupied, cap = exam.capacity {
             totalCap += occ + "/" + cap
         }
-        let array = [dateTuple.date, dateTuple.time, unwrap(exam.room), totalCap, unwrap(exam.cancelDeadline)]
+        var array: [String] = []
+        if courseEvents {
+            array = [unwrap(exam.subject), dateTuple.date, dateTuple.time, unwrap(exam.room), totalCap]
+        } else {
+            array = [dateTuple.date, dateTuple.time, unwrap(exam.room), totalCap, unwrap(exam.cancelDeadline)]
+        }
         data.append(array)
     }
     return data
