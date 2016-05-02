@@ -135,9 +135,4 @@ class ProfileViewController: MainTableViewController {
         }
         return cell
     }
-
-    func refresh(sender:AnyObject)
-    {
-        // Code to refresh table view
-    }
 }

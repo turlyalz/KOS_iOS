@@ -8,13 +8,15 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordField.delegate = self
+        usernameField.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -25,7 +27,7 @@ class LoginViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @IBAction func loginButton(sender: UIButton) {
+    func login() {
         if usernameField.text == "" {
             createAlertView("", text: usernameEmptyMessage, viewController: self, handlers: ["OK": { _ in }])
             return
@@ -39,8 +41,23 @@ class LoginViewController: UIViewController {
         self.performSegueWithIdentifier("logInButtonSegue", sender: nil)
     }
 
+    
+    @IBAction func loginButton(sender: UIButton) {
+        login()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.passwordField {
+            textField.resignFirstResponder();
+            login();
+        } else if (textField == self.usernameField) {
+            self.passwordField.becomeFirstResponder();
+        }
+        return true
     }
 
 }
